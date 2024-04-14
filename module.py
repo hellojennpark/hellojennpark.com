@@ -17,10 +17,10 @@ def get_summary_content(filename):
         capture = False
         content = []
         for line in lines:
-            if line.startswith("# Summary"):
+            if line.startswith("## Summary"):
                 capture = True
                 continue
-            if capture and line.startswith("#"):
+            if capture and line.startswith("##"):
                 break
             if capture:
                 content.append(line)
@@ -64,4 +64,5 @@ def summary_under_direcoty(dirpath):
                         "content": html_content,
                     }
                 )
-    return summaries
+    sorted_summaries = sorted(summaries, key=lambda x: x["file"])
+    return sorted_summaries
