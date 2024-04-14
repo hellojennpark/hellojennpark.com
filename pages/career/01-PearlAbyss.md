@@ -1,7 +1,7 @@
 title: Pearl Abyss
-tags: [cicd, typescript]
+tags: [cicd, typescript, python, cpp, jenkins, gitlab, perforce, svn]
 
-# Summary
+## Summary
 
 + July 2021 ~ December 2022
 + GamePlatform Team `(Full time)`
@@ -12,6 +12,6 @@ tags: [cicd, typescript]
   + Consolidating version control tools from Perforce, SVN, and GitLab to GitLab
   + Unifying build scripts from shell, Python, and Groovy to Groovy
   + Centralizing build tools to Jenkins
-+ Constructed a monitoring and alerting system to collect critical error occurrence information from the engine (using C++, ELK, and Slack)
++ Constructed a monitoring and alerting system to collect critical error occurrence information from the engine `(using C++, ELK, and Slack)`
 
-# Details
+## Details
