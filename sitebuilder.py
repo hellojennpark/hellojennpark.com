@@ -4,7 +4,7 @@ from flask import Flask, render_template
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer
 
-from module import summary_under_direcoty
+from module import summary_under_direcoty, read_markdown
 
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
@@ -55,8 +55,10 @@ def career():
 
 @app.route("/<path:path>/")
 def page(path):
-    page = pages.get_or_404(path)
-    return render_template("page.html", page=page)
+    if path == "favicon.ico":
+        return "", 204
+    meatadata, html_content = read_markdown(f"{path}.md")
+    return render_template("page.html", content=html_content, meatadata=meatadata)
 
 
 if __name__ == "__main__":

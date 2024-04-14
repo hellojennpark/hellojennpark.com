@@ -1,5 +1,21 @@
 import os
 import markdown2
+import re
+
+
+def parse_format(text):
+    pattern = r"title:\s*(?P<title>.*?)(?:\s*date:\s*(?P<date>\d{4}-\d{2}-\d{2}))?(?:\s*tags:\s*(?P<tags>\[.*?\]))?$"
+    match = re.match(pattern, text, re.DOTALL)
+
+    if match:
+        result = match.groupdict()
+        if result["tags"]:
+            result["tags"] = result["tags"][1:-1].split(",")
+            result["tags"] = [tag.strip() for tag in result["tags"]]
+
+        return result
+    else:
+        return None
 
 
 def get_summary_content(filename):
@@ -46,7 +62,24 @@ def text_to_markdown(text):
 
 def read_markdown(filepath, root="pages"):
     fullpath = os.path.join(root, filepath)
-    return text_to_markdown(read_file(fullpath))
+
+    text = read_file(fullpath)
+    metadata_pattern = r"^(title:\s*(?P<title>.*?)(?:\s*date:\s*(?P<date>\d{4}-\d{2}-\d{2}))?(?:\s*tags:\s*(?P<tags>\[.*?\]))?(?:\n|$))?"
+    content_pattern = r"(?:\n|^)(?!title:|date:|tags:).*"
+
+    metadata_match = re.match(metadata_pattern, text, re.DOTALL)
+    content_match = re.findall(content_pattern, text, re.DOTALL)
+
+    metadata = {}
+    if metadata_match:
+        metadata = metadata_match.groupdict()
+        if metadata["tags"]:
+            metadata["tags"] = metadata["tags"][1:-1].split(",")
+            metadata["tags"] = [tag.strip() for tag in metadata["tags"]]
+
+    content = "\n".join(content_match).strip()
+    markdown = text_to_markdown(content)
+    return metadata, markdown
 
 
 def summary_under_direcoty(dirpath):
