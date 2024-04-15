@@ -14,6 +14,21 @@ tags: [cicd, typescript, python, cpp, jenkins, gitlab, perforce, svn]
   + Centralizing build tools to Jenkins
 + Constructed a monitoring and alerting system to collect critical error occurrence information from the engine `(using C++, ELK, and Slack)`
 
+## Skills
+
+| Skills             | Proficiency                                                           |
+| ------------------ | --------------------------------------------------------------------- |
+| Language           | `Python(***), Javascript(**), Typescript(**)`, `Groovy(**)`, `C++(*)` |
+| Framework          | `FastAPI(**), Next.js(**), Nestjs(**)`                                |
+| Database           | `MongoDB(*), MySQL(*), MSSQL(*)`                                      |
+| Collaboration Tool | `Slack, Atlassian Jira/Confluence`                                    |
+| OS                 | `Windows, Windows Server`                                             |
+| SCM                | `GitLab, VisualSVN, Perforce`                                         |
+| IDE                | `VSCode, Visual Studio`                                               |
+| CI/CD              | `Jenkins(***)`                                                        |
+| Container          | `Docker(**)`                                                          |
+| Monitoring         | `ELK(**), Grafana(*)`                                                 |
+
 ## Details
 
 + Custom Internal Tools Development
@@ -45,4 +60,3 @@ tags: [cicd, typescript, python, cpp, jenkins, gitlab, perforce, svn]
   + Integrated Slack to provide real-time notifications and alerts to the relevant teams
   + Collaborated with engine developers to define error categories, severity levels, and notification rules
   + Continuously monitored the system's effectiveness and made improvements based on insights gained from the collected data
-  

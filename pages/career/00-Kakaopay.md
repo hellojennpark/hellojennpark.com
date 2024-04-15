@@ -13,4 +13,18 @@ tags: [cicd, python, typescript, javascript, test, jenkins, github]
 + Collaborated with the audit team to ensure compliance with strict security and privacy regulations while finding optimal solutions for development
 + Worked in an organization using Agile methodology (2-week Scrum)
 
-## Details
+## Skills
+
+| Skills             | Proficiency                                     |
+| ------------------ | ----------------------------------------------- |
+| Language           | `Python(***), Javascript(**), Typescript(**)`   |
+| Framework          | `Bolt(***), Next.js(**), Nestjs(**), Svelte(*)` |
+| Database           | `MongoDB(*), MySQL(*)`                          |
+| Collaboration Tool | `Slack, Atlassian Jira/Confluence`              |
+| OS                 | `MacOS, CentOS, RockyOS`                        |
+| SCM                | `Github`                                        |
+| IDE                | `VSCode`                                        |
+| CI/CD              | `Github Actions(**), Jenkins(***), Ansible(*)`  |
+| Container          | `Docker(**), Kubernetes(*)`                     |
+| Monitoring         | `ELK(**), Grafana(*)`                           |
+| Cloud              | `AWS(*), KakaoCloud(*)`                         |
