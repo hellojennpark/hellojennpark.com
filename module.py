@@ -57,7 +57,7 @@ def read_file(filepath):
 
 
 def text_to_markdown(text):
-    return markdown2.markdown(text)
+    return markdown2.markdown(text, extras=["tables"])
 
 
 def read_markdown(filepath, root="pages"):
