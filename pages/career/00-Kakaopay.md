@@ -11,5 +11,6 @@ tags: [cicd, python, typescript, javascript, test, jenkins, github]
 + Authored a technical blog post sharing insights and lessons learned from automating software deployment processes, contributing to the company's knowledge base and developer community ([link](https://tech.kakaopay.com/post/slack-bot-improving-operational-efficiency/))
 + Delivered two presentations at internal developer conferences, showcasing the team's achievements, best practices, and future roadmap, fostering knowledge sharing and collaboration across the organization ([link](https://tech.kakaopay.com/post/2023-july-kakaopay-developer-festival/))
 + Collaborated with the audit team to ensure compliance with strict security and privacy regulations while finding optimal solutions for development
++ Worked in an organization using Agile methodology (2-week Scrum)
 
 ## Details
