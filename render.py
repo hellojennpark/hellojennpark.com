@@ -2,13 +2,13 @@ from flask import render_template
 from module import summary_under_direcoty, read_markdown
 
 
-def index(pages):
+def resume(pages):
     about = pages.get("about")
     contact = pages.get("contact")
     education = pages.get("education")
     career_files = summary_under_direcoty("pages/career")
     return render_template(
-        "index.html",
+        "resume.html",
         pages=pages,
         data={
             "about": about,

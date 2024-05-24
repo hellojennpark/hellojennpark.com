@@ -19,12 +19,17 @@ freezer = Freezer(app)
 
 @app.route("/")
 def index():
-    return render.index(pages)
+    return render.resume(pages)
 
 
-@app.route("/en")
-def index_en():
-    return render.index(pages)
+@app.route("/resume")
+def resume():
+    return render.resume(pages)
+
+
+@app.route("/resume/en")
+def resume_en():
+    return render.resume(pages)
 
 
 @app.route("/tag/<string:tag>")
