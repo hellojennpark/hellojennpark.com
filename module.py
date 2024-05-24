@@ -62,7 +62,6 @@ def text_to_markdown(text):
 
 def read_markdown(filepath, root="pages"):
     fullpath = os.path.join(root, filepath)
-
     text = read_file(fullpath)
     metadata_pattern = r"^(title:\s*(?P<title>.*?)(?:\s*date:\s*(?P<date>\d{4}-\d{2}-\d{2}))?(?:\s*tags:\s*(?P<tags>\[.*?\]))?(?:\n|$))?"
     content_pattern = r"(?:\n|^)(?!title:|date:|tags:).*"
@@ -92,7 +91,7 @@ def summary_under_direcoty(dirpath):
                 html_content = text_to_markdown(summary)
                 summaries.append(
                     {
-                        "file": file[:-3],
+                        "file": file,
                         "title": find_title_from_filename(file),
                         "content": html_content,
                     }

@@ -1,10 +1,10 @@
 import sys
 
+import render
+
 from flask import Flask, render_template
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer
-
-from module import summary_under_direcoty, read_markdown
 
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
@@ -19,50 +19,32 @@ freezer = Freezer(app)
 
 @app.route("/")
 def index():
-    about = pages.get("about")
-    contact = pages.get("contact")
-    education = pages.get("education")
-    career_files = summary_under_direcoty("pages/career")
-    return render_template(
-        "index.html",
-        pages=pages,
-        data={
-            "about": about,
-            "contact": contact,
-            "education": education,
-            "career_files": career_files,
-        },
-    )
+    return render.index(pages)
 
 
-@app.route("/tag/<string:tag>/")
+@app.route("/en")
+def index_en():
+    return render.index(pages)
+
+
+@app.route("/tag/<string:tag>")
 def tag(tag):
     tagged = [p for p in pages if tag in p.meta.get("tags", [])]
     return render_template("tag.html", pages=tagged, tag=tag)
 
 
-@app.route("/career/")
+@app.route("/career")
 def career():
-    career_files = summary_under_direcoty("pages/career")
-    return render_template(
-        "career.html",
-        pages=pages,
-        data={
-            "career_files": career_files,
-        },
-    )
+    return render.career(pages)
 
 
-@app.route("/<path:path>/")
+@app.route("/<path:path>", strict_slashes=False)
 def page(path):
-    if path == "favicon.ico":
-        return "", 204
-    meatadata, html_content = read_markdown(f"{path}.md")
-    return render_template("page.html", content=html_content, meatadata=meatadata)
+    return render.page(path)
 
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":
         freezer.freeze()
     else:
-        app.run(port=8000)
+        app.run(port=3000)
