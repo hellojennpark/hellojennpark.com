@@ -1,6 +1,17 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
 	import github from '$lib/images/github.svg';
+
+	$: firstPath = $page.url.pathname.split('/')[1];
+
+	function generatePath(section: string) {
+	return firstPath ? `/${firstPath}/${section}` : `/${section}`;
+	}
+
+	function isActive(section: string) {
+	const currentPath = $page.url.pathname;
+	return currentPath === `/${section}` || currentPath === generatePath(section);
+	}
 </script>
 
 <header>
@@ -10,23 +21,23 @@
 			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
 		</svg>
 		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
+			<li aria-current={isActive('') ? 'page' : undefined}>
+				<a href={generatePath('')}>Home</a>
+			  </li>
+			<li aria-current={isActive('resume') ? 'page' : undefined}>
+				<a href={generatePath('resume')}>Resume</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/resume' ? 'page' : undefined}>
-				<a href="/resume">Resume</a>
+			<li aria-current={isActive('career') ? 'page' : undefined}>
+				<a href={generatePath('career')}>Career</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/career' ? 'page' : undefined}>
-				<a href="/career">Career</a>
+			<li aria-current={isActive('project') ? 'page' : undefined}>
+				<a href={generatePath('project')}>Project</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/project' ? 'page' : undefined}>
-				<a href="/project">Project</a>
+			<li aria-current={isActive('education') ? 'page' : undefined}>
+				<a href={generatePath('education')}>Education</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/education' ? 'page' : undefined}>
-				<a href="/education">Education</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/contact' ? 'page' : undefined}>
-				<a href="/contact">Contact</a>
+			<li aria-current={isActive('contact') ? 'page' : undefined}>
+				<a href={generatePath('contact')}>Contact</a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
