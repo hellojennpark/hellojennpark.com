@@ -1,15 +1,15 @@
 <script lang="ts">
 	    function redirectToLanguage(language: string) {
         if (language === 'en') {
-            window.location.href = '/en';
+            window.location.href = '/en/home';
         } else if (language === 'ko') {
-            window.location.href = '/ko';
+            window.location.href = '/ko/home';
         }
     }
 </script>
 
 <svelte:head>
-	<title>Yejin Park (Home)</title>
+	<title>Yejin Park (Choose your language)</title>
 	<meta name="description" content="Home" />
 </svelte:head>
 

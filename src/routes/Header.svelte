@@ -3,7 +3,6 @@
 	import github from '$lib/images/github.svg';
 
 	$: firstPath = $page.url.pathname.split('/')[1];
-
 	function generatePath(section: string) {
 		return firstPath ? `/${firstPath}/${section}` : `/${section}`;
 	}
@@ -12,8 +11,8 @@
 		const currentPath = $page.url.pathname;
 		return currentPath === `/${section}` || currentPath === generatePath(section);
 	}
-</script>
 
+</script>
 <header>
 	<div class="corner" />
 	<nav>
@@ -21,9 +20,9 @@
 			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
 		</svg>
 		<ul>
-			<li aria-current={isActive('') ? 'page' : undefined}>
-				<a href={generatePath('')}>Home</a>
-			  </li>
+			<li aria-current={isActive('home') ? 'page' : undefined}>
+				<a href={generatePath('home')}>Home</a>
+			</li>
 			<li aria-current={isActive('resume') ? 'page' : undefined}>
 				<a href={generatePath('resume')}>Resume</a>
 			</li>
