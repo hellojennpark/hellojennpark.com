@@ -5,12 +5,12 @@
 	$: firstPath = $page.url.pathname.split('/')[1];
 
 	function generatePath(section: string) {
-	return firstPath ? `/${firstPath}/${section}` : `/${section}`;
+		return firstPath ? `/${firstPath}/${section}` : `/${section}`;
 	}
 
 	function isActive(section: string) {
-	const currentPath = $page.url.pathname;
-	return currentPath === `/${section}` || currentPath === generatePath(section);
+		const currentPath = $page.url.pathname;
+		return currentPath === `/${section}` || currentPath === generatePath(section);
 	}
 </script>
 
