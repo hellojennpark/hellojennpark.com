@@ -1,19 +1,27 @@
-import type { Component } from "solid-js";
+import { lazy } from "solid-js";
+import { render } from "solid-js/web";
+import { Router, Route, A } from "@solidjs/router";
 
-import logo from "./logo.svg";
-import styles from "./App.module.css";
+const Career = lazy(() => import("./components/Career"));
+const Contact = lazy(() => import("./components/Contact"));
 
-const App: Component = () => {
-  return (
-    <div class={styles.App}>
-      <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </header>
-    </div>
-  );
-};
+const App = (props) => (
+  <>
+    <nav>
+      <A href="/users">Users</A>
+      <A href="/">Home</A>
+    </nav>
+    <h1>My Site with lots of pages</h1>
+    {props.children}
+  </>
+);
 
-export default App;
+render(
+  () => (
+    <Router root={App}>
+      <Route path="/users" component={Career} />
+      <Route path="/" component={Contact} />
+    </Router>
+  ),
+  document.getElementById("app")
+);
