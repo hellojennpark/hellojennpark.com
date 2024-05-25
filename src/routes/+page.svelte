@@ -1,4 +1,11 @@
-<script>
+<script lang="ts">
+	    function redirectToLanguage(language: string) {
+        if (language === 'en') {
+            window.location.href = '/en';
+        } else if (language === 'ko') {
+            window.location.href = '/ko';
+        }
+    }
 </script>
 
 <svelte:head>
@@ -8,10 +15,13 @@
 
 <section>
 	<h1>
-		to your new<br />SvelteKit app
+		Welcome! 
 	</h1>
-
-
+	<h2>Please choose your preferred language.</h2>
+    <div class="button-container">
+        <button on:click={() => redirectToLanguage('en')}>English</button>
+        <button on:click={() => redirectToLanguage('ko')}>한국어</button>
+    </div>
 </section>
 
 <style>
@@ -26,4 +36,24 @@
 	h1 {
 		width: 100%;
 	}
+
+	.button-container {
+        display: flex;
+        gap: 15px;
+    }
+
+    button {
+        background-color: #333;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #555;
+    }
 </style>
