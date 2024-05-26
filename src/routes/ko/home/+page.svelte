@@ -8,23 +8,14 @@
 <div class="text-column">
 	<h1 class="jersey-10-charted-regular">Hello, World!_</h1>
 
-	<p>
-		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
-		following into your command line and following the prompts:
-	</p>
-
-	<pre><p>1</p><p>2</p></pre>
-
-	<p>
-		The page you're looking at is purely static HTML, with no client-side interactivity needed.
-		Because of that, we don't need to load any JavaScript. Try viewing the page's source, or opening
-		the devtools network panel and reloading.
-	</p>
-
-	<p>
-		The <a href="/sverdle">Sverdle</a> page illustrates SvelteKit's data loading and form handling. Try
-		using it with JavaScript disabled!
-	</p>
+	<p class="bolder">ABOUT</p>
+	<pre>
+		<p>안녕하세요, 사용자 경험을 가장 중요하게 생각하는 소프트웨어 엔지니어 박예진입니다.</p>
+	</pre>
+	<p class="bolder">KEY STRENGTHS</p>
+	<pre>
+		<p>안녕하세요, 사용자 경험을 가장 중요하게 생각하는 소프트웨어 엔지니어 박예진입니다.</p>
+	</pre>
 </div>
 
 
@@ -33,5 +24,12 @@
 		font-family: "Jersey 10 Charted", sans-serif;
 		font-weight: 400;
 		font-style: normal;
+		user-select: none; /* 텍스트 선택 비활성화 */
+		cursor: default; /* 기본 커서로 변경 */
+	}
+
+	.bolder {
+		font-weight: 800;
+		font-size: 1.5rem;
 	}
 </style>
