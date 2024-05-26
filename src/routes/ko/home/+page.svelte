@@ -1,10 +1,12 @@
 <svelte:head>
+	<link href="https://fonts.googleapis.com/css2?family=Jersey+10+Charted&display=swap" rel="stylesheet">
 	<title>Yejin Park (Home)</title>
 	<meta name="description" content="About this app" />
 </svelte:head>
 
+
 <div class="text-column">
-	<h1>About this app</h1>
+	<h1 class="jersey-10-charted-regular">Hello, World!_</h1>
 
 	<p>
 		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
@@ -24,3 +26,12 @@
 		using it with JavaScript disabled!
 	</p>
 </div>
+
+
+<style>
+	.jersey-10-charted-regular {
+		font-family: "Jersey 10 Charted", sans-serif;
+		font-weight: 400;
+		font-style: normal;
+	}
+</style>
