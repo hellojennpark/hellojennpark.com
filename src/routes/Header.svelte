@@ -12,6 +12,9 @@
 		return currentPath === `/${section}` || currentPath === generatePath(section);
 	}
 
+	function redirect() {
+        window.location.href = '/ko/home';
+    }
 </script>
 <header>
 	<div class="corner" />
@@ -21,7 +24,8 @@
 		</svg>
 		<ul>
 			<li aria-current={isActive('home') ? 'page' : undefined}>
-				<a href={generatePath('home')}>Home</a>
+				<!-- svelte-ignore a11y-invalid-attribute -->
+				<a href="#" on:click={redirect}>Home</a>
 			</li>
 			<li aria-current={isActive('resume') ? 'page' : undefined}>
 				<a href={generatePath('resume')}>Resume</a>
