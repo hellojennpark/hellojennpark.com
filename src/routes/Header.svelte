@@ -27,9 +27,6 @@
 				<!-- svelte-ignore a11y-invalid-attribute -->
 				<a href="#" on:click={redirect}>Home</a>
 			</li>
-			<li aria-current={isActive('resume') ? 'page' : undefined}>
-				<a href={generatePath('resume')}>Resume</a>
-			</li>
 			<li aria-current={isActive('career') ? 'page' : undefined}>
 				<a href={generatePath('career')}>Career</a>
 			</li>
@@ -41,6 +38,9 @@
 			</li>
 			<li aria-current={isActive('contact') ? 'page' : undefined}>
 				<a href={generatePath('contact')}>Contact</a>
+			</li>
+			<li aria-current={isActive('more') ? 'page' : undefined}>
+				<a href={generatePath('more')}>More?</a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
