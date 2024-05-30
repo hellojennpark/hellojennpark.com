@@ -81,14 +81,15 @@
 				},
 				{
 					description: '성능테스트존 구축 및 어드민 웹 개발',
-					detail: '성능테스트 환경(쿠버네티스 클러스터)을 10초 내에 전개함'
+					detail:
+						'프로덕션 환경에 영향을 주지 않고 성능을 테스트 할 수 있는 환경(쿠버네티스 클러스터)을 10초 내 전개'
 				},
 				{
-					description: '전사 Mocking Platform 개발',
-					detail: '2024년 5월 기준, 24개팀이 50개 목 서버를 생성함. 최대 7000TPS까지 지원함'
+					description: '사내 공통 테스트 플랫폼(Mock Server, Performance Test) 개발',
+					detail: '2024년 5월 기준, 24개 팀이 50개의 목 서버를 생성함. 최대 7000 TPS까지 지원함'
 				},
 				{
-					description: '기술 블로그 작성 및 내부 개발자 행사 발표',
+					description: '기술 블로그 작성 및 내부 개발자 컨퍼런스 발표',
 					links: [
 						{
 							title: '기술블로그(배포 효율화를 위한 자동화 슬랙봇 개발)',
@@ -141,7 +142,7 @@
 	<div class="white-box">
 		{#each events.slice().reverse() as event, index}
 			<div>
-				<p class="bolder">{index + 1}.{event.company}</p>
+				<p class="bolder">{index + 1}. {event.company}</p>
 				<List list="decimal">
 					<Li><p>역할(소속): {event.role} ({event.team})</p></Li>
 					<Li><p>재직기간: {event.date}</p></Li>
