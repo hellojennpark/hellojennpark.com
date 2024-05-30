@@ -34,16 +34,26 @@
 			role: 'Software Engineer',
 			team: 'Platform Programming 1 Team',
 			descriptions: [
-				{ description: '운영 효율성을 높이고 테스트 프로세스를 단순화 하기 위한 도구 개발' },
-				{ description: '소프트웨어 안정성을 위한 에러 감지 및 경고 시스템 구축' },
-				{ description: '게임 엔진 성능 모니터링 및 알림 시스템 구축' },
+				{
+					description: '운영 효율성을 높이고 테스트 프로세스를 단순화 하기 위한 도구 개발',
+					detail: '게임 패키징 목록 생성 및 검증 어드민 웹 개발, Slack Config 관리 서버 개발'
+				},
+				{
+					description: '소프트웨어 안정성을 위한 에러 감지 및 경고 시스템 구축',
+					detail: '가능한 빠른 피드백을 위한 모든 변경 사항에 대한 자동 테스트 프로세스 구성'
+				},
+				{
+					description: '게임 엔진 성능 모니터링 및 알림 시스템 구축',
+					detail:
+						'게임 엔진 성능 수집 파이프라인 구축(C++, Elsaticsearch), 대시보드(Kibana) 구성, 모니터링 및 알림 시스템 구축(Jenkins, Slack, Python)'
+				},
 				{
 					description: 'Jenkins CI/CD 관리',
 					detail:
 						'jenkins library, pipeline 유지보수, 프로파일링을 통한 빌드/배포 소요시간 감소, 데이터 수집 및 대시보드 구축'
 				},
 				{
-					description: '빌드 시스템 표준화',
+					description: '빌드 시스템 표준화 및 안정성 개선',
 					detail:
 						'버전관리도구(Perforce, Gitlab, Visual SVN) 통합, 빌드 스크립트 통합(Python, Groovy, Shell Script), CI도구(Jenkins, 자체개발) 통합'
 				}
