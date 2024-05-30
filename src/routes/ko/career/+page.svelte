@@ -1,4 +1,6 @@
 <script>
+	// @ts-nocheck
+
 	import { List, Li } from 'flowbite-svelte';
 	import Timeline from '../../../components/Timeline.svelte';
 
@@ -9,7 +11,21 @@
 			date: '2020년 7월 - 2021년 2월 · 8개월',
 			role: 'DevOps Engineer',
 			team: 'PMS-MPI Cell',
-			descriptions: []
+			descriptions: [
+				{
+					description: '파이썬 크롤러 최적화',
+					detail:
+						'애플리케이션 수집 시간 3시간 -> 30분 미만으로 80% 이상 단축, 에러 처리 및 알림 시스템 추가로 실패 비율 50% -> 10% 이하로 감소'
+				},
+				{
+					description: '애플리케이션 버전 검증 자동화',
+					detail: '1차 검증 자동화, 검증 시간 1시간 -> 최종 검토 10분 이하로 감소'
+				},
+				{
+					description: '뉴스 크롤러 기반 보고서 생성 자동화',
+					detail: '뉴스 필터링 및 보고서 생성 및 공유 자동화'
+				}
+			]
 		},
 		{
 			company: 'PearlAbyss',
@@ -17,12 +33,26 @@
 			date: '2021년 7월 - 2022년 12월 · 1년 6개월',
 			role: 'Software Engineer',
 			team: 'Platform Programming 1 Team',
-			descriptions: []
+			descriptions: [
+				{ description: '운영 효율성을 높이고 테스트 프로세스를 단순화 하기 위한 도구 개발' },
+				{ description: '소프트웨어 안정성을 위한 에러 감지 및 경고 시스템 구축' },
+				{ description: '게임 엔진 성능 모니터링 및 알림 시스템 구축' },
+				{
+					description: 'Jenkins CI/CD 관리',
+					detail:
+						'jenkins library, pipeline 유지보수, 프로파일링을 통한 빌드/배포 소요시간 감소, 데이터 수집 및 대시보드 구축'
+				},
+				{
+					description: '빌드 시스템 표준화',
+					detail:
+						'버전관리도구(Perforce, Gitlab, Visual SVN) 통합, 빌드 스크립트 통합(Python, Groovy, Shell Script), CI도구(Jenkins, 자체개발) 통합'
+				}
+			]
 		},
 		{
 			company: 'KakaoPay',
 			jobtype: '정규직',
-			date: '2022년 12월 - 현재 · 1년 6개월',
+			date: '2022년 12월 - 현재 · 1년 7개월',
 			role: 'Software Engineer',
 			team: 'SRE Team Release Engineering Part',
 			descriptions: [
@@ -87,6 +117,17 @@
 			/>경력사항
 		</h1>
 	</div>
+	<p class="subtitle">
+		<img
+			src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Loudspeaker.png"
+			alt="Loudspeaker"
+			width="25"
+			height="25"
+			style="margin-right: 0.5rem;"
+		/>
+		각 프로젝트에 대한 세부 내용은
+		<a style="margin-left: 0.4rem;" href="/ko/project">프로젝트</a>에서 확인해주세요
+	</p>
 	<div class="white-box">
 		{#each events.slice().reverse() as event, index}
 			<div>
