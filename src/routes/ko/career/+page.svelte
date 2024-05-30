@@ -41,7 +41,7 @@
 				},
 				{
 					description: '성능테스트존 구축 및 어드민 웹 개발',
-					detail: '성능테스트 환경을 10초 내에 전개한다'
+					detail: '성능테스트 환경(쿠버네티스 클러스터)을 10초 내에 전개한다'
 				},
 				{
 					description: '전사 Mocking Platform 개발',
