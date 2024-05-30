@@ -35,7 +35,18 @@
 						}
 					]
 				},
-				{ description: '업무 생산성 향상과 업무 피로도를 낮추기 위한 자동화 시스템 구축' },
+				{
+					description: '배포 생산성 향상과 커뮤니케이션 피로도를 낮추기 위한 자동화 시스템 구축',
+					detail: '배포 생산성 향상으로 코어 타임 상시 배포 인원 10명에서 3명으로 감소함'
+				},
+				{
+					description: '성능테스트존 구축 및 어드민 웹 개발',
+					detail: '성능테스트 환경을 10초 내에 전개한다'
+				},
+				{
+					description: '전사 Mocking Platform 개발',
+					detail: '2024년 5월 기준, 24개팀이 50개 목 서버를 생성함. 최대 7000TPS까지 지원함'
+				},
 				{
 					description: '기술 블로그 작성 및 내부 개발자 행사 발표',
 					links: [
@@ -96,6 +107,9 @@
 										>
 									{/each}
 								{/if}
+								{#if item.detail}
+									<pre>{item.detail}</pre>
+								{/if}
 							</p></Li
 						>
 					{/each}
@@ -109,5 +123,9 @@
 	.bolder {
 		font-weight: 800;
 		font-size: 1.5rem;
+	}
+
+	pre {
+		font-size: 0.8rem;
 	}
 </style>
