@@ -16,7 +16,7 @@
 			jobtype: '정규직',
 			date: '2021년 7월 - 2022년 12월 · 1년 6개월',
 			role: 'Software Engineer',
-			team: 'Platform Programming Team',
+			team: 'Platform Programming 1 Team',
 			descriptions: []
 		},
 		{

@@ -13,9 +13,10 @@
 	}
 
 	function redirect() {
-        window.location.href = '/ko/home';
-    }
+		window.location.href = '/ko/career';
+	}
 </script>
+
 <header>
 	<div class="corner" />
 	<nav>
@@ -24,11 +25,11 @@
 		</svg>
 		<ul>
 			<!-- <li aria-current={isActive('home') ? 'page' : undefined}> -->
-				<!-- svelte-ignore a11y-invalid-attribute -->
-				<!-- <a href="#" on:click={redirect}>Home</a> -->
+			<!-- svelte-ignore a11y-invalid-attribute -->
+			<!-- <a href="#" on:click={redirect}>Home</a> -->
 			<!-- </li> -->
 			<li aria-current={isActive('career') ? 'page' : undefined}>
-				<a href={generatePath('career')}>Career</a>
+				<a href="#" on:click={redirect}>Career</a>
 			</li>
 			<li aria-current={isActive('project') ? 'page' : undefined}>
 				<a href={generatePath('project')}>Project</a>
