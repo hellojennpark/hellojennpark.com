@@ -1,5 +1,5 @@
 <script>
-	  import { List, Li, Heading } from 'flowbite-svelte';
+	  import { List, Li } from 'flowbite-svelte';
 </script>
 <svelte:head>
 	<link href="https://fonts.googleapis.com/css2?family=Jersey+10+Charted&display=swap" rel="stylesheet">

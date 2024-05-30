@@ -23,10 +23,10 @@
 			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
 		</svg>
 		<ul>
-			<li aria-current={isActive('home') ? 'page' : undefined}>
+			<!-- <li aria-current={isActive('home') ? 'page' : undefined}> -->
 				<!-- svelte-ignore a11y-invalid-attribute -->
-				<a href="#" on:click={redirect}>Home</a>
-			</li>
+				<!-- <a href="#" on:click={redirect}>Home</a> -->
+			<!-- </li> -->
 			<li aria-current={isActive('career') ? 'page' : undefined}>
 				<a href={generatePath('career')}>Career</a>
 			</li>
