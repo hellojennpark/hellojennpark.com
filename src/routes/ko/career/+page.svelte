@@ -143,8 +143,8 @@
 			<div>
 				<p class="bolder">{index + 1}.{event.company}</p>
 				<List list="decimal">
-					<Li><p>{event.role}, {event.team}</p></Li>
-					<Li><p>{event.date}</p></Li>
+					<Li><p>역할(소속): {event.role} ({event.team})</p></Li>
+					<Li><p>재직기간: {event.date}</p></Li>
 					{#each event.descriptions as item}
 						<Li
 							><p>
