@@ -150,7 +150,7 @@
 	<meta name="description" content="커리어" />
 </svelte:head>
 
-<div>
+<div class="container">
 	<Timeline {events} />
 	<div>
 		<h1 class="subtitle">
