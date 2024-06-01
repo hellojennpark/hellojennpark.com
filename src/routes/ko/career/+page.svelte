@@ -1,10 +1,8 @@
-<script>
-	// @ts-nocheck
-
+<script lang="ts">
 	import { List, Li } from 'flowbite-svelte';
 	import Timeline from '../../../components/Timeline.svelte';
 
-	function getMonthDifference(period) {
+	function getMonthDifference(period: string) {
 		const [startStr, endStr] = period.split(' - ');
 		const startDate = startStr.replace('년 ', '-').replace('월', '');
 		const endDate = endStr.replace('년 ', '-').replace('월', '');
@@ -104,6 +102,7 @@
 					detail: 'Python, Slack Bolt Framework 사용',
 					links: [
 						{
+							key: 'article',
 							title: '뉴스기사 (배포봇)',
 							url: 'https://www.etnews.com/20230724000204#'
 						}
@@ -126,10 +125,12 @@
 					description: '기술 블로그 작성 및 내부 개발자 컨퍼런스 발표',
 					links: [
 						{
+							key: 'techblog',
 							title: '기술블로그(배포 효율화를 위한 자동화 슬랙봇 개발)',
 							url: 'https://tech.kakaopay.com/post/slack-bot-improving-operational-efficiency/'
 						},
 						{
+							key: 'speaking',
 							title: '발표후기(업무 효율화 - 배포 업무 효율화)',
 							url: 'https://tech.kakaopay.com/post/2023-july-kakaopay-developer-festival/#%ED%95%A8%EA%BB%98-%EB%82%98%EB%88%84%EA%B8%B0%EB%B2%A0%EC%8A%A4%ED%8A%B8-%ED%94%84%EB%9E%99%ED%8B%B0%EC%8A%A4'
 						}
@@ -142,8 +143,8 @@
 
 <svelte:head>
 	<link
-		href="https://fonts.googleapis.com/css2?family=Jersey+10+Charted&display=swap"
 		rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Jersey+10+Charted&display=swap"
 	/>
 	<title>Yejin Park (Career)</title>
 	<meta name="description" content="커리어" />
@@ -183,23 +184,17 @@
 					<Li><p>역할(소속): {event.role} ({event.team})</p></Li>
 					<Li><p>재직기간: {event.date} · {getMonthDifference(event.date)}</p></Li>
 					{#each event.descriptions as item}
-						<Li
-							><p>
-								{item.description}
-								{#if item.links}
-									{#each item.links as link}
-										<a
-											href={link.url}
-											target="_blank"
-											style="margin-left: 0.5rem; margin-right: 0.5rem;">🔗 {link.title}</a
-										>
-									{/each}
-								{/if}
-								{#if item.detail}
-									<pre>{item.detail}</pre>
-								{/if}
-							</p></Li
-						>
+						<Li>
+							<p>{item.description}</p>
+							{#if item.links}
+								{#each item.links as link}
+									<button class="reference">🔎 {link.title}</button>
+								{/each}
+							{/if}
+							{#if item.detail}
+								<pre>{item.detail}</pre>
+							{/if}
+						</Li>
 					{/each}
 				</List>
 			</div>
@@ -211,6 +206,15 @@
 	.bolder {
 		font-weight: 800;
 		font-size: 1.5rem;
+	}
+
+	.reference {
+		margin-left: 0.5rem;
+		margin-right: 0.5rem;
+		background-color: rgba(255, 230, 0, 0.75);
+		border: none;
+		cursor: pointer;
+		font-size: 0.8rem;
 	}
 
 	pre {
