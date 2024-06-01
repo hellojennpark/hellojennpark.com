@@ -1,14 +1,42 @@
 <script lang="ts">
+	import Subtitle from './Subtitle.svelte';
+	import Card from './Card.svelte';
+
 	import { writable } from 'svelte/store';
 
-	// Filters with both Korean and English labels
 	const filters = [
-		{ label: '전체', key: 'all' },
-		{ label: '레퍼런스', key: 'references' },
-		{ label: '나', key: 'whoami' }
+		{ label: 'All', key: 'all' },
+		{ label: 'References', key: 'references' },
+		{ label: 'Who am I?', key: 'whoami' }
 	];
 
-	// Function to get the initial filter from URL
+	const cards = [
+		{
+			id: 1,
+			icon: '/images/studio_microphone.png',
+			imageUrl: '/images/article.png',
+			alt: 'article',
+			tags: ['references'],
+			label: '뉴스 기사'
+		},
+		{
+			id: 2,
+			icon: '/images/pencil.png',
+			imageUrl: '/images/deploy_efficiency.png',
+			alt: 'techblog',
+			tags: ['references'],
+			label: '기술블로그 포스팅'
+		},
+		{
+			id: 3,
+			icon: '/images/studio_microphone.png',
+			imageUrl: '/images/ari_speaking.png',
+			alt: 'public speaking',
+			tags: ['references'],
+			label: '내부 개발자 컨퍼런스 발표 후기'
+		}
+	];
+
 	function getInitialFilter() {
 		if (typeof window !== 'undefined') {
 			const urlParams = new URLSearchParams(window.location.search);
@@ -17,13 +45,11 @@
 				return filterKey;
 			}
 		}
-		return 'all'; // Default value if no valid filter in URL
+		return 'all';
 	}
 
-	// Store for managing the current filter
 	const currentFilter = writable(getInitialFilter());
 
-	// Update URL based on selected filter
 	$: $currentFilter, setFilter($currentFilter);
 
 	function setFilter(filter: string) {
@@ -54,19 +80,24 @@
 
 	<div>
 		{#if $currentFilter === 'all'}
-			<!-- Show all accordion content here -->
-		{:else if $currentFilter === 'communication'}
-			<!-- Show filtered accordion content for 커뮤니케이션 -->
-		{:else if $currentFilter === 'daily'}
-			<!-- Show filtered accordion content for 일상 편의 -->
-		{:else if $currentFilter === 'business'}
-			<!-- Show filtered accordion content for 비즈니스 -->
-		{:else if $currentFilter === 'shopping'}
-			<!-- Show filtered accordion content for 쇼핑 -->
-		{:else if $currentFilter === 'entertainment'}
-			<!-- Show filtered accordion content for 엔터테인먼트 -->
-		{:else if $currentFilter === 'social'}
-			<!-- Show filtered accordion content for 소셜임팩트 -->
+			<div class="layout">
+				{#each cards as card}
+					<Card {...card} />
+				{/each}
+			</div>
+		{:else if $currentFilter === 'references'}
+			<Subtitle
+				label="References"
+				src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Card%20File%20Box.png"
+				alt="Reference Icon"
+			/>
+			<!-- Show references accordion content here -->
+		{:else if $currentFilter === 'whoami'}
+			<Subtitle
+				label="Who am I?"
+				src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Grinning%20Squinting%20Face.png"
+				alt="Grinning Squinting Face"
+			/>
 		{/if}
 	</div>
 </div>
@@ -87,5 +118,11 @@
 	.selected {
 		background-color: black;
 		color: white;
+	}
+
+	.layout {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
 	}
 </style>

@@ -124,5 +124,5 @@ button:focus:not(:focus-visible) {
 	display: flex;
 	flex-direction: column;
 	padding: 0 10% 0 10%;
-	gap: 20px;
+	gap: 10px;
 }
