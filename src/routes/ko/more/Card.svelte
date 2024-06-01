@@ -8,12 +8,13 @@
 	 */
 	export let tags = [];
 	export let label;
+	let link = `/ko/more/${id}`;
 </script>
 
 <div class="card">
 	<div class="header">
 		<img class="icon" src={icon} {alt} />
-		<div class="label">{label}</div>
+		<div class="label"><a href={link}>{label} </a></div>
 	</div>
 	<div class="content">
 		<div>
@@ -23,13 +24,20 @@
 				{/each}
 			{/if}
 		</div>
-		<div class="image-container">
-			<img src={imageUrl} {alt} />
-		</div>
+
+		<a href={link}>
+			<div class="image-container">
+				<img src={imageUrl} {alt} />
+			</div>
+		</a>
 	</div>
 </div>
 
 <style>
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
 	.card {
 		width: 300px;
 		border: 1px solid #ddd;
