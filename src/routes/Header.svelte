@@ -3,6 +3,8 @@
 	import github from '$lib/images/github.svg';
 
 	$: firstPath = $page.url.pathname.split('/')[1];
+
+	const sections = ['career', 'project', 'education', 'contact', 'more'];
 	function generatePath(section: string) {
 		return firstPath ? `/${firstPath}/${section}` : `/${section}`;
 	}
@@ -24,21 +26,11 @@
 			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
 		</svg>
 		<ul>
-			<li aria-current={isActive('career') ? 'page' : undefined}>
-				<a href="#career" on:click={() => redirect('/ko/career')}>Career</a>
-			</li>
-			<li aria-current={isActive('project') ? 'page' : undefined}>
-				<a href="#project" on:click={() => redirect('/ko/project')}>Project</a>
-			</li>
-			<li aria-current={isActive('education') ? 'page' : undefined}>
-				<a href="#education" on:click={() => redirect('/ko/education')}>Education</a>
-			</li>
-			<li aria-current={isActive('contact') ? 'page' : undefined}>
-				<a href="#contact" on:click={() => redirect('/ko/contact')}>Contact</a>
-			</li>
-			<li aria-current={isActive('more') ? 'page' : undefined}>
-				<a href="#more" on:click={() => redirect('/ko/more')}>More?</a>
-			</li>
+			{#each sections as section}
+				<li aria-current={isActive(section) ? 'page' : undefined}>
+					<a href={section} on:click={() => redirect(section)}>{section}</a>
+				</li>
+			{/each}
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
