@@ -92,7 +92,7 @@ export const Header = () => {
         </DrawerTrigger>
         <DrawerContent className="p-6">
           <DrawerHeader>
-            <DrawerTitle>Menu</DrawerTitle>
+            <DrawerTitle className="text-xl">Menu</DrawerTitle>
           </DrawerHeader>
           <nav className="flex flex-col space-y-4 px-4 py-2">
             <ThemedLink href="#career">Career</ThemedLink>
