@@ -9,7 +9,7 @@ export default function Hero() {
           {"I build tools that help developers work with joy and flow."}
         </p>
       </div>
-      <HeroBackground silhouetteColor="ffc8dd" opacity={0.9} />
+      <HeroBackground />
     </section>
   );
 }

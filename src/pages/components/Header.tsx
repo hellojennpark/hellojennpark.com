@@ -10,6 +10,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 
 const getTorontoTime = () => {
   const now = new Date().toLocaleString("en-US", {
@@ -28,9 +29,10 @@ const getTorontoTime = () => {
 
 export const Header = () => {
   const initial = getTorontoTime();
-  const [selectedHour, setSelectedHour] = useState(initial.hour);
   const [torontoTime, setTorontoTime] = useState(initial);
   const [isMobile, setIsMobile] = useState(false);
+  const { hour } = useTimeThemeStore();
+  const setHour = useTimeThemeStore((s) => s.setHour);
 
   useEffect(() => {
     const updateTime = () => {
@@ -72,11 +74,11 @@ export const Header = () => {
               min={0}
               max={23}
               step={1}
-              value={[selectedHour]}
-              onValueChange={([v]) => setSelectedHour(v)}
+              value={[hour]}
+              onValueChange={([v]) => setHour(v)}
             />
             <div className="text-center text-sm text-gray-500 mt-2">
-              Selected: {selectedHour}:00
+              Selected: {hour}:00
             </div>
           </div>
         </DrawerContent>
@@ -89,11 +91,11 @@ export const Header = () => {
             min={0}
             max={23}
             step={1}
-            value={[selectedHour]}
-            onValueChange={([v]) => setSelectedHour(v)}
+            value={[hour]}
+            onValueChange={([v]) => setHour(v)}
           />
           <div className="text-center text-xs text-gray-500 mt-1">
-            Selected Hour: {selectedHour}:00
+            Selected Hour: {hour}:00
           </div>
         </div>
       )}
