@@ -13,6 +13,10 @@ import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { ThemedLink } from "./ThemedLink";
 import clsx from "clsx";
 import { ThemedSlider } from "./ThemedSlider";
+import { Dancing_Script } from "next/font/google";
+import { useRouter } from "next/navigation";
+
+const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
 const getTorontoTime = () => {
   const now = new Date().toLocaleString("en-US", {
@@ -33,7 +37,9 @@ export const Header = () => {
   const initial = getTorontoTime();
   const [torontoTime, setTorontoTime] = useState(initial);
   const [isMobile, setIsMobile] = useState(false);
-  const { hour, setHour, themeTime } = useTimeThemeStore();
+  const { hour, setHour, themeTime, primaryColor } = useTimeThemeStore();
+
+  const router = useRouter();
 
   useEffect(() => {
     const updateTime = () => {
@@ -56,7 +62,7 @@ export const Header = () => {
   return (
     <header
       className={clsx(
-        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-6 shadow-sm`,
+        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 shadow-sm space-x-5`,
         themeTime == "night"
           ? "bg-black/30 text-gray-500"
           : "bg-white/30 text-gray-700"
@@ -81,16 +87,23 @@ export const Header = () => {
           </div>
         </DrawerContent>
       </Drawer>
-
-      {/* 중앙 - 데스크탑일 때만 슬라이더 */}
-      {!isMobile && (
-        <div className="flex-1 px-10">
-          <ThemedSlider value={[hour]} onValueChange={([v]) => setHour(v)} />
-        </div>
-      )}
+      <div className="flex-1">
+        <ThemedSlider value={[hour]} onValueChange={([v]) => setHour(v)} />
+      </div>
+      <div
+        className="font-bold text-2xl flex items-center gap-2 cursor-pointer"
+        onClick={() => router.push("/")}
+      >
+        <span
+          className={`${dancingScript.className}`}
+          style={{ color: primaryColor }}
+        >
+          HelloJennPark
+        </span>
+      </div>
 
       {/* 오른쪽 - 메뉴 */}
-      <nav className="flex space-x-6 text-md font-medium">
+      <nav className="flex text-md font-medium space-x-5">
         <ThemedLink href="#career" themeTime={themeTime}>
           Career
         </ThemedLink>
