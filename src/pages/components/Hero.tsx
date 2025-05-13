@@ -20,14 +20,12 @@ export default function Hero() {
   return (
     <section
       className={clsx(
-        "relative min-h-[100vh] flex items-center justify-center",
+        "relative min-h-[100vh] flex items-center justify-center text-2xl",
         dancingScript.className
       )}
+      style={{ color: primaryColor }}
     >
-      <div
-        className="relative z-10 text-center mx-10 p-5 rounded-md"
-        style={{ color: primaryColor }}
-      >
+      <div className="relative z-10 text-center mx-10 p-5 rounded-md">
         <h1 className="text-5xl font-bold">{greeting}</h1>
       </div>
       <HeroBackground />
