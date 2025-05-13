@@ -1,9 +1,15 @@
-// components/Header.tsx
 "use client";
 
-import { MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
+import { MapPin } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
 const getTorontoTime = () => {
   const now = new Date().toLocaleString("en-US", {
@@ -24,39 +30,73 @@ export const Header = () => {
   const initial = getTorontoTime();
   const [selectedHour, setSelectedHour] = useState(initial.hour);
   const [torontoTime, setTorontoTime] = useState(initial);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const updateTime = () => {
       setTorontoTime(getTorontoTime());
-    }, 60_000); // update every minute
-
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 60_000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   return (
     <header className="w-full flex justify-between items-center px-6 py-4 bg-white shadow-sm">
-      {/* 왼쪽 - 토론토 현재 시간 */}
-      <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
-        <MapPin className="w-4 h-4 text-gray-500" />
-        <span>Toronto</span>
-        <span className="text-gray-500">
-          {torontoTime.hour}:{String(torontoTime.minute).padStart(2, "0")}
-        </span>
-      </div>
+      {/* 왼쪽 - 토론토 위치 + 시간 */}
+      <Drawer>
+        <DrawerTrigger asChild>
+          <button className="flex items-center gap-2 text-sm font-medium text-gray-700">
+            <MapPin className="w-4 h-4 text-gray-500" />
+            <span>Toronto</span>
+            <span className="text-gray-500">
+              {torontoTime.hour}:{String(torontoTime.minute).padStart(2, "0")}
+            </span>
+          </button>
+        </DrawerTrigger>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>Select Hour</DrawerTitle>
+          </DrawerHeader>
+          <div className="px-6 py-4 pb-50">
+            <Slider
+              min={0}
+              max={23}
+              step={1}
+              value={[selectedHour]}
+              onValueChange={([v]) => setSelectedHour(v)}
+            />
+            <div className="text-center text-sm text-gray-500 mt-2">
+              Selected: {selectedHour}:00
+            </div>
+          </div>
+        </DrawerContent>
+      </Drawer>
 
-      {/* 중앙 - 시간 슬라이더 */}
-      <div className="flex-1 px-10">
-        <Slider
-          min={0}
-          max={23}
-          step={1}
-          value={[selectedHour]}
-          onValueChange={([value]: number[]) => setSelectedHour(value)}
-        />
-        <div className="text-center text-xs text-gray-500 mt-1">
-          Selected Hour: {selectedHour}:00
+      {/* 중앙 - 데스크탑일 때만 슬라이더 */}
+      {!isMobile && (
+        <div className="flex-1 px-10">
+          <Slider
+            min={0}
+            max={23}
+            step={1}
+            value={[selectedHour]}
+            onValueChange={([v]) => setSelectedHour(v)}
+          />
+          <div className="text-center text-xs text-gray-500 mt-1">
+            Selected Hour: {selectedHour}:00
+          </div>
         </div>
-      </div>
+      )}
 
       {/* 오른쪽 - 메뉴 */}
       <nav className="flex space-x-6 text-sm font-medium text-gray-700">
