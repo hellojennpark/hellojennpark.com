@@ -64,12 +64,12 @@ export const Header = () => {
     >
       <Drawer>
         <DrawerTrigger asChild>
-          <button className={`flex items-center gap-2 text-md font-semibold`}>
+          <button className={`flex items-center gap-2 text-md font-bold`}>
             <MapPin className="w-4 h-4" />
             <span>Toronto</span>
-            <span>
+            {/* <span>
               {torontoTime.hour}:{String(torontoTime.minute).padStart(2, "0")}
-            </span>
+            </span> */}
           </button>
         </DrawerTrigger>
         <DrawerContent>
