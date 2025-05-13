@@ -77,11 +77,7 @@ export const Header = () => {
             <DrawerTitle>Select Hour</DrawerTitle>
           </DrawerHeader>
           <div className="px-6 py-4 pb-50">
-            <ThemedSlider
-              value={[hour]}
-              onValueChange={([v]) => setHour(v)}
-              themeTime={themeTime}
-            />
+            <ThemedSlider value={[hour]} onValueChange={([v]) => setHour(v)} />
           </div>
         </DrawerContent>
       </Drawer>
@@ -89,11 +85,7 @@ export const Header = () => {
       {/* 중앙 - 데스크탑일 때만 슬라이더 */}
       {!isMobile && (
         <div className="flex-1 px-10">
-          <ThemedSlider
-            value={[hour]}
-            onValueChange={([v]) => setHour(v)}
-            themeTime={themeTime}
-          />
+          <ThemedSlider value={[hour]} onValueChange={([v]) => setHour(v)} />
         </div>
       )}
 

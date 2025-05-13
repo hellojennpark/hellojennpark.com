@@ -3,14 +3,15 @@
 import * as RadixSlider from "@radix-ui/react-slider";
 import { Moon, Sun } from "lucide-react";
 import clsx from "clsx";
+import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 
 type Props = {
   value: number[];
   onValueChange: (v: number[]) => void;
-  themeTime: "morning" | "day" | "evening" | "night";
 };
 
-export const ThemedSlider = ({ value, onValueChange, themeTime }: Props) => {
+export const ThemedSlider = ({ value, onValueChange }: Props) => {
+  const { themeTime, primaryColor } = useTimeThemeStore();
   const isNight = themeTime === "night";
 
   const gradientBg = {
@@ -44,9 +45,11 @@ export const ThemedSlider = ({ value, onValueChange, themeTime }: Props) => {
       <RadixSlider.Thumb
         className={clsx(
           "w-6 h-6 rounded-full flex items-center justify-center border-none shadow-none",
-          "transition-colors duration-200",
-          isNight ? "bg-black/30" : "bg-white/30"
+          "transition-colors duration-200"
         )}
+        style={{
+          backgroundColor: primaryColor,
+        }}
       >
         {isNight ? (
           <Moon className="w-5 h-5 text-white" />
