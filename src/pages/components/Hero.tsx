@@ -29,9 +29,6 @@ export default function Hero() {
         style={{ color: primaryColor }}
       >
         <h1 className="text-5xl font-bold">{greeting}</h1>
-        {/* <p className="text-3xl mt-2">
-          {"I build tools that help developers work with joy and flow."}
-        </p> */}
       </div>
       <HeroBackground />
     </section>
