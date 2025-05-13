@@ -53,8 +53,7 @@ export const Header = () => {
   }, []);
 
   return (
-    <header className="w-full flex justify-between items-center px-6 py-4 bg-white shadow-sm">
-      {/* 왼쪽 - 토론토 위치 + 시간 */}
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-6 bg-white/30 shadow-sm">
       <Drawer>
         <DrawerTrigger asChild>
           <button className="flex items-center gap-2 text-sm font-medium text-gray-700">

@@ -24,7 +24,7 @@ const colorMap: Record<TimeTheme, { primary: string; background: string }> = {
   },
   day: {
     primary: "#fde74c", // yellow
-    background: "#5bc0eb", // light sky
+    background: "#82bcf0", // light sky
   },
   evening: {
     primary: "#ffffff", // white

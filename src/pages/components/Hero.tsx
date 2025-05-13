@@ -10,7 +10,7 @@ export default function Hero() {
         style={{ color: primaryColor }}
       >
         <h1 className={`text-4xl font-bold`}>{"Welcome, I'm Jenn."}</h1>
-        <p className="text-xl mt-2">
+        <p className="text-2xl mt-2">
           {"I build tools that help developers work with joy and flow."}
         </p>
       </div>
