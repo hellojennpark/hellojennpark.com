@@ -63,9 +63,7 @@ export const Header = () => {
     <header
       className={clsx(
         `fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 shadow-sm space-x-6`,
-        themeTime == "night"
-          ? "bg-black/30 text-gray-500"
-          : "bg-white/30 text-gray-700"
+        themeTime == "night" ? "bg-black/20" : "bg-white/20"
       )}
     >
       <div
@@ -95,9 +93,9 @@ export const Header = () => {
             <DrawerTitle className="text-xl">Menu</DrawerTitle>
           </DrawerHeader>
           <nav className="flex flex-col space-y-4 px-4 py-2">
-            <ThemedLink href="#career">Career</ThemedLink>
-            <ThemedLink href="#project">Project</ThemedLink>
-            <ThemedLink href="#blog">Blog</ThemedLink>
+            <ThemedLink href="/career">Career</ThemedLink>
+            <ThemedLink href="/project">Project</ThemedLink>
+            <ThemedLink href="/blog">Blog</ThemedLink>
           </nav>
         </DrawerContent>
       </Drawer>
