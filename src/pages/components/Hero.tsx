@@ -3,12 +3,11 @@ import { HeroBackground } from "./HeroBackground";
 
 export default function Hero() {
   const primaryColor = useTimeThemeStore((s) => s.primaryColor);
-  console.log(primaryColor);
   return (
-    <section className="relative min-h-[100vh] flex items-center justify-center text-white">
+    <section className="relative min-h-[100vh] flex items-center justify-center">
       <div
-        className="relative z-10 text-center mx-10 p-5 rounded-md selection:bg-white"
-        style={{ color: primaryColor, opacity: 0.8 }}
+        className="relative z-10 text-center mx-10 p-5 rounded-md"
+        style={{ color: primaryColor }}
       >
         <h1 className={`text-4xl font-bold`}>{"Welcome, I'm Jenn."}</h1>
         <p className="text-xl mt-2">
