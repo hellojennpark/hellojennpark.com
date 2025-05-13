@@ -31,8 +31,9 @@ export const Header = () => {
   const initial = getTorontoTime();
   const [torontoTime, setTorontoTime] = useState(initial);
   const [isMobile, setIsMobile] = useState(false);
-  const { hour } = useTimeThemeStore();
-  const setHour = useTimeThemeStore((s) => s.setHour);
+  const { hour, setHour, themeTime } = useTimeThemeStore();
+  const headerBg = themeTime == "night" ? "black" : "white";
+  const headerColor = themeTime == "night" ? "gray-500" : "gray-700";
 
   useEffect(() => {
     const updateTime = () => {
@@ -53,13 +54,15 @@ export const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-6 bg-white/30 shadow-sm">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-6 bg-${headerBg}/30 shadow-sm text-${headerColor}`}
+    >
       <Drawer>
         <DrawerTrigger asChild>
-          <button className="flex items-center gap-2 text-sm font-medium text-gray-700">
-            <MapPin className="w-4 h-4 text-gray-500" />
+          <button className={`flex items-center gap-2 text-md font-semibold`}>
+            <MapPin className="w-4 h-4" />
             <span>Toronto</span>
-            <span className="text-gray-500">
+            <span>
               {torontoTime.hour}:{String(torontoTime.minute).padStart(2, "0")}
             </span>
           </button>
@@ -94,7 +97,7 @@ export const Header = () => {
       )}
 
       {/* 오른쪽 - 메뉴 */}
-      <nav className="flex space-x-6 text-sm font-medium text-gray-700">
+      <nav className="flex space-x-6 text-md font-medium">
         <a href="#career" className="hover:text-black">
           Career
         </a>
