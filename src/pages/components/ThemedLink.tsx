@@ -5,15 +5,9 @@ type ThemedLinkProps = {
   href: string;
   themeTime: "morning" | "day" | "evening" | "night";
   children: ReactNode;
-  className?: string;
 };
 
-export const ThemedLink = ({
-  href,
-  themeTime,
-  children,
-  className,
-}: ThemedLinkProps) => {
+export const ThemedLink = ({ href, themeTime, children }: ThemedLinkProps) => {
   return (
     <a
       href={href}
@@ -21,8 +15,7 @@ export const ThemedLink = ({
         "transition",
         themeTime === "night"
           ? "text-gray-500 hover:text-white"
-          : "text-gray-700 hover:text-black",
-        className
+          : "text-gray-700 hover:text-black"
       )}
     >
       {children}

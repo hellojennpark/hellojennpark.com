@@ -74,7 +74,7 @@ export const Header = () => {
       <div className="flex-1">
         <ThemedSlider value={[hour]} onValueChange={([v]) => setHour(v)} />
       </div>
-      <nav className="flex text-md font-medium space-x-5">
+      <nav className="flex text-md font-medium space-x-10">
         <ThemedLink href="#career" themeTime={themeTime}>
           Career
         </ThemedLink>
