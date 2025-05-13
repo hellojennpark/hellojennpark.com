@@ -11,6 +11,8 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
+import { ThemedLink } from "./ThemedLink";
+import clsx from "clsx";
 
 const getTorontoTime = () => {
   const now = new Date().toLocaleString("en-US", {
@@ -32,8 +34,6 @@ export const Header = () => {
   const [torontoTime, setTorontoTime] = useState(initial);
   const [isMobile, setIsMobile] = useState(false);
   const { hour, setHour, themeTime } = useTimeThemeStore();
-  const headerBg = themeTime == "night" ? "black" : "white";
-  const headerColor = themeTime == "night" ? "gray-500" : "gray-700";
 
   useEffect(() => {
     const updateTime = () => {
@@ -55,7 +55,12 @@ export const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-6 bg-${headerBg}/30 shadow-sm text-${headerColor}`}
+      className={clsx(
+        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-6 shadow-sm`,
+        themeTime == "night"
+          ? "bg-black/30 text-gray-500"
+          : "bg-white/30 text-gray-700"
+      )}
     >
       <Drawer>
         <DrawerTrigger asChild>
@@ -98,15 +103,15 @@ export const Header = () => {
 
       {/* 오른쪽 - 메뉴 */}
       <nav className="flex space-x-6 text-md font-medium">
-        <a href="#career" className="hover:text-black">
+        <ThemedLink href="#career" themeTime={themeTime}>
           Career
-        </a>
-        <a href="#project" className="hover:text-black">
+        </ThemedLink>
+        <ThemedLink href="#project" themeTime={themeTime}>
           Project
-        </a>
-        <a href="#blog" className="hover:text-black">
+        </ThemedLink>
+        <ThemedLink href="#blog" themeTime={themeTime}>
           Blog
-        </a>
+        </ThemedLink>
       </nav>
     </header>
   );
