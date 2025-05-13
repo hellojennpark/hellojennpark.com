@@ -14,10 +14,10 @@ export const ThemedSlider = ({ value, onValueChange, themeTime }: Props) => {
   const isNight = themeTime === "night";
 
   const gradientBg = {
-    morning: "from-[#f9c5d1] via-[#fbc2eb] to-[#a6c1ee]",
-    day: "from-[#90f7ec] via-[#32ccbc] to-[#2bc0e4]",
-    evening: "from-[#f6d365] via-[#fda085] to-[#f093fb]",
-    night: "from-[#0f2027] via-[#203a43] to-[#2c5364]",
+    morning: "from-[#ffb3b3] via-[#ff9898] to-[#a9ff68]", // coral pink → lime green
+    day: "from-[#fde74c] via-[#b1d8ff] to-[#82bcf0]", // yellow → sky blue
+    evening: "from-[#f4a261] via-[#f6aa72] to-[#ffffff]", // orange → white
+    night: "from-[#043565] via-[#283e6d] to-[#eb4b98]", // navy → hot pink
   };
 
   return (
