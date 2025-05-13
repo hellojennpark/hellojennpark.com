@@ -1,5 +1,12 @@
 "use client";
 
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+} from "@/components/ui/drawer";
 import { useEffect, useState } from "react";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { ThemedLink } from "./ThemedLink";
@@ -7,6 +14,7 @@ import clsx from "clsx";
 import { ThemedSlider } from "./ThemedSlider";
 import { Dancing_Script } from "next/font/google";
 import { useRouter } from "next/navigation";
+import { Menu } from "lucide-react";
 
 const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
@@ -29,8 +37,8 @@ export const Header = () => {
   const initial = getTorontoTime();
   const [torontoTime, setTorontoTime] = useState(initial);
   const [isMobile, setIsMobile] = useState(false);
-  const { hour, setHour, themeTime, primaryColor } = useTimeThemeStore();
 
+  const { hour, setHour, themeTime, primaryColor } = useTimeThemeStore();
   const router = useRouter();
 
   useEffect(() => {
@@ -54,7 +62,7 @@ export const Header = () => {
   return (
     <header
       className={clsx(
-        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 shadow-sm space-x-10`,
+        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 shadow-sm space-x-6`,
         themeTime == "night"
           ? "bg-black/30 text-gray-500"
           : "bg-white/30 text-gray-700"
@@ -71,20 +79,28 @@ export const Header = () => {
           HelloJennPark
         </span>
       </div>
+
       <div className="flex-1">
         <ThemedSlider value={[hour]} onValueChange={([v]) => setHour(v)} />
       </div>
-      <nav className="flex text-md font-medium space-x-10">
-        <ThemedLink href="#career" themeTime={themeTime}>
-          Career
-        </ThemedLink>
-        <ThemedLink href="#project" themeTime={themeTime}>
-          Project
-        </ThemedLink>
-        <ThemedLink href="#blog" themeTime={themeTime}>
-          Blog
-        </ThemedLink>
-      </nav>
+
+      <Drawer direction={isMobile ? "bottom" : "right"}>
+        <DrawerTrigger asChild>
+          <button>
+            <Menu className="w-6 h-6" style={{ color: primaryColor }} />
+          </button>
+        </DrawerTrigger>
+        <DrawerContent className="p-6">
+          <DrawerHeader>
+            <DrawerTitle>Menu</DrawerTitle>
+          </DrawerHeader>
+          <nav className="flex flex-col space-y-4 px-4 py-2">
+            <ThemedLink href="#career">Career</ThemedLink>
+            <ThemedLink href="#project">Project</ThemedLink>
+            <ThemedLink href="#blog">Blog</ThemedLink>
+          </nav>
+        </DrawerContent>
+      </Drawer>
     </header>
   );
 };
