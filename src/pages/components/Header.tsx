@@ -1,14 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MapPin } from "lucide-react";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { ThemedLink } from "./ThemedLink";
 import clsx from "clsx";
@@ -62,34 +54,12 @@ export const Header = () => {
   return (
     <header
       className={clsx(
-        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 shadow-sm space-x-5`,
+        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 shadow-sm space-x-10`,
         themeTime == "night"
           ? "bg-black/30 text-gray-500"
           : "bg-white/30 text-gray-700"
       )}
     >
-      <Drawer>
-        <DrawerTrigger asChild>
-          <button className={`flex items-center gap-2 text-md font-bold`}>
-            <MapPin className="w-4 h-4" />
-            <span>Toronto</span>
-            {/* <span>
-              {torontoTime.hour}:{String(torontoTime.minute).padStart(2, "0")}
-            </span> */}
-          </button>
-        </DrawerTrigger>
-        <DrawerContent>
-          <DrawerHeader>
-            <DrawerTitle>Select Hour</DrawerTitle>
-          </DrawerHeader>
-          <div className="px-6 py-4 pb-50">
-            <ThemedSlider value={[hour]} onValueChange={([v]) => setHour(v)} />
-          </div>
-        </DrawerContent>
-      </Drawer>
-      <div className="flex-1">
-        <ThemedSlider value={[hour]} onValueChange={([v]) => setHour(v)} />
-      </div>
       <div
         className="font-bold text-2xl flex items-center gap-2 cursor-pointer"
         onClick={() => router.push("/")}
@@ -101,8 +71,9 @@ export const Header = () => {
           HelloJennPark
         </span>
       </div>
-
-      {/* 오른쪽 - 메뉴 */}
+      <div className="flex-1">
+        <ThemedSlider value={[hour]} onValueChange={([v]) => setHour(v)} />
+      </div>
       <nav className="flex text-md font-medium space-x-5">
         <ThemedLink href="#career" themeTime={themeTime}>
           Career
