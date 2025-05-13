@@ -19,20 +19,20 @@ const getTimeTheme = (hour: number): TimeTheme => {
 
 const colorMap: Record<TimeTheme, { primary: string; background: string }> = {
   morning: {
-    primary: "#FFB5C2", // soft pink
-    background: "#FFF0F3", // very light pink
+    primary: "#FFB5C2", //
+    background: "#FFF0F3", //
   },
   day: {
-    primary: "#4A90E2", // blue
-    background: "#EAF4FF", // light sky blue
+    primary: "#4A90E2", //
+    background: "#EAF4FF", //
   },
   evening: {
-    primary: "#FF9F1C", // orange
-    background: "#FFF3E0", // soft orange
+    primary: "#FF9F1C", //
+    background: "#FFF3E0", //
   },
   night: {
-    primary: "#2E3440", // deep navy
-    background: "#1A1C24", // dark
+    primary: "#eb4b98", // pink
+    background: "#043565", // navy
   },
 };
 

@@ -77,9 +77,6 @@ export const Header = () => {
               value={[hour]}
               onValueChange={([v]) => setHour(v)}
             />
-            <div className="text-center text-sm text-gray-500 mt-2">
-              Selected: {hour}:00
-            </div>
           </div>
         </DrawerContent>
       </Drawer>
@@ -94,9 +91,6 @@ export const Header = () => {
             value={[hour]}
             onValueChange={([v]) => setHour(v)}
           />
-          <div className="text-center text-xs text-gray-500 mt-1">
-            Selected Hour: {hour}:00
-          </div>
         </div>
       )}
 
