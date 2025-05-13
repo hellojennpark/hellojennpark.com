@@ -138,3 +138,9 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* hide the default thumb style so we can replace it with custom icon */
+[data-slider-thumb] {
+  background: transparent !important;
+  box-shadow: none !important;
+}

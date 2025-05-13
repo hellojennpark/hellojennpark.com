@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { MapPin } from "lucide-react";
-import { Slider } from "@/components/ui/slider";
 import {
   Drawer,
   DrawerContent,
@@ -13,6 +12,7 @@ import {
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { ThemedLink } from "./ThemedLink";
 import clsx from "clsx";
+import { ThemedSlider } from "./ThemedSlider";
 
 const getTorontoTime = () => {
   const now = new Date().toLocaleString("en-US", {
@@ -77,12 +77,10 @@ export const Header = () => {
             <DrawerTitle>Select Hour</DrawerTitle>
           </DrawerHeader>
           <div className="px-6 py-4 pb-50">
-            <Slider
-              min={0}
-              max={23}
-              step={1}
+            <ThemedSlider
               value={[hour]}
               onValueChange={([v]) => setHour(v)}
+              themeTime={themeTime}
             />
           </div>
         </DrawerContent>
@@ -91,12 +89,10 @@ export const Header = () => {
       {/* 중앙 - 데스크탑일 때만 슬라이더 */}
       {!isMobile && (
         <div className="flex-1 px-10">
-          <Slider
-            min={0}
-            max={23}
-            step={1}
+          <ThemedSlider
             value={[hour]}
             onValueChange={([v]) => setHour(v)}
+            themeTime={themeTime}
           />
         </div>
       )}
