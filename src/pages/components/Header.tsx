@@ -15,6 +15,12 @@ import { ThemedSlider } from "./ThemedSlider";
 import { Dancing_Script } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"; // shadcn/ui 기준
 
 const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
@@ -37,6 +43,7 @@ export const Header = () => {
   const initial = getTorontoTime();
   const [torontoTime, setTorontoTime] = useState(initial);
   const [isMobile, setIsMobile] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(true); // 초기 true
 
   const { hour, setHour, themeTime, primaryColor } = useTimeThemeStore();
   const router = useRouter();
@@ -59,6 +66,12 @@ export const Header = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // 3초 뒤에 자동으로 툴팁 닫기
+  useEffect(() => {
+    const timeout = setTimeout(() => setShowTooltip(false), 5000);
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <header
       className={clsx(
@@ -66,17 +79,31 @@ export const Header = () => {
         themeTime == "night" ? "bg-black/20" : "bg-white/20"
       )}
     >
-      <div
-        className="font-bold text-2xl flex items-center gap-2 cursor-pointer"
-        onClick={() => router.push("/")}
-      >
-        <span
-          className={`${dancingScript.className}`}
-          style={{ color: primaryColor }}
-        >
-          HelloJennPark
-        </span>
-      </div>
+      <TooltipProvider>
+        <Tooltip open={showTooltip}>
+          <TooltipTrigger asChild>
+            <div
+              className="font-bold text-2xl flex items-center gap-2 cursor-pointer"
+              onClick={() => router.push("/")}
+              onMouseEnter={() => setShowTooltip(true)}
+              onMouseLeave={() => setShowTooltip(false)}
+            >
+              <span
+                className={`${dancingScript.className}`}
+                style={{ color: primaryColor }}
+              >
+                HelloJennPark
+              </span>
+            </div>
+          </TooltipTrigger>
+          <TooltipContent side="bottom" sideOffset={8}>
+            <div className="text-lg max-w-[240px] whitespace-normal">
+              Hello, I’m Jenn. I build tools that help developers work with joy
+              and flow.
+            </div>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
 
       <div className="flex-1">
         <ThemedSlider value={[hour]} onValueChange={([v]) => setHour(v)} />
