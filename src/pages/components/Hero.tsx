@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-[100vh] flex items-center justify-center text-white">
       <div
-        className="relative z-10 text-center mx-10 p-5 rounded-md"
+        className="relative z-10 text-center mx-10 p-5 rounded-md selection:bg-white"
         style={{ color: primaryColor, opacity: 0.8 }}
       >
         <h1 className={`text-4xl font-bold`}>{"Welcome, I'm Jenn."}</h1>
