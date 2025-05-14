@@ -2,15 +2,10 @@ import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { Clouds } from "./Clouds";
 
 export const HeroBackground = () => {
-  const { backgroundColor, themeTime } = useTimeThemeStore();
+  const { themeTime } = useTimeThemeStore();
 
   return (
-    <div
-      className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
-      style={{
-        backgroundColor: backgroundColor,
-      }}
-    >
+    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
       {themeTime != "night" && <Clouds />}
       <div className="relative w-full h-full z-5">
         <img

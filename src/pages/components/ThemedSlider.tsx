@@ -45,17 +45,14 @@ export const ThemedSlider = ({ value, onValueChange }: Props) => {
       <RadixSlider.Thumb
         className={clsx(
           "w-6 h-6 rounded-full flex items-center justify-center border-none shadow-none",
-          "transition-colors duration-200"
+          "transition-colors duration-200 p-1",
+          isNight ? "bg-white/60" : "bg-black/60"
         )}
         style={{
-          backgroundColor: primaryColor,
+          color: primaryColor,
         }}
       >
-        {isNight ? (
-          <Moon className="w-5 h-5 text-white" />
-        ) : (
-          <Sun className="w-5 h-5 text-gray-700" />
-        )}
+        {isNight ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
       </RadixSlider.Thumb>
     </RadixSlider.Root>
   );

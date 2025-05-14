@@ -70,7 +70,7 @@ export const Footer = () => {
                     isActive
                       ? themeTime === "night"
                         ? "bg-white/60"
-                        : "bg-white/40"
+                        : "bg-black/60"
                       : themeTime === "night"
                       ? "group-hover:bg-black/40"
                       : "group-hover:bg-white/40"
