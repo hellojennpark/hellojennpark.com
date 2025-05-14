@@ -17,14 +17,11 @@ const greetingMap = {
 export default function Hero() {
   const { themeTime, primaryColor, backgroundColor } = useTimeThemeStore();
   const greeting = greetingMap[themeTime] ?? "Welcome, I'm Jenn.";
-
-  const isNight = themeTime === "night";
-
   return (
     <section
       id="welcome"
       className={clsx(
-        "relative min-h-[100vh] flex items-center justify-center text-2xl snap-start",
+        "relative min-h-[100vh] flex items-center justify-center text-2xl snap-start shadow-[0_8px_20px_-10px_rgba(0,0,0,0.3)]",
         dancingScript.className
       )}
       style={{ color: primaryColor }}

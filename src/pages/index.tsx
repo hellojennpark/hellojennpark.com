@@ -7,12 +7,10 @@ import IntroduceSection from "./components/IntroduceSection";
 import CareerSection from "./components/CareerSection";
 import ProjectSection from "./components/ProjectSection";
 import EtcSection from "./components/EtcSection";
-import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 
 const sectionIds = ["welcome", "introduce", "career", "project", "etc"];
 
 export default function Home() {
-  const { backgroundColor } = useTimeThemeStore();
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
   useEffect(() => {
