@@ -31,7 +31,7 @@ export const Footer = () => {
         themeTime == "night" ? "bg-black/20" : "bg-white/20"
       )}
     >
-      <nav className="flex items-center gap-3">
+      <nav className="flex items-center">
         {navItems.map(({ label, href, icon: Icon }, index) => (
           <div key={label} className="flex items-center gap-3">
             <Link
