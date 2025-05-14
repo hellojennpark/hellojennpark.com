@@ -144,3 +144,7 @@ body {
   background: transparent !important;
   box-shadow: none !important;
 }
+
+html {
+  scroll-behavior: smooth;
+}
