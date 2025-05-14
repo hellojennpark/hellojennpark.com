@@ -22,7 +22,7 @@ export default function Hero() {
     <section
       id="welcome"
       className={clsx(
-        "relative min-h-[100vh] flex items-center justify-center text-2xl scroll-mt-20 snap-start",
+        "relative min-h-[100vh] flex items-center justify-center text-2xl snap-start",
         dancingScript.className
       )}
       style={{ color: primaryColor }}
