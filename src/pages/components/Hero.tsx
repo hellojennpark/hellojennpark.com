@@ -21,7 +21,7 @@ export default function Hero() {
     <section
       id="welcome"
       className={clsx(
-        "relative min-h-[100vh] flex items-center justify-center text-2xl snap-start shadow-[0_8px_20px_-10px_rgba(0,0,0,0.3)]",
+        "relative min-h-[100dvh] flex items-center justify-center text-2xl snap-start shadow-[0_8px_20px_-10px_rgba(0,0,0,0.3)]",
         dancingScript.className
       )}
       style={{ color: primaryColor }}
