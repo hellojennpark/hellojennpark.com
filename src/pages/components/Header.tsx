@@ -75,7 +75,7 @@ export const Header = () => {
   return (
     <header
       className={clsx(
-        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 shadow-sm space-x-6`,
+        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 shadow-sm space-x-6 backdrop-blur-sm`,
         themeTime == "night" ? "bg-black/20" : "bg-white/20"
       )}
     >
