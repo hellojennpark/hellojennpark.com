@@ -129,6 +129,7 @@ export const Header = () => {
             <DrawerTitle className="text-xl">Menu</DrawerTitle>
           </DrawerHeader>
           <nav className="flex flex-col space-y-4 px-4 py-2">
+            <ThemedLink href="/">Home</ThemedLink>
             <ThemedLink href="/career">Career</ThemedLink>
             <ThemedLink href="/project">Project</ThemedLink>
             <ThemedLink href="/blog">Blog</ThemedLink>
