@@ -45,7 +45,8 @@ export const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [showTooltip, setShowTooltip] = useState(true); // 초기 true
 
-  const { hour, setHour, themeTime, primaryColor } = useTimeThemeStore();
+  const { hour, setHour, themeTime, primaryColor, backgroundColor } =
+    useTimeThemeStore();
   const router = useRouter();
 
   useEffect(() => {
@@ -90,7 +91,10 @@ export const Header = () => {
             >
               <span
                 className={`${dancingScript.className}`}
-                style={{ color: primaryColor }}
+                style={{
+                  color: primaryColor,
+                  WebkitTextStroke: `0.5px ${backgroundColor}`,
+                }}
               >
                 HelloJennPark
               </span>
@@ -111,8 +115,13 @@ export const Header = () => {
 
       <Drawer direction={isMobile ? "bottom" : "right"}>
         <DrawerTrigger asChild>
-          <button>
-            <Menu className="w-6 h-6" style={{ color: primaryColor }} />
+          <button className="rounded-md p-0.5">
+            <Menu
+              className="w-6 h-6"
+              style={{
+                color: primaryColor,
+              }}
+            />
           </button>
         </DrawerTrigger>
         <DrawerContent className="p-6">

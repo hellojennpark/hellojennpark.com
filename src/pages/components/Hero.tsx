@@ -15,7 +15,7 @@ const greetingMap = {
 };
 
 export default function Hero() {
-  const { themeTime, primaryColor } = useTimeThemeStore();
+  const { themeTime, primaryColor, backgroundColor } = useTimeThemeStore();
   const greeting = greetingMap[themeTime] ?? "Welcome, I'm Jenn.";
 
   return (
@@ -28,7 +28,14 @@ export default function Hero() {
       style={{ color: primaryColor }}
     >
       <div className="relative z-10 text-center mx-10 p-5 rounded-md">
-        <h1 className="text-5xl font-bold">{greeting}</h1>
+        <h1
+          className="text-5xl font-bold"
+          style={{
+            WebkitTextStroke: `1.2px ${backgroundColor}`,
+          }}
+        >
+          {greeting}
+        </h1>
       </div>
       <HeroBackground />
     </section>

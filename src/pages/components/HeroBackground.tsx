@@ -1,10 +1,12 @@
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
+import { Clouds } from "./Clouds";
 
 export const HeroBackground = () => {
-  const backgroundColor = useTimeThemeStore((s) => s.backgroundColor);
+  const { backgroundColor, themeTime } = useTimeThemeStore();
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-[-1]">
+      {themeTime != "night" && <Clouds />}
       <div className="relative w-full h-full">
         <img
           src="/toroto.png"
