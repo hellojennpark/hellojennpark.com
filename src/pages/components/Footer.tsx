@@ -69,7 +69,7 @@ export const Footer = () => {
                     "w-12 h-12 rounded-full flex items-center justify-center transition-colors",
                     isActive
                       ? themeTime === "night"
-                        ? "bg-black/40"
+                        ? "bg-white/60"
                         : "bg-white/40"
                       : themeTime === "night"
                       ? "group-hover:bg-black/40"
