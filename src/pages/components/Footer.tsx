@@ -72,8 +72,8 @@ export const Footer = () => {
                         ? "bg-white/60"
                         : "bg-black/60"
                       : themeTime === "night"
-                      ? "group-hover:bg-black/40"
-                      : "group-hover:bg-white/40"
+                      ? "group-hover:bg-white/40"
+                      : "group-hover:bg-black/40"
                   )}
                   style={{ color: primaryColor }}
                 >
