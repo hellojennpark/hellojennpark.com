@@ -18,6 +18,8 @@ export default function Hero() {
   const { themeTime, primaryColor, backgroundColor } = useTimeThemeStore();
   const greeting = greetingMap[themeTime] ?? "Welcome, I'm Jenn.";
 
+  const isNight = themeTime === "night";
+
   return (
     <section
       id="welcome"
@@ -29,9 +31,13 @@ export default function Hero() {
     >
       <div className="relative z-10 text-center mx-10 p-5 rounded-md">
         <h1
-          className="text-5xl font-bold"
+          className={clsx("text-5xl font-bold")}
           style={{
             WebkitTextStroke: `1.2px ${backgroundColor}`,
+            animation:
+              themeTime === "night"
+                ? "glow 3s ease-in-out infinite"
+                : undefined,
           }}
         >
           {greeting}
