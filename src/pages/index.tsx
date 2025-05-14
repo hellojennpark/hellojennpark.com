@@ -42,13 +42,13 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <div className="h-screen overflow-y-scroll scroll-smooth snap-y snap-mandatory">
       <Hero />
       <IntroduceSection />
       <CareerSection />
       <ProjectSection />
       <EtcSection />
       <Footer />
-    </>
+    </div>
   );
 }
