@@ -20,7 +20,9 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"; // shadcn/ui 기준
+} from "@/components/ui/tooltip";
+import { Github, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
@@ -124,7 +126,7 @@ export const Header = () => {
             />
           </button>
         </DrawerTrigger>
-        <DrawerContent className="p-6">
+        <DrawerContent className="p-6 pb-18">
           <DrawerHeader>
             <DrawerTitle className="text-xl">Menu</DrawerTitle>
           </DrawerHeader>
@@ -134,6 +136,18 @@ export const Header = () => {
             <ThemedLink href="/project">Project</ThemedLink>
             <ThemedLink href="/blog">Blog</ThemedLink>
           </nav>
+
+          <div className="absolute bottom-4 right-4 flex gap-8">
+            <Link href="https://github.com/hellojennpark" target="_blank">
+              <Github className="w-8 h-8 active:opacity-60 hover:opacity-60 transition-opacity" />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/hellojennpark"
+              target="_blank"
+            >
+              <Linkedin className="w-8 h-8 active:opacity-60 hover:opacity-60 transition-opacity" />
+            </Link>
+          </div>
         </DrawerContent>
       </Drawer>
     </header>
