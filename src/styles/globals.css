@@ -160,3 +160,8 @@ html {
     text-shadow: 0 0 4px white, 0 0 10px #eb4b98, 0 0 20px #eb4b98;
   }
 }
+
+::selection {
+  background-color: black;
+  color: white;
+}
