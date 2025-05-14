@@ -88,8 +88,6 @@ export const Header = () => {
             <div
               className="font-bold text-2xl flex items-center gap-2 cursor-pointer"
               onClick={() => router.push("/")}
-              onMouseEnter={() => setShowTooltip(true)}
-              onMouseLeave={() => setShowTooltip(false)}
             >
               <span
                 className={`${dancingScript.className}`}
