@@ -66,7 +66,7 @@ export const Footer = () => {
               >
                 <div
                   className={clsx(
-                    "w-12 h-12 rounded-full flex items-center justify-center transition-colors",
+                    "w-10 h-10 rounded-full flex items-center justify-center transition-colors",
                     isActive
                       ? themeTime === "night"
                         ? "bg-white/60"
@@ -83,7 +83,7 @@ export const Footer = () => {
 
               {index < navItems.length - 1 && (
                 <ChevronRight
-                  className="w-4 h-4"
+                  className="w-4 h-4 mx-1"
                   style={{ color: primaryColor }}
                 />
               )}
