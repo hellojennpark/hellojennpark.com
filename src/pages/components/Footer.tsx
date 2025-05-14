@@ -13,11 +13,11 @@ import clsx from "clsx";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 
 const navItems = [
-  { label: "Welcome", href: "/", icon: Smile },
-  { label: "Introduce", href: "/introduce", icon: Info },
-  { label: "Career", href: "/career", icon: Briefcase },
-  { label: "Project", href: "/project", icon: FolderKanban },
-  { label: "Etc", href: "/etc", icon: MoreHorizontal },
+  { label: "Welcome", href: "#welcome", icon: Smile },
+  { label: "Introduce", href: "#introduce", icon: Info },
+  { label: "Career", href: "#career", icon: Briefcase },
+  { label: "Project", href: "#project", icon: FolderKanban },
+  { label: "Etc", href: "#etc", icon: MoreHorizontal },
 ];
 
 export const Footer = () => {
