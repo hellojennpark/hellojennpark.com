@@ -43,7 +43,7 @@ export const Clouds = () => {
 
     const createCloud = (): Cloud => {
       const baseX = Math.random() * logicalWidth;
-      const baseY = logicalHeight * (0.25 + Math.random() * 0.3);
+      const baseY = logicalHeight * (0.25 + Math.random() * 0.4);
       const circleCount = 3 + Math.floor(Math.random() * 3);
       const circles: CloudCircle[] = [];
 
@@ -60,7 +60,7 @@ export const Clouds = () => {
       return {
         x: baseX,
         y: baseY,
-        speed: 0.2 + Math.random() * 0.3,
+        speed: 0.2 + Math.random() * 0.2,
         circles,
       };
     };
