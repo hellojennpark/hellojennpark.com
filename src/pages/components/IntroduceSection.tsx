@@ -43,7 +43,7 @@ export default function IntroduceSection() {
         <div className="border border-white/30 rounded-md p-3 md:p-5">
           <Typewriter
             words={[
-              "I build tools that help developers work with joy and flow.",
+              "I build tools for joyful, productive devs.",
               "Let's make better tools together.",
             ]}
             loop={false}
