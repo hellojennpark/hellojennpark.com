@@ -15,7 +15,7 @@ export default function IntroduceSection() {
         className="text-3xl md:text-5xl space-y-5"
         style={{ color: primaryColor }}
       >
-        <div>Hello, I’m Jenn.</div>
+        <div>Hello, I’m Yejin — Jenn to friends.</div>
         <div className="border">
           <Typewriter
             words={[
