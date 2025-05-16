@@ -4,7 +4,7 @@ import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { Typewriter } from "react-simple-typewriter";
 import { useState } from "react";
 
-const keywords = ["3+ years", "CI/CD", "Fullstack"];
+const keywords = ["4+ years", "CI/CD", "Fullstack"];
 
 export default function IntroduceSection() {
   const { primaryColor } = useTimeThemeStore();
