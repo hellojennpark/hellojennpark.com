@@ -43,7 +43,7 @@ export default function IntroduceSection() {
         <div className="w-full h-full sm:w-1/3 border border-white/30 bg-white/20 rounded-md p-3 md:p-5">
           <CareerTimeline />
         </div>
-        <div className="w-full h-[100%] sm:w-2/3 text-2xl md:text-5xl space-y-5">
+        <div className="w-full h-[100%] sm:w-2/3 text-2xl md:text-4xl space-y-5">
           <div className="px-3 md:px-5">
             Hello, I’m Yejin — Jenn to friends.
           </div>
