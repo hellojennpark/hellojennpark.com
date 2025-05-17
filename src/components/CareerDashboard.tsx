@@ -105,7 +105,7 @@ export default function CareerDashboard() {
           )}
         >
           <h3 className="flex flex-row items-center text-lg font-semibold mb-4">
-            <Calendar className="mr-2 text-red-500" />
+            <Calendar className="mr-3 text-red-500" />
             Company Timeline
           </h3>
           <CareerTimeline />
