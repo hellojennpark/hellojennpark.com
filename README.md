@@ -1,82 +1,40 @@
-# Markdown Resume Web Generator
-
-<center><img src="./logo.webp" width="50%" /></center>
-
-Welcome to the Markdown Resume Web Generator! This tool is designed to make it incredibly easy for anyone to generate and host their own resume website using Markdown files. With just a few simple steps, you can have your professional resume up and running, hosted on GitHub Pages for free.
-
-## Features
-
-- **Easy to Use:** Fork the repository, rename it, and you're almost done.
-- **Customizable:** Modify the Markdown files to fit your resume content.
-- **Automatically Deployed:** Utilizes GitHub Pages for hassle-free hosting.
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
 ## Getting Started
 
-Follow these steps to set up your own resume website:
+First, run the development server:
 
-### 1. Fork the Repository
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-Visit the [Markdown Resume Web Generator repository](https://github.com/98yejin/98yejin.github.io/tree/refactor) and fork it to your own GitHub account.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### 2. Rename the Repository
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-Rename the forked repository to `{yourusername}.github.io`, where `{yourusername}` is your GitHub username.
+[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-### 3. Set Up Your Environment
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
 
-Before deploying your resume, you need to set up the necessary environment on your machine:
+This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- Ensure you have Python installed. If not, download and install it from [python.org](https://www.python.org/).
-- Clone your forked repository to your local machine.
-- Open a terminal or command prompt and navigate to the cloned repository's directory.
-- Install the required dependencies by running:
+## Learn More
 
-  ```bash
-  pip install -r requirements.txt
-  ```
+To learn more about Next.js, take a look at the following resources:
 
-### 4. Customize Your Resume
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
 
-- Edit or replace the Markdown files in the repository with your own resume content. There are placeholder files you can start with and modify according to your needs.
-- After customizing your resume, generate the static files by executing:
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-  ```bash
-  python staticbuilder.py build
-  ```
+## Deploy on Vercel
 
-- Push your changes to your repository.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-### 5. Enable GitHub Pages
-
-- Go to the repository settings on GitHub.
-- Navigate to the "Pages" section.
-- Select the `main` branch and `/ (root)` as the source.
-- Click "Save", and GitHub Pages will automatically build and deploy your website.
-
-### 6. Access Your Resume Website
-
-Open a browser and go to `https://{yourusername}.github.io`. You should see your resume website live!
-
-## Customization
-
-The project is structured to be easily customizable. You can:
-
-- Edit the `index.html` file to change the layout.
-- Modify the stylesheets for design adjustments.
-- Update the Markdown files for content changes.
-
-## Contributing
-
-Contributions are welcome! Feel free to submit pull requests with improvements or new features.
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## Acknowledgments
-
-Special thanks to all contributors and users. Your support and interest make this project possible.
-
----
-
-Happy resume building! For any questions or feedback, please open an issue on the GitHub repository.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
