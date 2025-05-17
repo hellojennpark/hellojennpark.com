@@ -20,38 +20,11 @@ import Link from "next/link";
 
 const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
-const getTorontoTime = () => {
-  const now = new Date().toLocaleString("en-US", {
-    timeZone: "America/Toronto",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  });
-
-  const [hourStr, minuteStr] = now.split(":");
-  return {
-    hour: parseInt(hourStr, 10),
-    minute: parseInt(minuteStr, 10),
-  };
-};
-
 export const Header = () => {
-  const initial = getTorontoTime();
-  const [torontoTime, setTorontoTime] = useState(initial);
   const [isMobile, setIsMobile] = useState(false);
-
   const { hour, setHour, themeTime, primaryColor, backgroundColor } =
     useTimeThemeStore();
   const router = useRouter();
-
-  useEffect(() => {
-    const updateTime = () => {
-      setTorontoTime(getTorontoTime());
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 60_000);
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const checkMobile = () => {
