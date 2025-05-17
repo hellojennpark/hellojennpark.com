@@ -38,7 +38,7 @@ const totalMonths = experiences.reduce((acc, exp) => acc + exp.months, 0);
 
 export function CareerTimeline() {
   return (
-    <div className="space-y-1 md:space-y-2 w-full text-md text-white pt-1">
+    <div className="space-y-1 md:space-y-2 w-full text-md pt-1">
       {/* Timeline bar */}
       <TooltipProvider>
         <div className="w-full flex h-6 rounded overflow-hidden border border-white/30">
@@ -89,7 +89,7 @@ export function CareerTimeline() {
               aria-hidden
             />
             <span>
-              {exp.company} : <strong>{exp.title}</strong>
+              {exp.company} <strong>{exp.title}</strong>
             </span>
           </div>
         ))}

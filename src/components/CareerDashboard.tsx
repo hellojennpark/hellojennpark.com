@@ -1,9 +1,18 @@
 "use client";
 
+import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { CareerTimeline } from "./CareerTimeline";
 import { InfoCard } from "./InfoCard";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { BrainCircuit, Gauge, Star, Workflow } from "lucide-react";
+import {
+  BrainCircuit,
+  Calendar,
+  ExternalLink,
+  Gauge,
+  Star,
+  Workflow,
+} from "lucide-react";
+import clsx from "clsx";
 
 const recommendations = [
   {
@@ -20,25 +29,27 @@ const recommendations = [
 
 export default function CareerDashboard() {
   const isMobile = useIsMobile();
+  const { themeTime } = useTimeThemeStore();
+  const isNight = themeTime == "night";
 
   const cardData = [
     {
       title: "Total Experience",
       value: "4 years",
       icon: Gauge,
-      iconColor: "text-green-400",
+      iconColor: "text-green-500",
     },
     {
       title: "Tech Stack",
       value: "Fullstack",
       icon: BrainCircuit,
-      iconColor: "text-yellow-400",
+      iconColor: "text-orange-500",
     },
     {
       title: "Tech Stack",
       value: "CI/CD",
       icon: Workflow,
-      iconColor: "text-blue-400",
+      iconColor: "text-blue-500",
     },
   ];
 
@@ -46,7 +57,7 @@ export default function CareerDashboard() {
     <div
       className={`py-20 md:py-0 px-5 sm:px-10 grid ${
         isMobile ? "grid-cols-2" : "grid-cols-1 sm:grid-cols-2 md:grid-cols-4"
-      } gap-4 text-white`}
+      } gap-4`}
     >
       {cardData.map((card, i) => (
         <InfoCard
@@ -63,13 +74,21 @@ export default function CareerDashboard() {
         href="https://withsy.chat"
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-gray-900 p-3 md:p5 rounded-lg shadow-md flex flex-col justify-between hover:ring-2 hover:ring-blue-500 transition"
+        className={clsx(
+          "p-3 md:p5 rounded-lg shadow-md flex flex-col justify-between hover:ring-2 transition",
+          isNight
+            ? "bg-black/30 text-white/80 hover:ring-white-500"
+            : "bg-white/30 text-black/80 hover:ring-black-500"
+        )}
       >
         <div>
-          <div className="text-sm text-gray-400">Featured Project</div>
-          <div className="text-base font-semibold mt-1">withsy.chat</div>
+          <div className="text-sm">Featured Project</div>
+          <div className="flex flex-row items-center text-base font-semibold mt-1">
+            withsy.chat
+            <ExternalLink className="ml-2 w-4 h-4" />
+          </div>
           {!isMobile && (
-            <p className="text-xs mt-2 text-gray-300">
+            <p className="text-xs mt-2">
               Multi-model AI chat app with custom UX.
             </p>
           )}
@@ -77,27 +96,44 @@ export default function CareerDashboard() {
       </a>
 
       {/* Timeline & Recommendations */}
-      <div className="col-span-full grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className={"col-span-full grid grid-cols-1 md:grid-cols-2 gap-4"}>
         {/* Career Timeline */}
-        <div className="bg-gray-900 p-5 rounded-lg shadow-md">
-          <h3 className="text-lg font-semibold mb-4">Company Timeline</h3>
+        <div
+          className={clsx(
+            "p-5 rounded-lg shadow-md",
+            isNight
+              ? "bg-black/30 text-white/80 hover:ring-white-500"
+              : "bg-white/30 text-black/80 hover:ring-black-500"
+          )}
+        >
+          <h3 className="flex flex-row items-center text-lg font-semibold mb-4">
+            <Calendar className="mr-2 text-red-500" />
+            Company Timeline
+          </h3>
           <CareerTimeline />
         </div>
 
         {/* Recommendations */}
-        <div className="bg-gray-900 p-5 rounded-lg shadow-md">
+        <div
+          className={clsx(
+            "p-5 rounded-lg shadow-md",
+            isNight
+              ? "bg-black/30 text-white/80 hover:ring-white-500"
+              : "bg-white/30 text-black/80 hover:ring-black-500"
+          )}
+        >
           <div className="flex items-center gap-3 mb-3">
             <Star className="w-6 h-6 text-pink-400" />
             <h3 className="text-lg font-semibold">Recommendations</h3>
           </div>
           <div className="space-y-2">
             {recommendations.map((rec, i) => (
-              <div key={i} className="border-t border-white/10 pt-3">
+              <div key={i} className="pt-3">
                 <div className="font-medium">{rec.name}</div>
-                <div className="text-sm text-gray-400">{rec.summary}</div>
+                <div className="text-sm">{rec.summary}</div>
                 <a
                   href={rec.url}
-                  className="text-blue-400 underline text-sm"
+                  className="underline text-sm"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
