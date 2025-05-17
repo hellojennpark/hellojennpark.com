@@ -22,8 +22,8 @@ export const InfoCard = ({
       className={clsx(
         "p-3 md:p5 rounded-lg shadow-md flex items-center gap-4 hover:ring-2 active:ring-2",
         isNight
-          ? "bg-black/30 text-white/80 hover:ring-white-500"
-          : "bg-white/30 text-black/80 hover:ring-black-500"
+          ? "bg-black/60 text-white/80 hover:ring-white-500"
+          : "bg-white/60 text-black/80 hover:ring-black-500"
       )}
     >
       {Icon && <Icon className={clsx("w-10 h-10", iconColor)} />}

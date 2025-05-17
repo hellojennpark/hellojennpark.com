@@ -22,8 +22,7 @@ const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
 export const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const { hour, setHour, themeTime, primaryColor, backgroundColor } =
-    useTimeThemeStore();
+  const { hour, setHour, primaryColor, backgroundColor } = useTimeThemeStore();
   const router = useRouter();
 
   useEffect(() => {
@@ -38,8 +37,7 @@ export const Header = () => {
   return (
     <header
       className={clsx(
-        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 shadow-sm space-x-6 backdrop-blur-sm`,
-        themeTime == "night" ? "bg-black/20" : "bg-white/20"
+        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 space-x-6 backdrop-blur-sm`
       )}
     >
       <div

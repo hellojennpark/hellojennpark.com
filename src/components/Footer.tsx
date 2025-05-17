@@ -48,9 +48,8 @@ export const Footer = () => {
   return (
     <footer
       className={clsx(
-        "fixed bottom-0 left-0 right-0 z-50 backdrop-blur-sm shadow-sm",
-        "py-3 px-4 flex justify-center",
-        themeTime === "night" ? "bg-black/20" : "bg-white/20"
+        "fixed bottom-0 left-0 right-0 z-50 backdrop-blur-md",
+        "py-3 px-4 flex justify-center"
       )}
     >
       <nav className="flex items-center">

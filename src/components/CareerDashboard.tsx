@@ -5,10 +5,10 @@ import { CareerTimeline } from "./CareerTimeline";
 import { InfoCard } from "./InfoCard";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import {
-  BrainCircuit,
   Calendar,
   ExternalLink,
   Gauge,
+  Heart,
   Star,
   Workflow,
 } from "lucide-react";
@@ -31,6 +31,9 @@ export default function CareerDashboard() {
   const isMobile = useIsMobile();
   const { themeTime } = useTimeThemeStore();
   const isNight = themeTime == "night";
+  const themeTimeBgStyle = isNight
+    ? "bg-black/60 text-white/80 hover:ring-white-500"
+    : "bg-white/60 text-black/80 hover:ring-black-500";
 
   const cardData = [
     {
@@ -41,15 +44,15 @@ export default function CareerDashboard() {
     },
     {
       title: "Tech Stack",
-      value: "Fullstack",
-      icon: BrainCircuit,
-      iconColor: "text-orange-500",
-    },
-    {
-      title: "Tech Stack",
-      value: "CI/CD",
+      value: "Fullstack + CI/CD",
       icon: Workflow,
       iconColor: "text-blue-500",
+    },
+    {
+      title: "Passionate about",
+      value: "Productivity",
+      icon: Heart,
+      iconColor: "text-rose-400",
     },
   ];
 
@@ -75,10 +78,10 @@ export default function CareerDashboard() {
         target="_blank"
         rel="noopener noreferrer"
         className={clsx(
-          "p-3 md:p5 rounded-lg shadow-md flex flex-col justify-between hover:ring-2 active:ring-2 ",
+          "p-3 md:p5 rounded-lg shadow-md flex flex-col justify-between hover:ring-2 active:ring-2",
           isNight
-            ? "bg-black/30 text-white/80 hover:ring-blue-300"
-            : "bg-white/30 text-black/80 hover:ring-blue-800"
+            ? "bg-black/60 text-white/80 hover:ring-blue-300"
+            : "bg-white/60 text-black/80 hover:ring-sky-600"
         )}
       >
         <div className="text-sm">Featured Project</div>
@@ -99,14 +102,12 @@ export default function CareerDashboard() {
         <div
           className={clsx(
             "p-5 rounded-lg shadow-md hover:ring-2 active:ring-2",
-            isNight
-              ? "bg-black/30 text-white/80 hover:ring-white-500"
-              : "bg-white/30 text-black/80 hover:ring-black-500"
+            themeTimeBgStyle
           )}
         >
           <h3 className="flex flex-row items-center text-lg font-semibold mb-4">
-            <Calendar className="mr-3 text-red-500" />
-            Company Timeline
+            <Calendar className="mr-3 text-indigo-500" />
+            Work History
           </h3>
           <CareerTimeline />
         </div>
@@ -115,13 +116,11 @@ export default function CareerDashboard() {
         <div
           className={clsx(
             "p-5 rounded-lg shadow-md hover:ring-2 active:ring-2",
-            isNight
-              ? "bg-black/30 text-white/80 hover:ring-white-500"
-              : "bg-white/30 text-black/80 hover:ring-black-500"
+            themeTimeBgStyle
           )}
         >
           <div className="flex items-center gap-3 mb-3">
-            <Star className="w-6 h-6 text-pink-400" />
+            <Star className="w-6 h-6 text-yellow-400" />
             <h3 className="text-lg font-semibold">Recommendations</h3>
           </div>
           <div className="space-y-2">
