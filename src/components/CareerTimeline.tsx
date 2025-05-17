@@ -48,7 +48,7 @@ export function CareerTimeline() {
                 <div
                   className={cn(
                     exp.color,
-                    "flex items-center justify-center text-xs md:text-sm whitespace-nowrap cursor-pointer transition-transform duration-200 hover:scale-[1.25]"
+                    "flex items-center justify-center text-xs md:text-sm whitespace-nowrap cursor-pointer transition-transform duration-200 hover:scale-[1.25] active:scale-[1.25]"
                   )}
                   style={{ flex: exp.months }}
                 >

@@ -75,7 +75,7 @@ export default function CareerDashboard() {
         target="_blank"
         rel="noopener noreferrer"
         className={clsx(
-          "p-3 md:p5 rounded-lg shadow-md flex flex-col justify-between hover:ring-2 ",
+          "p-3 md:p5 rounded-lg shadow-md flex flex-col justify-between hover:ring-2 active:ring-2 ",
           isNight
             ? "bg-black/30 text-white/80 hover:ring-blue-300"
             : "bg-white/30 text-black/80 hover:ring-blue-800"
@@ -98,7 +98,7 @@ export default function CareerDashboard() {
         {/* Career Timeline */}
         <div
           className={clsx(
-            "p-5 rounded-lg shadow-md hover:ring-2",
+            "p-5 rounded-lg shadow-md hover:ring-2 active:ring-2",
             isNight
               ? "bg-black/30 text-white/80 hover:ring-white-500"
               : "bg-white/30 text-black/80 hover:ring-black-500"
@@ -114,7 +114,7 @@ export default function CareerDashboard() {
         {/* Recommendations */}
         <div
           className={clsx(
-            "p-5 rounded-lg shadow-md hover:ring-2",
+            "p-5 rounded-lg shadow-md hover:ring-2 active:ring-2",
             isNight
               ? "bg-black/30 text-white/80 hover:ring-white-500"
               : "bg-white/30 text-black/80 hover:ring-black-500"
