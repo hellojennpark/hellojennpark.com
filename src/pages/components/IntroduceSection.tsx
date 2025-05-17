@@ -37,13 +37,13 @@ export default function IntroduceSection() {
         ))}
       </div>
       <div
-        className="w-full flex flex-col sm:flex-row gap-4 min-h-[50dvh]"
+        className="w-full flex flex-col sm:flex-row gap-4"
         style={{ color: primaryColor }}
       >
-        <div className="w-full h-full sm:w-1/3 border border-white/30 bg-white/20 rounded-md p-3 md:p-5">
+        <div className="w-full h-full sm:w-1/2 border border-white/30 bg-white/10 rounded-md p-3 md:p-5 md:py-10">
           <CareerTimeline />
         </div>
-        <div className="w-full h-[100%] sm:w-2/3 text-2xl md:text-4xl space-y-5">
+        <div className="w-full h-full flex flex-col justify-center items-start sm:w-1/2 text-2xl md:text-4xl space-y-5 md:space-y-10">
           <div className="px-3 md:px-5">
             Hello, I’m Yejin — Jenn to friends.
           </div>

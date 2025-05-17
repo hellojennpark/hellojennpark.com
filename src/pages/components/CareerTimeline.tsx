@@ -38,7 +38,7 @@ const totalMonths = experiences.reduce((acc, exp) => acc + exp.months, 0);
 
 export function CareerTimeline() {
   return (
-    <div className="space-y-4 w-full text-md text-white">
+    <div className="space-y-4 md:space-y-6 w-full text-md text-white">
       {/* Timeline bar */}
       <TooltipProvider>
         <div className="w-full flex h-6 rounded overflow-hidden border border-white/30">
@@ -48,7 +48,7 @@ export function CareerTimeline() {
                 <div
                   className={cn(
                     exp.color,
-                    "flex items-center justify-center text-[10px] md:text-xs whitespace-nowrap cursor-pointer transition-transform duration-200 hover:scale-[1.25]"
+                    "flex items-center justify-center text-xs md:text-sm whitespace-nowrap cursor-pointer transition-transform duration-200 hover:scale-[1.25]"
                   )}
                   style={{ flex: exp.months }}
                 >
@@ -77,7 +77,7 @@ export function CareerTimeline() {
       </div>
 
       {/* Labels */}
-      <div className="space-y-1">
+      <div className="space-y-1 md:space-y-4">
         {experiences.map((exp, i) => (
           <div key={i} className="flex items-center gap-2">
             {/* 색상 동그라미 */}
