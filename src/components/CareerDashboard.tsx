@@ -75,24 +75,22 @@ export default function CareerDashboard() {
         target="_blank"
         rel="noopener noreferrer"
         className={clsx(
-          "p-3 md:p5 rounded-lg shadow-md flex flex-col justify-between hover:ring-2 transition",
+          "p-3 md:p5 rounded-lg shadow-md flex flex-col justify-between hover:ring-2 ",
           isNight
             ? "bg-black/30 text-white/80 hover:ring-white-500"
             : "bg-white/30 text-black/80 hover:ring-black-500"
         )}
       >
-        <div>
-          <div className="text-sm">Featured Project</div>
-          <div className="flex flex-row items-center text-base font-semibold mt-1">
-            withsy.chat
-            <ExternalLink className="ml-2 w-4 h-4" />
-          </div>
-          {!isMobile && (
-            <p className="text-xs mt-2">
-              Multi-model AI chat app with custom UX.
-            </p>
-          )}
+        <div className="text-sm">Featured Project</div>
+        <div className="flex flex-row items-center text-base font-semibold mt-1">
+          withsy.chat
+          <ExternalLink className="ml-2 w-4 h-4" />
         </div>
+        {!isMobile && (
+          <p className="text-xs mt-2">
+            Multi-model AI chat app with custom UX.
+          </p>
+        )}
       </a>
 
       {/* Timeline & Recommendations */}
