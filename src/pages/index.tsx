@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Footer } from "./components/Footer";
-import Hero from "./components/Hero";
-import IntroduceSection from "./components/IntroduceSection";
-import CareerSection from "./components/CareerSection";
-import ProjectSection from "./components/ProjectSection";
-import EtcSection from "./components/EtcSection";
+import { Footer } from "@/components/Footer";
+import IntroduceSection from "@/components/IntroduceSection";
+import CareerSection from "@/components/CareerSection";
+import ProjectSection from "@/components/ProjectSection";
+import EtcSection from "@/components/EtcSection";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
+import Hero from "@/components/Hero";
 
 const sectionIds = ["welcome", "introduce", "career", "project", "etc"];
 

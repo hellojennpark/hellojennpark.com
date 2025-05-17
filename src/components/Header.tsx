@@ -9,14 +9,14 @@ import {
 } from "@/components/ui/drawer";
 import { useEffect, useState } from "react";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
-import { ThemedLink } from "./ThemedLink";
 import clsx from "clsx";
-import { ThemedSlider } from "./ThemedSlider";
 import { Dancing_Script } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
 import { Github, Linkedin } from "lucide-react";
 import Link from "next/link";
+import { ThemedLink } from "./ThemedLink";
+import { ThemedSlider } from "./ThemedSlider";
 
 const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
