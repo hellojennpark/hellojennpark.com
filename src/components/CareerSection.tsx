@@ -18,7 +18,7 @@ const recommendations = [
 
 function CareerDashboard() {
   return (
-    <div className="py-25 px-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap xl:grid-cols-4 gap-4 text-white">
+    <div className="py-25 px-5 sm:px-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap xl:grid-cols-4 gap-4 text-white">
       {/* Total Experience */}
       <div className="bg-gray-900 p-5 rounded-lg shadow-md flex items-center gap-4">
         <Gauge className="w-10 h-10 text-green-400" />
