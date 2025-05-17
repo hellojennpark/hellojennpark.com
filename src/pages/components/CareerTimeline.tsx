@@ -5,22 +5,22 @@ import { cn } from "@/lib/utils";
 
 const experiences = [
   {
-    company: "estsecurity",
-    title: "devops engineer (full-time internship)",
+    company: "Estsecurity",
+    title: "Devops Engineer (full-time internship)",
     duration: "8m",
     months: 8,
     color: "bg-green-500",
   },
   {
-    company: "pearlabyss",
-    title: "software engineer / platform programming team",
+    company: "Pearlabyss",
+    title: "Software Engineer / Platform Programming Team",
     duration: "1y6m",
     months: 18,
     color: "bg-blue-500",
   },
   {
-    company: "kakaopay",
-    title: "release engineer / SRE team",
+    company: "Kakaopay",
+    title: "Release Engineer / SRE Team",
     duration: "1y10m",
     months: 22,
     color: "bg-yellow-400",
@@ -71,7 +71,7 @@ export function CareerTimeline() {
               aria-hidden
             />
             <span>
-              <strong>{exp.company}</strong> : {exp.title}
+              {exp.company} : <strong>{exp.title}</strong>
             </span>
           </div>
         ))}
