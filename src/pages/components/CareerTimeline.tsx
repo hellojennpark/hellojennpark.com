@@ -1,6 +1,13 @@
 // components/CareerTimeline.tsx
 "use client";
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
 import { cn } from "@/lib/utils";
 
 const experiences = [
@@ -33,20 +40,31 @@ export function CareerTimeline() {
   return (
     <div className="space-y-4 w-full text-md text-white">
       {/* Timeline bar */}
-      <div className="w-full flex h-6 rounded overflow-hidden border border-white/30">
-        {experiences.map((exp, i) => (
-          <div
-            key={i}
-            className={cn(
-              exp.color,
-              "flex items-center justify-center text-[10px] md:text-xs whitespace-nowrap"
-            )}
-            style={{ flex: exp.months }}
-          >
-            {exp.duration}
-          </div>
-        ))}
-      </div>
+      <TooltipProvider>
+        <div className="w-full flex h-6 rounded overflow-hidden border border-white/30">
+          {experiences.map((exp, i) => (
+            <Tooltip key={i}>
+              <TooltipTrigger asChild>
+                <div
+                  className={cn(
+                    exp.color,
+                    "flex items-center justify-center text-[10px] md:text-xs whitespace-nowrap cursor-pointer transition-transform duration-200 hover:scale-[1.25]"
+                  )}
+                  style={{ flex: exp.months }}
+                >
+                  {exp.duration}
+                </div>
+              </TooltipTrigger>
+              <TooltipContent side="top" sideOffset={6}>
+                <div className="text-sm text-white">
+                  <div className="font-medium">{exp.company}</div>
+                  <div>{exp.title}</div>
+                </div>
+              </TooltipContent>
+            </Tooltip>
+          ))}
+        </div>
+      </TooltipProvider>
 
       {/* Summary text */}
       <div className="text-md md:text-lg">
