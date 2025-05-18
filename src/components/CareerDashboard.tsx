@@ -16,14 +16,14 @@ import clsx from "clsx";
 
 const recommendations = [
   {
-    name: "Manager A",
-    summary: "Jenn was an essential contributor to our platform stability.",
-    url: "https://example.com/recommendation1",
+    name: "Harry Kim (Software Engineer)",
+    summary:
+      "Jenn transformed our CI/CD operations with user-centric automation, dramatically reducing manual tasks and boosting team efficiency.",
   },
   {
-    name: "Tech Lead B",
-    summary: "Her CI/CD improvements boosted our deployment speed 3x.",
-    url: "https://example.com/recommendation2",
+    name: "Jaejeon Lim (DevOps Engineer)",
+    summary:
+      "Jenn excels at technology selection and project delivery while being the team's go-to collaborator for her exceptional interpersonal skills.",
   },
 ];
 
@@ -125,17 +125,14 @@ export default function CareerDashboard() {
           </div>
           <div className="space-y-2">
             {recommendations.map((rec, i) => (
-              <div key={i} className="pt-3">
-                <div className="font-medium">{rec.name}</div>
+              <div key={i} className="pt-2">
+                <div className="flex justify-between items-center pb-1">
+                  <div className="font-medium">{rec.name}</div>
+                  <p className="underline text-sm" rel="noopener noreferrer">
+                    Read more
+                  </p>
+                </div>
                 <div className="text-sm">{rec.summary}</div>
-                <a
-                  href={rec.url}
-                  className="underline text-sm"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Read more →
-                </a>
               </div>
             ))}
           </div>
