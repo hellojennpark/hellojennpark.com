@@ -132,7 +132,7 @@ export default function CareerDashboard() {
               <div
                 key={i}
                 className={clsx(
-                  "group rounded-lg p-2 hover:ring-2",
+                  "group rounded-lg p-2 hover:ring-2 active:ring-2",
                   isNight
                     ? "hover:ring-white-500 active:ring-white-500"
                     : "hover:ring-black-500 active:ring-black-500"
