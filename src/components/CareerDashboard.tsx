@@ -132,10 +132,10 @@ export default function CareerDashboard() {
               <div
                 key={i}
                 className={clsx(
-                  "group rounded-lg p-2",
+                  "group rounded-lg p-2 hover:ring-2",
                   isNight
-                    ? "hover:bg-black/80 active:bg-black/80"
-                    : "hover:bg-white/70 active:bg-white/70"
+                    ? "hover:ring-white-500 active:ring-white-500"
+                    : "hover:ring-black-500 active:ring-black-500"
                 )}
               >
                 <div className="flex justify-between items-center pb-1">
