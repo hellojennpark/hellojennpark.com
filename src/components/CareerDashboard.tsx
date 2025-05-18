@@ -34,6 +34,7 @@ export default function CareerDashboard() {
   const themeTimeBgStyle = isNight
     ? "bg-black/60 text-white/80 hover:ring-white-500"
     : "bg-white/60 text-black/80 hover:ring-black-500";
+  const iconSize = isMobile ? " w-6 h-6" : " w-8 h-8";
 
   const cardData = [
     {
@@ -62,15 +63,18 @@ export default function CareerDashboard() {
         isMobile ? "grid-cols-2" : "grid-cols-1 sm:grid-cols-2 md:grid-cols-4"
       } gap-4`}
     >
-      {cardData.map((card, i) => (
-        <InfoCard
-          key={i}
-          title={card.title}
-          value={card.value}
-          icon={!isMobile ? card.icon : undefined}
-          iconColor={card.iconColor}
-        />
-      ))}
+      {cardData.map(
+        (card, i) =>
+          (!isMobile || i == 2) && (
+            <InfoCard
+              key={i}
+              title={card.title}
+              value={card.value}
+              icon={card.icon}
+              iconColor={`${card.iconColor} ${iconSize}`}
+            />
+          )
+      )}
 
       {/* Featured Project */}
       <a

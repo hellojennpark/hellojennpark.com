@@ -26,7 +26,7 @@ export const InfoCard = ({
           : "bg-white/60 text-black/80 hover:ring-black-500"
       )}
     >
-      {Icon && <Icon className={clsx("w-10 h-10", iconColor)} />}
+      {Icon && <Icon className={iconColor} />}
       <div>
         <div className="text-sm">{title}</div>
         <div className="text-lg md:text-xl">{value}</div>
