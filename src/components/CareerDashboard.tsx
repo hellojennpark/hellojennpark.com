@@ -148,13 +148,13 @@ export default function CareerDashboard() {
                     : "hover:ring-black-500 active:ring-black-500"
                 )}
               >
-                <div className="flex justify-between items-center pb-1">
+                <div className="flex justify-between items-center pb-0">
                   <div className="font-medium">{rec.name}</div>
                   <p className="underline text-sm" rel="noopener noreferrer">
-                    Read more
+                    {isMobile ? "Read" : "Read more"}
                   </p>
                 </div>
-                <div className="text-sm">{rec.summary}</div>
+                {!isMobile && <div className="text-sm">{rec.summary}</div>}
               </div>
             ))}
           </div>
