@@ -32,8 +32,8 @@ export default function CareerDashboard() {
   const { themeTime } = useTimeThemeStore();
   const isNight = themeTime == "night";
   const themeTimeBgStyle = isNight
-    ? "bg-black/60 text-white/80 hover:ring-white-500"
-    : "bg-white/60 text-black/80 hover:ring-black-500";
+    ? "bg-black/40 text-white/80 hover:ring-black-500"
+    : "bg-white/60 text-black/80 hover:ring-white-500";
   const iconSize = isMobile ? " w-6 h-6" : " w-8 h-8";
 
   const cardData = [
@@ -84,7 +84,7 @@ export default function CareerDashboard() {
         className={clsx(
           "p-3 md:p5 rounded-lg shadow-md flex flex-col justify-between hover:ring-2 active:ring-2",
           isNight
-            ? "bg-black/60 text-white/80 hover:ring-blue-300"
+            ? "bg-black/40 text-white/80 hover:ring-blue-300"
             : "bg-white/60 text-black/80 hover:ring-sky-600"
         )}
       >
@@ -129,7 +129,15 @@ export default function CareerDashboard() {
           </div>
           <div className="space-y-2">
             {recommendations.map((rec, i) => (
-              <div key={i} className="pt-2">
+              <div
+                key={i}
+                className={clsx(
+                  "group rounded-lg p-2",
+                  isNight
+                    ? "hover:bg-black/80 active:bg-black/80"
+                    : "hover:bg-white/70 active:bg-white/70"
+                )}
+              >
                 <div className="flex justify-between items-center pb-1">
                   <div className="font-medium">{rec.name}</div>
                   <p className="underline text-sm" rel="noopener noreferrer">
