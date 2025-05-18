@@ -76,8 +76,9 @@ export const Header = () => {
           </DrawerHeader>
           <nav className="flex flex-col space-y-4 px-4 py-2">
             <ThemedLink href="/">Home</ThemedLink>
-            <ThemedLink href="/career">Career</ThemedLink>
-            <ThemedLink href="/project">Project</ThemedLink>
+            <ThemedLink href="/work">Work History</ThemedLink>
+            <ThemedLink href="/recommendations">Recommendations</ThemedLink>
+            <ThemedLink href="/projects">Projects</ThemedLink>
             <ThemedLink href="/blog">Blog</ThemedLink>
           </nav>
 
