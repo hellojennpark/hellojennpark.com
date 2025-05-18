@@ -12,21 +12,21 @@ import { cn } from "@/lib/utils";
 
 const experiences = [
   {
-    company: "Estsecurity",
+    company: "EstSecurity",
     title: "Devops Engineer (full-time internship)",
     duration: "8m",
     months: 8,
     color: "bg-green-500",
   },
   {
-    company: "Pearlabyss",
+    company: "PearlAbyss",
     title: "Software Engineer / Platform Programming Team",
     duration: "1y6m",
     months: 18,
     color: "bg-blue-500",
   },
   {
-    company: "Kakaopay",
+    company: "KakaoPay",
     title: "Release Engineer / SRE Team",
     duration: "1y10m",
     months: 22,
