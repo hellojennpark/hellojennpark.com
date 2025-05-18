@@ -6,6 +6,7 @@ import { InfoCard } from "./InfoCard";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import {
   Calendar,
+  ChevronRight,
   ExternalLink,
   Gauge,
   Heart,
@@ -109,10 +110,13 @@ export default function CareerDashboard() {
             themeTimeBgStyle
           )}
         >
-          <h3 className="flex flex-row items-center text-lg font-semibold mb-4">
-            <Calendar className="mr-3 text-indigo-500" />
-            Work History
-          </h3>
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="flex flex-row items-center text-lg font-semibold">
+              <Calendar className="mr-3 text-indigo-500" />
+              Work History
+            </h3>
+            <ChevronRight />
+          </div>
           <CareerTimeline />
         </div>
 
@@ -123,9 +127,12 @@ export default function CareerDashboard() {
             themeTimeBgStyle
           )}
         >
-          <div className="flex items-center gap-3 mb-3">
-            <Star className="w-6 h-6 text-yellow-400" />
-            <h3 className="text-lg font-semibold">Recommendations</h3>
+          <div className="flex gap-3 items-center mb-3 justify-between">
+            <div className="flex items-center">
+              <Star className="w-6 h-6 text-yellow-400 mr-3" />
+              <h3 className="text-lg font-semibold">Recommendations</h3>
+            </div>
+            <ChevronRight />
           </div>
           <div className="space-y-2">
             {recommendations.map((rec, i) => (
