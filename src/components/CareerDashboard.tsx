@@ -35,7 +35,7 @@ export default function CareerDashboard() {
   const themeTimeBgStyle = isNight
     ? "bg-black/40 text-white/80 hover:ring-black-500"
     : "bg-white/60 text-black/80 hover:ring-white-500";
-  const iconSize = isMobile ? " w-6 h-6" : " w-8 h-8";
+  const iconSize = isMobile ? " w-4 h-4" : " w-8 h-8";
 
   const cardData = [
     {
@@ -46,7 +46,7 @@ export default function CareerDashboard() {
     },
     {
       title: "Tech Stack",
-      value: "Fullstack + CI/CD",
+      value: "Fullstack & DevOps",
       icon: Workflow,
       iconColor: "text-blue-500",
     },
@@ -60,13 +60,13 @@ export default function CareerDashboard() {
 
   return (
     <div
-      className={`py-20 md:py-0 px-5 sm:px-10 grid ${
+      className={`py-20 px-5 sm:px-10 grid ${
         isMobile ? "grid-cols-2" : "grid-cols-1 sm:grid-cols-2 md:grid-cols-4"
       } gap-4`}
     >
       {cardData.map(
         (card, i) =>
-          (!isMobile || i == 2) && (
+          (!isMobile || i != 0) && (
             <InfoCard
               key={i}
               title={card.title}
@@ -78,40 +78,41 @@ export default function CareerDashboard() {
       )}
 
       {/* Featured Project */}
-      <a
-        href="https://withsy.chat"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={clsx(
-          "p-3 md:p5 rounded-lg shadow-md flex flex-col justify-between hover:ring-2 active:ring-2",
-          isNight
-            ? "bg-black/40 text-white/80 hover:ring-blue-300"
-            : "bg-white/60 text-black/80 hover:ring-sky-600"
-        )}
-      >
-        <div className="text-sm">Featured Project</div>
-        <div className="flex flex-row items-center text-base font-semibold mt-1">
-          withsy.chat
-          <ExternalLink className="ml-2 w-4 h-4" />
-        </div>
-        {!isMobile && (
+
+      {!isMobile && (
+        <a
+          href="https://withsy.chat"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={clsx(
+            "p-3 md:p5 rounded-lg shadow-md flex flex-col justify-between hover:ring-2 active:ring-2",
+            isNight
+              ? "bg-black/40 text-white/80 hover:ring-blue-300"
+              : "bg-white/60 text-black/80 hover:ring-sky-600"
+          )}
+        >
+          <div className="text-sm flex justify-between items-center">
+            Featured Project
+            <ExternalLink className="ml-2 w-4 h-4" />
+          </div>
+          <div className="text-base font-semibold mt-1">withsy.chat</div>
           <p className="text-xs mt-2">
             Multi-model AI chat app with custom UX.
           </p>
-        )}
-      </a>
+        </a>
+      )}
 
       {/* Timeline & Recommendations */}
       <div className={"col-span-full grid grid-cols-1 md:grid-cols-2 gap-4"}>
         {/* Career Timeline */}
         <div
           className={clsx(
-            "p-5 rounded-lg shadow-md hover:ring-2 active:ring-2",
+            "p-3 md:p-5 rounded-lg shadow-md hover:ring-2 active:ring-2",
             themeTimeBgStyle
           )}
         >
           <div className="flex justify-between items-center mb-4">
-            <h3 className="flex flex-row items-center text-lg font-semibold">
+            <h3 className="flex flex-row items-center text-md md:text-lg font-semibold">
               <Calendar className="mr-3 text-indigo-500" />
               Work History
             </h3>
@@ -123,14 +124,16 @@ export default function CareerDashboard() {
         {/* Recommendations */}
         <div
           className={clsx(
-            "p-5 rounded-lg shadow-md hover:ring-2 active:ring-2",
+            "p-3 md:p-5 rounded-lg shadow-md hover:ring-2 active:ring-2",
             themeTimeBgStyle
           )}
         >
           <div className="flex gap-3 items-center mb-3 justify-between">
             <div className="flex items-center">
               <Star className="w-6 h-6 text-yellow-400 mr-3" />
-              <h3 className="text-lg font-semibold">Recommendations</h3>
+              <h3 className="text-md md:text-lg font-semibold">
+                Recommendations
+              </h3>
             </div>
             <ChevronRight />
           </div>

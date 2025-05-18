@@ -20,7 +20,7 @@ export const InfoCard = ({
   return (
     <div
       className={clsx(
-        "p-3 md:p5 rounded-lg shadow-md flex items-center gap-4 hover:ring-2 active:ring-2",
+        "p-3 md:p-5 rounded-lg shadow-md flex items-center gap-4 hover:ring-2 active:ring-2",
         isNight
           ? "bg-black/40 text-white/80 hover:ring-white-500"
           : "bg-white/60 text-black/80 hover:ring-black-500"
@@ -29,7 +29,7 @@ export const InfoCard = ({
       {Icon && <Icon className={iconColor} />}
       <div>
         <div className="text-sm">{title}</div>
-        <div className="text-lg md:text-xl">{value}</div>
+        <div className="text-md md:text-xl">{value}</div>
       </div>
     </div>
   );
