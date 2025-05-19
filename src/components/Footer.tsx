@@ -65,7 +65,7 @@ export const Footer = () => {
               >
                 <div
                   className={clsx(
-                    "w-10 h-10 rounded-full flex items-center justify-center transition-colors",
+                    "w-9 h-9 rounded-full flex items-center justify-center transition-colors",
                     isActive
                       ? themeTime === "night"
                         ? "bg-white/60"

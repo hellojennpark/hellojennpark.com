@@ -18,6 +18,8 @@ import { useEffect, useState } from "react";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import recommendationsData from "@/data/recommendations.json";
 import { CustomAvatar } from "../CustomAvatar";
+import { useTimeThemeStore } from "@/store/useTimeThemeStore";
+import clsx from "clsx";
 
 interface RecommendationsModalProps {
   open: boolean;
@@ -30,6 +32,10 @@ export const RecommendationsModal = ({
   onOpenChange,
   name,
 }: RecommendationsModalProps) => {
+  const { themeTime } = useTimeThemeStore();
+  const themeTimeStyle =
+    themeTime == "night" ? "bg-gray-900 text-white" : "bg-white text-black";
+
   const isMobile = useIsMobile();
   const [data, setData] = useState<{
     from: string;
@@ -56,11 +62,11 @@ export const RecommendationsModal = ({
 
   const avatarName = name == "Harry Kim" ? "harry" : "edward";
   const Title = (
-    <div className="font-medium flex">
+    <div className={clsx("font-medium flex", themeTimeStyle)}>
       <CustomAvatar name={avatarName} size="lg" />
       <div className="ml-3">
         <p>{name}</p>
-        <p className="mt-1 text-sm text-muted-foreground">
+        <p className="mt-1 text-sm">
           {data.role} @ {data.from}
         </p>
       </div>
@@ -70,7 +76,7 @@ export const RecommendationsModal = ({
   const Content = (
     <div className="overflow-y-auto max-h-[60dvh] space-y-2 px-2">
       {data.content.map((paragraph, idx) => (
-        <p key={idx} className="text-sm leading-relaxed text-foreground">
+        <p key={idx} className="text-sm leading-relaxed">
           {paragraph}
         </p>
       ))}
@@ -79,7 +85,7 @@ export const RecommendationsModal = ({
 
   return isMobile ? (
     <Drawer open={open} onOpenChange={onOpenChange}>
-      <DrawerContent className="">
+      <DrawerContent className={themeTimeStyle}>
         <DrawerHeader>
           <DrawerTitle>{Title}</DrawerTitle>
           <DrawerDescription />
@@ -89,7 +95,7 @@ export const RecommendationsModal = ({
     </Drawer>
   ) : (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
+      <DialogContent className={themeTimeStyle}>
         <DialogHeader>
           <DialogTitle>{Title}</DialogTitle>
           <DialogDescription />

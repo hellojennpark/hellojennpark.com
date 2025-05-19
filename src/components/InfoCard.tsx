@@ -29,7 +29,7 @@ export const InfoCard = ({
       {Icon && <Icon className={iconColor} />}
       <div>
         <div className="text-sm">{title}</div>
-        <div className="text-md md:text-xl">{value}</div>
+        <div className="text-base md:text-xl">{value}</div>
       </div>
     </div>
   );

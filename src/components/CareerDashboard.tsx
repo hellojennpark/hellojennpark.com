@@ -68,9 +68,9 @@ export default function CareerDashboard() {
 
   return (
     <div
-      className={`py-20 px-5 sm:px-10 grid ${
+      className={`py-20 px-4 md:px-5 sm:px-10 grid ${
         isMobile ? "grid-cols-2" : "grid-cols-1 sm:grid-cols-2 md:grid-cols-4"
-      } gap-4`}
+      } gap-3 md:gap-4`}
     >
       {cardData.map(
         (card, i) =>
@@ -93,7 +93,7 @@ export default function CareerDashboard() {
           target="_blank"
           rel="noopener noreferrer"
           className={clsx(
-            "p-3 md:p5 rounded-lg shadow-md flex flex-col justify-between hover:ring-2 active:ring-2",
+            "p-3 md:p-5 rounded-lg shadow-md flex flex-col justify-between hover:ring-2 active:ring-2",
             isNight
               ? "bg-black/40 text-white/80 hover:ring-blue-300"
               : "bg-white/60 text-black/80 hover:ring-sky-600"
@@ -111,11 +111,15 @@ export default function CareerDashboard() {
       )}
 
       {/* Timeline & Recommendations */}
-      <div className={"col-span-full grid grid-cols-1 md:grid-cols-2 gap-4"}>
+      <div
+        className={
+          "col-span-full grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4"
+        }
+      >
         {/* Career Timeline */}
         <div
           className={clsx(
-            "p-3 md:p-5 rounded-lg shadow-md hover:ring-2 active:ring-2",
+            "p-5 rounded-lg shadow-md hover:ring-2 active:ring-2",
             themeTimeBgStyle
           )}
         >
@@ -132,7 +136,7 @@ export default function CareerDashboard() {
         {/* Recommendations */}
         <div
           className={clsx(
-            "p-3 md:p-5 rounded-lg shadow-md hover:ring-2 active:ring-2",
+            "p-5 md:p-5 rounded-lg shadow-md hover:ring-2 active:ring-2",
             themeTimeBgStyle
           )}
         >
@@ -154,7 +158,7 @@ export default function CareerDashboard() {
                   setOpen(true);
                 }}
                 className={clsx(
-                  "group rounded-lg p-2 hover:ring-2 active:ring-2",
+                  "group rounded-lg p-1.5 md:p-2 hover:ring-2 active:ring-2",
                   isNight
                     ? "hover:ring-white-500 active:ring-white-500"
                     : "hover:ring-black-500 active:ring-black-500"
