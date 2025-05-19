@@ -62,7 +62,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
           </nav>
 
           {/* Page Content */}
-          <div className="h-[calc(100dvh-10rem)] overflow-y-auto px-2 ">
+          <div className="h-[calc(100dvh-10rem)] overflow-y-auto pr-2 md:pr-4">
             {children}
           </div>
         </div>
