@@ -17,9 +17,9 @@ import {
 import { useEffect, useState } from "react";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import recommendationsData from "@/data/recommendations.json";
-import { CustomAvatar } from "../CustomAvatar";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
-import clsx from "clsx";
+import { RecommendationTitle } from "../RecommendationTitle";
+import { RecommendationContent } from "../RecommendationContent";
 
 interface RecommendationsModalProps {
   open: boolean;
@@ -60,47 +60,38 @@ export const RecommendationsModal = ({
 
   if (!data) return null;
 
-  const avatarName = name == "Harry Kim" ? "harry" : "edward";
-  const Title = (
-    <div className={clsx("font-medium flex", timeOfDayStyle)}>
-      <CustomAvatar name={avatarName} size="lg" />
-      <div className="ml-3">
-        <p>{name}</p>
-        <p className="mt-1 text-sm">
-          {data.role} @ {data.from}
-        </p>
-      </div>
-    </div>
-  );
-
-  const Content = (
-    <div className="overflow-y-auto max-h-[60dvh] space-y-2 px-2">
-      {data.content.map((paragraph, idx) => (
-        <p key={idx} className="text-sm leading-relaxed">
-          {paragraph}
-        </p>
-      ))}
-    </div>
-  );
-
   return isMobile ? (
     <Drawer open={open} onOpenChange={onOpenChange}>
       <DrawerContent className={timeOfDayStyle}>
         <DrawerHeader>
-          <DrawerTitle>{Title}</DrawerTitle>
+          <DrawerTitle>
+            <RecommendationTitle
+              name={name}
+              from={data.from}
+              role={data.role}
+            />
+          </DrawerTitle>
           <DrawerDescription />
         </DrawerHeader>
-        <div className="px-4 pb-6">{Content}</div>
+        <div className="px-4 pb-6">
+          <RecommendationContent content={data.content} />
+        </div>
       </DrawerContent>
     </Drawer>
   ) : (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className={timeOfDayStyle}>
         <DialogHeader>
-          <DialogTitle>{Title}</DialogTitle>
+          <DialogTitle>
+            <RecommendationTitle
+              name={name}
+              from={data.from}
+              role={data.role}
+            />
+          </DialogTitle>
           <DialogDescription />
         </DialogHeader>
-        {Content}
+        <RecommendationContent content={data.content} />
       </DialogContent>
     </Dialog>
   );
