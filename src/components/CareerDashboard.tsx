@@ -117,12 +117,7 @@ export default function CareerDashboard() {
         }
       >
         {/* Career Timeline */}
-        <div
-          className={clsx(
-            "p-5 rounded-lg shadow-md hover:ring-2 active:ring-2",
-            themeTimeBgStyle
-          )}
-        >
+        <div className={clsx("p-5 rounded-lg shadow-md", themeTimeBgStyle)}>
           <div className="flex justify-between items-center mb-4">
             <h3 className="flex flex-row items-center text-md md:text-lg font-semibold">
               <Calendar className="mr-3 text-indigo-500" />
@@ -135,10 +130,7 @@ export default function CareerDashboard() {
 
         {/* Recommendations */}
         <div
-          className={clsx(
-            "p-5 md:p-5 rounded-lg shadow-md hover:ring-2 active:ring-2",
-            themeTimeBgStyle
-          )}
+          className={clsx("p-5 md:p-5 rounded-lg shadow-md", themeTimeBgStyle)}
         >
           <div className="flex gap-3 items-center mb-3 justify-between">
             <div className="flex items-center">
