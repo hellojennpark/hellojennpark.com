@@ -41,8 +41,8 @@ export default function CareerDashboard() {
 
   const isNight = themeTime == "night";
   const themeTimeBgStyle = isNight
-    ? "bg-black/40 text-white/80 hover:ring-black-500"
-    : "bg-white/60 text-black/80 hover:ring-white-500";
+    ? "bg-black/40 text-white/80 hover:bg-gray-900 active:bg-gray-900"
+    : "bg-white/60 text-black/80 hover:bg-white active:bg-white";
   const iconSize = isMobile ? " w-4 h-4" : " w-8 h-8";
 
   const cardData = [
@@ -93,10 +93,8 @@ export default function CareerDashboard() {
           target="_blank"
           rel="noopener noreferrer"
           className={clsx(
-            "p-3 md:p-5 rounded-lg shadow-md flex flex-col justify-between hover:ring-2 active:ring-2",
-            isNight
-              ? "bg-black/40 text-white/80 hover:ring-blue-300"
-              : "bg-white/60 text-black/80 hover:ring-sky-600"
+            "p-3 md:p-5 rounded-lg shadow-md flex flex-col justify-between",
+            themeTimeBgStyle
           )}
         >
           <div className="text-sm flex justify-between items-center">
@@ -150,7 +148,7 @@ export default function CareerDashboard() {
                   setOpen(true);
                 }}
                 className={clsx(
-                  "group rounded-lg p-1.5 md:p-2 hover:ring-2 active:ring-2",
+                  "group rounded-lg p-1.5 md:p-2 hover:ring-1 active:ring-1",
                   isNight
                     ? "hover:ring-white-500 active:ring-white-500"
                     : "hover:ring-black-500 active:ring-black-500"
