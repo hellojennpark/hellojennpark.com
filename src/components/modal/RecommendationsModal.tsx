@@ -17,6 +17,7 @@ import {
 import { useEffect, useState } from "react";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import recommendationsData from "@/data/recommendations.json";
+import { CustomAvatar } from "../CustomAvatar";
 
 interface RecommendationsModalProps {
   open: boolean;
@@ -53,12 +54,16 @@ export const RecommendationsModal = ({
 
   if (!data) return null;
 
+  const avatarName = name == "Harry Kim" ? "harry" : "edward";
   const Title = (
-    <div className="font-medium">
-      <p>{name}</p>
-      <p className="mt-1 text-sm text-muted-foreground">
-        {data.role} @ {data.from}
-      </p>
+    <div className="font-medium flex">
+      <CustomAvatar name={avatarName} size="lg" />
+      <div className="ml-3">
+        <p>{name}</p>
+        <p className="mt-1 text-sm text-muted-foreground">
+          {data.role} @ {data.from}
+        </p>
+      </div>
     </div>
   );
 
