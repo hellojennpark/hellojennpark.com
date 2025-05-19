@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Drawer,
-  DrawerTrigger,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-} from "@/components/ui/drawer";
+import { Drawer, DrawerTrigger, DrawerContent } from "@/components/ui/drawer";
 import { useEffect, useState } from "react";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
@@ -17,6 +11,7 @@ import { Github, Linkedin } from "lucide-react";
 import Link from "next/link";
 import { ThemedLink } from "./ThemedLink";
 import { ThemedSlider } from "./ThemedSlider";
+import { CustomAvatar } from "./CustomAvatar";
 
 const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
@@ -71,9 +66,13 @@ export const Header = () => {
           </button>
         </DrawerTrigger>
         <DrawerContent className="p-6 pb-18">
-          <DrawerHeader>
-            <DrawerTitle className="text-xl">Menu</DrawerTitle>
-          </DrawerHeader>
+          <div className="items-center flex flex-row py-2 mb-2">
+            <CustomAvatar name="jenn" size="xl" />
+            <div className="flex flex-col ml-3">
+              <p className="text-lg font-semibold">Jenn</p>
+              <p>Welcome to my space. Please enjoy and have a wonderful day!</p>
+            </div>
+          </div>
           <nav className="flex flex-col space-y-4 px-4 py-2">
             <ThemedLink href="/">Home</ThemedLink>
             <ThemedLink href="/work">Work History</ThemedLink>

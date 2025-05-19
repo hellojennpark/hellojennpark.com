@@ -11,7 +11,8 @@ type ThemedLinkProps = {
 
 export const ThemedLink = ({ href, children }: ThemedLinkProps) => {
   const pathname = usePathname();
-  const isActive = pathname.startsWith(href);
+  const isActive = pathname == href;
+  // const isActive = pathname.startsWith(href);
 
   return (
     <a
