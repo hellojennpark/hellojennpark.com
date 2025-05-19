@@ -18,8 +18,8 @@ import { useEffect, useState } from "react";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import recommendationsData from "@/data/recommendations.json";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
-import { RecommendationTitle } from "../RecommendationTitle";
-import { RecommendationContent } from "../RecommendationContent";
+import { RecommendationTitle } from "../shared/RecommendationTitle";
+import { RecommendationContent } from "../shared/RecommendationContent";
 
 interface RecommendationsModalProps {
   open: boolean;
@@ -73,7 +73,7 @@ export const RecommendationsModal = ({
           </DrawerTitle>
           <DrawerDescription />
         </DrawerHeader>
-        <div className="px-4 pb-6">
+        <div className="px-4 pb-6 overflow-y-auto max-h-[60dvh]">
           <RecommendationContent content={data.content} />
         </div>
       </DrawerContent>
@@ -91,7 +91,9 @@ export const RecommendationsModal = ({
           </DialogTitle>
           <DialogDescription />
         </DialogHeader>
-        <RecommendationContent content={data.content} />
+        <div className="overflow-y-auto max-h-[60dvh]">
+          <RecommendationContent content={data.content} />
+        </div>
       </DialogContent>
     </Dialog>
   );

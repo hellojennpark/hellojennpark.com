@@ -2,7 +2,7 @@
 
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
-import { CustomAvatar } from "./CustomAvatar";
+import { CustomAvatar } from "../CustomAvatar";
 
 interface RecommendationTitleProps {
   name: string;
@@ -16,8 +16,7 @@ export const RecommendationTitle = ({
   role,
 }: RecommendationTitleProps) => {
   const { timeOfDay } = useTimeThemeStore();
-  const timeOfDayStyle =
-    timeOfDay === "night" ? "bg-gray-900 text-white" : "bg-white text-black";
+  const timeOfDayStyle = timeOfDay === "night" ? "text-white" : "text-black";
 
   const avatarName = name === "Harry Kim" ? "harry" : "edward";
 
