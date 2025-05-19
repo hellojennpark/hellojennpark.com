@@ -1,0 +1,25 @@
+{
+  "recommendations": [
+    {
+      "content": [
+        "I worked with Yejin Park at Pearl Abyss in the Game Platform Team from July 2021 to November 2022. Our team experienced significant transformation before and after Yejin's arrival, as she built a user-centric automation platform that substantially contributed to the company's value creation.",
+        "Before Yejin joined, when issues occurred with development CI/CD, team members had to respond manually on a daily basis, and other teams often perceived our team merely as an 'issue response standby unit'. However, after Yejin integrated the CI/CD system and built a Slack-based automation system, situations requiring manual intervention by team members decreased dramatically. This saved time previously spent on reactive tasks, allowing us to focus more on feature development and system improvements.",
+        "The most distinctive characteristic of Yejin's work is her design philosophy that prioritizes user experience above all. This approach led to high user satisfaction and continuous adoption of the systems. Before Yejin, there were instances where we had to completely redesign systems after months of work due to inadequate reflection of user requirements. In contrast, the systems Yejin built received continuous praise from users and practically contributed to improving work efficiency.",
+        "Yejin's technical expertise, user-centric design capabilities, and insight into identifying the essence of problems will create significant value in any organization. I wholeheartedly recommend Yejin."
+      ],
+      "from": "PearlAbyss",
+      "name": "Harry Kim",
+      "role": "Software Engineer"
+    },
+    {
+      "content": [
+        "I worked with Yejin Park in the Release Engineering department at Kakao Pay, where we collaborated on the same projects. One of Yejin's strengths is her ability to thoroughly understand the tasks she's responsible for and complete them within the designated timeframe.",
+        "Most importantly, when selecting technologies needed for work execution, she has the ability to research and compare not only existing technologies but also the latest ones, ultimately making the best choices. Additionally, in communicating with colleagues, she creates a comfortable atmosphere and leads conversations, serving as a mood maker within the team.",
+        "If someone were to ask me about colleagues I'd want to work with again from nearly 10 years of professional experience, I would choose Yejin. I have no doubt that she will excel wherever she goes, and colleagues who have the opportunity to work with Yejin will surely find it a valuable experience."
+      ],
+      "from": "KakaoPay",
+      "name": "Jaejeon Lim",
+      "role": "DevOps Engineer"
+    }
+  ]
+}

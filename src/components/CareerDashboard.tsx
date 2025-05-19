@@ -14,23 +14,31 @@ import {
   Workflow,
 } from "lucide-react";
 import clsx from "clsx";
+import { useState } from "react";
+import { RecommendationsModal } from "./modal/RecommendationsModal";
 
 const recommendations = [
   {
-    name: "Harry Kim (Software Engineer)",
+    name: "Harry Kim",
+    role: "Software Engineer",
     summary:
       "Jenn transformed our CI/CD operations with user-centric automation, dramatically reducing manual tasks and boosting team efficiency.",
   },
   {
-    name: "Jaejeon Lim (DevOps Engineer)",
+    name: "Jaejeon Lim",
+    role: "DevOps Engineer",
     summary:
       "Jenn excels at technology selection and project delivery while being the team's go-to collaborator for her exceptional interpersonal skills.",
   },
 ];
 
 export default function CareerDashboard() {
+  const [open, setOpen] = useState(false);
+  const [selectedName, setSelectedName] = useState("Harry Kim");
+
   const isMobile = useIsMobile();
   const { themeTime } = useTimeThemeStore();
+
   const isNight = themeTime == "night";
   const themeTimeBgStyle = isNight
     ? "bg-black/40 text-white/80 hover:ring-black-500"
@@ -141,6 +149,10 @@ export default function CareerDashboard() {
             {recommendations.map((rec, i) => (
               <div
                 key={i}
+                onClick={() => {
+                  setSelectedName(rec.name);
+                  setOpen(true);
+                }}
                 className={clsx(
                   "group rounded-lg p-2 hover:ring-2 active:ring-2",
                   isNight
@@ -149,7 +161,9 @@ export default function CareerDashboard() {
                 )}
               >
                 <div className="flex justify-between items-center pb-0">
-                  <div className="font-medium">{rec.name}</div>
+                  <div className="font-medium">
+                    {rec.name} ({rec.role})
+                  </div>
                   <p className="underline text-sm" rel="noopener noreferrer">
                     {isMobile ? "Read" : "Read more"}
                   </p>
@@ -160,6 +174,13 @@ export default function CareerDashboard() {
           </div>
         </div>
       </div>
+      {open && (
+        <RecommendationsModal
+          open={open}
+          onOpenChange={setOpen}
+          name={selectedName}
+        />
+      )}
     </div>
   );
 }
