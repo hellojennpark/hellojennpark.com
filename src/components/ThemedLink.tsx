@@ -14,8 +14,8 @@ export const ThemedLink = ({ href, children }: ThemedLinkProps) => {
   const pathname = usePathname();
   const isActive = pathname == href;
 
-  const { themeTime } = useTimeThemeStore();
-  const isNight = themeTime == "night";
+  const { timeOfDay } = useTimeThemeStore();
+  const isNight = timeOfDay == "night";
   const linkClassName = isActive
     ? isNight
       ? "text-white"

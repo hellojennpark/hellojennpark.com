@@ -15,8 +15,8 @@ export const InfoCard = ({
   icon: Icon,
   iconColor,
 }: InfoCardProps) => {
-  const { themeTime } = useTimeThemeStore();
-  const isNight = themeTime == "night";
+  const { timeOfDay } = useTimeThemeStore();
+  const isNight = timeOfDay == "night";
   return (
     <div
       className={clsx(

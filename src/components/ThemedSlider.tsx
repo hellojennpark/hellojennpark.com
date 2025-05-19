@@ -11,8 +11,8 @@ type Props = {
 };
 
 export const ThemedSlider = ({ value, onValueChange }: Props) => {
-  const { themeTime, primaryColor } = useTimeThemeStore();
-  const isNight = themeTime === "night";
+  const { timeOfDay, primaryColor } = useTimeThemeStore();
+  const isNight = timeOfDay === "night";
 
   const gradientBg = {
     morning: "from-[#ffb3b3] via-[#ff9898] to-[#a9ff68]", // coral pink → lime green
@@ -35,7 +35,7 @@ export const ThemedSlider = ({ value, onValueChange }: Props) => {
         className={clsx(
           "relative h-2 w-full rounded-full overflow-hidden",
           "bg-gradient-to-r",
-          gradientBg[themeTime]
+          gradientBg[timeOfDay]
         )}
       >
         <RadixSlider.Range className="absolute h-full bg-white/50" />

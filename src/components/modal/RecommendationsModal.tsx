@@ -32,9 +32,9 @@ export const RecommendationsModal = ({
   onOpenChange,
   name,
 }: RecommendationsModalProps) => {
-  const { themeTime } = useTimeThemeStore();
-  const themeTimeStyle =
-    themeTime == "night" ? "bg-gray-900 text-white" : "bg-white text-black";
+  const { timeOfDay } = useTimeThemeStore();
+  const timeOfDayStyle =
+    timeOfDay == "night" ? "bg-gray-900 text-white" : "bg-white text-black";
 
   const isMobile = useIsMobile();
   const [data, setData] = useState<{
@@ -62,7 +62,7 @@ export const RecommendationsModal = ({
 
   const avatarName = name == "Harry Kim" ? "harry" : "edward";
   const Title = (
-    <div className={clsx("font-medium flex", themeTimeStyle)}>
+    <div className={clsx("font-medium flex", timeOfDayStyle)}>
       <CustomAvatar name={avatarName} size="lg" />
       <div className="ml-3">
         <p>{name}</p>
@@ -85,7 +85,7 @@ export const RecommendationsModal = ({
 
   return isMobile ? (
     <Drawer open={open} onOpenChange={onOpenChange}>
-      <DrawerContent className={themeTimeStyle}>
+      <DrawerContent className={timeOfDayStyle}>
         <DrawerHeader>
           <DrawerTitle>{Title}</DrawerTitle>
           <DrawerDescription />
@@ -95,7 +95,7 @@ export const RecommendationsModal = ({
     </Drawer>
   ) : (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className={themeTimeStyle}>
+      <DialogContent className={timeOfDayStyle}>
         <DialogHeader>
           <DialogTitle>{Title}</DialogTitle>
           <DialogDescription />

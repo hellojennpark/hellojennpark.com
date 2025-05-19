@@ -15,8 +15,8 @@ const greetingMap = {
 };
 
 export default function Hero() {
-  const { themeTime, primaryColor, backgroundColor } = useTimeThemeStore();
-  const greeting = greetingMap[themeTime] ?? "Welcome, I'm Jenn.";
+  const { timeOfDay, primaryColor, backgroundColor } = useTimeThemeStore();
+  const greeting = greetingMap[timeOfDay] ?? "Welcome, I'm Jenn.";
   return (
     <section
       id="welcome"
@@ -32,7 +32,7 @@ export default function Hero() {
           style={{
             WebkitTextStroke: `1.2px ${backgroundColor}`,
             animation:
-              themeTime === "night"
+              timeOfDay === "night"
                 ? "glow 3s ease-in-out infinite"
                 : undefined,
           }}

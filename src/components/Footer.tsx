@@ -22,7 +22,7 @@ const navItems = [
 ];
 
 export const Footer = () => {
-  const { themeTime, primaryColor } = useTimeThemeStore();
+  const { timeOfDay, primaryColor } = useTimeThemeStore();
   const [activeSection, setActiveSection] = useState("welcome");
 
   useEffect(() => {
@@ -67,10 +67,10 @@ export const Footer = () => {
                   className={clsx(
                     "w-9 h-9 rounded-full flex items-center justify-center transition-colors",
                     isActive
-                      ? themeTime === "night"
+                      ? timeOfDay === "night"
                         ? "bg-white/60"
                         : "bg-black/60"
-                      : themeTime === "night"
+                      : timeOfDay === "night"
                       ? "group-hover:bg-white/40"
                       : "group-hover:bg-black/40"
                   )}

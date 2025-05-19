@@ -37,10 +37,10 @@ export default function CareerDashboard() {
   const [selectedName, setSelectedName] = useState("Harry Kim");
 
   const isMobile = useIsMobile();
-  const { themeTime } = useTimeThemeStore();
+  const { timeOfDay } = useTimeThemeStore();
 
-  const isNight = themeTime == "night";
-  const themeTimeBgStyle = isNight
+  const isNight = timeOfDay == "night";
+  const timeOfDayBgStyle = isNight
     ? "bg-black/40 text-white/80 hover:bg-gray-900 active:bg-gray-900"
     : "bg-white/60 text-black/80 hover:bg-white active:bg-white";
   const iconSize = isMobile ? " w-4 h-4" : " w-8 h-8";
@@ -94,7 +94,7 @@ export default function CareerDashboard() {
           rel="noopener noreferrer"
           className={clsx(
             "p-3 md:p-5 rounded-lg shadow-md flex flex-col justify-between",
-            themeTimeBgStyle
+            timeOfDayBgStyle
           )}
         >
           <div className="text-sm flex justify-between items-center">
@@ -115,7 +115,7 @@ export default function CareerDashboard() {
         }
       >
         {/* Career Timeline */}
-        <div className={clsx("p-5 rounded-lg shadow-md", themeTimeBgStyle)}>
+        <div className={clsx("p-5 rounded-lg shadow-md", timeOfDayBgStyle)}>
           <div className="flex justify-between items-center mb-4">
             <h3 className="flex flex-row items-center text-md md:text-lg font-semibold">
               <Calendar className="mr-3 text-indigo-500" />
@@ -128,7 +128,7 @@ export default function CareerDashboard() {
 
         {/* Recommendations */}
         <div
-          className={clsx("p-5 md:p-5 rounded-lg shadow-md", themeTimeBgStyle)}
+          className={clsx("p-5 md:p-5 rounded-lg shadow-md", timeOfDayBgStyle)}
         >
           <div className="flex gap-3 items-center mb-3 justify-between">
             <div className="flex items-center">
