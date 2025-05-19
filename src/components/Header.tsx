@@ -17,7 +17,11 @@ const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
 export const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const { hour, setHour, primaryColor, backgroundColor } = useTimeThemeStore();
+  const { hour, setHour, primaryColor, backgroundColor, themeTime } =
+    useTimeThemeStore();
+  const themeTimeStyle =
+    themeTime == "night" ? "bg-gray-900 text-white" : "bg-white text-black";
+
   const router = useRouter();
 
   useEffect(() => {
@@ -65,12 +69,14 @@ export const Header = () => {
             />
           </button>
         </DrawerTrigger>
-        <DrawerContent className="p-6 pb-18">
-          <div className="items-center flex flex-row py-2 mb-2">
+        <DrawerContent className={clsx("p-6 pb-18", themeTimeStyle)}>
+          <div className="items-center flex flex-row py-2 mb-4">
             <CustomAvatar name="jenn" size="xl" />
             <div className="flex flex-col ml-3">
               <p className="text-lg font-semibold">Jenn</p>
-              <p>Welcome to my space. Please enjoy and have a wonderful day!</p>
+              <p className="text-sm">
+                Welcome to my space. Please enjoy and have a wonderful day!
+              </p>
             </div>
           </div>
           <nav className="flex flex-col space-y-4 px-4 py-2">

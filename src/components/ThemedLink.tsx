@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import { ReactNode } from "react";
 import { usePathname } from "next/navigation";
+import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 
 type ThemedLinkProps = {
   href: string;
@@ -12,19 +13,33 @@ type ThemedLinkProps = {
 export const ThemedLink = ({ href, children }: ThemedLinkProps) => {
   const pathname = usePathname();
   const isActive = pathname == href;
-  // const isActive = pathname.startsWith(href);
+
+  const { themeTime } = useTimeThemeStore();
+  const isNight = themeTime == "night";
+  const linkClassName = isActive
+    ? isNight
+      ? "text-white"
+      : "text-black"
+    : isNight
+    ? "text-gray-400 hover:text-white active:text-white"
+    : "text-gray-500 hover:text-black active:text-black";
 
   return (
     <a
       href={href}
       className={clsx(
         "transition text-lg flex items-center gap-2",
-        isActive ? "text-black" : "text-gray-500 hover:text-black"
+        linkClassName
       )}
     >
       {children}
       {isActive && (
-        <span className="bg-black text-white text-xs px-2 py-0.5 rounded-md">
+        <span
+          className={clsx(
+            "text-xs px-2 py-0.5 rounded-md",
+            isNight ? "bg-white text-black" : "bg-black text-white"
+          )}
+        >
           current
         </span>
       )}
