@@ -16,15 +16,14 @@ export default function IntroduceSection() {
         {keywords.map((keyword) => (
           <p
             key={keyword}
-            // onClick={() => handleClick(keyword)}
-            className={`text-sm md:text-base px-3 py-1 rounded-full border transition-colors duration-200 text-white/80 border-white/30 hover:border-white hover:text-white`}
+            className={`text-sm md:text-base px-3 py-1 rounded-full border transition-colors duration-200 text-white border-white/80 transform transition duration-200 hover:scale-105 active:scale-105`}
           >
             # {keyword}
           </p>
         ))}
       </div>
       <div
-        className="w-full flex flex-col sm:flex-row gap-4"
+        className="w-full flex flex-col sm:flex-row gap-4 font-bold"
         style={{ color: primaryColor }}
       >
         <div className="w-full h-full flex flex-col justify-center items-start text-2xl md:text-5xl space-y-5 md:space-y-10">
