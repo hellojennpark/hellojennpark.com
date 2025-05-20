@@ -16,6 +16,7 @@ import {
 import clsx from "clsx";
 import { useState } from "react";
 import { RecommendationsModal } from "./modal/RecommendationsModal";
+import Link from "next/link";
 
 const recommendations = [
   {
@@ -130,15 +131,17 @@ export default function CareerDashboard() {
         <div
           className={clsx("p-5 md:p-5 rounded-lg shadow-md", timeOfDayBgStyle)}
         >
-          <div className="flex gap-3 items-center mb-3 justify-between">
-            <div className="flex items-center">
-              <Star className="w-6 h-6 text-yellow-400 mr-3" />
-              <h3 className="text-md md:text-lg font-semibold">
-                Recommendations
-              </h3>
+          <Link href="/recommendations">
+            <div className="flex gap-3 items-center mb-3 justify-between">
+              <div className="flex items-center">
+                <Star className="w-6 h-6 text-yellow-400 mr-3" />
+                <h3 className="text-md md:text-lg font-semibold">
+                  Recommendations
+                </h3>
+              </div>
+              <ChevronRight />
             </div>
-            <ChevronRight />
-          </div>
+          </Link>
           <div className="space-y-2">
             {recommendations.map((rec, i) => (
               <div

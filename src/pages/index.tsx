@@ -17,12 +17,10 @@ export default function Home() {
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
   useEffect(() => {
-    // 1. hash 없으면 #welcome 강제 적용
     if (!window.location.hash) {
       window.location.hash = "#welcome";
     }
 
-    // 2. IntersectionObserver로 현재 보이는 섹션 감지
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.find((entry) => entry.isIntersecting);
