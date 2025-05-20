@@ -36,7 +36,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
       >
         <div className={clsx(timeOfDayStyle, "pt-20 p-5")}>
           {/* Breadcrumb */}
-          <nav className="flex items-center text-sm space-x-1 pb-3">
+          <nav className="flex items-center text-md space-x-1 pb-3">
             <Link
               href="/#welcome"
               className={clsx(
@@ -62,7 +62,9 @@ export default function PageLayout({ children }: PageLayoutProps) {
           </nav>
 
           {/* Page Content */}
-          <div className="space-y-8 py-8 max-w-4xl mx-auto">{children}</div>
+          <div className="space-y-8 pt-4 pb-8 max-w-4xl mx-auto">
+            {children}
+          </div>
         </div>
       </div>
     </>
