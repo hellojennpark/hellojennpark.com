@@ -116,6 +116,9 @@ export const Header = () => {
             <ThemedLink href="/blog" onClick={closeDrawer}>
               Blog
             </ThemedLink>
+            <ThemedLink href="/contact" onClick={closeDrawer}>
+              Contact
+            </ThemedLink>
           </nav>
 
           <div className="absolute bottom-4 right-4 flex gap-8">
