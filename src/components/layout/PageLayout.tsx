@@ -33,7 +33,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
       className="w-full h-[100dvh] overflow-y-auto mx-auto justify-between"
       style={{ backgroundColor }}
     >
-      <div className={clsx(timeOfDayStyle, "pt-20 p-5")}>
+      <div className={clsx(timeOfDayStyle, "pt-20 p-5 h-full")}>
         {/* Breadcrumb */}
         <nav className="flex items-center text-md space-x-1 pb-3">
           <Link
