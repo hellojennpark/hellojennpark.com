@@ -7,7 +7,9 @@ interface TimeThemeStore {
   timeOfDay: TimeOfDay;
   primaryColor: string;
   backgroundColor: string;
+  isClientInitialized: boolean; // 새로운 상태 추가
   setHour: (hour: number) => void;
+  initializeTime: () => void;
 }
 
 const getTimeOfDay = (hour: number): TimeOfDay => {
@@ -36,18 +38,17 @@ const colorMap: Record<TimeOfDay, { primary: string; background: string }> = {
   },
 };
 
-export const useTimeThemeStore = create<TimeThemeStore>((set) => {
-  const date = new Date();
-  const hour = date.getHours();
-  const timeOfDay = getTimeOfDay(hour);
-  const colors = colorMap[timeOfDay];
-  console.log("@@@", date, hour, timeOfDay);
+export const useTimeThemeStore = create<TimeThemeStore>((set, get) => {
+  const defaultHour = 0; // 서버 측 렌더링 시 사용될 기본값
+  const defaultTimeOfDay = getTimeOfDay(defaultHour);
+  const defaultColors = colorMap[defaultTimeOfDay];
 
   return {
-    hour,
-    timeOfDay,
-    primaryColor: colors.primary,
-    backgroundColor: colors.background,
+    hour: defaultHour,
+    timeOfDay: defaultTimeOfDay,
+    primaryColor: defaultColors.primary,
+    backgroundColor: defaultColors.background,
+    isClientInitialized: false, // 초기값은 false
     setHour: (hour: number) => {
       const timeOfDay = getTimeOfDay(hour);
       const colors = colorMap[timeOfDay];
@@ -57,6 +58,14 @@ export const useTimeThemeStore = create<TimeThemeStore>((set) => {
         primaryColor: colors.primary,
         backgroundColor: colors.background,
       });
+    },
+    initializeTime: () => {
+      if (typeof window !== "undefined") {
+        const date = new Date();
+        const currentHour = date.getHours();
+        get().setHour(currentHour);
+        set({ isClientInitialized: true }); // 클라이언트에서 초기화 완료
+      }
     },
   };
 });

@@ -13,7 +13,7 @@ type PageLayoutProps = {
 
 export default function PageLayout({ children }: PageLayoutProps) {
   const router = useRouter();
-  const { backgroundColor, timeOfDay } = useTimeThemeStore();
+  const { timeOfDay } = useTimeThemeStore();
   const isNight = timeOfDay == "night";
   const timeOfDayStyle = isNight
     ? "bg-black/40 text-white"
@@ -29,10 +29,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
     });
 
   return (
-    <div
-      className="w-full h-[100dvh] overflow-y-auto mx-auto justify-between"
-      style={{ backgroundColor }}
-    >
+    <div className="w-full h-[100dvh] overflow-y-auto mx-auto justify-between">
       <div className={clsx(timeOfDayStyle, "pt-20 p-5 min-h-full")}>
         {/* Breadcrumb */}
         <nav className="flex items-center text-md space-x-1 pb-3">
