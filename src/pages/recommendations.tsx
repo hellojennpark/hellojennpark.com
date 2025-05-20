@@ -11,7 +11,17 @@ export default function WorkHistoryPage() {
   const { timeOfDay } = useTimeThemeStore();
   return (
     <PageLayout>
-      <div className="text-xl md:text-2xl font-semibold">Recommendations</div>
+      <div className="flex text-xl md:text-2xl font-semibold items-center">
+        <span className="mr-2">Recommendations</span>
+        <span
+          className={clsx(
+            "text-xs px-2 py-0.5 rounded-md",
+            timeOfDay == "night" ? "bg-white text-black" : "bg-black text-white"
+          )}
+        >
+          2
+        </span>
+      </div>
       <div>
         {
           "Below are recommendations from some amazing colleagues I've been fortunate to work with. These are people I had great chemistry with professionally, and their feedback means a lot to me."
