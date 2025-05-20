@@ -37,9 +37,11 @@ const colorMap: Record<TimeOfDay, { primary: string; background: string }> = {
 };
 
 export const useTimeThemeStore = create<TimeThemeStore>((set) => {
-  const hour = new Date().getHours();
+  const date = new Date();
+  const hour = date.getHours();
   const timeOfDay = getTimeOfDay(hour);
   const colors = colorMap[timeOfDay];
+  console.log("@@@", date, hour, timeOfDay);
 
   return {
     hour,
