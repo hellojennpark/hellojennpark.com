@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
 import { Dancing_Script } from "next/font/google";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
 import { Github, Linkedin } from "lucide-react";
 import Link from "next/link";
@@ -16,6 +16,9 @@ import { CustomAvatar } from "./CustomAvatar";
 const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
 export const Header = () => {
+  const pathname = usePathname();
+  const useDefaultFont = pathname == "/";
+
   const [isMobile, setIsMobile] = useState(false);
   const { hour, setHour, primaryColor, backgroundColor, timeOfDay } =
     useTimeThemeStore();
@@ -44,7 +47,7 @@ export const Header = () => {
         onClick={() => router.push("/#welcome")}
       >
         <span
-          className={`${dancingScript.className}`}
+          className={`${!useDefaultFont ? "" : dancingScript.className}`}
           style={{
             color: primaryColor,
             WebkitTextStroke: `0.5px ${backgroundColor}`,
