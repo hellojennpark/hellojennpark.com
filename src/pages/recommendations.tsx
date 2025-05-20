@@ -12,6 +12,7 @@ export default function WorkHistoryPage() {
   // const timeOfDayStyle = timeOfDay === "night" ? "text-white" : "text-black";
   return (
     <PageLayout>
+      <div className="text-xl md:text-2xl font-semibold">Recommendations</div>
       <div>
         {
           "Below are recommendations from some amazing colleagues I've been fortunate to work with. These are people I had great chemistry with professionally, and their feedback means a lot to me."
@@ -23,7 +24,9 @@ export default function WorkHistoryPage() {
             key={index}
             className={clsx(
               "space-y-8 p-4 rounded-lg border",
-              timeOfDay == "night" ? "" : "bg-white border-black"
+              timeOfDay == "night"
+                ? "bg-gray-900 border-white"
+                : "bg-white border-black"
             )}
           >
             <RecommendationTitle
@@ -35,10 +38,20 @@ export default function WorkHistoryPage() {
           </div>
         ))}
       </div>
-      <div>
-        {
-          "These recommendations have been translated from Korean to English. To view the original versions, please visit my LinkedIn profile."
-        }
+      <div className="text-sm italic">
+        <span>
+          {
+            "These recommendations have been translated from Korean to English. To view the original versions, please visit my "
+          }
+        </span>
+        <a
+          target="_blank"
+          className="underline"
+          href="https://www.linkedin.com/in/hellojennpark"
+        >
+          LinkedIn profile
+        </a>
+        <span>.</span>
       </div>
     </PageLayout>
   );
