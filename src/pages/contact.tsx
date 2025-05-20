@@ -3,7 +3,7 @@
 import PageLayout from "@/components/layout/PageLayout";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
-import { Mail, Github, Linkedin } from "lucide-react";
+import { Mail, Github, Linkedin, SquareArrowOutUpRight } from "lucide-react";
 import Link from "next/link";
 
 export default function ContactPage() {
@@ -29,14 +29,28 @@ export default function ContactPage() {
       <div className={clsx("space-y-4 border rounded-lg p-5", timeOfDayStyle)}>
         <div className="flex items-center">
           <Mail className="w-4 h-4 mr-2" />
-          <Link href="mailto:hellojennpark@gmail.com">
+          <Link
+            href="mailto:hellojennpark@gmail.com"
+            className={clsx(
+              "flex items-center hover:border-b active:border-b",
+              timeOfDayStyle
+            )}
+          >
             hellojennpark@gmail.com
           </Link>
         </div>
         <div className="flex items-center">
           <Github className="w-4 h-4 mr-2" />
-          <Link href="https://github.com/hellojennpark" target="_blank">
+          <Link
+            href="https://github.com/hellojennpark"
+            target="_blank"
+            className={clsx(
+              "flex items-center hover:border-b active:border-b",
+              timeOfDayStyle
+            )}
+          >
             github.com/hellojennpark
+            <SquareArrowOutUpRight className="w-4 h-4 ml-1" />
           </Link>
         </div>
         <div className="flex items-center">
@@ -44,8 +58,13 @@ export default function ContactPage() {
           <Link
             href="https://www.linkedin.com/in/hellojennpark"
             target="_blank"
+            className={clsx(
+              "flex items-center hover:border-b active:border-b",
+              timeOfDayStyle
+            )}
           >
             linkedin.com/in/hellojennpark
+            <SquareArrowOutUpRight className="w-4 h-4 ml-1" />
           </Link>
         </div>
       </div>
