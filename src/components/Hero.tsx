@@ -2,10 +2,7 @@
 
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { HeroBackground } from "./HeroBackground";
-import { Dancing_Script } from "next/font/google";
 import clsx from "clsx";
-
-const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
 const greetingMap = {
   morning: "Hello, early bird.",
@@ -21,14 +18,13 @@ export default function Hero() {
     <section
       id="welcome"
       className={clsx(
-        "relative min-h-[100dvh] flex items-center justify-center text-2xl snap-start shadow-[0_8px_20px_-10px_rgba(0,0,0,0.3)]",
-        dancingScript.className
+        "relative min-h-[100dvh] flex items-center justify-center text-2xl snap-start shadow-[0_8px_20px_-10px_rgba(0,0,0,0.3)]"
       )}
       style={{ color: primaryColor }}
     >
       <div className="relative z-10 text-center mx-10 p-5 rounded-md">
         <h1
-          className={clsx("text-6xl md:text-8xl font-bold")}
+          className={clsx("text-5xl md:text-7xl font-bold")}
           style={{
             WebkitTextStroke: `1.2px ${backgroundColor}`,
             animation:

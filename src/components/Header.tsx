@@ -4,7 +4,6 @@ import { Drawer, DrawerTrigger, DrawerContent } from "@/components/ui/drawer";
 import { useEffect, useState } from "react";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
-import { Dancing_Script } from "next/font/google";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
 import { Github, Linkedin } from "lucide-react";
@@ -12,8 +11,6 @@ import Link from "next/link";
 import { ThemedLink } from "./ThemedLink";
 import { ThemedSlider } from "./ThemedSlider";
 import { CustomAvatar } from "./CustomAvatar";
-
-const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
 export const Header = () => {
   const pathname = usePathname();
@@ -54,7 +51,6 @@ export const Header = () => {
         onClick={() => router.push("/#welcome")}
       >
         <span
-          className={`${isLanding ? dancingScript.className : ""}`}
           style={{
             color: isLanding || isNight ? primaryColor : backgroundColor,
             WebkitTextStroke: `0.5px ${
@@ -104,7 +100,7 @@ export const Header = () => {
             <ThemedLink href="/" onClick={closeDrawer}>
               Home
             </ThemedLink>
-            <ThemedLink href="/work" onClick={closeDrawer}>
+            <ThemedLink href="/work-history" onClick={closeDrawer}>
               Work History
             </ThemedLink>
             <ThemedLink href="/recommendations" onClick={closeDrawer}>

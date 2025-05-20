@@ -117,13 +117,15 @@ export default function CareerDashboard() {
       >
         {/* Career Timeline */}
         <div className={clsx("p-5 rounded-lg shadow-md", timeOfDayBgStyle)}>
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="flex flex-row items-center text-md md:text-lg font-semibold">
-              <Calendar className="mr-3 text-indigo-500" />
-              Work History
-            </h3>
-            <ChevronRight />
-          </div>
+          <Link href="/work-hisotry">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="flex flex-row items-center text-md md:text-lg font-semibold">
+                <Calendar className="mr-3 text-indigo-500" />
+                Work History
+              </h3>
+              <ChevronRight />
+            </div>
+          </Link>
           <CareerTimeline />
         </div>
 
