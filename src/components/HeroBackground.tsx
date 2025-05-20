@@ -1,5 +1,6 @@
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { Clouds } from "./Clouds";
+import Image from "next/image";
 
 export const HeroBackground = () => {
   const { timeOfDay } = useTimeThemeStore();
@@ -8,9 +9,10 @@ export const HeroBackground = () => {
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
       {timeOfDay != "night" && <Clouds />}
       <div className="relative w-full h-full z-5">
-        <img
+        <Image
           src="/toroto.png"
           alt="Toronto skyline"
+          fill
           className="w-full h-full object-contain object-bottom sm:object-cover sm:object-top"
           style={{
             mixBlendMode: "multiply",
