@@ -9,7 +9,6 @@ import clsx from "clsx";
 
 export default function WorkHistoryPage() {
   const { timeOfDay } = useTimeThemeStore();
-  // const timeOfDayStyle = timeOfDay === "night" ? "text-white" : "text-black";
   return (
     <PageLayout>
       <div className="text-xl md:text-2xl font-semibold">Recommendations</div>
