@@ -50,7 +50,7 @@ export const Header = () => {
       )}
     >
       <div
-        className="font-bold text-2xl flex items-center gap-2 cursor-pointer"
+        className="font-bold text-2xl flex items-center gap-2 cursor-pointer transform transition duration-200 hover:scale-105 active:scale-105"
         onClick={() => router.push("/#welcome")}
       >
         <span
@@ -76,13 +76,15 @@ export const Header = () => {
         direction={isMobile ? "bottom" : "right"}
       >
         <DrawerTrigger asChild>
-          <button className="rounded-md p-0.5">
-            <Menu
-              className="w-6 h-6"
-              style={{
-                color: isLanding || isNight ? primaryColor : backgroundColor,
-              }}
-            />
+          <button
+            className="rounded-md p-0.5 border-2 transform transition duration-200 hover:scale-105 active:scale-105"
+            style={{
+              color: isLanding || isNight ? primaryColor : backgroundColor,
+              borderColor:
+                isLanding || isNight ? primaryColor : backgroundColor,
+            }}
+          >
+            <Menu className="w-6 h-6" />
           </button>
         </DrawerTrigger>
         <DrawerContent className={clsx("p-6 pb-18", timeOfDayStyle)}>
