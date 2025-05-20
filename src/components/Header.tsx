@@ -80,7 +80,7 @@ export const Header = () => {
             <Menu
               className="w-6 h-6"
               style={{
-                color: primaryColor,
+                color: isLanding || isNight ? primaryColor : backgroundColor,
               }}
             />
           </button>
