@@ -77,7 +77,10 @@ export const Header = () => {
       >
         <DrawerTrigger asChild>
           <button
-            className="rounded-md p-0.5 border-2 transform transition duration-200 hover:scale-105 active:scale-105"
+            className={clsx(
+              "rounded-md p-0.5 transform transition duration-200 hover:scale-105 active:scale-105",
+              !isLanding && "border-2"
+            )}
             style={{
               color: isLanding || isNight ? primaryColor : backgroundColor,
               borderColor:

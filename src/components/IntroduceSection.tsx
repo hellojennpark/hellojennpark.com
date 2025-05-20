@@ -16,7 +16,7 @@ export default function IntroduceSection() {
         {keywords.map((keyword) => (
           <p
             key={keyword}
-            className={`text-sm md:text-base px-3 py-1 rounded-full border transition-colors duration-200 text-white border-white/80 transform transition duration-200 hover:scale-105 active:scale-105`}
+            className={`text-sm md:text-base font-bold px-3 py-1 rounded-full border transition-colors duration-200 text-white/90 transform transition duration-200 hover:scale-105 active:scale-105`}
           >
             # {keyword}
           </p>
