@@ -1,16 +1,18 @@
 "use client";
 
 import clsx from "clsx";
-import { ReactNode } from "react";
+import { ReactNode, MouseEventHandler } from "react"; // MouseEventHandler 추가
 import { usePathname } from "next/navigation";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
+import Link from "next/link";
 
 type ThemedLinkProps = {
   href: string;
   children: ReactNode;
+  onClick?: MouseEventHandler<HTMLAnchorElement>; // onClick prop 추가 (선택적)
 };
 
-export const ThemedLink = ({ href, children }: ThemedLinkProps) => {
+export const ThemedLink = ({ href, children, onClick }: ThemedLinkProps) => {
   const pathname = usePathname();
   const isActive = pathname == href;
 
@@ -25,12 +27,13 @@ export const ThemedLink = ({ href, children }: ThemedLinkProps) => {
     : "text-gray-500 hover:text-black active:text-black";
 
   return (
-    <a
+    <Link
       href={href}
       className={clsx(
         "transition text-lg flex items-center gap-2",
         linkClassName
       )}
+      onClick={onClick} // onClick 이벤트 핸들러 연결
     >
       {children}
       {isActive && (
@@ -43,6 +46,6 @@ export const ThemedLink = ({ href, children }: ThemedLinkProps) => {
           current
         </span>
       )}
-    </a>
+    </Link>
   );
 };

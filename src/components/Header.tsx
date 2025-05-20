@@ -17,8 +17,10 @@ const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
 export const Header = () => {
   const pathname = usePathname();
+  const router = useRouter();
 
   const [isMobile, setIsMobile] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { hour, setHour, primaryColor, backgroundColor, timeOfDay } =
     useTimeThemeStore();
 
@@ -28,8 +30,6 @@ export const Header = () => {
     ? "bg-gray-900 text-white"
     : "bg-white text-black";
 
-  const router = useRouter();
-
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -38,6 +38,10 @@ export const Header = () => {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+  };
 
   return (
     <header
@@ -66,7 +70,11 @@ export const Header = () => {
         <ThemedSlider value={[hour]} onValueChange={([v]) => setHour(v)} />
       </div>
 
-      <Drawer direction={isMobile ? "bottom" : "right"}>
+      <Drawer
+        open={isDrawerOpen}
+        onOpenChange={setIsDrawerOpen}
+        direction={isMobile ? "bottom" : "right"}
+      >
         <DrawerTrigger asChild>
           <button className="rounded-md p-0.5">
             <Menu
@@ -88,11 +96,21 @@ export const Header = () => {
             </div>
           </div>
           <nav className="flex flex-col space-y-4 px-4 py-2">
-            <ThemedLink href="/">Home</ThemedLink>
-            <ThemedLink href="/work">Work History</ThemedLink>
-            <ThemedLink href="/recommendations">Recommendations</ThemedLink>
-            <ThemedLink href="/projects">Projects</ThemedLink>
-            <ThemedLink href="/blog">Blog</ThemedLink>
+            <ThemedLink href="/" onClick={closeDrawer}>
+              Home
+            </ThemedLink>
+            <ThemedLink href="/work" onClick={closeDrawer}>
+              Work History
+            </ThemedLink>
+            <ThemedLink href="/recommendations" onClick={closeDrawer}>
+              Recommendations
+            </ThemedLink>
+            <ThemedLink href="/projects" onClick={closeDrawer}>
+              Projects
+            </ThemedLink>
+            <ThemedLink href="/blog" onClick={closeDrawer}>
+              Blog
+            </ThemedLink>
           </nav>
 
           <div className="absolute bottom-4 right-4 flex gap-8">
