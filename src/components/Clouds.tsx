@@ -15,6 +15,9 @@ type Cloud = {
 };
 
 export const Clouds = () => {
+  const cloudCount = 20;
+  const cloudSize = 50;
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -39,8 +42,6 @@ export const Clouds = () => {
 
     setCanvasSize();
 
-    const cloudCount = 20;
-
     const createCloud = (): Cloud => {
       const baseX = Math.random() * logicalWidth;
       const baseY = logicalHeight * (0.25 + Math.random() * 0.4);
@@ -53,7 +54,7 @@ export const Clouds = () => {
         circles.push({
           offsetX: Math.cos(angle) * distance,
           offsetY: Math.sin(angle) * distance,
-          r: 20 + Math.random() * 30,
+          r: 20 + Math.random() * cloudSize,
         });
       }
 
