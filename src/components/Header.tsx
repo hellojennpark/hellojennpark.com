@@ -17,13 +17,16 @@ const dancingScript = Dancing_Script({ subsets: ["latin"] });
 
 export const Header = () => {
   const pathname = usePathname();
-  const useDefaultFont = pathname == "/";
 
   const [isMobile, setIsMobile] = useState(false);
   const { hour, setHour, primaryColor, backgroundColor, timeOfDay } =
     useTimeThemeStore();
-  const timeOfDayStyle =
-    timeOfDay == "night" ? "bg-gray-900 text-white" : "bg-white text-black";
+
+  const isLanding = pathname == "/";
+  const isNight = timeOfDay == "night";
+  const timeOfDayStyle = isNight
+    ? "bg-gray-900 text-white"
+    : "bg-white text-black";
 
   const router = useRouter();
 
@@ -47,10 +50,12 @@ export const Header = () => {
         onClick={() => router.push("/#welcome")}
       >
         <span
-          className={`${!useDefaultFont ? "" : dancingScript.className}`}
+          className={`${dancingScript.className}`}
           style={{
-            color: primaryColor,
-            WebkitTextStroke: `0.5px ${backgroundColor}`,
+            color: isLanding || isNight ? primaryColor : backgroundColor,
+            WebkitTextStroke: `0.5px ${
+              isLanding || isNight ? primaryColor : backgroundColor
+            }`,
           }}
         >
           HelloJennPark
