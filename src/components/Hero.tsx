@@ -28,7 +28,7 @@ export default function Hero() {
     >
       <div className="relative z-10 text-center mx-10 p-5 rounded-md">
         <h1
-          className={clsx("text-5xl md:text-7xl font-bold")}
+          className={clsx("text-5xl md:text-7xl font-black")}
           style={{
             WebkitTextStroke: `1.2px ${backgroundColor}`,
             animation:
