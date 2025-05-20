@@ -31,10 +31,10 @@ export default function PageLayout({ children }: PageLayoutProps) {
   return (
     <>
       <div
-        className="w-full h-[100dvh] overflow-hidden mx-auto px-4 py-4 pt-18"
+        className="w-full h-[100dvh] overflow-y-auto mx-auto justify-between"
         style={{ backgroundColor }}
       >
-        <div className={clsx(timeOfDayStyle, "p-5 rounded-md")}>
+        <div className={clsx(timeOfDayStyle, "pt-20 p-5")}>
           {/* Breadcrumb */}
           <nav className="flex items-center text-sm space-x-1 pb-3">
             <Link
@@ -62,9 +62,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
           </nav>
 
           {/* Page Content */}
-          <div className="h-[calc(100dvh-10rem)] overflow-y-auto pr-2 md:pr-4">
-            {children}
-          </div>
+          <div className="space-y-8 py-8 max-w-4xl mx-auto">{children}</div>
         </div>
       </div>
     </>
