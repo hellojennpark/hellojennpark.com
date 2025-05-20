@@ -54,7 +54,7 @@ export const Header = () => {
         onClick={() => router.push("/#welcome")}
       >
         <span
-          className={`${dancingScript.className}`}
+          className={`${isLanding ? dancingScript.className : ""}`}
           style={{
             color: isLanding || isNight ? primaryColor : backgroundColor,
             WebkitTextStroke: `0.5px ${

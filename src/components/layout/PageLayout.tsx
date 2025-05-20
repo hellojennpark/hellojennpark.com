@@ -29,44 +29,40 @@ export default function PageLayout({ children }: PageLayoutProps) {
     });
 
   return (
-    <>
-      <div
-        className="w-full h-[100dvh] overflow-y-auto mx-auto justify-between"
-        style={{ backgroundColor }}
-      >
-        <div className={clsx(timeOfDayStyle, "pt-20 p-5")}>
-          {/* Breadcrumb */}
-          <nav className="flex items-center text-md space-x-1 pb-3">
-            <Link
-              href="/#welcome"
-              className={clsx(
-                "flex items-center",
-                isNight
-                  ? "text-gray-400 hover:text-gray-200"
-                  : "text-gray-700 hover:text-gray-900"
+    <div
+      className="w-full h-[100dvh] overflow-y-auto mx-auto justify-between"
+      style={{ backgroundColor }}
+    >
+      <div className={clsx(timeOfDayStyle, "pt-20 p-5")}>
+        {/* Breadcrumb */}
+        <nav className="flex items-center text-md space-x-1 pb-3">
+          <Link
+            href="/#welcome"
+            className={clsx(
+              "flex items-center",
+              isNight
+                ? "text-gray-400 hover:text-gray-200"
+                : "text-gray-700 hover:text-gray-900"
+            )}
+          >
+            <Home className="w-4 h-4 mr-1" />
+            Home
+          </Link>
+          {crumbs.map((crumb, index) => (
+            <div key={crumb.href} className="flex items-center space-x-1">
+              <ChevronRight className="w-4 h-4 text-muted-foreground" />
+              {index === crumbs.length - 1 ? (
+                <span>{crumb.label}</span>
+              ) : (
+                <Link href={crumb.href}>{crumb.label}</Link>
               )}
-            >
-              <Home className="w-4 h-4 mr-1" />
-              Home
-            </Link>
-            {crumbs.map((crumb, index) => (
-              <div key={crumb.href} className="flex items-center space-x-1">
-                <ChevronRight className="w-4 h-4 text-muted-foreground" />
-                {index === crumbs.length - 1 ? (
-                  <span>{crumb.label}</span>
-                ) : (
-                  <Link href={crumb.href}>{crumb.label}</Link>
-                )}
-              </div>
-            ))}
-          </nav>
+            </div>
+          ))}
+        </nav>
 
-          {/* Page Content */}
-          <div className="space-y-8 pt-4 pb-8 max-w-4xl mx-auto">
-            {children}
-          </div>
-        </div>
+        {/* Page Content */}
+        <div className="space-y-8 pt-4 pb-8 max-w-4xl mx-auto">{children}</div>
       </div>
-    </>
+    </div>
   );
 }
