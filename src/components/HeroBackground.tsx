@@ -11,7 +11,7 @@ export const HeroBackground = () => {
 
       {timeOfDay === "morning" && (
         <div
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 animate-grid-shimmer"
           style={{
             width: "150%",
             height: "150%",

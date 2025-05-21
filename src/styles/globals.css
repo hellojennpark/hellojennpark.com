@@ -206,3 +206,16 @@ html {
   }
 }
 
+/* In your global.css or a relevant CSS module */
+@keyframes gridShimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 40px 40px; /* Moves one grid cell */
+  }
+}
+
+.animate-grid-shimmer {
+  animation: gridShimmer 8s linear infinite; /* Adjust duration and timing as needed */
+}
