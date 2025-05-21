@@ -36,12 +36,39 @@ const experiences = [
 
 const totalMonths = experiences.reduce((acc, exp) => acc + exp.months, 0);
 
-export function CareerTimeline() {
+export function CareerTimeline({ hide }: { hide: boolean }) {
+  const Summary = (
+    <>
+      <div className="text-md md:text-lg">
+        <div>
+          <strong>{Math.floor(totalMonths / 12)}y</strong> (incl. 8-month
+          internship)
+        </div>
+      </div>
+      <div className="space-y-1 md:space-y-2">
+        {experiences.map((exp, i) => (
+          <div key={i} className="flex items-center gap-2">
+            <span
+              className={cn(
+                exp.color,
+                "w-3 h-3 rounded-full shrink-0 border border-white/30"
+              )}
+              aria-hidden
+            />
+            <span>
+              {exp.company} <strong>{exp.title}</strong>
+            </span>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+
   return (
     <div className="space-y-1 md:space-y-2 w-full text-md pt-1">
       {/* Timeline bar */}
       <TooltipProvider>
-        <div className="w-full flex h-6 rounded overflow-hidden border border-white/30">
+        <div className="w-full flex h-8 rounded overflow-hidden border border-white/30">
           {experiences.map((exp, i) => (
             <Tooltip key={i}>
               <TooltipTrigger asChild>
@@ -57,7 +84,9 @@ export function CareerTimeline() {
               </TooltipTrigger>
               <TooltipContent side="top" sideOffset={6}>
                 <div className="text-sm text-white">
-                  <div className="font-medium">{exp.company}</div>
+                  <div className="font-medium">
+                    {exp.company} ({exp.duration})
+                  </div>
                   <div>{exp.title}</div>
                 </div>
               </TooltipContent>
@@ -65,35 +94,7 @@ export function CareerTimeline() {
           ))}
         </div>
       </TooltipProvider>
-
-      {/* Summary text */}
-      <div className="text-md md:text-lg">
-        <div>
-          <strong>
-            {Math.floor(totalMonths / 12)}y{/* {totalMonths % 12}m */}
-          </strong>{" "}
-          (incl. 8-month internship)
-        </div>
-      </div>
-
-      {/* Labels */}
-      <div className="space-y-1 md:space-y-2">
-        {experiences.map((exp, i) => (
-          <div key={i} className="flex items-center gap-2">
-            {/* 색상 동그라미 */}
-            <span
-              className={cn(
-                exp.color,
-                "w-3 h-3 rounded-full shrink-0 border border-white/30"
-              )}
-              aria-hidden
-            />
-            <span>
-              {exp.company} <strong>{exp.title}</strong>
-            </span>
-          </div>
-        ))}
-      </div>
+      {!hide && Summary}
     </div>
   );
 }

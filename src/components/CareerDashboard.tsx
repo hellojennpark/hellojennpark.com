@@ -126,7 +126,7 @@ export default function CareerDashboard() {
               <ChevronRight />
             </div>
           </Link>
-          <CareerTimeline />
+          <CareerTimeline hide={false} />
         </div>
 
         {/* Recommendations */}
