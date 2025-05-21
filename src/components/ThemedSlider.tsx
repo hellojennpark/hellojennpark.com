@@ -38,12 +38,7 @@ export const ThemedSlider = ({ value, onValueChange }: Props) => {
           gradientBg[timeOfDay]
         )}
       >
-        <RadixSlider.Range
-          className={clsx(
-            "absolute h-full",
-            isNight ? "bg-white/10" : "bg-black/10"
-          )}
-        />
+        <RadixSlider.Range className={clsx("absolute h-full")} />
       </RadixSlider.Track>
 
       {/* Thumb (icon instead of dot) */}
