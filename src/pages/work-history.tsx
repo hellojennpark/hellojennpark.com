@@ -15,10 +15,6 @@ export default function WorkHistoryPage() {
 
   return (
     <PageLayout>
-      <div className="flex text-xl md:text-2xl font-semibold">
-        <span className="mr-2">Work History</span>
-      </div>
-
       <div
         className={
           "col-span-full grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4"

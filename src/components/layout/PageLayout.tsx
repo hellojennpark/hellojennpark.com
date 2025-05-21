@@ -49,7 +49,9 @@ export default function PageLayout({ children }: PageLayoutProps) {
             <div key={crumb.href} className="flex items-center space-x-1">
               <ChevronRight className="w-4 h-4 text-muted-foreground" />
               {index === crumbs.length - 1 ? (
-                <span>{crumb.label.replace("-", " ")}</span>
+                <span className="font-bold">
+                  {crumb.label.replace("-", " ")}
+                </span>
               ) : (
                 <Link href={crumb.href}>{crumb.label}</Link>
               )}
