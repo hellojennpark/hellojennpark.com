@@ -50,12 +50,10 @@ export default function Hero() {
         clearTimeout(clickTimeoutRef.current);
       }
 
-      setShowAltGreeting(true); // Show the alternative greeting immediately on click
-
-      // Set a timeout to revert to the original greeting after 3 seconds
+      setShowAltGreeting(true);
       clickTimeoutRef.current = setTimeout(() => {
         setShowAltGreeting(false);
-      }, 3000); // 3000 milliseconds = 3 seconds
+      }, 3000) as unknown as null;
     }
   };
 
