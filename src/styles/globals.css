@@ -166,3 +166,43 @@ html {
   background-color: black;
   color: white;
 }
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.bounce-letter {
+  display: inline-block;
+  animation: bounce 1.2s ease-in-out infinite;
+}
+
+/* In your globals.css or a similar global stylesheet */
+
+@keyframes pixel-pulse {
+  0% {
+    text-shadow: 0 0px 0px rgba(255, 255, 255, 0.5),
+      0 0px 0px rgba(0, 0, 0, 0.2);
+  }
+  25% {
+    text-shadow: 0 -2px 0px rgba(255, 255, 255, 0.7),
+      0 5px 0px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    text-shadow: 0 0px 0px rgba(255, 255, 255, 0.5),
+      0 0px 0px rgba(0, 0, 0, 0.2);
+  }
+  75% {
+    text-shadow: 0 -1px 0px rgba(255, 255, 255, 0.6),
+      0 5px 0px rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    text-shadow: 0 0px 0px rgba(255, 255, 255, 0.5),
+      0 0px 0px rgba(0, 0, 0, 0.2);
+  }
+}
+

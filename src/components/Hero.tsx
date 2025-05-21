@@ -1,5 +1,4 @@
 "use client";
-
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { HeroBackground } from "./HeroBackground";
 import clsx from "clsx";
@@ -20,9 +19,18 @@ const greetingMap = {
 export default function Hero() {
   const { timeOfDay, primaryColor, backgroundColor } = useTimeThemeStore();
   const greeting = greetingMap[timeOfDay] ?? "Welcome, I'm Jenn.";
-  let glow = undefined;
-  if (timeOfDay == "night") {
-    glow = "glow 3s ease-in-out infinite";
+
+  // Define the animation for evening
+  let eveningAnimation = undefined;
+  if (timeOfDay === "evening") {
+    // This animation will give a subtle "pixelated" bounce feel using text-shadow
+    eveningAnimation = "pixel-pulse 1.5s ease-in-out infinite";
+  }
+
+  // Define the glow animation for night (if you still want it)
+  let nightGlow = undefined;
+  if (timeOfDay === "night") {
+    nightGlow = "glow 3s ease-in-out infinite";
   }
 
   return (
@@ -43,7 +51,8 @@ export default function Hero() {
           )}
           style={{
             WebkitTextStroke: `1.2px ${backgroundColor}`,
-            animation: glow,
+            // Apply evening specific animation, or night glow, otherwise undefined
+            animation: eveningAnimation || nightGlow,
           }}
         >
           {greeting}
