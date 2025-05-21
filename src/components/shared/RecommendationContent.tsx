@@ -10,7 +10,7 @@ export const RecommendationContent = ({
   return (
     <div className="space-y-2 px-2">
       {content.map((paragraph, idx) => (
-        <p key={idx} className="text-sm leading-relaxed">
+        <p key={idx} className="leading-relaxed">
           {paragraph}
         </p>
       ))}

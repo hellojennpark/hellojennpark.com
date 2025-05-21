@@ -20,7 +20,7 @@ export default function ContactPage() {
       </div>
 
       {/* Introduction */}
-      <p className="mb-8 max-w-2xl">
+      <p>
         {
           "In Toronto these days. Feel free to reach out with any questions, ideas, or just to say hi."
         }
