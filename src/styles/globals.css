@@ -219,3 +219,19 @@ html {
 .animate-grid-shimmer {
   animation: gridShimmer 8s linear infinite; /* Adjust duration and timing as needed */
 }
+
+/* globals.css or a dedicated CSS module */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    /* transform: scale(0.98); optional */
+  }
+  to {
+    opacity: 1;
+    /* transform: scale(1); optional */
+  }
+}
+
+.fade-in-animation {
+  animation: fadeIn 1s ease-in-out forwards;
+}
