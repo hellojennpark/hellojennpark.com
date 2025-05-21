@@ -17,7 +17,7 @@ export const ThemedSlider = ({ value, onValueChange }: Props) => {
   const gradientBg = {
     morning: "from-[#ffb3b3] via-[#ff9898] to-[#a9ff68]", // coral pink → lime green
     day: "from-[#fde74c] via-[#b1d8ff] to-[#82bcf0]", // yellow → sky blue
-    evening: "from-[#f4a261] via-[#f6aa72] to-[#ffffff]", // orange → white
+    evening: "from-[#5ec9c0] via-[#a7c8d7] to-[#f26a8d]", // orange → white
     night: "from-[#043565] via-[#283e6d] to-[#eb4b98]", // navy → hot pink
   };
 

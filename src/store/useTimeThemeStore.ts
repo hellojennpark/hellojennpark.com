@@ -29,8 +29,8 @@ const colorMap: Record<TimeOfDay, { primary: string; background: string }> = {
     background: "#82bcf0", // light sky
   },
   evening: {
-    primary: "#ffc857", // white
-    background: "#e9724c", // rich sandy orange
+    primary: "#5ec9c0", // white
+    background: "#f26a8d", // rich sandy orange
   },
   night: {
     primary: "#eb4b98", // hot pink
