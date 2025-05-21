@@ -3,7 +3,8 @@ import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { HeroBackground } from "./HeroBackground";
 import clsx from "clsx";
 import { Press_Start_2P } from "next/font/google";
-import { useState, useRef } from "react"; // Import useRef
+import { useState, useRef } from "react";
+import { Bird } from "lucide-react";
 
 const pixelFont = Press_Start_2P({
   weight: "400",
@@ -19,18 +20,17 @@ const greetingMap = {
 
 export default function Hero() {
   const { timeOfDay, primaryColor, backgroundColor } = useTimeThemeStore();
-  const [showAltGreeting, setShowAltGreeting] = useState(false); // State to control alternative greeting
-  const clickTimeoutRef = useRef(null); // Ref to store the timeout ID for the click
+  const [showAltGreeting, setShowAltGreeting] = useState(false);
+  const clickTimeoutRef = useRef(null);
+  const [birdPosition, setBirdPosition] = useState("0%"); // State for bird's position
 
   const greeting = greetingMap[timeOfDay] ?? "Welcome, I'm Jenn.";
 
-  // Define the animation for evening
   let eveningAnimation = undefined;
   if (timeOfDay === "evening") {
     eveningAnimation = "pixel-pulse 1.5s ease-in-out infinite";
   }
 
-  // Define the glow animation for night
   let nightGlow = undefined;
   if (timeOfDay === "night") {
     nightGlow = "glow 3s ease-in-out infinite";
@@ -39,13 +39,11 @@ export default function Hero() {
   const isMorning = timeOfDay === "morning";
   const isEvening = timeOfDay === "evening";
 
-  // Determine the displayed greeting
   const displayedGreeting =
     isEvening && showAltGreeting ? "(´｡•ᵕ•｡`) ♡" : greeting;
 
   const handleClick = () => {
     if (isEvening) {
-      // Clear any existing timeout to prevent multiple triggers
       if (clickTimeoutRef.current) {
         clearTimeout(clickTimeoutRef.current);
       }
@@ -55,6 +53,42 @@ export default function Hero() {
         setShowAltGreeting(false);
       }, 3000) as unknown as null;
     }
+    // IMPORTANT: If you want the bird to *also* respond to a simple click
+    // even in morning, you could add a toggle here like in the previous
+    // solution for isMorning. But this would mean a click *also* moves the bird,
+    // which might conflict with the touchstart/touchend behavior if not handled carefully.
+    // For now, we'll keep the evening-specific click logic and let touch/hover handle the bird.
+  };
+
+  // --- Handlers for Bird Animation ---
+
+  const handleEnterBirdState = () => {
+    if (isMorning) {
+      setBirdPosition("90%"); // Move to center
+    }
+  };
+
+  const handleLeaveBirdState = () => {
+    if (isMorning) {
+      setBirdPosition("0%"); // Move back to left
+    }
+  };
+
+  // Touch handlers
+  const handleTouchStart = () => {
+    // Prevent default touch behavior if you want to stop scrolling
+    // Be cautious with this, it can impact user experience
+    // e.preventDefault();
+    handleEnterBirdState();
+  };
+
+  const handleTouchEnd = () => {
+    handleLeaveBirdState();
+  };
+
+  const handleTouchCancel = () => {
+    // handleTouchCancel is important for cases where a touch is interrupted (e.g., call, alert)
+    handleLeaveBirdState();
   };
 
   return (
@@ -71,14 +105,26 @@ export default function Hero() {
           {
             "bg-white/70 border": isMorning,
             "rotate-[-5deg] hover:rotate-0 active:rotate-0": isMorning,
-            "cursor-pointer": isEvening, // Add a pointer cursor for evening clicks
+            "cursor-pointer": isEvening || isMorning, // Add pointer for morning if bird is interactive
           }
         )}
         style={{
           borderColor: isMorning ? primaryColor : undefined,
         }}
-        onClick={handleClick} // Use onClick instead of onMouseEnter/onMouseLeave
+        onClick={handleClick}
+        onMouseEnter={handleEnterBirdState} // For desktop hover
+        onMouseLeave={handleLeaveBirdState} // For desktop hover
+        onTouchStart={handleTouchStart} // For mobile touch
+        onTouchEnd={handleTouchEnd} // For mobile touch
+        onTouchCancel={handleTouchCancel} // For mobile touch (interrupted)
       >
+        {isMorning && (
+          <Bird
+            className="absolute -translate-y-14 transform transition-all duration-500 z-20"
+            style={{ left: birdPosition, color: primaryColor }}
+            size={40}
+          />
+        )}
         <h1
           className={clsx(
             "font-bold select-none",
