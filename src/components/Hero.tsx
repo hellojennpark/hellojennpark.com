@@ -56,7 +56,7 @@ export default function Hero() {
       >
         <h1
           className={clsx(
-            "font-bold",
+            "font-bold select-none",
             timeOfDay === "evening"
               ? `${pixelFont.className} text-4xl md:text-5xl`
               : "text-5xl md:text-7xl"
