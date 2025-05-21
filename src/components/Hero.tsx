@@ -3,6 +3,7 @@ import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { HeroBackground } from "./HeroBackground";
 import clsx from "clsx";
 import { Press_Start_2P } from "next/font/google";
+import { useState } from "react"; // Import useState
 
 const pixelFont = Press_Start_2P({
   weight: "400",
@@ -18,6 +19,8 @@ const greetingMap = {
 
 export default function Hero() {
   const { timeOfDay, primaryColor, backgroundColor } = useTimeThemeStore();
+  const [isHovered, setIsHovered] = useState(false); // State to track hover
+
   const greeting = greetingMap[timeOfDay] ?? "Welcome, I'm Jenn.";
 
   // Define the animation for evening
@@ -33,6 +36,10 @@ export default function Hero() {
   }
 
   const isMorning = timeOfDay === "morning";
+  const isEvening = timeOfDay === "evening"; // New variable for evening check
+
+  // Determine the displayed greeting
+  const displayedGreeting = isEvening && isHovered ? "(´｡• ᵕ •｡`) ♡" : greeting;
 
   return (
     <section
@@ -53,6 +60,8 @@ export default function Hero() {
         style={{
           borderColor: isMorning ? primaryColor : undefined,
         }}
+        onMouseEnter={() => isEvening && setIsHovered(true)} // Set hovered to true on mouse enter if it's evening
+        onMouseLeave={() => isEvening && setIsHovered(false)} // Set hovered to false on mouse leave if it's evening
       >
         <h1
           className={clsx(
@@ -66,7 +75,7 @@ export default function Hero() {
             animation: eveningAnimation || nightGlow,
           }}
         >
-          {greeting}
+          {displayedGreeting}
         </h1>
       </div>
       <HeroBackground />
