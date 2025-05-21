@@ -39,7 +39,7 @@ export default function Hero() {
   const isEvening = timeOfDay === "evening"; // New variable for evening check
 
   // Determine the displayed greeting
-  const displayedGreeting = isEvening && isHovered ? "(´｡• ᵕ •｡`) ♡" : greeting;
+  const displayedGreeting = isEvening && isHovered ? "(´｡•ᵕ•｡`) ♡" : greeting;
 
   return (
     <section
@@ -67,7 +67,7 @@ export default function Hero() {
           className={clsx(
             "font-bold select-none",
             timeOfDay === "evening"
-              ? `${pixelFont.className} text-4xl md:text-5xl`
+              ? `${pixelFont.className} text-3xl md:text-5xl`
               : "text-5xl md:text-7xl"
           )}
           style={{
