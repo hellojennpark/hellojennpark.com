@@ -4,10 +4,11 @@ import Image from "next/image";
 
 export const HeroBackground = () => {
   const { timeOfDay } = useTimeThemeStore();
+  const isEarly = timeOfDay == "morning" || timeOfDay == "day";
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-      {timeOfDay != "night" && <Clouds />}
+      {isEarly && <Clouds />}
       <div className="relative w-full h-full z-5">
         <Image
           src="/toroto.png"

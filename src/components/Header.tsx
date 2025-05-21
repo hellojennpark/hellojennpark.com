@@ -11,6 +11,12 @@ import Link from "next/link";
 import { ThemedLink } from "./ThemedLink";
 import { ThemedSlider } from "./ThemedSlider";
 import { CustomAvatar } from "./CustomAvatar";
+import { Press_Start_2P } from "next/font/google";
+
+const pixelFont = Press_Start_2P({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export const Header = () => {
   const pathname = usePathname();
@@ -43,14 +49,19 @@ export const Header = () => {
   return (
     <header
       className={clsx(
-        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 space-x-6 backdrop-blur-sm`
+        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 space-x-6 backdrop-blur-sm h-[70px]`
       )}
     >
       <div
-        className="font-bold text-2xl flex items-center gap-2 cursor-pointer transform transition duration-200 hover:scale-105 active:scale-105"
+        className="font-bold flex items-center gap-2 cursor-pointer transform transition duration-200 hover:scale-105 active:scale-105"
         onClick={() => router.push("/#welcome")}
       >
         <span
+          className={
+            timeOfDay == "evening"
+              ? `${pixelFont.className} text-xs`
+              : "text-2xl"
+          }
           style={{
             color: isLanding || isNight ? primaryColor : backgroundColor,
             WebkitTextStroke: `0.5px ${

@@ -3,6 +3,12 @@
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { HeroBackground } from "./HeroBackground";
 import clsx from "clsx";
+import { Press_Start_2P } from "next/font/google";
+
+const pixelFont = Press_Start_2P({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 const greetingMap = {
   morning: "Hello, early bird.",
@@ -14,6 +20,11 @@ const greetingMap = {
 export default function Hero() {
   const { timeOfDay, primaryColor, backgroundColor } = useTimeThemeStore();
   const greeting = greetingMap[timeOfDay] ?? "Welcome, I'm Jenn.";
+  let glow = undefined;
+  if (timeOfDay == "night") {
+    glow = "glow 3s ease-in-out infinite";
+  }
+
   return (
     <section
       id="welcome"
@@ -24,13 +35,15 @@ export default function Hero() {
     >
       <div className="relative z-10 text-center mx-10 p-5 rounded-md">
         <h1
-          className={clsx("text-5xl md:text-7xl font-bold")}
+          className={clsx(
+            "text-5xl font-bold",
+            timeOfDay === "evening"
+              ? `${pixelFont.className} md:text-5xl`
+              : "md:text-7xl"
+          )}
           style={{
             WebkitTextStroke: `1.2px ${backgroundColor}`,
-            animation:
-              timeOfDay === "night"
-                ? "glow 3s ease-in-out infinite"
-                : undefined,
+            animation: glow,
           }}
         >
           {greeting}

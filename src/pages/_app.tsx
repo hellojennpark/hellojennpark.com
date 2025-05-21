@@ -1,12 +1,12 @@
 import { Header } from "@/components/Header";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { Nunito } from "next/font/google";
 import Head from "next/head";
 import { Analytics } from "@vercel/analytics/next";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { useEffect } from "react";
 import { Loader2 } from "lucide-react";
+import { Nunito } from "next/font/google";
 
 const nunito = Nunito({ subsets: ["latin"] });
 

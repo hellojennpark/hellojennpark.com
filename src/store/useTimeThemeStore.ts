@@ -29,7 +29,7 @@ const colorMap: Record<TimeOfDay, { primary: string; background: string }> = {
     background: "#82bcf0", // light sky
   },
   evening: {
-    primary: "#5ec9c0", // white
+    primary: "#80ffdb", // white
     background: "#f26a8d", // rich sandy orange
   },
   night: {
@@ -39,7 +39,7 @@ const colorMap: Record<TimeOfDay, { primary: string; background: string }> = {
 };
 
 export const useTimeThemeStore = create<TimeThemeStore>((set, get) => {
-  const defaultHour = 0; // 서버 측 렌더링 시 사용될 기본값
+  const defaultHour = 0;
   const defaultTimeOfDay = getTimeOfDay(defaultHour);
   const defaultColors = colorMap[defaultTimeOfDay];
 
