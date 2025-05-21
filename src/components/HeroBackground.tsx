@@ -39,13 +39,6 @@ export const HeroBackground = () => {
             mixBlendMode: "multiply",
           }}
         />
-        <div
-          className="absolute inset-0 w-full h-full"
-          style={{
-            mixBlendMode: "color",
-            opacity: 1,
-          }}
-        />
       </div>
     </div>
   );
