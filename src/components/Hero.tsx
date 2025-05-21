@@ -23,15 +23,16 @@ export default function Hero() {
   // Define the animation for evening
   let eveningAnimation = undefined;
   if (timeOfDay === "evening") {
-    // This animation will give a subtle "pixelated" bounce feel using text-shadow
     eveningAnimation = "pixel-pulse 1.5s ease-in-out infinite";
   }
 
-  // Define the glow animation for night (if you still want it)
+  // Define the glow animation for night
   let nightGlow = undefined;
   if (timeOfDay === "night") {
     nightGlow = "glow 3s ease-in-out infinite";
   }
+
+  const isMorning = timeOfDay === "morning";
 
   return (
     <section
@@ -41,7 +42,18 @@ export default function Hero() {
       )}
       style={{ color: primaryColor }}
     >
-      <div className="relative z-10 text-center mx-10 p-5 rounded-md">
+      <div
+        className={clsx(
+          "relative z-10 text-center mx-10 p-5 transition-transform duration-500",
+          {
+            "bg-white/70 border": isMorning,
+            "rotate-[-5deg] hover:rotate-0 active:rotate-0": isMorning,
+          }
+        )}
+        style={{
+          borderColor: isMorning ? primaryColor : undefined,
+        }}
+      >
         <h1
           className={clsx(
             "font-bold",
@@ -51,7 +63,6 @@ export default function Hero() {
           )}
           style={{
             WebkitTextStroke: `1.2px ${backgroundColor}`,
-            // Apply evening specific animation, or night glow, otherwise undefined
             animation: eveningAnimation || nightGlow,
           }}
         >
