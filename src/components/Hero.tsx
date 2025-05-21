@@ -33,7 +33,7 @@ export default function Hero() {
 
   let nightGlow = undefined;
   if (timeOfDay === "night") {
-    nightGlow = "glow 3s ease-in-out infinite";
+    nightGlow = "glow 2s ease-in-out infinite";
   }
 
   const isMorning = timeOfDay === "morning";
