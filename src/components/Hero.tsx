@@ -36,10 +36,10 @@ export default function Hero() {
       <div className="relative z-10 text-center mx-10 p-5 rounded-md">
         <h1
           className={clsx(
-            "text-5xl font-bold",
+            "font-bold",
             timeOfDay === "evening"
-              ? `${pixelFont.className} md:text-5xl`
-              : "md:text-7xl"
+              ? `${pixelFont.className} text-4xl md:text-5xl`
+              : "text-5xl md:text-7xl"
           )}
           style={{
             WebkitTextStroke: `1.2px ${backgroundColor}`,
