@@ -11,7 +11,7 @@ export default function WorkHistoryPage() {
   const isNight = timeOfDay == "night";
   const timeOfDayBgStyle = isNight
     ? "bg-gray-900 text-white border border-white"
-    : "bg-white text-black border border-black";
+    : "bg-white/80 text-black border border-black";
 
   return (
     <PageLayout>

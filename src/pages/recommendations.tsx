@@ -16,7 +16,9 @@ export default function WorkHistoryPage() {
         <span
           className={clsx(
             "text-xs px-2 py-0.5 rounded-md",
-            timeOfDay == "night" ? "bg-white text-black" : "bg-black text-white"
+            timeOfDay == "night"
+              ? "bg-white/80 text-black"
+              : "bg-black text-white"
           )}
         >
           2

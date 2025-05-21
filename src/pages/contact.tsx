@@ -11,7 +11,7 @@ export default function ContactPage() {
   const isNight = timeOfDay == "night";
   const timeOfDayStyle = isNight
     ? "bg-gray-900 text-white border-white"
-    : "bg-white text-black border-black";
+    : "bg-white/80 text-black border-black";
 
   return (
     <PageLayout>
@@ -31,10 +31,7 @@ export default function ContactPage() {
           <Mail className="w-4 h-4 mr-2" />
           <Link
             href="mailto:hellojennpark@gmail.com"
-            className={clsx(
-              "flex items-center hover:border-b active:border-b",
-              timeOfDayStyle
-            )}
+            className={clsx("flex items-center hover:border-b active:border-b")}
           >
             hellojennpark@gmail.com
           </Link>
@@ -44,10 +41,7 @@ export default function ContactPage() {
           <Link
             href="https://github.com/hellojennpark"
             target="_blank"
-            className={clsx(
-              "flex items-center hover:border-b active:border-b",
-              timeOfDayStyle
-            )}
+            className={clsx("flex items-center hover:border-b active:border-b")}
           >
             github.com/hellojennpark
             <SquareArrowOutUpRight className="w-4 h-4 ml-1" />
@@ -58,10 +52,7 @@ export default function ContactPage() {
           <Link
             href="https://www.linkedin.com/in/hellojennpark"
             target="_blank"
-            className={clsx(
-              "flex items-center hover:border-b active:border-b",
-              timeOfDayStyle
-            )}
+            className={clsx("flex items-center hover:border-b active:border-b")}
           >
             linkedin.com/in/hellojennpark
             <SquareArrowOutUpRight className="w-4 h-4 ml-1" />
