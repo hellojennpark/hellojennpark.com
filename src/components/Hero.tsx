@@ -3,7 +3,7 @@ import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { HeroBackground } from "./HeroBackground";
 import clsx from "clsx";
 import { Press_Start_2P } from "next/font/google";
-import { useState } from "react"; // Import useState
+import { useState, useRef } from "react"; // Import useRef
 
 const pixelFont = Press_Start_2P({
   weight: "400",
@@ -19,7 +19,8 @@ const greetingMap = {
 
 export default function Hero() {
   const { timeOfDay, primaryColor, backgroundColor } = useTimeThemeStore();
-  const [isHovered, setIsHovered] = useState(false); // State to track hover
+  const [showAltGreeting, setShowAltGreeting] = useState(false); // State to control alternative greeting
+  const clickTimeoutRef = useRef(null); // Ref to store the timeout ID for the click
 
   const greeting = greetingMap[timeOfDay] ?? "Welcome, I'm Jenn.";
 
@@ -36,10 +37,27 @@ export default function Hero() {
   }
 
   const isMorning = timeOfDay === "morning";
-  const isEvening = timeOfDay === "evening"; // New variable for evening check
+  const isEvening = timeOfDay === "evening";
 
   // Determine the displayed greeting
-  const displayedGreeting = isEvening && isHovered ? "(´｡•ᵕ•｡`) ♡" : greeting;
+  const displayedGreeting =
+    isEvening && showAltGreeting ? "(´｡•ᵕ•｡`) ♡" : greeting;
+
+  const handleClick = () => {
+    if (isEvening) {
+      // Clear any existing timeout to prevent multiple triggers
+      if (clickTimeoutRef.current) {
+        clearTimeout(clickTimeoutRef.current);
+      }
+
+      setShowAltGreeting(true); // Show the alternative greeting immediately on click
+
+      // Set a timeout to revert to the original greeting after 3 seconds
+      clickTimeoutRef.current = setTimeout(() => {
+        setShowAltGreeting(false);
+      }, 3000); // 3000 milliseconds = 3 seconds
+    }
+  };
 
   return (
     <section
@@ -55,13 +73,13 @@ export default function Hero() {
           {
             "bg-white/70 border": isMorning,
             "rotate-[-5deg] hover:rotate-0 active:rotate-0": isMorning,
+            "cursor-pointer": isEvening, // Add a pointer cursor for evening clicks
           }
         )}
         style={{
           borderColor: isMorning ? primaryColor : undefined,
         }}
-        onMouseEnter={() => isEvening && setIsHovered(true)} // Set hovered to true on mouse enter if it's evening
-        onMouseLeave={() => isEvening && setIsHovered(false)} // Set hovered to false on mouse leave if it's evening
+        onClick={handleClick} // Use onClick instead of onMouseEnter/onMouseLeave
       >
         <h1
           className={clsx(
