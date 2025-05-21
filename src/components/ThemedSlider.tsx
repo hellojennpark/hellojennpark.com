@@ -41,7 +41,7 @@ export const ThemedSlider = ({ value, onValueChange }: Props) => {
         <RadixSlider.Range
           className={clsx(
             "absolute h-full",
-            isNight ? "bg-black/50" : "bg-white/50"
+            isNight ? "bg-white/10" : "bg-black/10"
           )}
         />
       </RadixSlider.Track>
