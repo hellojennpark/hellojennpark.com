@@ -16,13 +16,10 @@ export default function WorkHistoryPage() {
     <PageLayout>
       <div
         className={
-          // Changed to grid-cols-3 for md screens, allowing for 2/3 and 1/3 split
-          "col-span-full grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 items-center"
+          "col-span-full grid grid-cols-1 md:grid-cols-3 gap-8 items-center"
         }
       >
         <div className="md:col-span-2">
-          {" "}
-          {/* This div will take 2 out of 3 columns on md screens */}
           {
             "As a Software Engineer with 4 years of experience across multiple companies, I’m driven by a passion for crafting exceptional user experiences and empowering my colleagues. My work focuses on streamlining complex workflows, alleviating team pain points, and boosting productivity. Nothing is more rewarding than seeing my teammates thrive thanks to optimized processes I’ve helped build."
           }
@@ -43,27 +40,27 @@ export default function WorkHistoryPage() {
             </li>
             <li>
               <a href="#pearlabyss">
-                <h3>2. Pearl Abyss</h3>
+                <h3>2. PearlAbyss</h3>
               </a>
             </li>
             <li>
               <a href="#estsecurity">
-                <h3>3. ESTsecurity</h3>
+                <h3>3. EstSecurity</h3>
               </a>
             </li>
           </ul>
         </div>
       </div>
       <div id="kakaopay">
-        <h2>1. KakaoPay</h2>
+        <h2 className="text-2xl">1. KakaoPay</h2>
         {/* Your KakaoPay content here */}
       </div>
       <div id="pearlabyss">
-        <h2>2. Pearl Abyss</h2>
+        <h2 className="text-2xl">2. PearlAbyss</h2>
         {/* Your Pearl Abyss content here */}
       </div>
       <div id="estsecurity">
-        <h2>3. ESTsecurity</h2>
+        <h2 className="text-2xl">3. EstSecurity</h2>
         {/* Your ESTsecurity content here */}
       </div>
     </PageLayout>
