@@ -21,6 +21,7 @@ export default function WorkHistoryPage() {
         }
       >
         <div>
+          <p className="font-bold text-xl mb-2">Intro.</p>
           {
             "As a Software Engineer with 4 years of experience across multiple companies, I’m driven by a passion for crafting exceptional user experiences and empowering my colleagues. My work focuses on streamlining complex workflows, alleviating team pain points, and boosting productivity. Nothing is more rewarding than seeing my teammates thrive thanks to optimized processes I’ve helped build."
           }

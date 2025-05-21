@@ -15,10 +15,6 @@ export default function ContactPage() {
 
   return (
     <PageLayout>
-      <div className="flex text-xl md:text-2xl font-semibold">
-        <span className="mr-2">Contact</span>
-      </div>
-
       {/* Introduction */}
       <p>
         {
