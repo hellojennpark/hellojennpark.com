@@ -1,0 +1,38 @@
+[
+  {
+    "description": "Hey there! Get to know me a bit and catch up on what I've been up to lately.",
+    "href": "/",
+    "id": 0,
+    "label": "Home"
+  },
+  {
+    "description": "A chronological journey through the companies I've worked with and projects I've been part of.",
+    "href": "/work-history",
+    "id": 1,
+    "label": "Work History"
+  },
+  {
+    "description": "Kind words and honest feedback from colleagues I've had the pleasure of working with.",
+    "href": "/recommendations",
+    "id": 2,
+    "label": "Recommendations"
+  },
+  {
+    "description": "Take a look at some personal creations and interesting projects I've been involved in.",
+    "href": "/projects",
+    "id": 3,
+    "label": "Projects"
+  },
+  {
+    "description": "My thoughts on development, life experiences, and random ideas that pop into my head.",
+    "href": "/blog",
+    "id": 4,
+    "label": "Blog"
+  },
+  {
+    "description": "Have questions or want to chat? Feel free to reach out anytime!",
+    "href": "/contact",
+    "id": 5,
+    "label": "Contact"
+  }
+]

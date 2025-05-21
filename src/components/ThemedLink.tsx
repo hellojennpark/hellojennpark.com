@@ -33,7 +33,7 @@ export const ThemedLink = ({ href, children, onClick }: ThemedLinkProps) => {
         "transition text-lg flex items-center gap-2",
         linkClassName
       )}
-      onClick={onClick} // onClick 이벤트 핸들러 연결
+      onClick={onClick}
     >
       {children}
       {isActive && (

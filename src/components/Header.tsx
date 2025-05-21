@@ -12,6 +12,7 @@ import { ThemedLink } from "./ThemedLink";
 import { ThemedSlider } from "./ThemedSlider";
 import { CustomAvatar } from "./CustomAvatar";
 import { Press_Start_2P } from "next/font/google";
+import categories from "@/data/categories.json";
 
 const pixelFont = Press_Start_2P({
   weight: "400",
@@ -108,24 +109,15 @@ export const Header = () => {
             </div>
           </div>
           <nav className="flex flex-col space-y-4 px-4 py-2">
-            <ThemedLink href="/" onClick={closeDrawer}>
-              Home
-            </ThemedLink>
-            <ThemedLink href="/work-history" onClick={closeDrawer}>
-              Work History
-            </ThemedLink>
-            <ThemedLink href="/recommendations" onClick={closeDrawer}>
-              Recommendations
-            </ThemedLink>
-            <ThemedLink href="/projects" onClick={closeDrawer}>
-              Projects
-            </ThemedLink>
-            <ThemedLink href="/blog" onClick={closeDrawer}>
-              Blog
-            </ThemedLink>
-            <ThemedLink href="/contact" onClick={closeDrawer}>
-              Contact
-            </ThemedLink>
+            {categories.map((category) => (
+              <ThemedLink
+                key={category.id}
+                href={category.href}
+                onClick={closeDrawer}
+              >
+                {category.label}
+              </ThemedLink>
+            ))}
           </nav>
 
           <div className="absolute bottom-4 right-4 flex gap-8">

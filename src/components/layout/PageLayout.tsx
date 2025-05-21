@@ -6,6 +6,7 @@ import { Home, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
+import categories from "@/data/categories.json";
 
 type PageLayoutProps = {
   children: ReactNode;
@@ -27,6 +28,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
       const label = segment.charAt(0).toUpperCase() + segment.slice(1);
       return { href, label };
     });
+  const currentHrefFromRouter = router.pathname;
 
   return (
     <div className="w-full h-[100dvh] overflow-y-auto mx-auto justify-between">
@@ -59,10 +61,42 @@ export default function PageLayout({ children }: PageLayoutProps) {
           ))}
         </nav>
 
-        {/* Page Content */}
         <div className="space-y-8 pt-4 pb-8 max-w-5xl mx-auto text-base md:text-lg leading-relaxed">
           {children}
         </div>
+        {categories.length > 0 && currentHrefFromRouter != "/blog" && (
+          <div className="mt-8 max-w-5xl mx-auto">
+            <h2 className="text-xl font-bold mb-4">You might also like</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {categories.map((category) => {
+                if (category.href != currentHrefFromRouter && category.id != 0)
+                  return (
+                    <Link key={category.id} href={category.href}>
+                      <div
+                        className={clsx(
+                          "p-3 px-5 h-full rounded-lg shadow-md transition-all duration-300",
+                          isNight
+                            ? "bg-gray-900 border-white border hover:bg-gray-800 text-white"
+                            : "bg-white/80 border-black border hover:bg-white text-black"
+                        )}
+                      >
+                        <h3 className="text-lg font-semibold mb-2">
+                          {category.label}
+                        </h3>
+                        <p
+                          className={clsx(
+                            isNight ? "text-gray-300" : "text-gray-600"
+                          )}
+                        >
+                          {category.description}
+                        </p>
+                      </div>
+                    </Link>
+                  );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
