@@ -60,7 +60,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
         </nav>
 
         {/* Page Content */}
-        <div className="space-y-8 pt-4 pb-8 max-w-4xl mx-auto text-base md:text-lg leading-relaxed">
+        <div className="space-y-8 pt-4 pb-8 max-w-5xl mx-auto text-base md:text-lg leading-relaxed">
           {children}
         </div>
       </div>
