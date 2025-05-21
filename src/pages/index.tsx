@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Footer } from "@/components/Footer";
 import IntroduceSection from "@/components/IntroduceSection";
 import CareerSection from "@/components/CareerSection";
@@ -8,39 +8,29 @@ import ProjectSection from "@/components/ProjectSection";
 import EtcSection from "@/components/EtcSection";
 import Hero from "@/components/Hero";
 
-const sectionIds = ["welcome", "introduce", "career", "project", "etc"];
-
 export default function Home() {
-  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+  const [key, setKey] = useState(0);
 
   useEffect(() => {
-    if (!window.location.hash) {
-      window.location.hash = "#welcome";
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.find((entry) => entry.isIntersecting);
-        if (visible?.target?.id) {
-          history.replaceState(null, "", `#${visible.target.id}`);
-        }
-      },
-      { threshold: 0.6 }
-    );
-
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) {
-        sectionRefs.current[id] = el;
-        observer.observe(el);
+    const handlePopState = () => {
+      setKey((prev) => prev + 1);
+      const hash = window.location.hash || "#welcome";
+      const targetSection = document.getElementById(hash.replace("#", ""));
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "smooth" });
       }
-    });
+    };
 
-    return () => observer.disconnect();
+    window.addEventListener("popstate", handlePopState);
+
+    return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
   return (
-    <div className="h-screen overflow-y-scroll scroll-smooth snap-y snap-mandatory">
+    <div
+      key={key}
+      className="h-screen overflow-y-scroll scroll-smooth snap-y snap-mandatory"
+    >
       <Hero />
       <IntroduceSection />
       <CareerSection />
