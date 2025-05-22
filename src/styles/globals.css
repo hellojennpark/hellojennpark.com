@@ -235,3 +235,21 @@ html {
 .fade-in-animation {
   animation: fadeIn 1s ease-in-out forwards;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2); /* 스크롤 바 색상 */
+  border-radius: 4px;
+}
+
+.dark-scroll-track::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.4); /* bg-black/40 */
+}
+
+/* 라이트 모드일 때 */
+.light-scroll-track::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.2); /* bg-white/50 */
+}
