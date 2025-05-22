@@ -253,3 +253,33 @@ html {
 .light-scroll-track::-webkit-scrollbar-track {
   background-color: rgba(255, 255, 255, 0.2); /* bg-white/50 */
 }
+
+/* globals.css or a dedicated CSS file */
+/* globals.css */
+
+@keyframes clover-float {
+  0% {
+    transform: translate(-50%, -50%) translateX(0) translateY(0) rotate(var(--initial-rotation, 0deg));
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(-50%, -50%) translateX(var(--x-travel-1, 10vw)) translateY(var(--y-travel-1, -5vh)) rotate(calc(var(--initial-rotation, 0deg) + 90deg));
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) translateX(var(--x-travel-2, -15vw)) translateY(var(--y-travel-2, 10vh)) rotate(calc(var(--initial-rotation, 0deg) + 180deg));
+    opacity: 1;
+  }
+  75% {
+    transform: translate(-50%, -50%) translateX(var(--x-travel-3, 5vw)) translateY(var(--y-travel-3, -8vh)) rotate(calc(var(--initial-rotation, 0deg) + 270deg));
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) translateX(0) translateY(0) rotate(calc(var(--initial-rotation, 0deg) + 360deg));
+    opacity: 0.6;
+  }
+}
+
+.animate-clover-float {
+  animation: clover-float infinite ease-in-out;
+}

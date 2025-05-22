@@ -41,6 +41,12 @@ export default function Hero() {
 
   const displayedGreeting =
     isEvening && showAltGreeting ? "(´｡•ᵕ•｡`) ♡" : greeting;
+  let greetingFontStyle = "text-5xl md:text-7xl";
+  if (timeOfDay == "evening") {
+    greetingFontStyle = `${pixelFont.className} text-3xl md:text-5xl`;
+  } else if (timeOfDay == "day") {
+    greetingFontStyle = "text-8xl md:text-8xl";
+  }
 
   const handleClick = () => {
     if (isEvening) {
@@ -126,12 +132,7 @@ export default function Hero() {
           />
         )}
         <h1
-          className={clsx(
-            "font-bold select-none",
-            timeOfDay === "evening"
-              ? `${pixelFont.className} text-3xl md:text-5xl`
-              : "text-5xl md:text-7xl"
-          )}
+          className={clsx("font-bold select-none", greetingFontStyle)}
           style={{
             WebkitTextStroke: `1.2px ${backgroundColor}`,
             animation: eveningAnimation || nightGlow,
