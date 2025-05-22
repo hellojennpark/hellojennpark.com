@@ -3,6 +3,7 @@
 import PageLayout from "@/components/layout/PageLayout";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
+import companies from "@/data/companies.json";
 
 export default function WorkHistoryPage() {
   const { timeOfDay } = useTimeThemeStore();
@@ -11,6 +12,9 @@ export default function WorkHistoryPage() {
   const timeOfDayBgStyle = isNight
     ? "bg-gray-900 text-white border border-white"
     : "bg-white/80 text-black border border-black";
+
+  const numCompanies = companies.length;
+  companies.sort((a, b) => b.id - a.id);
 
   return (
     <PageLayout>
@@ -33,21 +37,18 @@ export default function WorkHistoryPage() {
           {/* This div will take 1 out of 3 columns on md screens */}
           <h2 className="text-lg md:text-xl">Table of Contents</h2>
           <ul className="space-y-4">
-            <li>
-              <a href="#kakaopay">
-                <h3>1. KakaoPay</h3>
-              </a>
-            </li>
-            <li>
-              <a href="#pearlabyss">
-                <h3>2. PearlAbyss</h3>
-              </a>
-            </li>
-            <li>
-              <a href="#estsecurity">
-                <h3>3. EstSecurity</h3>
-              </a>
-            </li>
+            {companies.map((company) => (
+              <li key={company.href}>
+                <a
+                  href={`#${company.href}`}
+                  className="hover:underline active:underline"
+                >
+                  <h3>
+                    {numCompanies - company.id}. {company.label}
+                  </h3>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

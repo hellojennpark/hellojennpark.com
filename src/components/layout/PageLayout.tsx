@@ -74,7 +74,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
                     <Link key={category.id} href={category.href}>
                       <div
                         className={clsx(
-                          "p-3 px-5 h-full rounded-lg shadow-md transition-all duration-300",
+                          "p-3 px-5 h-full rounded-lg shadow-md",
                           isNight
                             ? "bg-gray-900 border-white border hover:bg-gray-800 text-white"
                             : "bg-white/80 border-black border hover:bg-white text-black"
