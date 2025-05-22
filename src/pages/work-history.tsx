@@ -24,9 +24,17 @@ export default function WorkHistoryPage() {
         }
       >
         <div className="md:col-span-2">
-          {
-            "As a Software Engineer with 4 years of experience across multiple companies, I’m driven by a passion for crafting exceptional user experiences and empowering my colleagues. My work focuses on streamlining complex workflows, alleviating team pain points, and boosting productivity. Nothing is more rewarding than seeing my teammates thrive thanks to optimized processes I’ve helped build."
-          }
+          <h2 className="text-2xl">Intro.</h2>
+          <p>
+            {
+              "As a Software Engineer with 4 years of experience across multiple companies, I’m driven by a passion for crafting exceptional user experiences and empowering my colleagues."
+            }
+          </p>
+          <p>
+            {
+              " My work focuses on streamlining complex workflows, alleviating team pain points, and boosting productivity. Nothing is more rewarding than seeing my teammates thrive thanks to optimized processes I’ve helped build."
+            }
+          </p>
         </div>
         <div
           className={clsx(
@@ -38,13 +46,14 @@ export default function WorkHistoryPage() {
           <h2 className="text-lg md:text-xl">Table of Contents</h2>
           <ul className="space-y-4">
             {companies.map((company) => (
-              <li key={company.href}>
+              <li key={company.id}>
                 <a
                   href={`#${company.href}`}
                   className="hover:underline active:underline"
                 >
                   <h3>
-                    {numCompanies - company.id}. {company.label}
+                    {numCompanies - company.id}. {company.title} (
+                    {company.period})
                   </h3>
                 </a>
               </li>
@@ -52,18 +61,17 @@ export default function WorkHistoryPage() {
           </ul>
         </div>
       </div>
-      <div id="kakaopay">
-        <h2 className="text-2xl">1. KakaoPay</h2>
-        {/* Your KakaoPay content here */}
-      </div>
-      <div id="pearlabyss">
-        <h2 className="text-2xl">2. PearlAbyss</h2>
-        {/* Your Pearl Abyss content here */}
-      </div>
-      <div id="estsecurity">
-        <h2 className="text-2xl">3. EstSecurity</h2>
-        {/* Your ESTsecurity content here */}
-      </div>
+      {companies.map((company) => (
+        <div key={company.href} id={company.href}>
+          <h2 className="text-2xl">
+            {company.title}@{company.label}
+          </h2>
+          <h3>
+            {company.period} / {company.team}
+          </h3>
+          {/* Your KakaoPay content here */}
+        </div>
+      ))}
     </PageLayout>
   );
 }

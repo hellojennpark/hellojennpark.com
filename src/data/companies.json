@@ -1,17 +1,29 @@
 [
   {
+    "duration": "8m",
     "href": "estsecurity",
     "id": 0,
-    "label": "EstSecurity"
+    "label": "EstSecurity",
+    "period": "July 2020-February 2021",
+    "team": "full-time internship",
+    "title": "Devops Engineer"
   },
   {
+    "duration": "1y6m",
     "href": "pearlabyss",
     "id": 1,
-    "label": "PearlAbyss"
+    "label": "PearlAbyss",
+    "period": "July 2021-December 2022",
+    "team": "Platform Programming Team",
+    "title": "Software Engineer"
   },
   {
+    "duration": "1y10m",
     "href": "kakaopay",
     "id": 2,
-    "label": "KakaoPay"
+    "label": "KakaoPay",
+    "period": "December 2022-September 2024",
+    "team": "SRE Team, Release Engineering Part",
+    "title": "Release Engineer"
   }
 ]
