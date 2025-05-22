@@ -21,7 +21,7 @@ const greetingMap = {
 export default function Hero() {
   const { timeOfDay, primaryColor, backgroundColor } = useTimeThemeStore();
   const [showAltGreeting, setShowAltGreeting] = useState(false);
-  const clickTimeoutRef = useRef(null);
+  const greetingTimeoutRef = useRef(null); // Renamed for clarity
   const [birdPosition, setBirdPosition] = useState("0%"); // State for bird's position
 
   const greeting = greetingMap[timeOfDay] ?? "Welcome, I'm Jenn.";
@@ -33,14 +33,22 @@ export default function Hero() {
 
   let nightGlow = undefined;
   if (timeOfDay === "night") {
-    nightGlow = "glow 2s ease-in-out infinite";
+    nightGlow = "glow 1s ease-in-out infinite";
   }
 
   const isMorning = timeOfDay === "morning";
+  const isDay = timeOfDay === "day";
   const isEvening = timeOfDay === "evening";
 
-  const displayedGreeting =
-    isEvening && showAltGreeting ? "(´｡•ᵕ•｡`) ♡" : greeting;
+  let displayedGreeting = greeting;
+  if (showAltGreeting) {
+    if (isEvening) {
+      displayedGreeting = "(´｡•ᵕ•｡`) ♡";
+    } else if (isDay) {
+      displayedGreeting = "Good Luck!";
+    }
+  }
+
   let greetingFontStyle = "text-5xl md:text-7xl";
   if (timeOfDay == "evening") {
     greetingFontStyle = `${pixelFont.className} text-3xl md:text-5xl`;
@@ -48,53 +56,46 @@ export default function Hero() {
     greetingFontStyle = "text-8xl md:text-8xl";
   }
 
-  const handleClick = () => {
-    if (isEvening) {
-      if (clickTimeoutRef.current) {
-        clearTimeout(clickTimeoutRef.current);
+  // --- Handlers for Combined Hover/Touch Events ---
+
+  const handleEnterInteractiveState = () => {
+    // For Greeting (Day/Evening)
+    if (isDay || isEvening) {
+      if (greetingTimeoutRef.current) {
+        clearTimeout(greetingTimeoutRef.current);
       }
-
       setShowAltGreeting(true);
-      clickTimeoutRef.current = setTimeout(() => {
-        setShowAltGreeting(false);
-      }, 3000) as unknown as null;
     }
-    // IMPORTANT: If you want the bird to *also* respond to a simple click
-    // even in morning, you could add a toggle here like in the previous
-    // solution for isMorning. But this would mean a click *also* moves the bird,
-    // which might conflict with the touchstart/touchend behavior if not handled carefully.
-    // For now, we'll keep the evening-specific click logic and let touch/hover handle the bird.
-  };
-
-  // --- Handlers for Bird Animation ---
-
-  const handleEnterBirdState = () => {
+    // For Bird (Morning)
     if (isMorning) {
       setBirdPosition("90%"); // Move to center
     }
   };
 
-  const handleLeaveBirdState = () => {
+  const handleLeaveInteractiveState = () => {
+    // For Greeting (Day/Evening)
+    if (isDay || isEvening) {
+      greetingTimeoutRef.current = setTimeout(() => {
+        setShowAltGreeting(false);
+      }, 3000) as unknown as null; // Resets after 3 seconds
+    }
+    // For Bird (Morning)
     if (isMorning) {
       setBirdPosition("0%"); // Move back to left
     }
   };
 
-  // Touch handlers
+  // Touch handlers (simply call the combined handlers)
   const handleTouchStart = () => {
-    // Prevent default touch behavior if you want to stop scrolling
-    // Be cautious with this, it can impact user experience
-    // e.preventDefault();
-    handleEnterBirdState();
+    handleEnterInteractiveState();
   };
 
   const handleTouchEnd = () => {
-    handleLeaveBirdState();
+    handleLeaveInteractiveState();
   };
 
   const handleTouchCancel = () => {
-    // handleTouchCancel is important for cases where a touch is interrupted (e.g., call, alert)
-    handleLeaveBirdState();
+    handleLeaveInteractiveState();
   };
 
   return (
@@ -111,18 +112,17 @@ export default function Hero() {
           {
             "bg-white/70 border": isMorning,
             "rotate-[-5deg] hover:rotate-0 active:rotate-0": isMorning,
-            "cursor-pointer": isEvening || isMorning, // Add pointer for morning if bird is interactive
+            "cursor-pointer": isEvening || isDay || isMorning, // Cursor pointer for all interactive states
           }
         )}
         style={{
           borderColor: isMorning ? primaryColor : undefined,
         }}
-        onClick={handleClick}
-        onMouseEnter={handleEnterBirdState} // For desktop hover
-        onMouseLeave={handleLeaveBirdState} // For desktop hover
-        onTouchStart={handleTouchStart} // For mobile touch
-        onTouchEnd={handleTouchEnd} // For mobile touch
-        onTouchCancel={handleTouchCancel} // For mobile touch (interrupted)
+        onMouseEnter={handleEnterInteractiveState} // Combined handler for hover
+        onMouseLeave={handleLeaveInteractiveState} // Combined handler for hover
+        onTouchStart={handleTouchStart} // Combined handler for touch
+        onTouchEnd={handleTouchEnd} // Combined handler for touch
+        onTouchCancel={handleTouchCancel} // Combined handler for touch
       >
         {isMorning && (
           <Bird
@@ -132,7 +132,10 @@ export default function Hero() {
           />
         )}
         <h1
-          className={clsx("font-bold select-none", greetingFontStyle)}
+          className={clsx(
+            "font-bold select-none transition duration-1000",
+            greetingFontStyle
+          )}
           style={{
             WebkitTextStroke: `1.2px ${backgroundColor}`,
             animation: eveningAnimation || nightGlow,
