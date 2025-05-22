@@ -4,14 +4,16 @@ import PageLayout from "@/components/layout/PageLayout";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
 import companies from "@/data/companies.json";
+import Link from "next/link";
+import { SquareArrowOutUpRight } from "lucide-react";
 
 export default function WorkHistoryPage() {
   const { timeOfDay } = useTimeThemeStore();
 
   const isNight = timeOfDay == "night";
   const timeOfDayBgStyle = isNight
-    ? "bg-gray-900 text-white border border-white"
-    : "bg-white/80 text-black border border-black";
+    ? "bg-black/40 border-white border hover:bg-gray-800 active:bg-gray-800 text-white"
+    : "bg-white/80 border-black border hover:bg-white active:bg-white text-black";
 
   const numCompanies = companies.length;
   companies.sort((a, b) => b.id - a.id);
@@ -24,15 +26,15 @@ export default function WorkHistoryPage() {
         }
       >
         <div className="md:col-span-2">
-          <h2 className="text-2xl">Intro.</h2>
+          <h2 className="text-3xl">Intro.</h2>
           <p>
             {
-              "As a Software Engineer with 4 years of experience across multiple companies, I’m driven by a passion for crafting exceptional user experiences and empowering my colleagues."
+              "As a Software Engineer with 4 years of experience across multiple companies, I'm driven by a passion for crafting exceptional user experiences and empowering my colleagues."
             }
           </p>
           <p>
             {
-              " My work focuses on streamlining complex workflows, alleviating team pain points, and boosting productivity. Nothing is more rewarding than seeing my teammates thrive thanks to optimized processes I’ve helped build."
+              " My work focuses on streamlining complex workflows, alleviating team pain points, and boosting productivity. Nothing is more rewarding than seeing my teammates thrive thanks to optimized processes I've helped build."
             }
           </p>
         </div>
@@ -63,15 +65,59 @@ export default function WorkHistoryPage() {
       </div>
       {companies.map((company) => (
         <div key={company.href} id={company.href}>
-          <h2 className="text-2xl">
+          <h2 className="text-3xl">
             {company.title}@{company.label}
           </h2>
           <h3>
             {company.period} / {company.team}
           </h3>
-          {/* Your KakaoPay content here */}
+          {company.blogs.length > 0 && BlogPosts(isNight, company.blogs)}
         </div>
       ))}
     </PageLayout>
   );
+
+  function BlogPosts(
+    isNight: boolean,
+    blogs: { description: string; id: number; title: string; url: string }[]
+  ) {
+    return (
+      <div className="py-8">
+        <div className="text-2xl">Posts</div>
+        <div>
+          {
+            "Here's a collection of articles I've written for KakaoPay's tech blog and pieces I've contributed to as a collaborator during my time there."
+          }
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-5">
+          {blogs
+            .sort((a, b) => a.id - b.id)
+            .map((blog) => (
+              <div
+                key={blog.url}
+                className={clsx(
+                  "border rounded-lg h-full",
+                  isNight
+                    ? "border-white bg-black/40 hover:bg-indigo-600 active:bg-indigo-600"
+                    : "border-black bg-white/80 hover:bg-blue-200 active:bg-blue-200"
+                )}
+              >
+                <Link href={blog.url} target="_blank" rel="noopener noreferrer">
+                  <h4
+                    className={clsx(
+                      "flex items-center p-3 text-sm font-bold border-b hover:underline active:underline",
+                      isNight ? "border-white" : "border-black"
+                    )}
+                  >
+                    {blog.title}
+                    <SquareArrowOutUpRight className="ml-2 w-4 h-4" />
+                  </h4>
+                </Link>
+                <p className="p-3 text-sm">{blog.description}</p>
+              </div>
+            ))}
+        </div>
+      </div>
+    );
+  }
 }

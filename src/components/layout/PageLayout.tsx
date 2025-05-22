@@ -85,20 +85,14 @@ export default function PageLayout({ children }: PageLayoutProps) {
                           className={clsx(
                             "p-3 px-5 h-full rounded-lg shadow-md",
                             isNight
-                              ? "bg-gray-900 border-white border hover:bg-gray-800 text-white"
-                              : "bg-white/80 border-black border hover:bg-white text-black"
+                              ? "bg-black/40 border-white border hover:bg-gray-800 active:bg-gray-800 text-white"
+                              : "bg-white/80 border-black border hover:bg-white active:bg-white text-black"
                           )}
                         >
                           <h3 className="text-lg font-semibold mb-2">
                             {category.label}
                           </h3>
-                          <p
-                            className={clsx(
-                              isNight ? "text-gray-300" : "text-gray-600"
-                            )}
-                          >
-                            {category.description}
-                          </p>
+                          <p>{category.description}</p>
                         </div>
                       </Link>
                     );
