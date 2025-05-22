@@ -1,7 +1,7 @@
 "use client";
 
 import * as RadixSlider from "@radix-ui/react-slider";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Sunrise, Sunset } from "lucide-react";
 import clsx from "clsx";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 
@@ -19,6 +19,13 @@ export const ThemedSlider = ({ value, onValueChange }: Props) => {
     day: "from-[#fde74c] via-[#b1d8ff] to-[#82bcf0]", // yellow → sky blue
     evening: "from-[#5ec9c0] via-[#a7c8d7] to-[#f26a8d]", // orange → white
     night: "from-[#043565] via-[#283e6d] to-[#eb4b98]", // navy → hot pink
+  };
+
+  const icon = {
+    morning: <Sunrise className="w-5 h-5" />,
+    day: <Sun className="w-5 h-5" />,
+    evening: <Sunset className="w-5 h-5" />,
+    night: <Moon className="w-5 h-5" />,
   };
 
   return (
@@ -52,7 +59,7 @@ export const ThemedSlider = ({ value, onValueChange }: Props) => {
           color: primaryColor,
         }}
       >
-        {isNight ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+        {icon[timeOfDay]}
       </RadixSlider.Thumb>
     </RadixSlider.Root>
   );
