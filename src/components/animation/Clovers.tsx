@@ -12,7 +12,7 @@ export const Clovers = () => {
 
     // Random animation durations and delays
     const animationDuration = 10 + Math.random() * 10; // 10s to 20s
-    const animationDelay = Math.random() * 5; // 0s to 5s delay
+    const animationDelay = Math.random() * 1; // 0s to 5s delay
 
     // Random rotation for the initial state of each clover
     const initialRotation = Math.random() * 360; // 0 to 360 degrees
