@@ -13,6 +13,7 @@ import { ThemedSlider } from "./ThemedSlider";
 import { CustomAvatar } from "./CustomAvatar";
 import { Press_Start_2P } from "next/font/google";
 import categories from "@/data/categories.json";
+import { timeIcon } from "@/constants/timeTheme";
 
 const pixelFont = Press_Start_2P({
   weight: "400",
@@ -120,7 +121,7 @@ export const Header = () => {
             ))}
           </nav>
 
-          <div className="absolute bottom-4 right-4 flex gap-8">
+          <div className="absolute bottom-4 right-8 flex gap-8">
             <Link href="https://github.com/hellojennpark" target="_blank">
               <Github className="w-8 h-8 active:opacity-60 hover:opacity-60 transition-opacity" />
             </Link>

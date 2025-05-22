@@ -3,7 +3,7 @@
 import * as RadixSlider from "@radix-ui/react-slider";
 import clsx from "clsx";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
-import { gradientBg, icon } from "@/constants/timeTheme";
+import { gradientBg, timeIcon } from "@/constants/timeTheme";
 
 type Props = {
   value: number[];
@@ -45,7 +45,7 @@ export const ThemedSlider = ({ value, onValueChange }: Props) => {
           color: primaryColor,
         }}
       >
-        {icon[timeOfDay]}
+        {timeIcon(timeOfDay)}
       </RadixSlider.Thumb>
     </RadixSlider.Root>
   );
