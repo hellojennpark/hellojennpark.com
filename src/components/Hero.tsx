@@ -3,7 +3,7 @@ import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { HeroBackground } from "./HeroBackground";
 import clsx from "clsx";
 import { Press_Start_2P } from "next/font/google";
-import { useState, useRef } from "react";
+import { useState } from "react"; // useRef and useEffect are no longer needed for clearing timeout
 import { Bird } from "lucide-react";
 
 const pixelFont = Press_Start_2P({
@@ -21,7 +21,6 @@ const greetingMap = {
 export default function Hero() {
   const { timeOfDay, primaryColor, backgroundColor } = useTimeThemeStore();
   const [showAltGreeting, setShowAltGreeting] = useState(false);
-  const greetingTimeoutRef = useRef(null); // Renamed for clarity
   const [birdPosition, setBirdPosition] = useState("0%"); // State for bird's position
 
   const greeting = greetingMap[timeOfDay] ?? "Welcome, I'm Jenn.";
@@ -43,7 +42,7 @@ export default function Hero() {
   let displayedGreeting = greeting;
   if (showAltGreeting) {
     if (isEvening) {
-      displayedGreeting = "(´｡•ᵕ•｡`) ♡";
+      displayedGreeting = "Time to relax and unwind.";
     } else if (isDay) {
       displayedGreeting = "Good Luck!";
     }
@@ -57,13 +56,9 @@ export default function Hero() {
   }
 
   // --- Handlers for Combined Hover/Touch Events ---
-
   const handleEnterInteractiveState = () => {
     // For Greeting (Day/Evening)
     if (isDay || isEvening) {
-      if (greetingTimeoutRef.current) {
-        clearTimeout(greetingTimeoutRef.current);
-      }
       setShowAltGreeting(true);
     }
     // For Bird (Morning)
@@ -75,13 +70,11 @@ export default function Hero() {
   const handleLeaveInteractiveState = () => {
     // For Greeting (Day/Evening)
     if (isDay || isEvening) {
-      greetingTimeoutRef.current = setTimeout(() => {
-        setShowAltGreeting(false);
-      }, 3000) as unknown as null; // Resets after 3 seconds
+      setShowAltGreeting(false); // Reset immediately on leave
     }
     // For Bird (Morning)
     if (isMorning) {
-      setBirdPosition("0%"); // Move back to left
+      setBirdPosition("0%"); // Move back to left immediately on leave
     }
   };
 
@@ -89,11 +82,9 @@ export default function Hero() {
   const handleTouchStart = () => {
     handleEnterInteractiveState();
   };
-
   const handleTouchEnd = () => {
     handleLeaveInteractiveState();
   };
-
   const handleTouchCancel = () => {
     handleLeaveInteractiveState();
   };
