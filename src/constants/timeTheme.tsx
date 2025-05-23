@@ -1,4 +1,4 @@
-import { Moon, Sun, Sunrise, Sunset } from "lucide-react";
+import { MoonStar, Sun, Sunrise, Sunset } from "lucide-react";
 
 type Time = "morning" | "day" | "evening" | "night";
 
@@ -14,7 +14,7 @@ export const timeIcon = (time: Time, className: string = "w-5 h-5") => {
     morning: <Sunrise className={className} />,
     day: <Sun className={className} />,
     evening: <Sunset className={className} />,
-    night: <Moon className={className} />,
+    night: <MoonStar className={className} />,
   };
   return icons[time];
 };
