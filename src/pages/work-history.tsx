@@ -15,7 +15,6 @@ export default function WorkHistoryPage() {
     ? "bg-black/40 border-white border hover:bg-gray-800 active:bg-gray-800 text-white"
     : "bg-white/80 border-black border hover:bg-white active:bg-white text-black";
 
-  const numCompanies = companies.length;
   companies.sort((a, b) => b.id - a.id);
 
   return (
@@ -53,8 +52,7 @@ export default function WorkHistoryPage() {
                   className="hover:underline active:underline"
                 >
                   <h3>
-                    {numCompanies - company.id}. {company.title} (
-                    {company.period})
+                    # {company.title} ({company.period})
                   </h3>
                 </a>
               </li>
@@ -62,11 +60,11 @@ export default function WorkHistoryPage() {
           </ul>
         </div>
       </div>
-      {companies.map((company, i) => (
+      {companies.map((company) => (
         <div key={company.href} id={company.href} className="space-y-8 pb-16">
           <div>
             <h2 className="text-3xl">
-              {i + 1}. {company.title}@{company.label}
+              # {company.title}@{company.label}
             </h2>
             <h3>
               {company.period} / {company.team}
@@ -85,7 +83,7 @@ export default function WorkHistoryPage() {
   ) {
     return (
       <div>
-        <div className="text-2xl">Posts</div>
+        <div className="text-2xl">## Posts</div>
         <div>
           {
             "Here's a collection of articles I've written for KakaoPay's tech blog and pieces I've contributed to as a collaborator during my time there."
