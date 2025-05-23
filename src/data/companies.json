@@ -34,7 +34,8 @@
           "description": [
             "Consolidated fragmented CI/CD scripts scattered across multiple SCM systems (Visual SVN, Perforce servers) into centralized GitLab repository, eliminating duplicate maintenance and preventing recurring bugs from inconsistent update",
             "Standardized heterogeneous build systems across multiple projects from mixed Python/Shell/Groovy scripts and custom tools to unified Jenkins+Groovy pipeline, reducing operational complexity and enabling team-wide maintainability"
-          ]
+          ],
+          "title": "CI/CD Infrastructure Consolidation"
         },
         {
           "description": [

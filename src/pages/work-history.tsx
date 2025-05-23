@@ -71,6 +71,18 @@ export default function WorkHistoryPage() {
             </h3>
           </div>
           <p>{company.content.summary}</p>
+
+          <div>
+            <div className="text-2xl">## Achievements</div>
+            <div className="space-y-4">
+              {company.content.achievements.map((a, i) => (
+                <div key={i}>
+                  <p>{`### ${a.title}`}</p>
+                  <p>{a.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
           {company.blogs.length > 0 && BlogPosts(isNight, company.blogs)}
         </div>
       ))}
