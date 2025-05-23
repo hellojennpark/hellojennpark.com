@@ -13,7 +13,6 @@ import { ThemedSlider } from "./ThemedSlider";
 import { CustomAvatar } from "./CustomAvatar";
 import { Press_Start_2P } from "next/font/google";
 import categories from "@/data/categories.json";
-import { timeIcon } from "@/constants/timeTheme";
 
 const pixelFont = Press_Start_2P({
   weight: "400",
