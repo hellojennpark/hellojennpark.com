@@ -4,11 +4,29 @@
     "content": {
       "achievements": [
         {
-          "description": "",
-          "title": ""
+          "description": [
+            "Reduced software crawler failure rate from over 50% to under 5% by implementing robust error handling and automated retry mechanisms.",
+            "Decreased crawler runtime from 3 hours to under 30 minutes by optimizing data collection schedules based on site maintenance times and transitioning from Selenium to Scrapy for minimal UI interaction.",
+            "Automated failure reporting by sending email notifications with lists of failed software collections after three unsuccessful attempts, eliminating manual tracking."
+          ],
+          "title": "Software Crawler Optimization"
+        },
+        {
+          "description": [
+            "Developed a script to automate version collection of over 100 software programs installed on Windows, generating CSV reports for streamlined verification.",
+            "Reduced version validation time by 83%, from 1 hour to under 10 minutes, by eliminating manual data entry and minimizing errors previously caused by manual Excel updates."
+          ],
+          "title": "Software Version Validation Automation"
+        },
+        {
+          "description": [
+            "Automated news scraping and report generation by identifying high-frequency keywords from three years of reports, enabling targeted collection of relevant news.",
+            "Reduced report creation time by 91%, from over 1 hour to under 5 minutes, by automating the entire process except final sharing, using keyword-based filtering to produce formatted reports."
+          ],
+          "title": "News Scraper Report Automation"
         }
       ],
-      "role": [""]
+      "summary": "As an intern, I managed software collection and manual error handling, identifying inefficiencies and automating processes to cut crawler failure rates from 50% to under 5% and reduce report generation time by over 90%."
     },
     "duration": "8m",
     "href": "estsecurity",
