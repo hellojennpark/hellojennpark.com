@@ -67,9 +67,14 @@ export default function WorkHistoryPage() {
         {companies.map((company) => (
           <div key={company.href} id={company.href} className="space-y-8">
             <div className={timeOfDayBorderStyle}>
-              <h2 className="text-3xl">
-                # {company.title}@{company.label}
-              </h2>
+              <a
+                href={`#${company.href}`}
+                className="hover:underline active:underline"
+              >
+                <h2 className="text-3xl">
+                  # {company.title}@{company.label}
+                </h2>
+              </a>
               <h3>
                 {company.period} / {company.team}
               </h3>
@@ -77,7 +82,7 @@ export default function WorkHistoryPage() {
             <p>{company.content.summary}</p>
 
             <div>
-              <div className="text-2xl">## Achievements</div>
+              <div className="text-2xl">Achievements</div>
               <div className="space-y-6">
                 {company.content.achievements.map((a, i) => (
                   <div key={i}>
@@ -100,7 +105,7 @@ export default function WorkHistoryPage() {
   ) {
     return (
       <div>
-        <div className="text-2xl">## Posts</div>
+        <div className="text-2xl">Posts</div>
         <div>
           {
             "Here's a collection of articles I've written for KakaoPay's tech blog and pieces I've contributed to as a collaborator during my time there."
