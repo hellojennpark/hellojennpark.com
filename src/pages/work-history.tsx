@@ -26,7 +26,6 @@ export default function WorkHistoryPage() {
         }
       >
         <div className="md:col-span-2">
-          <h2 className="text-3xl pb-8">Intro.</h2>
           <p>
             {
               "As a Software Engineer with 4 years of experience across multiple companies, I'm driven by a passion for crafting exceptional user experiences and empowering my colleagues."
@@ -63,11 +62,11 @@ export default function WorkHistoryPage() {
           </ul>
         </div>
       </div>
-      {companies.map((company) => (
+      {companies.map((company, i) => (
         <div key={company.href} id={company.href} className="space-y-8 pb-16">
           <div>
             <h2 className="text-3xl">
-              {company.title}@{company.label}
+              {i + 1}. {company.title}@{company.label}
             </h2>
             <h3>
               {company.period} / {company.team}
