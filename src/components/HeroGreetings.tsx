@@ -30,8 +30,10 @@ export default function HeroGreetings() {
   }
 
   let nightGlow = undefined;
+  let slowGlow = undefined;
   if (timeOfDay === "night") {
     nightGlow = "glow 1s ease-in-out infinite";
+    slowGlow = "glow 5s ease-in-out infinite";
   }
 
   const isMorning = timeOfDay === "morning";
@@ -47,9 +49,11 @@ export default function HeroGreetings() {
     }
   }
 
+  let font = "text-3xl";
   let greetingFontStyle = "text-5xl md:text-7xl";
   if (timeOfDay == "evening") {
-    greetingFontStyle = `${pixelFont.className} text-3xl md:text-5xl`;
+    font = `${pixelFont.className} text-base`;
+    greetingFontStyle = "text-3xl md:text-5xl";
   } else if (timeOfDay == "day") {
     greetingFontStyle = "text-8xl md:text-8xl";
   }
@@ -91,41 +95,91 @@ export default function HeroGreetings() {
   return (
     <div
       className={clsx(
-        "relative z-10 text-center mx-10 p-5 transition-transform duration-500",
-        {
-          "bg-white/70 border": isMorning,
-          "rotate-[-5deg] hover:rotate-0 active:rotate-0": isMorning,
-          "cursor-pointer": isEvening || isDay || isMorning, // Cursor pointer for all interactive states
-        }
+        font,
+        "flex flex-col z-10 w-full justify-center items-center gap-8"
       )}
-      style={{
-        borderColor: isMorning ? primaryColor : undefined,
-      }}
-      onMouseEnter={handleEnterInteractiveState} // Combined handler for hover
-      onMouseLeave={handleLeaveInteractiveState} // Combined handler for hover
-      onTouchStart={handleTouchStart} // Combined handler for touch
-      onTouchEnd={handleTouchEnd} // Combined handler for touch
-      onTouchCancel={handleTouchCancel} // Combined handler for touch
     >
-      {isMorning && (
-        <Bird
-          className="absolute -translate-y-14 transform transition-all duration-500 z-20"
-          style={{ left: birdPosition, color: primaryColor }}
-          size={40}
-        />
-      )}
-      <h1
+      <div
         className={clsx(
-          "font-bold select-none transition duration-1000",
-          greetingFontStyle
+          "relative text-center mx-10 p-5 transition-transform duration-500",
+          {
+            "bg-white/70 border md:my-10": isMorning,
+            "rotate-[-5deg] hover:rotate-0 active:rotate-0": isMorning,
+            "cursor-pointer": isEvening || isDay || isMorning, // Cursor pointer for all interactive states
+          }
         )}
         style={{
-          WebkitTextStroke: `1.2px ${backgroundColor}`,
-          animation: eveningAnimation || nightGlow,
+          borderColor: isMorning ? primaryColor : undefined,
+        }}
+        onMouseEnter={handleEnterInteractiveState} // Combined handler for hover
+        onMouseLeave={handleLeaveInteractiveState} // Combined handler for hover
+        onTouchStart={handleTouchStart} // Combined handler for touch
+        onTouchEnd={handleTouchEnd} // Combined handler for touch
+        onTouchCancel={handleTouchCancel} // Combined handler for touch
+      >
+        {isMorning && (
+          <Bird
+            className="absolute -translate-y-14 transform transition-all duration-500 z-20"
+            style={{ left: birdPosition, color: primaryColor }}
+            size={40}
+          />
+        )}
+        <h1
+          className={clsx(
+            "font-bold select-none transition duration-1000",
+            greetingFontStyle
+          )}
+          style={{
+            WebkitTextStroke: `1.2px ${backgroundColor}`,
+            animation: eveningAnimation || nightGlow,
+          }}
+        >
+          {displayedGreeting}
+        </h1>
+      </div>
+
+      <div
+        className="flex flex-col gap-8 font-black"
+        style={{
+          WebkitTextStroke: isEvening ? undefined : `1.2px ${backgroundColor}`,
+          animation: slowGlow,
         }}
       >
-        {displayedGreeting}
-      </h1>
+        <a href="#introduce" className="group flex items-center">
+          <span className="relative w-4 flex items-center justify-center">
+            <span
+              className="absolute transition-opacity duration-300 opacity-100 group-hover:opacity-0 group-active:opacity-0"
+              style={{ top: "50%", transform: "translateY(-50%)" }} // Vertical centering
+            >
+              -
+            </span>
+            <span
+              className="absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100 group-active:opacity-100"
+              style={{ top: "50%", transform: "translateY(-50%)" }} // Vertical centering
+            >
+              &gt;
+            </span>
+          </span>
+          <span>&nbsp;Scroll Down</span>
+        </a>
+        <a href="/blog" className="group flex items-center">
+          <span className="relative w-4 flex items-center justify-center">
+            <span
+              className="absolute transition-opacity duration-300 opacity-100 group-hover:opacity-0 group-active:opacity-0"
+              style={{ top: "50%", transform: "translateY(-50%)" }} // Vertical centering
+            >
+              -
+            </span>
+            <span
+              className="absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100 group-active:opacity-100"
+              style={{ top: "50%", transform: "translateY(-50%)" }} // Vertical centering
+            >
+              &gt;
+            </span>
+          </span>
+          <span>&nbsp;Visit Blog</span>
+        </a>
+      </div>
     </div>
   );
 }
