@@ -29,6 +29,20 @@
             "Implemented role-based approval process with web GUI for game packaging teams, protecting marketing strategies while ensuring game stability through comprehensive asset validation"
           ],
           "title": "Game Asset Release Risk Management System"
+        },
+        {
+          "description": [
+            "Consolidated fragmented CI/CD scripts scattered across multiple SCM systems (Visual SVN, Perforce servers) into centralized GitLab repository, eliminating duplicate maintenance and preventing recurring bugs from inconsistent update",
+            "Standardized heterogeneous build systems across multiple projects from mixed Python/Shell/Groovy scripts and custom tools to unified Jenkins+Groovy pipeline, reducing operational complexity and enabling team-wide maintainability"
+          ]
+        },
+        {
+          "description": [
+            "Automated manual build processes using Jenkins and Perforce triggers, reducing build deployment time from hours to minutes and eliminating manual intervention requirements",
+            "Developed Slack integration system for real-time build status notifications and detailed error reporting, enabling immediate team response to build failures",
+            "Implemented automated monitoring system for build performance metrics (memory usage, execution time) with threshold-based alerting, proactively identifying performance degradation and system issues"
+          ],
+          "title": "Build Process Automation and Monitoring"
         }
       ],
       "role": [""]
