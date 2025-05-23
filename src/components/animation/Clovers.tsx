@@ -7,7 +7,7 @@ export const Clovers = () => {
   const cloverCount = 15; // Increased for more coverage
   const clovers = Array.from({ length: cloverCount }).map((_, i) => {
     // Random initial position within bounds
-    const initialTop = -10 + Math.random() * 60; // 30% to 90%
+    const initialTop = -10 + Math.random() * 70; // 30% to 90%
     const initialLeft = Math.random() * 100;
 
     // Random animation durations and delays
