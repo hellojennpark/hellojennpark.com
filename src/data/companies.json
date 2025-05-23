@@ -45,7 +45,7 @@
           "title": "Build Process Automation and Monitoring"
         }
       ],
-      "role": [""]
+      "summary": "I led the development of systems to prevent unauthorized content releases and system failures, unified CI/CD pipelines for consistent and efficient builds, and automated processes to reduce manual work and enhance team productivity."
     },
     "duration": "1y6m",
     "href": "pearlabyss",
@@ -92,7 +92,6 @@
         },
         {
           "description": [
-            "사내 22개 조직, 54개 서비스에서 사용",
             "Built UI and API servers utilizing an existing open-source mock server",
             "Created an environment that allows easy company-wide setup and utilization of mock servers",
             "Achieved a processing performance of over 1 million transactions per day"
@@ -104,10 +103,7 @@
           "title": "Collaborated with the audit team to ensure compliance with strict security and privacy regulations while finding optimal solutions for development"
         }
       ],
-      "role": [
-        "업무 효율화와 자동화를 위한 시스템 구축",
-        "CI/CD 파이프라인 구축 및 배포 서버 환경 구축"
-      ]
+      "summary": "I worked on automating deployment and communication processes, which helped my team work more efficiently and reduced our workload. I also developed a platform for performance and mock API testing, and collaborated with audit teams to ensure we met security and privacy standards."
     },
     "duration": "1y10m",
     "href": "kakaopay",
