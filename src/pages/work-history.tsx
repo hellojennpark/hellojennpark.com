@@ -77,7 +77,7 @@ export default function WorkHistoryPage() {
             <div className="space-y-4">
               {company.content.achievements.map((a, i) => (
                 <div key={i}>
-                  <p>{`### ${a.title}`}</p>
+                  <p className="font-semibold">{`- ${a.title}`}</p>
                   <p>{a.description}</p>
                 </div>
               ))}
