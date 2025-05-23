@@ -101,17 +101,23 @@ export default function WorkHistoryPage() {
 
   function BlogPosts(
     isNight: boolean,
-    blogs: { description: string; id: number; title: string; url: string }[]
+    blogs: {
+      description: string;
+      id: number;
+      title: string;
+      url: string;
+      tags: string[];
+    }[]
   ) {
     return (
       <div>
         <div className="text-2xl">Posts</div>
         <div>
           {
-            "Here's a collection of articles I've written for KakaoPay's tech blog and pieces I've contributed to as a collaborator during my time there."
+            "Here are some articles I wrote for the KakaoPay tech blog during my time there."
           }
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-5">
           {blogs
             .sort((a, b) => a.id - b.id)
             .map((blog) => (
@@ -135,7 +141,16 @@ export default function WorkHistoryPage() {
                     <SquareArrowOutUpRight className="ml-2 w-4 h-4" />
                   </h4>
                 </Link>
-                <p className="p-3 text-sm">{blog.description}</p>
+                <div className="p-3">
+                  <p className="text-sm">{blog.description}</p>
+                  <div className="space-x-2 md:space-x-3">
+                    {blog.tags.map((t) => (
+                      <span key={t} className={clsx("text-xs p-1 rounded-sm")}>
+                        # {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             ))}
         </div>

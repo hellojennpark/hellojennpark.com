@@ -79,26 +79,23 @@
       {
         "description": "Transforming stressful manual operations into automated workflows that the whole team could rely on.",
         "id": 0,
+        "tags": ["Slack Bot", "Automation", "CI/CD"],
         "title": "Building an Automation Slack Bot to Streamline Operations",
         "url": "https://tech-kakaopay-com.translate.goog/post/slack-bot-improving-operational-efficiency/?_x_tr_sl=ko&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp"
       },
       {
         "description": "How we reduced testing complexity and wait times by implementing a common mock server infrastructure.",
         "id": 1,
+        "tags": ["Test", "Automation", "Mocking"],
         "title": "Lowering KakaoPay's Testing Barriers with a Shared Mock Server",
         "url": "https://tech-kakaopay-com.translate.goog/post/how-to-simplify-kakaopay-testing-using-a-common-mock-server/?_x_tr_sl=ko&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp"
       },
       {
         "description": "A retrospective on the unexpected challenges that came with automation and how we solved them.",
         "id": 2,
+        "tags": ["Lessons learned", "CI/CD", "Automation"],
         "title": "One Year of KakaoPay Deployment Automation: Lessons Learned",
         "url": "https://tech-kakaopay-com.translate.goog/post/slack-bot-improving-operational-efficiency-2/?_x_tr_sl=ko&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp"
-      },
-      {
-        "description": "My presentation at KakaoPay's internal developer festival about operational automation and team productivity.",
-        "id": 3,
-        "title": "Welcome to KakaoPay: A Developer's Journey",
-        "url": "https://tech-kakaopay-com.translate.goog/post/2023-july-kakaopay-developer-festival/?_x_tr_sl=ko&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp"
       }
     ],
     "content": {
