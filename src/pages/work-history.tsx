@@ -26,7 +26,7 @@ export default function WorkHistoryPage() {
         }
       >
         <div className="md:col-span-2">
-          <h2 className="text-3xl">Intro.</h2>
+          <h2 className="text-3xl pb-8">Intro.</h2>
           <p>
             {
               "As a Software Engineer with 4 years of experience across multiple companies, I'm driven by a passion for crafting exceptional user experiences and empowering my colleagues."
@@ -64,13 +64,16 @@ export default function WorkHistoryPage() {
         </div>
       </div>
       {companies.map((company) => (
-        <div key={company.href} id={company.href}>
-          <h2 className="text-3xl">
-            {company.title}@{company.label}
-          </h2>
-          <h3>
-            {company.period} / {company.team}
-          </h3>
+        <div key={company.href} id={company.href} className="space-y-8 pb-16">
+          <div>
+            <h2 className="text-3xl">
+              {company.title}@{company.label}
+            </h2>
+            <h3>
+              {company.period} / {company.team}
+            </h3>
+          </div>
+          <p>{company.content.summary}</p>
           {company.blogs.length > 0 && BlogPosts(isNight, company.blogs)}
         </div>
       ))}
@@ -82,7 +85,7 @@ export default function WorkHistoryPage() {
     blogs: { description: string; id: number; title: string; url: string }[]
   ) {
     return (
-      <div className="py-8">
+      <div>
         <div className="text-2xl">Posts</div>
         <div>
           {
