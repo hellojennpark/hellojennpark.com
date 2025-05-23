@@ -2,6 +2,7 @@ import { useState } from "react"; // Add this import
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import Image from "next/image";
 import { Clovers } from "./animation/Clovers";
+import { BearClover } from "./animation/BearClover";
 
 export const HeroBackground = () => {
   const { timeOfDay, primaryColor } = useTimeThemeStore();
@@ -9,7 +10,12 @@ export const HeroBackground = () => {
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-      {timeOfDay === "day" && <Clovers />}
+      {timeOfDay === "day" && (
+        <>
+          <Clovers />
+          <BearClover />
+        </>
+      )}
 
       {timeOfDay === "morning" && (
         <div

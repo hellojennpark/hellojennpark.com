@@ -283,3 +283,25 @@ html {
 .animate-clover-float {
   animation: clover-float infinite ease-in-out;
 }
+
+@keyframes clover-float-full {
+  0% {
+    transform: translate(-50%, -50%) translateX(0) translateY(0) rotate(var(--initial-rotation, 0deg));
+  }
+  25% {
+    transform: translate(-50%, -50%) translateX(var(--x-travel-1, 10vw)) translateY(var(--y-travel-1, -5vh)) rotate(calc(var(--initial-rotation, 0deg) + 90deg));
+  }
+  50% {
+    transform: translate(-50%, -50%) translateX(var(--x-travel-2, -15vw)) translateY(var(--y-travel-2, 10vh)) rotate(calc(var(--initial-rotation, 0deg) + 180deg));
+  }
+  75% {
+    transform: translate(-50%, -50%) translateX(var(--x-travel-3, 5vw)) translateY(var(--y-travel-3, -8vh)) rotate(calc(var(--initial-rotation, 0deg) + 270deg));
+  }
+  100% {
+    transform: translate(-50%, -50%) translateX(0) translateY(0) rotate(calc(var(--initial-rotation, 0deg) + 360deg));
+  }
+}
+
+.animate-clover-float-full {
+  animation: clover-float-full infinite ease-in-out;
+}
