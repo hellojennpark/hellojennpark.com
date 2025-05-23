@@ -60,32 +60,34 @@ export default function WorkHistoryPage() {
           </ul>
         </div>
       </div>
-      {companies.map((company) => (
-        <div key={company.href} id={company.href} className="space-y-8 pb-16">
-          <div>
-            <h2 className="text-3xl">
-              # {company.title}@{company.label}
-            </h2>
-            <h3>
-              {company.period} / {company.team}
-            </h3>
-          </div>
-          <p>{company.content.summary}</p>
-
-          <div>
-            <div className="text-2xl">## Achievements</div>
-            <div className="space-y-6">
-              {company.content.achievements.map((a, i) => (
-                <div key={i}>
-                  <p className="font-semibold">{`- ${a.title}`}</p>
-                  <p>{a.description}</p>
-                </div>
-              ))}
+      <div className="space-y-16">
+        {companies.map((company) => (
+          <div key={company.href} id={company.href} className="space-y-8">
+            <div>
+              <h2 className="text-3xl">
+                # {company.title}@{company.label}
+              </h2>
+              <h3>
+                {company.period} / {company.team}
+              </h3>
             </div>
+            <p>{company.content.summary}</p>
+
+            <div>
+              <div className="text-2xl">## Achievements</div>
+              <div className="space-y-6">
+                {company.content.achievements.map((a, i) => (
+                  <div key={i}>
+                    <p className="font-semibold">{`- ${a.title}`}</p>
+                    <p>{a.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {company.blogs.length > 0 && BlogPosts(isNight, company.blogs)}
           </div>
-          {company.blogs.length > 0 && BlogPosts(isNight, company.blogs)}
-        </div>
-      ))}
+        ))}
+      </div>
     </PageLayout>
   );
 
