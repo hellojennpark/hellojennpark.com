@@ -11,6 +11,9 @@ export default function WorkHistoryPage() {
   const { timeOfDay } = useTimeThemeStore();
 
   const isNight = timeOfDay == "night";
+  const timeOfDayBorderStyle = isNight
+    ? "border-b border-white"
+    : "border-b border-black";
   const timeOfDayBgStyle = isNight
     ? "bg-black/40 border-white border hover:bg-gray-800 active:bg-gray-800 text-white"
     : "bg-white/80 border-black border hover:bg-white active:bg-white text-black";
@@ -63,7 +66,7 @@ export default function WorkHistoryPage() {
       <div className="space-y-16">
         {companies.map((company) => (
           <div key={company.href} id={company.href} className="space-y-8">
-            <div>
+            <div className={timeOfDayBorderStyle}>
               <h2 className="text-3xl">
                 # {company.title}@{company.label}
               </h2>

@@ -18,7 +18,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
   const isNight = timeOfDay == "night";
   const timeOfDayStyle = isNight
     ? "bg-black/40 text-white"
-    : "bg-white/50 text-black";
+    : "bg-white/60 text-black";
 
   const crumbs = router.pathname
     .split("/")
