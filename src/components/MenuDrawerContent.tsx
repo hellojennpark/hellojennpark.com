@@ -21,7 +21,7 @@ export const MenuDrawerContent = ({ onClose }: MenuDrawerContentProps) => {
     : "bg-white text-black";
 
   return (
-    <div className={clsx("p-6 pb-18", timeOfDayStyle)}>
+    <div className={clsx("md:p-4 md:pb-18", timeOfDayStyle)}>
       <div className="items-center flex flex-row py-2 mb-4">
         <CustomAvatar name="jenn" size="xl" />
         <div className="flex flex-col ml-3">
