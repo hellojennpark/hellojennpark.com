@@ -126,7 +126,7 @@ export default function HeroGreetings() {
         )}
         <h1
           className={clsx(
-            "font-bold select-none transition duration-1000",
+            "font-bold transition duration-1000",
             greetingFontStyle
           )}
           style={{
@@ -145,7 +145,7 @@ export default function HeroGreetings() {
           animation: slowGlow,
         }}
       >
-        <a href="#introduce" className="group flex items-center">
+        <div className="group flex items-center">
           <span className="relative w-4 flex items-center justify-center">
             <span
               className="absolute transition-opacity duration-300 opacity-100 group-hover:opacity-0 group-active:opacity-0"
@@ -161,7 +161,7 @@ export default function HeroGreetings() {
             </span>
           </span>
           <span>&nbsp;Open Menu</span>
-        </a>
+        </div>
         <a href="/blog" className="group flex items-center">
           <span className="relative w-4 flex items-center justify-center">
             <span
