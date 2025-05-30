@@ -32,20 +32,15 @@ const experiences = [
     months: 22,
     color: "bg-yellow-400",
   },
-];
-
-const totalMonths = experiences.reduce((acc, exp) => acc + exp.months, 0);
+].reverse();
 
 export function CareerTimeline({ hide }: { hide: boolean }) {
   const Summary = (
     <>
       <div className="text-md md:text-lg">
-        <div>
-          <strong>{Math.floor(totalMonths / 12)}y</strong> (incl. 8-month
-          internship)
-        </div>
+        <div>4 years total (w/ 8-month internship), newest first</div>
       </div>
-      <div className="space-y-1 md:space-y-2">
+      <div className="space-y-2 md:space-y-3">
         {experiences.map((exp, i) => (
           <div key={i} className="flex items-center gap-2">
             <span
@@ -65,7 +60,7 @@ export function CareerTimeline({ hide }: { hide: boolean }) {
   );
 
   return (
-    <div className="space-y-1 md:space-y-2 w-full text-md pt-1">
+    <div className="space-y-2 md:space-y-3 w-full text-md pt-1">
       {/* Timeline bar */}
       <TooltipProvider>
         <div className="w-full flex h-8 rounded overflow-hidden border border-white/30">

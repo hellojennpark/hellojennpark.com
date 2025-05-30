@@ -75,7 +75,7 @@ export default function CareerDashboard() {
     >
       {cardData.map(
         (card, i) =>
-          (!isMobile || i != 0) && (
+          !isMobile && (
             <InfoCard
               key={i}
               title={card.title}
