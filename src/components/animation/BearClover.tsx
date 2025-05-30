@@ -1,8 +1,8 @@
 // components/Clovers.tsx
-import Image from "next/image";
+// import Image from "next/image";
 import React from "react";
 // import { Clover } from "lucide-react"; // Import a suitable icon from Lucide
-import { PiCloverFill } from "react-icons/pi";
+import { PiStarFill } from "react-icons/pi";
 
 export const BearClover = () => {
   const initialTop = 30 + Math.random() * 50; // 30% to 90%
@@ -28,8 +28,8 @@ export const BearClover = () => {
           color: `hsl(var(--primary-color) ${60 + Math.random() * 20}%)`, // Adjust color based on primary (assuming --primary-color is defined in CSS)
         }}
       >
-        <Image src={"/bearbear.png"} fill alt="bear" />
-        <PiCloverFill size="5em" color="Green" />
+        {/* <Image src={"/bearbear.png"} fill alt="bear" /> */}
+        <PiStarFill size="5em" color="#fde74c" />
       </div>
     </div>
   );
