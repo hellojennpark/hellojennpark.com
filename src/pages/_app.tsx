@@ -30,6 +30,8 @@ export default function App({ Component, pageProps }: AppProps) {
     <div>
       <Head>
         <link rel="icon" href="/logo.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <title>HelloJennPark</title>
       </Head>
       <main className={nunito.className} style={{ backgroundColor }}>
