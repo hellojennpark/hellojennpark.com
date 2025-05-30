@@ -1,18 +1,12 @@
 "use client";
 
-import { Drawer, DrawerTrigger, DrawerContent } from "@/components/ui/drawer";
-import { useEffect, useState } from "react";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
-import { Github, Linkedin } from "lucide-react";
-import Link from "next/link";
-import { ThemedLink } from "./ThemedLink";
 import { ThemedSlider } from "./ThemedSlider";
-import { CustomAvatar } from "./CustomAvatar";
 import { Press_Start_2P } from "next/font/google";
-import categories from "@/data/categories.json";
+import { MenuDrawer } from "./MenuDrawer";
 
 const pixelFont = Press_Start_2P({
   weight: "400",
@@ -23,29 +17,11 @@ export const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const [isMobile, setIsMobile] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { hour, setHour, primaryColor, backgroundColor, timeOfDay } =
     useTimeThemeStore();
 
   const isLanding = pathname == "/";
   const isNight = timeOfDay == "night";
-  const timeOfDayStyle = isNight
-    ? "bg-gray-900 text-white"
-    : "bg-white text-black";
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const closeDrawer = () => {
-    setIsDrawerOpen(false);
-  };
 
   return (
     <header
@@ -78,61 +54,20 @@ export const Header = () => {
         <ThemedSlider value={[hour]} onValueChange={([v]) => setHour(v)} />
       </div>
 
-      <Drawer
-        open={isDrawerOpen}
-        onOpenChange={setIsDrawerOpen}
-        direction={isMobile ? "bottom" : "right"}
-      >
-        <DrawerTrigger asChild>
-          <button
-            className={clsx(
-              "rounded-md p-0.5 transform transition duration-200 hover:scale-105 active:scale-105",
-              !isLanding && "border-2"
-            )}
-            style={{
-              color: isLanding || isNight ? primaryColor : backgroundColor,
-              borderColor:
-                isLanding || isNight ? primaryColor : backgroundColor,
-            }}
-          >
-            <Menu className="w-6 h-6" />
-          </button>
-        </DrawerTrigger>
-        <DrawerContent className={clsx("p-6 pb-18", timeOfDayStyle)}>
-          <div className="items-center flex flex-row py-2 mb-4">
-            <CustomAvatar name="jenn" size="xl" />
-            <div className="flex flex-col ml-3">
-              <p className="text-lg font-semibold">Jenn</p>
-              <p className="text-sm">
-                Welcome to my space. Please enjoy and have a wonderful day!
-              </p>
-            </div>
-          </div>
-          <nav className="flex flex-col space-y-4 px-4 py-2">
-            {categories.map((category) => (
-              <ThemedLink
-                key={category.id}
-                href={category.href}
-                onClick={closeDrawer}
-              >
-                {category.label}
-              </ThemedLink>
-            ))}
-          </nav>
-
-          <div className="absolute bottom-4 right-8 flex gap-8">
-            <Link href="https://github.com/hellojennpark" target="_blank">
-              <Github className="w-8 h-8 active:opacity-60 hover:opacity-60 transition-opacity" />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/hellojennpark"
-              target="_blank"
-            >
-              <Linkedin className="w-8 h-8 active:opacity-60 hover:opacity-60 transition-opacity" />
-            </Link>
-          </div>
-        </DrawerContent>
-      </Drawer>
+      <MenuDrawer>
+        <button
+          className={clsx(
+            "rounded-md p-0.5 transform transition duration-200 hover:scale-105 active:scale-105",
+            !isLanding && "border-2"
+          )}
+          style={{
+            color: isLanding || isNight ? primaryColor : backgroundColor,
+            borderColor: isLanding || isNight ? primaryColor : backgroundColor,
+          }}
+        >
+          <Menu className="w-6 h-6" />
+        </button>
+      </MenuDrawer>
     </header>
   );
 };

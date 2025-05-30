@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { Press_Start_2P } from "next/font/google";
 import { useState } from "react"; // useRef and useEffect are no longer needed for clearing timeout
 import { Bird } from "lucide-react";
+import { MenuDrawer } from "./MenuDrawer";
 
 const pixelFont = Press_Start_2P({
   weight: "400",
@@ -145,23 +146,25 @@ export default function HeroGreetings() {
           animation: slowGlow,
         }}
       >
-        <div className="group flex items-center">
-          <span className="relative w-4 flex items-center justify-center">
-            <span
-              className="absolute transition-opacity duration-300 opacity-100 group-hover:opacity-0 group-active:opacity-0"
-              style={{ top: "50%", transform: "translateY(-50%)" }} // Vertical centering
-            >
-              -
+        <MenuDrawer>
+          <div className="group flex items-center">
+            <span className="relative w-4 flex items-center justify-center">
+              <span
+                className="absolute transition-opacity duration-300 opacity-100 group-hover:opacity-0 group-active:opacity-0"
+                style={{ top: "50%", transform: "translateY(-50%)" }} // Vertical centering
+              >
+                -
+              </span>
+              <span
+                className="absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100 group-active:opacity-100"
+                style={{ top: "50%", transform: "translateY(-50%)" }} // Vertical centering
+              >
+                &gt;
+              </span>
             </span>
-            <span
-              className="absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100 group-active:opacity-100"
-              style={{ top: "50%", transform: "translateY(-50%)" }} // Vertical centering
-            >
-              &gt;
-            </span>
-          </span>
-          <span>&nbsp;Open Menu</span>
-        </div>
+            <span>&nbsp;Open Menu</span>
+          </div>
+        </MenuDrawer>
         <a href="/blog" className="group flex items-center">
           <span className="relative w-4 flex items-center justify-center">
             <span
