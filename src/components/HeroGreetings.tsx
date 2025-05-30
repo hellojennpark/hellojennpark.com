@@ -160,7 +160,7 @@ export default function HeroGreetings() {
               &gt;
             </span>
           </span>
-          <span>&nbsp;Scroll Down</span>
+          <span>&nbsp;Open Menu</span>
         </a>
         <a href="/blog" className="group flex items-center">
           <span className="relative w-4 flex items-center justify-center">

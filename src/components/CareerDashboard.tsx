@@ -69,7 +69,7 @@ export default function CareerDashboard() {
 
   return (
     <div
-      className={`py-20 px-4 md:px-5 sm:px-10 grid ${
+      className={`py-20  px-4 md:px-5 sm:px-10 grid ${
         isMobile ? "grid-cols-2" : "grid-cols-1 sm:grid-cols-2 md:grid-cols-4"
       } gap-3 md:gap-4`}
     >
