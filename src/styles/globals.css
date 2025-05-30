@@ -305,3 +305,30 @@ html {
 .animate-clover-float-full {
   animation: clover-float-full infinite ease-in-out;
 }
+
+@keyframes fall-square {
+  0% {
+    transform: translateY(-10vh);
+  }
+  100% {
+    transform: translateY(110vh);
+  }
+}
+
+.animate-fall-square {
+  animation-name: fall-square;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes spread-out {
+  0% {
+    transform: scale(0.3) translate(0, 0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.5) translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+

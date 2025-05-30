@@ -3,6 +3,7 @@ import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import Image from "next/image";
 import { Clovers } from "./animation/Clovers";
 import { BearClover } from "./animation/BearClover";
+import { SpreadingParticles } from "./animation/SpreadingParticles";
 
 export const HeroBackground = () => {
   const { timeOfDay, primaryColor } = useTimeThemeStore();
@@ -17,6 +18,7 @@ export const HeroBackground = () => {
         </>
       )}
 
+      {timeOfDay === "night" && <SpreadingParticles />}
       {timeOfDay === "morning" && (
         <div
           className="absolute inset-0 z-0 animate-grid-shimmer"
