@@ -34,5 +34,11 @@
     "href": "/contact",
     "id": 5,
     "label": "Contact"
+  },
+  {
+    "description": "",
+    "href": "/license",
+    "id": 99,
+    "label": "License"
   }
 ]

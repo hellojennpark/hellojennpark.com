@@ -77,7 +77,8 @@ export default function PageLayout({ children }: PageLayoutProps) {
                 {categories.map((category) => {
                   if (
                     category.href != currentHrefFromRouter &&
-                    category.id != 0
+                    category.id != 0 &&
+                    category.id != 99
                   )
                     return (
                       <Link key={category.id} href={category.href}>
