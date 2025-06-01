@@ -15,7 +15,7 @@ const greetingMap = {
   morning: "Hello, early bird.",
   day: "Hey there!",
   evening: "Hope your day went well.",
-  night: "The world’s quiet — perfect time to create.",
+  night: "The world’s quiet - perfect time to create.",
 };
 
 export default function HeroGreetings() {
