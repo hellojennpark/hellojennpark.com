@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { Home, ChevronRight, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { useRouter } from "next/navigation";
 
 type BlogLayoutProps = {
   title: string;
@@ -29,6 +30,9 @@ export default function BlogLayout({ title, children }: BlogLayoutProps) {
       label: title,
     },
   ];
+
+  const router = useRouter();
+
   return (
     <div className="w-full h-[100dvh] mx-auto justify-between">
       <div
@@ -65,13 +69,13 @@ export default function BlogLayout({ title, children }: BlogLayoutProps) {
             {children}
           </div>
           <div className="mt-4">
-            <Link
-              href="/blog"
+            <button
+              onClick={() => router.back()}
               className="inline-flex items-center text-sm hover:underline"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
               Back
-            </Link>
+            </button>
           </div>
         </div>
       </div>
