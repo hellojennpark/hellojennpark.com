@@ -1,0 +1,82 @@
+---
+title: "From Helpless Waiting to Taking Control: My 3.5 Years of On-Call Rotations in CI/CD"
+description: "A developer's honest reflection on on-call rotations across two different companies – from being able to directly solve problems to becoming a \"passive waiting team,\" and how we eventually took control back. This post explores what makes on-call rotations exhausting, what makes them bearable, and lessons learned from 3.5 years in the trenches."
+tags: ["on-call", "devops", "ci-cd", "developer-experience", "team-culture", "infrastructure", "operations", "burnout", "problem-solving", "system-ownership"]
+date: "2024-09-14"
+---
+
+
+> If you've ever been jolted awake at 2 AM by a deployment failure, you know the unique stress that comes with on-call rotations. Over the past 3.5 years, I've experienced on-call duties at two very different companies, and the contrast taught me something crucial: it's not just about being available 24/7 – it's about having the power to actually solve the problems you're called to fix.
+
+## Two Companies, Two Completely Different On-Call Experiences
+
+At my first company, our team owned the entire CI/CD pipeline. When something broke during deployment, we knew exactly what went wrong because we built the platform ourselves. We could dive into the logs, identify the issue, and fix it directly. Sure, getting called at 3 AM wasn't fun, but at least we weren't sitting there helplessly waiting for someone else to save the day.
+
+Then I moved to my second company, where the setup was completely different. The CI/CD system, internal tools, and on-call rotations were managed by three separate teams. When deployments failed, we often couldn't identify the exact problem, let alone fix it. We became what I call a "passive waiting team" – our job was to receive the alert, investigate what we could, then escalate and wait.
+
+## The 9-Hour Reality Check
+
+One night that started at 11 PM changed everything for me. A deployment issue came in, we investigated, escalated to another team, and then waited. Three hours later, another escalation. More waiting. By 8 AM, I had been "on-call" for nine straight hours – mostly just waiting.
+
+The breaking point came when the developers said they didn't want to bother yet another team at that hour, so they'd wait until business hours to escalate further. Everyone was trying to be considerate, but the system inadvertently created an imbalance where some teams bore the brunt of after-hours issues while others were protected.
+
+## Why System Design Matters for On-Call Sustainability
+
+Here's what I learned: the most exhausting part of on-call isn't the technical problems – it's the mismatch between responsibility and authority. When you're responsible for system uptime but lack the authority to fix underlying issues, several challenges emerge:
+
+- **Technical confidence erodes** when you constantly need to say "let me ask someone else"
+- **Problems persist longer** because the team with fix authority may have different priorities
+- **You become a communication relay** rather than a problem solver
+- **Frustration compounds** – losing sleep to coordinate is more draining than losing sleep to solve actual problems
+
+This isn't anyone's fault – it's a systems design challenge that many organizations face as they scale.
+
+## Taking Back Control
+
+After months of experiencing these challenges, our team decided to propose a solution. Since we were running CI/CD processes manually dozens of times per day (financial industry regulations prevented full automation), we had deep insight into user pain points and system bottlenecks.
+
+I worked on convincing our senior team members to realign ownership: let the DevOps team focus on CI/CD infrastructure stability while we took responsibility for the user-facing deployment management system. They helped champion the idea up the chain, and eventually we got approval to make the change.
+
+The transformation was remarkable. Working within regulatory constraints, we focused on automating everything possible around the human-required steps:
+
+**Rollback Process Automation:** Previously, rollbacks required manual information gathering, developer verification requests, manual rollback execution, confirmation calls, and incident documentation. We automated everything except the actual rollback trigger – the system now automatically provides rollback information via alerts and handles the entire documentation workflow.
+
+**Communication Streamlining:** During peak times, we'd manage 10-20 concurrent deployments. Status updates were constantly forgotten, leaving developers waiting on us or us waiting on them. We integrated automatic status notifications throughout the deployment pipeline, eliminating most of the back-and-forth communication gaps.
+
+The results were measurable: during business hours (10 AM - 7 PM), we reduced deployment support staff from 10 people to just 3 (with only 1 full-time employee instead of 7), while simultaneously increasing our monthly deployment support from 1,000 to 1,500 cases. The key was enabling concurrent deployments through better automation and workflow design.
+
+Most importantly, when deployment issues happened during on-call hours, we could directly handle a significant portion of them. We didn't bring over every system, but having control over the user-facing deployment layer meant we could resolve most issues without endless escalation chains.
+
+## The Surprising Benefits of On-Call (When Done Right)
+
+Despite my complaints, on-call rotations taught me valuable lessons:
+
+**Empathy for operations teams.** Before my second company, I focused mainly on developer experience. Going through the operational pain myself made me consider the full lifecycle of systems I build.
+
+**Deeper system understanding.** When you're the one being called at 2 AM, you develop intimate knowledge of how all the pieces fit together, making you better at both building and debugging systems.
+
+**Better teamwork.** When everyone shares on-call duties, you naturally learn what your teammates do. This cross-pollination makes the whole team stronger.
+
+## Making On-Call Sustainable
+
+Based on my experience, here are the key factors that make on-call rotations bearable:
+
+**Ownership is crucial.** If your team is on-call for systems you can't directly modify, you're setting everyone up for frustration. Either get ownership of the critical path, or ensure you have direct channels to teams that can make changes quickly.
+
+**Automation within constraints.** Even in heavily regulated industries, there's usually room for automation around the human-required steps. Focus on information flow, status updates, and reducing manual coordination overhead.
+
+**Respect everyone's time equally.** If you wouldn't wake up the senior architect at 3 AM for an issue, don't automatically assume the on-call person should handle it alone.
+
+**Incident post-mortems should lead to action.** If the same issues keep waking people up, something needs to change in the system, not just the process.
+
+These principles apply whether you're in DevOps, SRE, platform engineering, or any role managing critical systems.
+
+## The Bottom Line
+
+On-call rotations aren't inherently good or bad – they're a tool. Their value depends entirely on implementation. If your team is constantly being woken up for problems you can't solve, it's time to ask hard questions about system ownership and team responsibilities.
+
+Sometimes the best solution isn't optimizing the on-call process – it's changing who owns which systems. In my case, bringing the deployment management system in-house didn't just reduce our on-call pain; it made us better engineers and created a better experience for everyone.
+
+The goal shouldn't be eliminating on-call responsibilities, but ensuring that when you do get called, you have the power to actually solve the problem. Because nothing's worse than losing sleep just to be a middleman in someone else's emergency.
+
+What's your on-call experience been like? Have you found yourself responsible for systems you can't control? I'd love to hear your stories in the comments.

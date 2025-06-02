@@ -17,7 +17,9 @@ export function TOC({ toc }: Props) {
     <nav
       className={clsx(
         "border rounded-md p-4 space-y-2",
-        isNight ? "border-white" : "border-black"
+        isNight
+          ? "border-white hover:bg-black active:bg-black"
+          : "border-black hover:bg-white active:bg-white"
       )}
     >
       <button
