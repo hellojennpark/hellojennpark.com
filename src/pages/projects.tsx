@@ -2,12 +2,8 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import Link from "next/link";
 import PageLayout from "@/components/layout/PageLayout";
-import { TagList } from "@/components/TagList";
-import clsx from "clsx";
-import { useTimeThemeStore } from "@/store/useTimeThemeStore";
-import { Calendar } from "lucide-react";
+import BlogPostCard from "@/components/BlogPostCard";
 
 type Post = {
   title: string;
@@ -18,35 +14,11 @@ type Post = {
 };
 
 function Page({ posts }: { posts: Post[] }) {
-  const { timeOfDay } = useTimeThemeStore();
-  const isNight = timeOfDay == "night";
   return (
     <PageLayout>
       <div className="space-y-4">
         {posts.map((post) => (
-          <p
-            key={post.slug.join("/")}
-            className={clsx(
-              "space-y-2 p-4 rounded-md",
-              isNight
-                ? "bg-black/30 hover:bg-black/60 active:bg-black/60"
-                : "bg-white/50 hover:bg-white/80 active:bg-white/80"
-            )}
-          >
-            <Link href={`/blog/${post.slug.join("/")}`}>
-              <span>{post.title}</span>
-
-              {post.description && (
-                <p className="text-base mb-4">{post.description}</p>
-              )}
-              <TagList tags={post.tags} />
-
-              <span className="flex flex-row items-center text-sm md:text-base justify-end">
-                <Calendar className="w-3 h-3 md:w-4 md:h-4 mr-1" />
-                {post.date}
-              </span>
-            </Link>
-          </p>
+          <BlogPostCard key={post.slug.join("/")} post={post} reverse={true} />
         ))}
       </div>
     </PageLayout>
