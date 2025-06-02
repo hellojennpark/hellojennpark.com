@@ -55,7 +55,7 @@ export default function BlogLayout({ title, children }: BlogLayoutProps) {
               <div key={crumb.key} className="flex items-center space-x-1">
                 <ChevronRight className="w-4 h-4 text-muted-foreground" />
                 {index === crumbs.length - 1 ? (
-                  <span className="font-bold">
+                  <span className="font-bold whitespace-nowrap overflow-hidden text-ellipsis max-w-[160px] truncate">
                     {crumb.label.replace("-", " ")}
                   </span>
                 ) : (
