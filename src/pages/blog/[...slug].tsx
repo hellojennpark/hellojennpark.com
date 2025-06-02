@@ -31,13 +31,11 @@ function Page({ source, frontMatter }: Props) {
           isNight ? "border-white" : "border-black"
         )}
       >
-        <div className="flex justify-between">
-          <h1 className="text-3xl">{frontMatter.title}</h1>
-          <span className="flex flex-row items-center justify-end text-xs md:text-base">
-            <Calendar className="w-3 h-3 md:w-4 md:h-4 mr-1" />
-            {frontMatter.date}
-          </span>
-        </div>
+        <span className="flex flex-row items-center justify-end text-sm md:text-base">
+          <Calendar className="w-3 h-3 md:w-4 md:h-4 mr-1" />
+          {frontMatter.date}
+        </span>
+        <h1 className="text-xl md:text-3xl">{frontMatter.title}</h1>
         {frontMatter.description && (
           <p className="mb-2">{frontMatter.description}</p>
         )}
