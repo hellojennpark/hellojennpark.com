@@ -4,10 +4,11 @@ import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, type MDXRemoteSerializeResult } from "next-mdx-remote";
 import type { GetStaticPaths, GetStaticProps } from "next";
-import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
+import { Calendar } from "lucide-react";
 import BlogLayout from "@/components/layout/BlogLayout";
 import { TagList } from "@/components/TagList";
+import { useTimeThemeStore } from "@/store/useTimeThemeStore";
+import clsx from "clsx";
 
 type Props = {
   source: MDXRemoteSerializeResult;
@@ -15,38 +16,37 @@ type Props = {
     title: string;
     description?: string;
     tags?: string[];
+    date: string;
   };
 };
 
 function Page({ source, frontMatter }: Props) {
+  const { timeOfDay } = useTimeThemeStore();
+  const isNight = timeOfDay == "night";
   return (
     <BlogLayout title={frontMatter.title}>
-      <Link
-        href="/blog"
-        className="mb-6 inline-flex items-center text-sm hover:underline"
+      <div
+        className={clsx(
+          "border-b space-y-2",
+          isNight ? "border-white" : "border-black"
+        )}
       >
-        <ChevronLeft className="w-4 h-4 mr-1" />
-        Back
-      </Link>
-
-      <h1 className="text-3xl font-bold mb-4">{frontMatter.title}</h1>
-      {frontMatter.description && (
-        <p className="mb-8">{frontMatter.description}</p>
-      )}
+        <div className="flex justify-between">
+          <h1 className="text-3xl">{frontMatter.title}</h1>
+          <span className="flex flex-row items-center justify-end text-xs md:text-base">
+            <Calendar className="w-3 h-3 md:w-4 md:h-4 mr-1" />
+            {frontMatter.date}
+          </span>
+        </div>
+        {frontMatter.description && (
+          <p className="mb-2">{frontMatter.description}</p>
+        )}
+      </div>
 
       <article className="prose prose-neutral dark:prose-invert">
         <MDXRemote {...source} />
       </article>
       <TagList tags={frontMatter.tags} />
-      <div className="mt-12">
-        <Link
-          href="/blog"
-          className="inline-flex items-center text-sm hover:underline"
-        >
-          <ChevronLeft className="w-4 h-4 mr-1" />
-          Back
-        </Link>
-      </div>
     </BlogLayout>
   );
 }

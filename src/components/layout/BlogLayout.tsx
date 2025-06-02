@@ -2,7 +2,7 @@
 
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
-import { Home, ChevronRight } from "lucide-react";
+import { Home, ChevronRight, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -61,8 +61,17 @@ export default function BlogLayout({ title, children }: BlogLayoutProps) {
             ))}
           </nav>
 
-          <div className="space-y-8 pt-4 pb-8 max-w-5xl mx-auto text-base md:text-lg leading-relaxed">
+          <div className="space-y-8 py-4 md:py-8 max-w-5xl mx-auto text-base md:text-lg leading-relaxed">
             {children}
+          </div>
+          <div className="mt-4">
+            <Link
+              href="/blog"
+              className="inline-flex items-center text-sm hover:underline"
+            >
+              <ChevronLeft className="w-4 h-4 mr-1" />
+              Back
+            </Link>
           </div>
         </div>
       </div>
