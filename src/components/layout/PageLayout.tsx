@@ -70,37 +70,39 @@ export default function PageLayout({ children }: PageLayoutProps) {
           <div className="space-y-8 pt-4 pb-8 max-w-5xl mx-auto text-base md:text-lg leading-relaxed">
             {children}
           </div>
-          {categories.length > 0 && currentHrefFromRouter != "/blog" && (
-            <div className="mt-8 max-w-5xl mx-auto">
-              <h2 className="text-xl font-bold mb-4">You might also like</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {categories.map((category) => {
-                  if (
-                    category.href != currentHrefFromRouter &&
-                    category.id != 0 &&
-                    category.id != 99
-                  )
-                    return (
-                      <Link key={category.id} href={category.href}>
-                        <div
-                          className={clsx(
-                            "p-3 px-5 h-full rounded-lg shadow-md",
-                            isNight
-                              ? "bg-black/40 border-white border hover:bg-gray-800 active:bg-gray-800 text-white"
-                              : "bg-white/80 border-black border hover:bg-white active:bg-white text-black"
-                          )}
-                        >
-                          <h3 className="text-lg font-semibold mb-2">
-                            {category.label}
-                          </h3>
-                          <p>{category.description}</p>
-                        </div>
-                      </Link>
-                    );
-                })}
+          {categories.length > 0 &&
+            currentHrefFromRouter != "/blog" &&
+            currentHrefFromRouter != "/projects" && (
+              <div className="mt-8 max-w-5xl mx-auto">
+                <h2 className="text-xl font-bold mb-4">You might also like</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {categories.map((category) => {
+                    if (
+                      category.href != currentHrefFromRouter &&
+                      category.id != 0 &&
+                      category.id != 99
+                    )
+                      return (
+                        <Link key={category.id} href={category.href}>
+                          <div
+                            className={clsx(
+                              "p-3 px-5 h-full rounded-lg shadow-md",
+                              isNight
+                                ? "bg-black/40 border-white border hover:bg-gray-800 active:bg-gray-800 text-white"
+                                : "bg-white/80 border-black border hover:bg-white active:bg-white text-black"
+                            )}
+                          >
+                            <h3 className="text-lg font-semibold mb-2">
+                              {category.label}
+                            </h3>
+                            <p>{category.description}</p>
+                          </div>
+                        </Link>
+                      );
+                  })}
+                </div>
               </div>
-            </div>
-          )}
+            )}
         </div>
       </div>
     </div>
