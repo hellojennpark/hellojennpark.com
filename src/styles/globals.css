@@ -368,3 +368,7 @@ html {
 .prose ol {
   @apply list-decimal list-outside pl-8;
 }
+
+.prose a {
+  @apply text-blue-500;
+}
