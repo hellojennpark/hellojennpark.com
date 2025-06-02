@@ -11,6 +11,8 @@ import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import { extractToc } from "@/lib/toc";
+import { TOC } from "@/components/TOC";
 
 type Props = {
   source: MDXRemoteSerializeResult;
@@ -20,9 +22,10 @@ type Props = {
     tags?: string[];
     date: string;
   };
+  toc: { id: string; text: string; level: number }[];
 };
 
-function Page({ source, frontMatter }: Props) {
+function Page({ source, frontMatter, toc }: Props) {
   const { timeOfDay } = useTimeThemeStore();
   const isNight = timeOfDay == "night";
   return (
@@ -41,6 +44,10 @@ function Page({ source, frontMatter }: Props) {
         {frontMatter.description && (
           <p className="mb-2">{frontMatter.description}</p>
         )}
+      </div>
+
+      <div className="mb-6">
+        <TOC toc={toc} />
       </div>
 
       <article className="prose prose-neutral dark:prose-invert">
@@ -99,10 +106,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       ],
     },
   });
+  const toc = extractToc(content);
+
   return {
     props: {
       source: mdxSource,
       frontMatter: data,
+      toc,
     },
   };
 };
