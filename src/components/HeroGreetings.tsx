@@ -5,6 +5,7 @@ import { Press_Start_2P } from "next/font/google";
 import { useState } from "react"; // useRef and useEffect are no longer needed for clearing timeout
 import { Bird } from "lucide-react";
 import { MenuDrawer } from "./MenuDrawer";
+import Link from "next/link";
 
 const pixelFont = Press_Start_2P({
   weight: "400",
@@ -165,7 +166,7 @@ export default function HeroGreetings() {
             <span>&nbsp;Open Menu</span>
           </div>
         </MenuDrawer>
-        <a href="/blog" className="group flex items-center">
+        <Link href="/blog" className="group flex items-center">
           <span className="relative w-4 flex items-center justify-center">
             <span
               className="absolute transition-opacity duration-300 opacity-100 group-hover:opacity-0 group-active:opacity-0"
@@ -181,7 +182,7 @@ export default function HeroGreetings() {
             </span>
           </span>
           <span>&nbsp;Visit Blog</span>
-        </a>
+        </Link>
       </div>
     </div>
   );
