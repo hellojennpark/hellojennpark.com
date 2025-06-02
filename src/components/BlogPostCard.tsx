@@ -24,8 +24,8 @@ export default function BlogPostCard({ post, reverse }: BlogPostCardProps) {
       className={clsx(
         "space-y-2 p-4 rounded-md",
         isNight
-          ? "bg-black/30 hover:bg-black/60 active:bg-black/60"
-          : "bg-white/50 hover:bg-white/80 active:bg-white/80"
+          ? "bg-black/30 text-white hover:bg-black/60 active:bg-black/60"
+          : "bg-white/50 text-black hover:bg-white/80 active:bg-white/80"
       )}
     >
       <Link href={`/blog/${post.slug.join("/")}`}>
