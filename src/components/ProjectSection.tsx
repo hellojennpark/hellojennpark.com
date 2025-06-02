@@ -23,7 +23,7 @@ export default function ProjectSection() {
       id="project"
       className="relative min-h-[100dvh] flex items-center justify-center snap-start shadow-[0_8px_20px_-10px_rgba(0,0,0,0.3)]"
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto p-4">
         <BlogPostCard key={post.slug.join("/")} post={post} reverse={false} />
       </div>
     </section>
