@@ -15,22 +15,23 @@ type Post = {
 function Page({ posts }: { posts: Post[] }) {
   return (
     <PageLayout>
-      <div className="flex flex-col items-start text-start px-6 py-12 max-w-3xl mx-auto">
-        <div className="space-y-12 py-4">
-          {posts.map((post) => (
-            <li key={post.slug.join("/")}>
-              <Link
-                href={`/posts/${post.slug.join("/")}`}
-                className="text-[rgb(40,90,128)] hover:underline text-lg"
-              >
-                {post.title}
-              </Link>
-              {post.description && (
-                <p className="text-gray-500 text-sm">{post.description}</p>
-              )}
-            </li>
-          ))}
-        </div>
+      <div className="space-y-12 py-4">
+        {posts.map((post) => (
+          <p key={post.slug.join("/")}>
+            <Link
+              href={`/blog/${post.slug.join("/")}`}
+              className="hover:underline text-lg"
+            >
+              {post.title}
+            </Link>
+            {post.description && (
+              <p className="text-gray-500 text-sm">{post.description}</p>
+            )}
+            {post.tags && (
+              <p className="text-gray-500 text-sm">{post.tags.join(", ")}</p>
+            )}
+          </p>
+        ))}
       </div>
     </PageLayout>
   );
