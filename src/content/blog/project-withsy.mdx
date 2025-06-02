@@ -5,7 +5,6 @@ tags: ["project", "withsy", "ai", "chat interface", "product development", "next
 date: "2025-05-09"
 ---
 
-
 ## The Itch That Needed Scratching
 
 Like many developers, I found myself using multiple AI chat platforms daily—ChatGPT, Claude, Gemini, Perplexity. They're all incredible tools, but small frustrations kept piling up. Why couldn't I customize the theme like I do with Slack? Why did conversations feel so impersonal with generic model names? Why couldn't I see or control the prompts being applied to my conversations?
@@ -69,6 +68,8 @@ Instead of creating separate chats and losing track of the original context, use
 
 The biggest technical challenge was rendering performance. Like most AI chat apps, Withsy became sluggish as conversations grew longer. Even after page refresh, the markdown rendering would freeze the interface.
 
+**Debugging the Bottleneck**: Chrome DevTools Performance tab revealed the culprit—massive re-rendering cycles when loading chats with extensive message history. Every component was re-rendering unnecessarily, and markdown parsing was happening synchronously for every message.
+
 Here's how I tackled it:
 
 **1. Smart Component Memoization**
@@ -113,20 +114,30 @@ Most AI SDKs follow OpenAI's standard, making integration straightforward (excep
 
 ## Lessons Learned
 
-### Feature Creep is Real
-I initially built thread functionality (thinking it would be useful like Slack threads) and tab organization (like Notion). Both got deprecated because:
-- Branch functionality covered thread use cases
-- Star system made tabs redundant
-- Complexity hurt the core user experience
+### User-Driven Development Actually Works
+I tested features incrementally with family and friends across different age groups. This wasn't formal user research, but getting feedback on minimal UI implementations as I built each feature proved invaluable.
 
-**Lesson**: Simplicity wins. Features that seem obviously useful often aren't.
+**Early wins**: The prompt transparency and message saving features resonated immediately with users who'd experienced similar frustrations.
+
+**Quick pivots**: Thread and tab functionality got negative feedback fast—users found them confusing and unnecessary when branch and star systems already covered their needs.
+
+### Feature Creep is Real (And User Feedback Saves You)
+I initially built thread functionality (thinking it would be useful like Slack threads) and tab organization (like Notion). Both got deprecated because:
+- Users actively disliked the added complexity
+- Branch functionality covered thread use cases more intuitively  
+- Star system made tabs redundant
+- Even I stopped using them after the novelty wore off
+
+**Lesson**: Listen to users, but also pay attention to your own usage patterns. If you don't reach for a feature you built, others probably won't either.
 
 ### The Product-Market Fit Reality
 Building something because "wouldn't this be nice?" isn't enough. Coming from corporate development where every feature solves a specific problem, I realized personal projects need the same problem-solving focus to gain traction.
 
+The feedback from friends and family confirmed something important: while they appreciated individual features, none felt compelled to switch from their current AI platforms. The switching cost (learning new UI, losing chat history) outweighed the benefits for casual users.
+
 **Who might actually use Withsy?**
-- Power users who want to save and organize chat messages
-- Users who demand prompt transparency
+- Power users who want to save and organize chat messages  
+- Users who demand prompt transparency (there are dozens of us!)
 - People frustrated with platform limitations of major providers
 
 But reaching these users would require integrating with ChatGPT and Claude APIs—financially unfeasible at current scale.
@@ -146,3 +157,4 @@ That said, building Withsy was incredibly valuable:
 Withsy remains my personal AI chat platform of choice, and I'll continue using and refining it. The codebase serves as a solid foundation for future AI-related experiments.
 
 For developers considering similar projects: build for the learning, not just the outcome. Sometimes the most valuable product insights come from products that don't quite make it to market.
+
