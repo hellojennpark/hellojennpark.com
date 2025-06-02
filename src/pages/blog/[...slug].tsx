@@ -9,6 +9,8 @@ import BlogLayout from "@/components/layout/BlogLayout";
 import { TagList } from "@/components/TagList";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 type Props = {
   source: MDXRemoteSerializeResult;
@@ -89,8 +91,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const fileContent = fs.readFileSync(mdxPath, "utf-8");
   const { content, data } = matter(fileContent);
-  const mdxSource = await serialize(content);
-
+  const mdxSource = await serialize(content, {
+    mdxOptions: {
+      rehypePlugins: [
+        rehypeSlug,
+        [rehypeAutolinkHeadings, { behavior: "wrap" }],
+      ],
+    },
+  });
   return {
     props: {
       source: mdxSource,
