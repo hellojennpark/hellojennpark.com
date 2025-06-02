@@ -4,6 +4,7 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 import PageLayout from "@/components/layout/PageLayout";
+import { TagList } from "@/components/TagList";
 
 type Post = {
   title: string;
@@ -17,19 +18,15 @@ function Page({ posts }: { posts: Post[] }) {
     <PageLayout>
       <div className="space-y-12 py-4">
         {posts.map((post) => (
-          <p key={post.slug.join("/")}>
+          <p key={post.slug.join("/")} className="space-y-2">
             <Link
               href={`/blog/${post.slug.join("/")}`}
               className="hover:underline text-lg"
             >
               {post.title}
             </Link>
-            {post.description && (
-              <p className="text-gray-500 text-sm">{post.description}</p>
-            )}
-            {post.tags && (
-              <p className="text-gray-500 text-sm">{post.tags.join(", ")}</p>
-            )}
+            {post.description && <p className="text-sm">{post.description}</p>}
+            <TagList tags={post.tags} />
           </p>
         ))}
       </div>

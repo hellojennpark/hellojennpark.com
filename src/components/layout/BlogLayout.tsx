@@ -42,12 +42,7 @@ export default function BlogLayout({ title, children }: BlogLayoutProps) {
           <nav className="flex items-center text-md space-x-1 pb-3">
             <Link
               href="/#welcome"
-              className={clsx(
-                "flex items-center",
-                isNight
-                  ? "text-gray-400 hover:text-gray-200"
-                  : "text-gray-700 hover:text-gray-900"
-              )}
+              className="flex items-center hover:text-gray-500"
             >
               <Home className="w-4 h-4 mr-1" />
               Home

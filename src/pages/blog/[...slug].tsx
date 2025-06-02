@@ -7,12 +7,14 @@ import type { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import BlogLayout from "@/components/layout/BlogLayout";
+import { TagList } from "@/components/TagList";
 
 type Props = {
   source: MDXRemoteSerializeResult;
   frontMatter: {
     title: string;
     description?: string;
+    tags?: string[];
   };
 };
 
@@ -21,7 +23,7 @@ function Page({ source, frontMatter }: Props) {
     <BlogLayout title={frontMatter.title}>
       <Link
         href="/blog"
-        className="mb-6 inline-flex items-center text-sm text-muted-foreground hover:underline"
+        className="mb-6 inline-flex items-center text-sm hover:underline"
       >
         <ChevronLeft className="w-4 h-4 mr-1" />
         Back
@@ -29,17 +31,17 @@ function Page({ source, frontMatter }: Props) {
 
       <h1 className="text-3xl font-bold mb-4">{frontMatter.title}</h1>
       {frontMatter.description && (
-        <p className="text-muted-foreground mb-8">{frontMatter.description}</p>
+        <p className="mb-8">{frontMatter.description}</p>
       )}
 
       <article className="prose prose-neutral dark:prose-invert">
         <MDXRemote {...source} />
       </article>
-
+      <TagList tags={frontMatter.tags} />
       <div className="mt-12">
         <Link
           href="/blog"
-          className="inline-flex items-center text-sm text-muted-foreground hover:underline"
+          className="inline-flex items-center text-sm hover:underline"
         >
           <ChevronLeft className="w-4 h-4 mr-1" />
           Back
