@@ -21,7 +21,7 @@ export default function LicensePage() {
               <li>
                 Source:{" "}
                 <a
-                  className="underline"
+                  className="underline break-all"
                   href="https://github.com/twitter/twemoji/blob/master/assets/svg/1f33f.svg"
                   target="_blank"
                   rel="noopener noreferrer"
