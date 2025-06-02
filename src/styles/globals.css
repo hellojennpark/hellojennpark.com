@@ -350,11 +350,11 @@ html {
   @apply bg-transparent text-inherit font-mono text-sm p-0;
 }
 .prose h1 {
-  @apply text-3xl font-bold  mb-4;
+  @apply text-3xl mb-4;
 }
 
 .prose h2 {
-  @apply text-2xl font-semibold mt-10 mb-4;
+  @apply text-2xl mt-10 mb-4;
 }
 
 .prose h3 {
