@@ -12,9 +12,14 @@ interface BlogPostCardProps {
     date: string;
   };
   reverse?: boolean;
+  simple?: boolean;
 }
 
-export default function BlogPostCard({ post, reverse }: BlogPostCardProps) {
+export default function BlogPostCard({
+  post,
+  reverse,
+  simple = false,
+}: BlogPostCardProps) {
   const { timeOfDay } = useTimeThemeStore();
   const isNight = timeOfDay == "night" && reverse;
   return (
@@ -28,11 +33,13 @@ export default function BlogPostCard({ post, reverse }: BlogPostCardProps) {
       )}
     >
       <Link href={`/blog/${post.slug.join("/")}`} className="space-y-4">
-        <span className="font-semibold">{post.title}</span>
+        {!simple && <TagList tags={post.tags} />}
 
-        {post.description && <p className="text-base">{post.description}</p>}
+        <span className={!simple ? "font-semibold" : ""}>{post.title}</span>
 
-        <TagList tags={post.tags} />
+        {!simple && post.description && (
+          <p className="text-base">{post.description}</p>
+        )}
       </Link>
     </div>
   );

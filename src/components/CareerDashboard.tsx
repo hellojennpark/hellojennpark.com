@@ -39,7 +39,6 @@ export default function CareerDashboard() {
 
   const isMobile = useIsMobile();
   const { timeOfDay } = useTimeThemeStore();
-
   const isNight = timeOfDay == "night";
   const timeOfDayBgStyle = isNight
     ? "bg-black/40 text-white/80 hover:bg-gray-900 active:bg-gray-900"
