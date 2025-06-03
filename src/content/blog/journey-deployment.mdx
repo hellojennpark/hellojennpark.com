@@ -141,14 +141,6 @@ The final phase focused on proactive monitoring:
 - **Alerting**: I implemented alerts for critical events (e.g., high error rates, slow API responses), reducing incident response times from 30 minutes to under 5 minutes in some cases.
 - **Quantifiable Wins**: Centralized logging and dashboards reduced debugging overhead, and batch processing lowered network usage spikes. While I didn't track precise metrics like log loss rates, reliability improved noticeably, with no reported log losses after optimization.
 
-### Key Lessons
-- **Start Simple, Scale Deliberately**: File-based logging sufficed initially, but centralized collection and ELK were critical as scale increased.
-- **Avoid Over-Engineering**: Python scripts were sufficient early on; adopting Logstash later aligned with growing complexity.
-- **Structure Matters**: Structured JSON logs and batch processing were pivotal for scalability and reliability.
-- **Documentation Is Critical**: Lack of early documentation on log preprocessing logic caused delays in troubleshooting, reinforcing the need for detailed records.
-
-This evolution from manual log inspection to automated, centralized monitoring was crucial for maintaining service reliability and supporting a growing user base. It taught me the importance of aligning logging strategies with organizational scale and complexity.
-
 
 ## Key Lessons Learned
 ### Technical Insights
@@ -162,11 +154,6 @@ This evolution from manual log inspection to automated, centralized monitoring w
 - **Knowledge Sharing**: Don't keep information to yourself. Shared knowledge helps everyone and creates better opportunities.
 - **Incremental Changes**: Major infrastructure changes should be gradual, well-tested, and carefully planned.
 
-### Memorable Incidents
-- **Script-Based Deployments**: Dependency hell-constant "it works on my machine" issues ate up hours of debugging.
-- **Docker**: Networking nightmares, like certificate misconfigurations, taught me to double-check container communication.
-- **Docker Compose**: Managing a single host became a bottleneck as our user base grew to 300+ employees.
-- **Kubernetes**: Cross-team collaboration challenges taught me the value of clear communication and data-driven arguments.
 
 ## Final Thoughts
 Looking back at this 3-year journey, I can see how each phase built on the previous one. Every transition was driven by real needs: better consistency, improved scalability, enhanced security, or organizational requirements.
