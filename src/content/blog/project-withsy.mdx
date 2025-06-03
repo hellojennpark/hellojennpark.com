@@ -5,11 +5,11 @@ tags: ["project", "withsy", "ai", "chat interface", "product development", "next
 date: "2025-05-09"
 ---
 
-> Wanna try it yourself? [Withsy](https://withsy.chat) is live—feel free to explore it while reading!
+> Wanna try it yourself? [Withsy](https://withsy.chat) is live-feel free to explore it while reading!
 
 ## The Itch That Needed Scratching
 
-Like many developers, I found myself using multiple AI chat platforms daily—ChatGPT, Claude, Gemini, Perplexity. They're all incredible tools, but small frustrations kept piling up. Why couldn't I customize the theme like I do with Slack? Why did conversations feel so impersonal with generic model names? Why couldn't I see or control the prompts being applied to my conversations?
+Like many developers, I found myself using multiple AI chat platforms daily-ChatGPT, Claude, Gemini, Perplexity. They're all incredible tools, but small frustrations kept piling up. Why couldn't I customize the theme like I do with Slack? Why did conversations feel so impersonal with generic model names? Why couldn't I see or control the prompts being applied to my conversations?
 
 So I did what any developer would do: I built my own AI chat platform called **Withsy**.
 
@@ -28,7 +28,7 @@ But the journey taught me valuable lessons about user experience, performance op
 **The Solution**: 
 - **Custom themes** inspired by Slack's customization options. Just like I change Slack to blue themes in summer and red in winter for that psychological refresh, Withsy lets users personalize their chat environment
 - **Custom model nicknames** instead of seeing "gemini-2.0-flash-exp", users can set friendly names like "gem" or whatever feels natural
-- **Custom character avatars** for each model, because visual identity matters in building rapport—just like profile pictures in online communities
+- **Custom character avatars** for each model, because visual identity matters in building rapport-just like profile pictures in online communities
 
 This wasn't about the AI models themselves, but about making the *platform* feel personal. Statistics show people use AI more for companionship and emotional support than originally expected, so why not make it feel more human?
 
@@ -43,7 +43,7 @@ Users can:
 - Create and manage prompt templates for specific use cases
 - See exactly what prompts are being applied (no hidden wrappers)
 
-This isn't just about control—it's about preventing bias and misinformation. When AI platforms apply invisible prompts "for personalization," users can unknowingly receive skewed information. Transparency helps users understand why they're getting certain responses.
+This isn't just about control-it's about preventing bias and misinformation. When AI platforms apply invisible prompts "for personalization," users can unknowingly receive skewed information. Transparency helps users understand why they're getting certain responses.
 
 ### 3. Conversation Branching
 
@@ -70,7 +70,7 @@ Instead of creating separate chats and losing track of the original context, use
 
 The biggest technical challenge was rendering performance. Like most AI chat apps, Withsy became sluggish as conversations grew longer. Even after page refresh, the markdown rendering would freeze the interface.
 
-**Debugging the Bottleneck**: Chrome DevTools Performance tab revealed the culprit—massive re-rendering cycles when loading chats with extensive message history. Every component was re-rendering unnecessarily, and markdown parsing was happening synchronously for every message.
+**Debugging the Bottleneck**: Chrome DevTools Performance tab revealed the culprit-massive re-rendering cycles when loading chats with extensive message history. Every component was re-rendering unnecessarily, and markdown parsing was happening synchronously for every message.
 
 Here's how I tackled it:
 
@@ -98,7 +98,7 @@ const ChatBubble = memo(ChatBubbleComponent, (prevProps, nextProps) => {
 **4. Lazy Loading Strategy**
 Only render visible content and reasoning text on demand.
 
-**Result**: Chat loading time dropped from 2.8 seconds to 83ms—a 97% improvement.
+**Result**: Chat loading time dropped from 2.8 seconds to 83ms-a 97% improvement.
 
 ### Multi-Model Integration
 
@@ -121,7 +121,7 @@ I tested features incrementally with family and friends across different age gro
 
 **Early wins**: The prompt transparency and message saving features resonated immediately with users who'd experienced similar frustrations.
 
-**Quick pivots**: Thread and tab functionality got negative feedback fast—users found them confusing and unnecessary when branch and star systems already covered their needs.
+**Quick pivots**: Thread and tab functionality got negative feedback fast-users found them confusing and unnecessary when branch and star systems already covered their needs.
 
 ### Feature Creep is Real (And User Feedback Saves You)
 I initially built thread functionality (thinking it would be useful like Slack threads) and tab organization (like Notion). Both got deprecated because:
@@ -142,7 +142,7 @@ The feedback from friends and family confirmed something important: while they a
 - Users who demand prompt transparency (there are dozens of us!)
 - People frustrated with platform limitations of major providers
 
-But reaching these users would require integrating with ChatGPT and Claude APIs—financially unfeasible at current scale.
+But reaching these users would require integrating with ChatGPT and Claude APIs-financially unfeasible at current scale.
 
 ## The Honest Assessment
 

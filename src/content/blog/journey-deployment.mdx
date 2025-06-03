@@ -1,0 +1,191 @@
+---
+title: "From Docker to Kubernetes: A 3-Year Journey"
+description: "A candid walkthrough of how I experienced deployment strategies evolving across two companies-from Docker containerization to full Kubernetes orchestration. This post shares real problems, practical solutions, and honest lessons learned from supporting deployments for 300+ engineers, including the good, the bad, and the learning moments."
+tags: [
+  "devops",
+  "docker",
+  "kubernetes",
+  "deployment",
+  "microservices",
+  "infrastructure",
+  "experience-report",
+  "containers",
+  "orchestration",
+  "ci-cd"
+]
+date: "2024-08-16"
+---
+
+## The Journey Overview
+This isn't a story about chasing the latest technology trends-it's about learning real solutions to real problems, understanding different deployment approaches, and discovering that the best technology is the one that fits your current situation.
+
+This journey spanned two companies and various service types: API servers, web applications, and socket servers. Each service type presented unique deployment challenges, but the evolution of our deployment strategies was driven by common pain points like scalability, consistency, and reliability, rather than a single service transforming over time. Along the way, I learned that every deployment evolution was driven by actual pain points, not by wanting to use cool new tech.
+
+## Early Days: From Script-based Deployment to Docker
+### The Problems That Led to Change
+When I joined the team, we weren't using Docker yet. Our deployment process, built on SSH-based scripts, had several pain points:
+
+- **Rollback difficulties**: Reverting to previous versions was complex and error-prone, often taking hours to resolve dependency conflicts.
+- **Environment inconsistencies**: "It works on my machine" was a daily reality.
+- **Dependency mismatches**: Development and production versions would drift apart.
+- **Deployment script management**: Scripts were scattered and hard to maintain.
+- **Server management overhead**: Managing deployment servers was becoming unwieldy.
+
+### The Docker Introduction
+We moved from SSH-based deployments to using version control for build/deployment scripts, which then handled Docker builds and deployments. This shift wasn't immediate-it was driven by the accumulated pain of our existing process, like constant "dependency hell" where applications worked locally but failed in production.
+
+### Docker Learning Curve
+The transition to Docker came with its own challenges:
+
+**Image Size Issues**: Our first Docker images were massive, often exceeding 1GB due to bloated base images and unnecessary dependencies. We optimized by:
+- Switching to lightweight Alpine-based images (e.g., from `node:16` to `node:16-alpine`).
+- Implementing multi-stage builds to compile dependencies separately.
+- Minimizing layers by consolidating RUN commands.
+- Using `.dockerignore` to reduce build context.
+- Removing unused libraries by auditing and cleaning up `package.json` to eliminate deprecated or unnecessary npm packages.
+
+**Build Inconsistencies**: Sometimes builds that worked fine outside Docker would fail inside containers due to environment differences. This taught me the importance of understanding the containerized environment.
+
+**Network Configuration**: Container networking was a new concept that required dedicated learning. For example, we faced issues with misconfigured certificates and incorrect port mappings that broke inter-container communication (e.g., Nginx containers returning 502 errors due to incorrect SSL certificate references). Thoroughly studying Docker’s official networking documentation and experimenting with bridge networks resolved these problems.
+
+**Resource Management**: Being containerized meant being more careful about setting resource limits and requests to avoid performance issues.
+
+### The Benefits We Gained
+Despite the learning curve, Docker solved our major pain points:
+- **Easy rollbacks**: Tagged images made version management simple, reducing rollback time from hours to minutes.
+- **Environment consistency**: Eliminated the "works on my machine" problem.
+- **Dependency isolation**: No more conflicting system-level dependencies.
+- **Simplified deployments**: Containerized deployments were more reliable.
+- **Quantifiable Wins**: Previously, script-based deployments took 20-30 minutes due to manual dependency setup, and rollbacks could take hours to resolve conflicts. With Docker, deployments dropped to under 5 minutes, and rollbacks became near-instantaneous by reverting to tagged images. While we didn’t track precise CPU or memory metrics, the isolation of containers reduced debugging overhead, saving significant time during incidents.
+
+### The Learning Curve
+Docker wasn't just about copying existing Dockerfiles-it required understanding the entire ecosystem:
+
+**Image Optimization Reality Check**: I learned about Docker optimization through real examples:
+- Understanding the difference between base images (e.g., Ubuntu vs. Alpine).
+- Learning about multi-stage builds.
+- Seeing how layer caching worked.
+- Using `.dockerignore` to exclude unnecessary files.
+
+**Network Configuration**: This was where I first encountered container networking concepts:
+- Service communication between containers.
+- Port mapping and exposure.
+- Understanding container isolation.
+
+**Optimization Impact**: By adopting Alpine images, cleaning up `package.json`, and using multi-stage builds, we reduced image sizes by over 70% (e.g., from 1.2GB to ~300MB for our API server). This sped up builds and deployments, especially on resource-constrained CI/CD pipelines.
+
+### The Wins
+- **Environment consistency**: Containers eliminated "it works on my machine" issues.
+- **Dependency isolation**: No more conflicting system-level dependencies.
+- **Reproducible builds**: Same image could run anywhere.
+- **Version control**: Tagged images made deployment tracking easier.
+
+### Initial Logging Challenges
+**Container Log Management**: Initially, logs inside containers would disappear when containers were removed. We had to extract logs externally and implement proper storage.
+
+**Log Rotation and Management**: We set up log rotation and cron jobs to manage log files properly. This was our first step toward systematic log management.
+
+### ELK Stack Evolution
+As monitoring needs grew, we evolved our logging approach:
+
+**Centralized Collection**: Instead of scattered log files, we centralized log collection. Initially, each container sent logs to Elasticsearch via individual HTTP POST requests, which caused network usage spikes and occasional log loss due to connectivity issues. We switched to batch processing: aggregating logs into files based on size and uploading them directly to Elasticsearch via cron jobs. This reduced network overhead and improved reliability.
+
+**Dashboard Visualization**: Transformed raw logs into meaningful dashboards.
+
+**Alerting System**: Added alerts for critical events and performance metrics.
+
+**Log Preprocessing Details**: We preprocessed logs to extract performance metrics (e.g., API response times, error rates) for alerts and dashboards. Logs were reformatted into structured JSON for Elasticsearch compatibility, as source-level formatting wasn’t feasible due to CI and service dependencies. To handle sensitive information, we avoided logging it altogether, reducing compliance risks.
+
+**ELK Stack Challenges**: We avoided tools like Fluentd or Logstash initially because our team preferred Python-based custom preprocessing scripts to extract metrics and format logs, which were sufficient and avoided the learning curve of new tools. Later, as log volume grew, we transitioned to Logstash to streamline integration with Elasticsearch, adjusting our pipeline from preprocessing → alert sending → log storage to log storage → data processing & alert sending for better efficiency.
+
+This evolution from manual log management to automated monitoring dashboards was crucial for maintaining service reliability.
+
+## Multi-Service Orchestration: Docker Compose Experience
+### The Growing Complexity
+As I learned more, I saw how applications needed multiple services: databases, caches, load balancers. Managing these services individually was complex, especially as our services grew to support 300+ employees.
+
+### Docker Compose in Action
+Working with Docker Compose taught me about service orchestration, including how to define and manage multi-container applications with dependencies like databases and caches.
+
+### Zero-Downtime Deployment Concepts
+I learned about blue-green deployment strategies through company guidelines and implementations.
+
+**Blue-Green Deployment Implementation**: Our company standardized on blue-green deployments to achieve zero-downtime updates. We spun up a new environment (green) alongside the existing one (blue), routed traffic to the new environment after validation, and decommissioned the old one. The setup was smooth thanks to clear guidelines, but challenges arose with specific applications.
+
+**The Socket Server Challenge**: When working with a Slack bot (a socket server) that integrated with an external service we didn’t control, we discovered an issue with multiple instances during blue-green transitions-duplicate event processing. To solve this, we implemented event deduplication by assigning each event a unique ID and storing it in our MongoDB database. MongoDB was chosen because the company recommended either MongoDB or MySQL, and MongoDB’s flexible schema was ideal for the Slack bot’s frequently changing data structure. Additionally, the data volume was low (as data was deleted after a set period), and queries were only needed for deployment validation, making MongoDB suitable. Before processing an event, the application checked the database to ensure it hadn’t been handled. This prevented duplicate actions and taught me about idempotency in distributed systems. We considered Redis for faster lookups but stuck with MongoDB to avoid additional infrastructure management overhead, as it was sufficient for our needs.
+
+### The Single Host Reality
+Docker Compose worked well for development and small deployments, especially when our tool was used by just a 7-person team. However, it had limitations:
+- **Single point of failure**: Everything depended on one host.
+- **No automatic failover**: Services couldn’t migrate automatically.
+- **Scaling limitations**: Only vertical scaling was possible.
+
+Initially, these limitations weren’t critical due to our small scale. As our services grew to support 300+ employees, a single server outage caused significant productivity losses, making distributed orchestration necessary. This pushed us toward Docker Swarm and eventually Kubernetes.
+
+## The Kubernetes Transition
+### Why the Move to Kubernetes?
+As our services became critical, we needed to comply with company security policies and integrate with the organization’s infrastructure. Initially, we used Docker Swarm as an interim step because it was simpler and leveraged our Docker expertise, avoiding Kubernetes’ steep learning curve. However, our tools, originally used informally, became subject to company audits as new features elevated their importance. This necessitated integration with the company’s production Kubernetes cluster, which already had established security controls and compliance measures, making Kubernetes the logical choice for scalability and organizational alignment.
+
+### Challenges I Encountered
+**Cross-team Collaboration**: Communication was a bigger challenge than the technical aspects. The platform team had information we didn’t, and vice versa. I learned to review their internal wiki for context, clearly articulate our application’s needs, and prepare data-driven arguments (e.g., RPS metrics) to streamline discussions.
+
+### What I Learned
+The Kubernetes environment reduced infrastructure management overhead and provided benefits in scalability and security, but it came at the cost of less direct control. Previously, our team managed Swarm servers and deployment infrastructure, allowing hands-on debugging (e.g., direct access to servers via `docker exec`). After transitioning to Kubernetes, managed by another team, we became service developers rather than server administrators, reducing our ability to directly debug infrastructure issues. This trade-off taught me the importance of clear communication with platform teams to address issues effectively.
+
+## Monitoring and Logging Evolution
+### The Logging Journey
+I experienced the evolution from simple file-based logging to centralized log management:
+
+**Initial Approach**: Basic file logging with log rotation.
+**Container Reality**: Logs disappeared when containers were removed.
+**Solution**: External log storage and centralized collection.
+
+### ELK Stack Implementation
+Working with the ELK stack taught me about log management at scale:
+
+**Network Optimization**: Initially, each container sent logs to Elasticsearch via individual HTTP POST requests, which caused network usage spikes and occasional log loss. We switched to batch processing: aggregating logs into files based on size and uploading them directly to Elasticsearch via cron jobs. This reduced network overhead and improved reliability.
+
+**Log Processing**: I learned to:
+- Extract performance metrics for alerting.
+- Format logs for dashboard compatibility.
+- Avoid logging sensitive information altogether.
+
+**ELK Stack Challenges**: We avoided tools like Fluentd or Logstash initially because our team preferred Python-based custom preprocessing scripts, which were sufficient and avoided the learning curve of new tools. Later, we transitioned to Logstash, adjusting our pipeline from preprocessing → alert sending → log storage to log storage → data processing & alert sending for better efficiency.
+
+**Monitoring Milestones**: Our monitoring strategy evolved in distinct phases:
+1. **Manual Log Inspection**: Grepping log files on servers, which was time-consuming and error-prone.
+2. **Centralized File-Based Logging**: Extracting logs from containers to external storage with rotation.
+3. **ELK Stack with Preprocessing**: Centralized collection with structured formatting.
+4. **Dashboard Visualization**: Real-time Kibana dashboards for performance monitoring.
+5. **Automated Alerts and Reporting**: Alerts for critical events and trend analysis for proactive optimization.
+
+This progression reduced incident response times and enabled data-driven decisions.
+
+## Key Lessons Learned
+### Technical Insights
+- **Documentation First**: Official documentation is more reliable than blog posts or quick answers. Take time to understand fundamentals.
+- **Right Tool for the Job**: Don’t choose technology just because it’s new. I once thought Kubernetes was ideal for a single-service project, but Docker Compose would’ve sufficed. Consider team capabilities and actual requirements.
+- **Gradual Learning**: Every technology change requires learning time. Factor this into planning and expectations.
+- **Document Everything**: I regret not documenting more during this journey. Detailed notes would’ve improved this post and helped troubleshoot faster.
+
+### Organizational Insights
+- **Communication Matters**: Understand other teams’ perspectives and constraints. For example, when proposing Docker, some team members suggested optimizing scripts. We tested their approach but found it unscalable, and data on deployment failures convinced the team.
+- **Knowledge Sharing**: Don’t keep information to yourself. Shared knowledge helps everyone and creates better opportunities.
+- **Incremental Changes**: Major infrastructure changes should be gradual, well-tested, and carefully planned.
+
+### Memorable Incidents
+- **Script-Based Deployments**: Dependency hell-constant “it works on my machine” issues ate up hours of debugging.
+- **Docker**: Networking nightmares, like certificate misconfigurations, taught me to double-check container communication.
+- **Docker Compose**: Managing a single host became a bottleneck as our user base grew to 300+ employees.
+- **Kubernetes**: Cross-team collaboration challenges taught me the value of clear communication and data-driven arguments.
+
+## Final Thoughts
+Looking back at this 3-year journey, I can see how each phase built on the previous one. Every transition was driven by real needs: better consistency, improved scalability, enhanced security, or organizational requirements.
+
+The most valuable thing I learned wasn't mastering any specific technology-it was understanding problems deeply, communicating effectively with teams, and making decisions that serve users and organizational needs.
+
+**Core Takeaway**: I hope this journey inspires you to embrace the challenges of evolving deployment strategies, learning from each pain point and solution. If I could go back, I’d document every step more meticulously-detailed notes would’ve made this post richer and helped my team troubleshoot faster. My biggest regret is not starting this habit earlier, but moving forward, I’m committed to consistent documentation.
+
+**What I’d Do Today**: If starting a new project, I’d likely begin with Docker for its simplicity and consistency, especially for small-to-medium projects. For cloud-based deployments, I’d evaluate managed solutions based on project scale and team expertise, but Docker remains a safe starting point for most scenarios.
+
+Every experience, from simple containerization to complex orchestration, has value in building a comprehensive understanding of modern deployment strategies.
