@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://hellojennpark.com
+
+# Sitemaps
+Sitemap: https://hellojennpark.com/sitemap.xml

@@ -13,6 +13,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { extractToc } from "@/lib/toc";
 import { TOC } from "@/components/TOC";
+import Head from "next/head";
 
 type Props = {
   source: MDXRemoteSerializeResult;
@@ -21,6 +22,7 @@ type Props = {
     description?: string;
     tags?: string[];
     date: string;
+    slug: string[];
   };
   toc: { id: string; text: string; level: number }[];
 };
@@ -30,6 +32,13 @@ function Page({ source, frontMatter, toc }: Props) {
   const isNight = timeOfDay == "night";
   return (
     <BlogLayout title={frontMatter.title}>
+      <Head>
+        <title>{frontMatter.title} | HelloJennPark</title>
+        <meta name="description" content={frontMatter.description} />
+        <meta property="og:title" content={frontMatter.title} />
+        <meta property="og:description" content={frontMatter.description} />
+        <meta property="og:type" content="article" />
+      </Head>
       <div
         className={clsx(
           "border-b space-y-2",
