@@ -1,7 +1,7 @@
-import Link from "next/link";
 import clsx from "clsx";
 import { TagList } from "./TagList";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
+import { useRouter } from "next/navigation";
 
 interface BlogPostCardProps {
   post: {
@@ -20,27 +20,29 @@ export default function BlogPostCard({
   reverse,
   simple = false,
 }: BlogPostCardProps) {
+  const router = useRouter();
   const { timeOfDay } = useTimeThemeStore();
   const isNight = timeOfDay == "night" && reverse;
   return (
     <div
       key={post.slug.join("/")}
       className={clsx(
-        "space-y-2 p-4 rounded-md",
+        "space-y-4 p-4 rounded-md",
         isNight
           ? "bg-black/30 text-white hover:bg-black/60 active:bg-black/60"
           : "bg-white/50 text-black hover:bg-white/80 active:bg-white/80"
       )}
+      onClick={() => {
+        router.push(`/blog/${post.slug.join("/")}`);
+      }}
     >
-      <Link href={`/blog/${post.slug.join("/")}`} className="space-y-4">
-        {!simple && <TagList tags={post.tags} />}
+      {!simple && <TagList tags={post.tags} />}
 
-        <span className={!simple ? "font-semibold" : ""}>{post.title}</span>
+      <span className={!simple ? "font-semibold" : ""}>{post.title}</span>
 
-        {!simple && post.description && (
-          <p className="text-base">{post.description}</p>
-        )}
-      </Link>
+      {!simple && post.description && (
+        <p className="text-base">{post.description}</p>
+      )}
     </div>
   );
 }
