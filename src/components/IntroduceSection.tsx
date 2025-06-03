@@ -10,7 +10,7 @@ export default function IntroduceSection() {
   return (
     <section
       id="introduce"
-      className="relative min-h-[100dvh] flex flex-col items-start px-6 md:px-10 justify-center snap-start shadow-[0_8px_20px_-10px_rgba(0,0,0,0.3)] space-y-10"
+      className="relative min-h-[100dvh] flex flex-col items-start px-6 md:px-10 justify-center snap-start space-y-10"
     >
       <div className="flex gap-3 flex-wrap mt-4">
         {keywords.map((keyword) => (
