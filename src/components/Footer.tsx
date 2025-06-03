@@ -18,7 +18,7 @@ const navItems = [
   { label: "Welcome", href: "#welcome", icon: Smile },
   { label: "Introduce", href: "#introduce", icon: Info },
   { label: "Career", href: "#career", icon: Briefcase },
-  { label: "Project", href: "#project", icon: FolderKanban },
+  { label: "Blog", href: "#blog", icon: FolderKanban },
 ];
 
 export const Footer = () => {

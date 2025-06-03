@@ -3,7 +3,7 @@
 import { Footer } from "@/components/Footer";
 import IntroduceSection from "@/components/IntroduceSection";
 import CareerSection from "@/components/CareerSection";
-import ProjectSection from "@/components/ProjectSection";
+import BlogSection from "@/components/BlogSection";
 import Hero from "@/components/Hero";
 import { getAllPosts, Post } from "@/lib/getAllPosts";
 
@@ -13,7 +13,7 @@ export default function Home({ posts }: { posts: Post[] }) {
       <Hero />
       <IntroduceSection />
       <CareerSection />
-      <ProjectSection posts={posts} />
+      <BlogSection posts={posts} />
       <Footer />
     </div>
   );

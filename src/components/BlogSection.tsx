@@ -4,11 +4,11 @@ import Link from "next/link";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
 
-export default function ProjectSection({ posts }: { posts: Post[] }) {
+export default function BlogSection({ posts }: { posts: Post[] }) {
   const { primaryColor } = useTimeThemeStore();
   return (
     <section
-      id="project"
+      id="blog"
       className="relative min-h-[100dvh] flex flex-col justify-center items-center snap-start shadow-[0_8px_20px_-10px_rgba(0,0,0,0.3)] px-4"
     >
       <div className="w-full max-w-2xl">
