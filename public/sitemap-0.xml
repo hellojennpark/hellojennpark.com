@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://hellojennpark.com</loc><lastmod>2025-06-03T04:51:27.988Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://hellojennpark.com/blog</loc><lastmod>2025-06-03T04:51:27.988Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://hellojennpark.com/contact</loc><lastmod>2025-06-03T04:51:27.988Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://hellojennpark.com/license</loc><lastmod>2025-06-03T04:51:27.988Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://hellojennpark.com/projects</loc><lastmod>2025-06-03T04:51:27.988Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://hellojennpark.com/recommendations</loc><lastmod>2025-06-03T04:51:27.988Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://hellojennpark.com/work-history</loc><lastmod>2025-06-03T04:51:27.988Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://hellojennpark.com/blog/journey-deployment</loc><lastmod>2025-06-03T04:51:27.988Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://hellojennpark.com/blog/oncall-rotations</loc><lastmod>2025-06-03T04:51:27.988Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://hellojennpark.com/blog/project-withsy</loc><lastmod>2025-06-03T04:51:27.988Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://hellojennpark.com/blog/ux-analysis-of-major-ai-chat-platforms</loc><lastmod>2025-06-03T04:51:27.988Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://hellojennpark.com/blog</loc><lastmod>2025-06-03T16:12:11.091Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://hellojennpark.com/work-history</loc><lastmod>2025-06-03T16:12:11.092Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://hellojennpark.com/projects</loc><lastmod>2025-06-03T16:12:11.092Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://hellojennpark.com/blog/journey-deployment</loc><lastmod>2025-06-03T16:12:11.092Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://hellojennpark.com/blog/oncall-rotations</loc><lastmod>2025-06-03T16:12:11.092Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://hellojennpark.com/blog/project-withsy</loc><lastmod>2025-06-03T16:12:11.092Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://hellojennpark.com/blog/ux-analysis-of-major-ai-chat-platforms</loc><lastmod>2025-06-03T16:12:11.092Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
