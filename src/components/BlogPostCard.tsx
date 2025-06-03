@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Calendar } from "lucide-react";
 import clsx from "clsx";
 import { TagList } from "./TagList";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
@@ -28,19 +27,12 @@ export default function BlogPostCard({ post, reverse }: BlogPostCardProps) {
           : "bg-white/50 text-black hover:bg-white/80 active:bg-white/80"
       )}
     >
-      <Link href={`/blog/${post.slug.join("/")}`}>
+      <Link href={`/blog/${post.slug.join("/")}`} className="space-y-4">
         <span className="font-semibold">{post.title}</span>
 
-        {post.description && (
-          <p className="text-base mb-4">{post.description}</p>
-        )}
+        {post.description && <p className="text-base">{post.description}</p>}
 
         <TagList tags={post.tags} />
-
-        <span className="flex flex-row items-center text-sm md:text-base justify-end">
-          <Calendar className="w-3 h-3 md:w-4 md:h-4 mr-1" />
-          {post.date}
-        </span>
       </Link>
     </div>
   );
