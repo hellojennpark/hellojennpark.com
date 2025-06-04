@@ -51,7 +51,7 @@ function Page() {
             </p>
             <div className="flex flex-row justify-end gap-3">
               <Link
-                href="/posts/withsy-retro"
+                href="/blog/project-withsy"
                 className={clsx(
                   "px-4 py-2 rounded-md text-sm font-semibold border",
                   isNight
@@ -62,7 +62,7 @@ function Page() {
                 Read Post About This Project
               </Link>
               <Link
-                href="https://withsy.app"
+                href="https://withsy.chat"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={clsx(
