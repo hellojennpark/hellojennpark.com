@@ -3,6 +3,8 @@ import { CustomAvatar } from "@/components/CustomAvatar";
 import PageLayout from "@/components/layout/PageLayout";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
+import { SquareArrowOutUpRight } from "lucide-react";
+import Link from "next/link";
 
 function Page() {
   const { timeOfDay } = useTimeThemeStore();
@@ -19,7 +21,7 @@ function Page() {
           )}
         >
           <div
-            className={clsx("flex flex-col text-white p-2 md:p-4")}
+            className={clsx("flex flex-col text-white p-4")}
             style={{
               backgroundColor: "rgba(40,90,128, 1)",
             }}
@@ -31,7 +33,7 @@ function Page() {
           <div
             className={clsx(
               isNight ? "bg-black/40 text-white" : "bg-white/80 text-black",
-              "flex flex-col w-full p-2 md:p-4"
+              "flex flex-col w-full p-4 space-y-2 md:space-y-4"
             )}
           >
             <p>
@@ -47,6 +49,33 @@ function Page() {
               message bookmarking, and multi-model support - all developed
               through user feedback and iterative design.
             </p>
+            <div className="flex flex-row justify-end gap-3">
+              <Link
+                href="/posts/withsy-retro"
+                className={clsx(
+                  "px-4 py-2 rounded-md text-sm font-semibold border",
+                  isNight
+                    ? "border-white text-white hover:bg-white hover:text-black"
+                    : "border-black text-black hover:bg-black hover:text-white"
+                )}
+              >
+                Read Post About This Project
+              </Link>
+              <Link
+                href="https://withsy.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={clsx(
+                  "px-4 py-2 rounded-md text-sm font-semibold flex flex-row items-center",
+                  isNight
+                    ? "bg-white text-black hover:bg-white/80"
+                    : "bg-black text-white hover:bg-black/80"
+                )}
+              >
+                Try Withsy
+                <SquareArrowOutUpRight className="h-4 w-4 ml-2" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
