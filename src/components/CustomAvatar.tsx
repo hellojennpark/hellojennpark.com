@@ -14,7 +14,9 @@ export function CustomAvatar({ name, size = "md" }: Props) {
     xl: "w-16 h-16 text-lg",
   }[size];
 
-  const className = `${sizeClass} select-none bg-gray-100`;
+  const className = `${sizeClass} select-none ${
+    name != "emery" ? "bg-gray-100" : ""
+  }`;
 
   return (
     <Avatar className={className}>
