@@ -1,0 +1,142 @@
+---
+title: "How Observability Transformed Our Team from 'Restart Squad' to Engineering Partners"
+description: "A journey through three real-world observability implementations that transformed team dynamics, solved critical performance issues, and proved engineering value through quantitative metrics. From debugging mysterious Jenkins crashes to building automated performance monitoring for game engines, this post explores how the right monitoring strategy can turn reactive firefighting into proactive problem-solving."
+tags: [
+  "ci-cd",
+  "monitoring",
+  "observability",
+  "team-transformation",
+  "jenkins",
+]
+date: "2025-03-03"
+---
+
+## The Wake-Up Call at 7 AM
+
+Picture this: every morning between 7-8 AM, someone's phone would ring. "Jenkins is down again. Can you restart it?" This wasn't a once-in-a-while emergency—it was our daily routine. Our 20-person platform team at a 1000-employee gaming company had become what people jokingly called the "restart squad."
+
+The irony wasn't lost on us. We were supposed to be the infrastructure experts, but we spent most of our time manually restarting services without understanding why they failed. Something had to change.
+
+## Chapter 1: From Blind Restarts to Data-Driven Solutions
+
+### The Problem That Wouldn't Go Away
+
+Our Jenkins infrastructure served over 300 game developers, handling everything from game engine builds to asset extraction jobs that took 3-4 hours each. When it crashed every morning, it didn't just inconvenience a few people—it blocked performance testing, delayed deployments, and forced long-running data extraction jobs to restart from scratch.
+
+The "solution" was always the same: someone who lived nearby would drive to the office and restart the server. We'd tried throwing hardware at the problem—upgraded SSDs, more memory, faster CPUs. These upgrades provided temporary relief, but as new jobs were added to the system, the fundamental issues would resurface and the crashes would return.
+
+### The Monitoring Revolution
+
+I proposed adding monitoring to our Jenkins infrastructure. The response was lukewarm: "If you want to try it, go ahead." So I did.
+
+I integrated Prometheus for system metrics (CPU, memory, network I/O, disk usage) and the ELK stack for application logs using the Statistics Gatherer plugin. The platform team helped configure Grafana dashboards, and I set up alerting rules.
+
+The breakthrough came within days. Looking at the Grafana dashboard, the problem was glaringly obvious—network traffic spiked dramatically every morning around the crash time, alongside CPU and memory usage hitting 90%+.
+
+### The Root Cause Hunt
+
+The network spike pattern pointed to inefficient polling in our Jenkins Shared Library—our agent selection logic was checking availability every 1-5 seconds, creating excessive traffic during peak hours. The fix was straightforward: optimize polling intervals and eliminate redundant operations.
+
+### The Sweet Victory
+
+The results were immediate and dramatic:
+- Memory usage dropped from 80-90% peaks to a stable 50-60%
+- The morning crashes stopped entirely
+- No more emergency phone calls
+- The expensive hardware upgrades we'd planned became unnecessary
+
+More importantly, our team's reputation transformed. Instead of being seen as the "restart squad," people started approaching us with technical questions. They wanted to understand *how* we solved problems, not just when we'd fix them.
+
+## Chapter 2: Scaling Success to Game Engine Performance
+
+### Building on Trust
+
+The Jenkins success opened doors. The 300+ person game development team, now confident in our technical capabilities, approached us with a new challenge: they needed performance monitoring for our internally-developed game engine.
+
+The problem was familiar—without performance metrics, every engine release was a gamble. Developers would deploy, use the new version, encounter issues, report problems, and then we'd roll back. This cycle was expensive and frustrating for everyone.
+
+### Engineering for Minimal Impact
+
+Adding monitoring to a game engine required a delicate touch. I worked closely with C++ experts to integrate CPU and memory collection into existing editor code that already displayed resource usage. The key was to be conservative—I only added monitoring to performance test execution paths to minimize impact on regular development work.
+
+The data flowed to Elasticsearch, and I built Kibana dashboards to track performance trends over time.
+
+### Automated Performance Gates
+
+The real innovation was connecting this monitoring to our CI/CD pipeline. Every new commit triggered automated performance tests—launching the game editor, creating characters, and navigating through specific game areas while collecting loading times and resource usage.
+
+If performance degraded by more than 10% compared to the previous revision (a threshold we set with the engine team), automatic alerts were posted to our team-wide chat channel, tagging C-level executives and team leads.
+
+### Cultural Impact
+
+This wasn't just monitoring—it became a quality gate. When alerts fired:
+- Game developers knew not to update to the new engine version
+- QA teams used these alerts to prioritize testing efforts  
+- Leadership had visibility into performance regressions before they impacted productivity
+
+The system prevented wasted time and resources while maintaining high performance standards.
+
+## Chapter 3: Proving Value Through Deployment Metrics
+
+### A Different Challenge at Scale
+
+My second company—a fintech giant with 1000+ employees—presented a new dynamic. Our 10-person team supported 300 developers, but regulatory constraints meant developers couldn't deploy their own code. We handled all production deployments, pipeline management, and monitoring.
+
+The challenge? We were perceived as a "passive waiting team." When issues occurred, we'd investigate what we could, escalate to other teams, then wait. I once spent nine hours "on-call" for a single incident—mostly just waiting for other teams to respond.
+
+### Measuring What Matters
+
+Learning from my previous experience, I knew we needed quantitative metrics to demonstrate our value. But this time, I built measurement into our processes from the start.
+
+I developed a Slack bot to automate deployment communications and embedded data collection into every deployment workflow. We tracked:
+- Deployment start and end times
+- Success/failure rates
+- Team-specific deployment volumes
+- Process bottlenecks
+
+The Kibana dashboard showed deployment counts by organization, success rates, and trend analysis.
+
+### The Numbers Tell the Story
+
+As we automated more processes, the metrics revealed our impact:
+- Monthly deployments increased from 1,000 to 1,500
+- The number of full-time deployment operators decreased from 10 to 3 people
+- Deployment success rates improved
+- Manual intervention requirements dropped significantly
+
+### Recognition and Growth
+
+Armed with concrete data, I presented our automation impact at the company's internal developer festival. The metrics didn't just prove our value—they transformed how other teams viewed us.
+
+Previously, another team managed our deployment tooling because we were seen as operators, not developers. After demonstrating our engineering capabilities through measurable results, we earned ownership of our own deployment infrastructure.
+
+## The Three Pillars of Observability Success
+
+Looking back across these experiences, three principles consistently drove success:
+
+### 1. Find the Pain Points
+People experiencing daily frustration represent your biggest opportunities. When something causes regular stress—whether it's morning server crashes or nine-hour incident marathons—that's where monitoring can make the most dramatic impact.
+
+### 2. Make Data Quantitative
+"It's hard" or "it's slow" doesn't convince anyone. Concrete metrics like "memory usage dropped from 90% to 60%" or "deployments increased 50% with fewer people" provide undeniable proof of improvement.
+
+### 3. Make Insights Accessible
+Raw metrics aren't enough. I always focused on visualization—graphs, tables, and dashboards that made problems obvious at a glance. Alerts included actionable context, not just numbers.
+
+## Advice for Fellow Engineers
+
+If your team is stuck in reactive mode, consider this an opportunity. When everything is already working perfectly, it's hard to prove your value. When things are broken and frustrating, you have the perfect opportunity to showcase your problem-solving skills.
+
+The key is shifting from "how do we fix this?" to "how do we measure this?" Once you have data, you can prove impact, justify improvements, and transform how others perceive your team's capabilities.
+
+## Looking Forward
+
+These experiences taught me that observability isn't just about technical monitoring—it's about organizational transformation. Good metrics don't just reveal system health; they reveal team value, process efficiency, and opportunities for growth.
+
+Whether you're debugging mysterious crashes, optimizing performance, or proving your team's worth, the path forward starts with the same question: "What should we be measuring?"
+
+## What I'd Do Next Time
+
+Looking back, I wish I'd started even smaller. If I were beginning this journey again, I'd pick just one annoying problem—maybe a service that's slow every Tuesday—set up basic Prometheus metrics, and build a simple Grafana dashboard. Even sharing those early findings with my team helped build the credibility needed for bigger monitoring projects.
+
+Sometimes the smallest start leads to the biggest transformations.
