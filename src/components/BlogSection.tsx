@@ -16,13 +16,13 @@ export default function BlogSection({ posts }: { posts: Post[] }) {
           className="flex justify-between items-center text-sm md:text-base mb-4"
           style={{ color: primaryColor }}
         >
-          <div>Showing the 5 most recent posts.</div>
+          <div>Showing the 10 most recent posts.</div>
           <Link href="/blog" className={clsx("hover:underline ml-1 font-bold")}>
             View all posts {">"}
           </Link>
         </div>
         <div className="space-y-2 h-[70dvh] overflow-y-auto">
-          {posts.slice(0, 5).map((post) => (
+          {posts.slice(0, 10).map((post) => (
             <BlogPostCard
               key={post.slug.join("/")}
               post={post}
