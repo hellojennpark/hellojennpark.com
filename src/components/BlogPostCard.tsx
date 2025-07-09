@@ -27,7 +27,7 @@ export default function BlogPostCard({
     <div
       key={post.slug.join("/")}
       className={clsx(
-        "space-y-4 p-4 rounded-md",
+        "flex flex-col space-y-2 p-4 rounded-md",
         isNight
           ? "bg-black/30 text-white hover:bg-black/60 active:bg-black/60"
           : "bg-white/50 text-black hover:bg-white/80 active:bg-white/80"
@@ -41,7 +41,10 @@ export default function BlogPostCard({
       <span className={!simple ? "font-semibold" : ""}>{post.title}</span>
 
       {!simple && post.description && (
-        <p className="text-base">{post.description}</p>
+        <span className="text-base">{post.description}</span>
+      )}
+      {!simple && (
+        <span className="flex justify-end text-xs md:text-sm">{post.date}</span>
       )}
     </div>
   );
