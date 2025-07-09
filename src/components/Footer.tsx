@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import {
-  Smile,
+  // Smile,
   Info,
   Briefcase,
   FolderKanban,
@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 
 const navItems = [
-  { label: "Welcome", href: "#welcome", icon: Smile },
+  // { label: "Welcome", href: "#welcome", icon: Smile },
   { label: "Introduce", href: "#introduce", icon: Info },
   { label: "Career", href: "#career", icon: Briefcase },
   { label: "Blog", href: "#blog", icon: FolderKanban },
