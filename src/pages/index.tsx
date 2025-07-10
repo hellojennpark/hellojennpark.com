@@ -4,13 +4,13 @@ import { Footer } from "@/components/Footer";
 import IntroduceSection from "@/components/IntroduceSection";
 import CareerSection from "@/components/CareerSection";
 import BlogSection from "@/components/BlogSection";
-// import Hero from "@/components/Hero";
+import Hero from "@/components/Hero";
 import { getAllPosts, Post } from "@/lib/getAllPosts";
 
 export default function Home({ posts }: { posts: Post[] }) {
   return (
     <div className="h-screen overflow-y-scroll scroll-smooth snap-y snap-proximity">
-      {/* <Hero /> */}
+      <Hero />
       <IntroduceSection />
       <CareerSection />
       <BlogSection posts={posts} />
