@@ -141,7 +141,7 @@ export default function HeroGreetings() {
       </div>
 
       <div
-        className="flex flex-col gap-8 font-black"
+        className="flex flex-row gap-8 md:gap-16 font-black"
         style={{
           WebkitTextStroke: isEvening ? undefined : `1.2px ${backgroundColor}`,
           animation: slowGlow,
@@ -149,41 +149,40 @@ export default function HeroGreetings() {
       >
         <MenuDrawer>
           <div className="group flex items-center">
-            <span className="relative w-4 flex items-center justify-center">
-              <span
-                className="absolute transition-opacity duration-300 opacity-100 group-hover:opacity-0 group-active:opacity-0"
-                style={{ top: "50%", transform: "translateY(-50%)" }} // Vertical centering
-              >
-                -
-              </span>
-              <span
-                className="absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100 group-active:opacity-100"
-                style={{ top: "50%", transform: "translateY(-50%)" }} // Vertical centering
-              >
-                &gt;
-              </span>
-            </span>
-            <span>&nbsp;Open Menu</span>
+            <HoverTextTransition text="Menu" hoverText="Open" />
           </div>
         </MenuDrawer>
+        <span>/</span>
         <Link href="/blog" className="group flex items-center">
-          <span className="relative w-4 flex items-center justify-center">
-            <span
-              className="absolute transition-opacity duration-300 opacity-100 group-hover:opacity-0 group-active:opacity-0"
-              style={{ top: "50%", transform: "translateY(-50%)" }} // Vertical centering
-            >
-              -
-            </span>
-            <span
-              className="absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100 group-active:opacity-100"
-              style={{ top: "50%", transform: "translateY(-50%)" }} // Vertical centering
-            >
-              &gt;
-            </span>
-          </span>
-          <span>&nbsp;Visit Blog</span>
+          {" "}
+          <HoverTextTransition text="Blog" hoverText="Move" />
         </Link>
       </div>
     </div>
   );
 }
+
+const HoverTextTransition = ({
+  text,
+  hoverText,
+}: {
+  text: string;
+  hoverText: string;
+}) => {
+  return (
+    <span className="relative w-4 flex items-center justify-center">
+      <span
+        className="absolute transition-opacity duration-300 opacity-100 group-hover:opacity-0 group-active:opacity-0"
+        style={{ top: "50%", transform: "translateY(-50%)" }}
+      >
+        {text}
+      </span>
+      <span
+        className="absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100 group-active:opacity-100"
+        style={{ top: "50%", transform: "translateY(-50%)" }}
+      >
+        {hoverText}
+      </span>
+    </span>
+  );
+};
