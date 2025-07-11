@@ -16,7 +16,7 @@ const greetingMap = {
   morning: "Hello, early bird.",
   day: "Hey there!",
   evening: "Hope your day went well.",
-  night: "The world’s quiet - perfect time to create.",
+  night: "The world’s quiet.",
 };
 
 export default function HeroGreetings() {
@@ -41,6 +41,7 @@ export default function HeroGreetings() {
   const isMorning = timeOfDay === "morning";
   const isDay = timeOfDay === "day";
   const isEvening = timeOfDay === "evening";
+  const isNight = timeOfDay === "night";
 
   let displayedGreeting = greeting;
   if (showAltGreeting) {
@@ -48,6 +49,8 @@ export default function HeroGreetings() {
       displayedGreeting = "Time to relax and unwind.";
     } else if (isDay) {
       displayedGreeting = "Good Luck!";
+    } else if (isNight) {
+      displayedGreeting = "Perfect time to create.";
     }
   }
 
@@ -63,7 +66,7 @@ export default function HeroGreetings() {
   // --- Handlers for Combined Hover/Touch Events ---
   const handleEnterInteractiveState = () => {
     // For Greeting (Day/Evening)
-    if (isDay || isEvening) {
+    if (isDay || isEvening || isNight) {
       setShowAltGreeting(true);
     }
     // For Bird (Morning)
