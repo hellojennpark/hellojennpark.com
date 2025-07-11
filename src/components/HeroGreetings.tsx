@@ -3,7 +3,6 @@ import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
 import { Press_Start_2P } from "next/font/google";
 import { useState } from "react"; // useRef and useEffect are no longer needed for clearing timeout
-import { Bird } from "lucide-react";
 import { MenuDrawer } from "./MenuDrawer";
 import Link from "next/link";
 
@@ -22,7 +21,6 @@ const greetingMap = {
 export default function HeroGreetings() {
   const { timeOfDay, primaryColor, backgroundColor } = useTimeThemeStore();
   const [showAltGreeting, setShowAltGreeting] = useState(false);
-  const [birdPosition, setBirdPosition] = useState("0%"); // State for bird's position
 
   const greeting = greetingMap[timeOfDay] ?? "Welcome, I'm Jenn.";
 
@@ -69,20 +67,12 @@ export default function HeroGreetings() {
     if (isDay || isEvening || isNight) {
       setShowAltGreeting(true);
     }
-    // For Bird (Morning)
-    if (isMorning) {
-      setBirdPosition("90%"); // Move to center
-    }
   };
 
   const handleLeaveInteractiveState = () => {
     // For Greeting (Day/Evening)
     if (isDay || isEvening) {
       setShowAltGreeting(false); // Reset immediately on leave
-    }
-    // For Bird (Morning)
-    if (isMorning) {
-      setBirdPosition("0%"); // Move back to left immediately on leave
     }
   };
 
@@ -122,13 +112,6 @@ export default function HeroGreetings() {
         onTouchEnd={handleTouchEnd} // Combined handler for touch
         onTouchCancel={handleTouchCancel} // Combined handler for touch
       >
-        {isMorning && (
-          <Bird
-            className="absolute -translate-y-14 transform transition-all duration-500 z-20"
-            style={{ left: birdPosition, color: primaryColor }}
-            size={40}
-          />
-        )}
         <h1
           className={clsx(
             "font-bold transition duration-1000",
