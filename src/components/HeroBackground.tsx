@@ -1,6 +1,5 @@
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
-import { Clovers } from "./animation/Clovers";
-import { BearClover } from "./animation/BearClover";
+import { Star } from "./animation/Star";
 import { SpreadingParticles } from "./animation/SpreadingParticles";
 import { useState } from "react";
 import Image from "next/image";
@@ -12,12 +11,7 @@ export const HeroBackground = () => {
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-      {timeOfDay === "day" && (
-        <>
-          <Clovers />
-          <BearClover />
-        </>
-      )}
+      {timeOfDay === "day" && <Star />}
 
       {timeOfDay === "night" && <SpreadingParticles />}
       {timeOfDay === "evening" && (

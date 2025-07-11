@@ -1,10 +1,7 @@
-// components/Clovers.tsx
-// import Image from "next/image";
 import React from "react";
-// import { Clover } from "lucide-react"; // Import a suitable icon from Lucide
 import { PiStarFill } from "react-icons/pi";
 
-export const BearClover = () => {
+export const Star = () => {
   const initialTop = 30 + Math.random() * 50; // 30% to 90%
   const initialLeft = Math.random() * 100;
 
