@@ -2,9 +2,13 @@ import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { Clovers } from "./animation/Clovers";
 import { BearClover } from "./animation/BearClover";
 import { SpreadingParticles } from "./animation/SpreadingParticles";
+import { useState } from "react";
+import Image from "next/image";
 
 export const HeroBackground = () => {
-  const { timeOfDay, primaryColor } = useTimeThemeStore();
+  const { timeOfDay } = useTimeThemeStore();
+
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
@@ -16,24 +20,21 @@ export const HeroBackground = () => {
       )}
 
       {timeOfDay === "night" && <SpreadingParticles />}
-      {timeOfDay === "morning" && (
-        <div
-          className="absolute inset-0 z-0 animate-grid-shimmer"
-          style={{
-            width: "150%",
-            height: "150%",
-            top: "-25%",
-            left: "-25%",
-            backgroundImage: `
-        linear-gradient(${primaryColor} 1px, transparent 1px),
-        linear-gradient(90deg, ${primaryColor} 1px, transparent 1px)
-      `,
-            backgroundSize: "40px 40px",
-            transform: "rotate(-15deg)",
-            transformOrigin: "center",
-            opacity: 0.8,
-          }}
-        />
+      {timeOfDay === "evening" && (
+        <div className="relative w-full h-full z-5">
+          <Image
+            src={"/toronto_pixel.png"}
+            alt="Toronto skyline"
+            fill
+            className={`w-full h-full object-contain object-bottom sm:object-cover sm:object-top transition-opacity duration-1000 ease-in-out ${
+              imageLoaded ? "opacity-100" : "opacity-0"
+            }`}
+            onLoadingComplete={() => setImageLoaded(true)}
+            style={{
+              mixBlendMode: "multiply",
+            }}
+          />
+        </div>
       )}
     </div>
   );
