@@ -1,6 +1,6 @@
 import PageLayout from "@/components/layout/PageLayout";
 import { Tag } from "@/components/TagList";
-import { getAllPosts } from "@/lib/posts";
+import { getAllTags } from "@/lib/posts";
 
 function Page({ tagCount }: { tagCount: Record<string, number> }) {
   const tags = Object.entries(tagCount)
@@ -20,22 +20,10 @@ function Page({ tagCount }: { tagCount: Record<string, number> }) {
 }
 
 export async function getStaticProps() {
-  const posts = getAllPosts();
-  const tagCount: Record<string, number> = {};
-
-  posts.forEach((post) => {
-    post.tags?.forEach((tag) => {
-      if (tag in tagCount) {
-        tagCount[tag]++;
-      } else {
-        tagCount[tag] = 1;
-      }
-    });
-  });
-
+  const tags = getAllTags();
   return {
     props: {
-      tagCount,
+      tags,
     },
   };
 }

@@ -11,6 +11,28 @@ export type Post = {
   date: string;
 };
 
+export function getAllTags(
+  baseDir = path.join(process.cwd(), "src/content/blog")
+): { name: string; count: number }[] {
+  const posts = getAllPosts(baseDir);
+  const tagCount: Record<string, number> = {};
+
+  posts.forEach((post) => {
+    post.tags?.forEach((tag) => {
+      if (tag in tagCount) {
+        tagCount[tag]++;
+      } else {
+        tagCount[tag] = 1;
+      }
+    });
+  });
+
+  const tags = Object.entries(tagCount)
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count);
+  return tags;
+}
+
 export function getAllPosts(
   baseDir = path.join(process.cwd(), "src/content/blog")
 ): Post[] {

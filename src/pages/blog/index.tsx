@@ -1,6 +1,7 @@
 import PageLayout from "@/components/layout/PageLayout";
 import BlogPostCard from "@/components/BlogPostCard";
-import { getAllPosts } from "@/lib/posts";
+import { getAllPosts, getAllTags } from "@/lib/posts";
+import { TagList } from "@/components/TagList";
 
 type Post = {
   title: string;
@@ -10,9 +11,18 @@ type Post = {
   date: string;
 };
 
-function Page({ posts }: { posts: Post[] }) {
+function Page({
+  posts,
+  tags,
+}: {
+  posts: Post[];
+  tags: { name: string; count: number }[];
+}) {
   return (
     <PageLayout>
+      <p>Tags</p>
+      <TagList tags={tags.map((tag) => tag.name)} />
+      <p>Posts</p>
       <div className="space-y-4">
         {posts.map((post) => (
           <BlogPostCard key={post.slug.join("/")} post={post} reverse={true} />
@@ -24,10 +34,12 @@ function Page({ posts }: { posts: Post[] }) {
 
 export async function getStaticProps() {
   const posts = getAllPosts();
+  const tags = getAllTags();
 
   return {
     props: {
       posts,
+      tags,
     },
   };
 }
