@@ -1,6 +1,6 @@
 import PageLayout from "@/components/layout/PageLayout";
 import BlogPostCard from "@/components/BlogPostCard";
-import { getAllPosts } from "@/lib/getAllPosts";
+import { getAllPosts } from "@/lib/posts";
 
 type Post = {
   title: string;

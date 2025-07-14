@@ -5,7 +5,7 @@ import IntroduceSection from "@/components/IntroduceSection";
 import CareerSection from "@/components/CareerSection";
 import BlogSection from "@/components/BlogSection";
 import Hero from "@/components/Hero";
-import { getAllPosts, Post } from "@/lib/getAllPosts";
+import { getAllPosts, Post } from "@/lib/posts";
 
 export default function Home({ posts }: { posts: Post[] }) {
   return (

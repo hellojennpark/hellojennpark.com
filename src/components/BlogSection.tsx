@@ -1,4 +1,4 @@
-import { Post } from "@/lib/getAllPosts";
+import { Post } from "@/lib/posts";
 import BlogPostCard from "./BlogPostCard";
 import Link from "next/link";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";

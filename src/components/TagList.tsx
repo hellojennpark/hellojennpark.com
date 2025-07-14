@@ -1,5 +1,6 @@
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
+import { useRouter } from "next/navigation";
 
 function hashString(str: string): number {
   let hash = 0;
@@ -33,24 +34,43 @@ interface TagListProps {
   tags?: string[];
 }
 
-export function TagList({ tags }: TagListProps) {
+export function Tag({ tag, count }: { tag: string; count?: number }) {
   const { timeOfDay } = useTimeThemeStore();
   const isNight = timeOfDay === "night";
-
+  const router = useRouter();
+  const bgColor = getDeterministicColor(tag, isNight);
+  return (
+    <button
+      onClick={() => {
+        router.push(`/tags/${tag}`);
+      }}
+    >
+      <span
+        key={tag}
+        className={clsx(
+          "text-sm px-1.5 py-0.5 rounded-xs hover:border active:border",
+          bgColor,
+          isNight
+            ? "hover:border-white active:border-white"
+            : "hover:border-black active:border-black"
+        )}
+      >
+        # {tag}
+      </span>
+      {count !== undefined && (
+        <span className="ml-1 text-xs">
+          {count} {count == 1 ? "post" : "posts"}
+        </span>
+      )}
+    </button>
+  );
+}
+export function TagList({ tags }: TagListProps) {
   if (!tags || tags.length === 0) return null;
-
   return (
     <div className="flex flex-wrap gap-2">
       {tags.map((tag) => {
-        const bgColor = getDeterministicColor(tag, isNight);
-        return (
-          <p
-            key={tag}
-            className={clsx("text-sm px-1.5 py-0.5 rounded-xs", bgColor)}
-          >
-            # {tag}
-          </p>
-        );
+        return <Tag key={tag} tag={tag} />;
       })}
     </div>
   );

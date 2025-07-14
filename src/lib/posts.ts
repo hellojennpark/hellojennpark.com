@@ -42,7 +42,6 @@ export function getAllPosts(
 
   walk(baseDir);
 
-  // 최신순 정렬
   posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 
   return posts;
