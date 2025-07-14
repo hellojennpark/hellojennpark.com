@@ -8,11 +8,12 @@ import { ReactNode } from "react";
 import { useRouter } from "next/navigation";
 
 type BlogLayoutProps = {
-  title: string;
+  title?: string;
+  tag?: string;
   children: ReactNode;
 };
 
-export default function BlogLayout({ title, children }: BlogLayoutProps) {
+export default function BlogLayout({ title, tag, children }: BlogLayoutProps) {
   const { timeOfDay } = useTimeThemeStore();
   const isNight = timeOfDay == "night";
   const timeOfDayStyle = isNight
@@ -22,12 +23,12 @@ export default function BlogLayout({ title, children }: BlogLayoutProps) {
   const crumbs = [
     {
       key: 0,
-      href: "/blog",
-      label: "Blog",
+      href: title ? "/blog" : "/tags",
+      label: title ? "Blog" : "Tags",
     },
     {
       key: 1,
-      label: title,
+      label: title ? title : tag,
     },
   ];
 
@@ -56,7 +57,9 @@ export default function BlogLayout({ title, children }: BlogLayoutProps) {
                 <ChevronRight className="w-4 h-4 text-muted-foreground" />
                 {index === crumbs.length - 1 ? (
                   <span className="font-bold whitespace-nowrap overflow-hidden text-ellipsis max-w-[160px] truncate">
-                    {crumb.label.replace("-", " ")}
+                    {crumb && crumb.label
+                      ? crumb.label.replace("-", " ")
+                      : "Loading..."}
                   </span>
                 ) : (
                   <Link href={crumb.href ?? ""}>{crumb.label}</Link>

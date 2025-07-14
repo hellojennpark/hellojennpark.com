@@ -2,10 +2,7 @@ import PageLayout from "@/components/layout/PageLayout";
 import { Tag } from "@/components/TagList";
 import { getAllTags } from "@/lib/posts";
 
-function Page({ tagCount }: { tagCount: Record<string, number> }) {
-  const tags = Object.entries(tagCount)
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count);
+function Page({ tags }: { tags: { name: string; count: number }[] }) {
   return (
     <PageLayout>
       <ul className="space-y-2">
