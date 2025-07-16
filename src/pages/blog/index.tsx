@@ -20,9 +20,7 @@ function Page({
 }) {
   return (
     <PageLayout>
-      <p>Tags</p>
       <TagList tags={tags.map((tag) => tag.name)} />
-      <p>Posts</p>
       <div className="space-y-4">
         {posts.map((post) => (
           <BlogPostCard key={post.slug.join("/")} post={post} reverse={true} />
