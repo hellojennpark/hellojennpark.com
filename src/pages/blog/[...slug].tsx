@@ -14,6 +14,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { extractToc } from "@/lib/toc";
 import { TOC } from "@/components/TOC";
 import Head from "next/head";
+import remarkGfm from "remark-gfm";
 
 type Props = {
   source: MDXRemoteSerializeResult;
@@ -109,6 +110,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { content, data } = matter(fileContent);
   const mdxSource = await serialize(content, {
     mdxOptions: {
+      remarkPlugins: [remarkGfm],
       rehypePlugins: [
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: "wrap" }],

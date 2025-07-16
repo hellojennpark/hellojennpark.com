@@ -372,3 +372,16 @@ html {
 .prose p > a {
   @apply text-blue-500;
 }
+
+.prose .table-wrapper {
+  @apply overflow-x-auto py-2;
+}
+
+.prose table {
+  @apply w-full text-left border-collapse border border-gray-500;
+}
+
+.prose th,
+.prose td {
+  @apply border border-gray-500 p-1;
+}
