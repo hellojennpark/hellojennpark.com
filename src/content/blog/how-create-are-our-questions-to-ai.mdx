@@ -1,0 +1,135 @@
+---
+title: "How creative are our questions to AI?"
+description: "When we ask ChatGPT a question, are we being creative or just repeating what millions have asked before?"
+tags: ["ai", "ai-energy-consumption", "ai-query-optimization"]
+date: "2025-07-16"
+---
+
+## Are your AI questions really original?
+
+Nowadays we ask questions to AI every day. Maybe even by yourself, you ask the same question you already asked. Then how many repetitive questions millions of others already asked? Does AI generate answers to the same question every time? Let's dig in.
+
+### Prevalence of Similar or Identical Queries
+
+> [Practical changes could reduce AI energy demand by up to 90%](https://www.ucl.ac.uk/news/2025/jul/practical-changes-could-reduce-ai-energy-demand-90)
+
+Despite the vast potential for unique interactions, a significant portion of queries to Large Language Models (LLMs), especially in high-volume applications like customer service chatbots, are either identical or semantically very similar. This phenomenon often arises from the Pareto principle, where a small number of problems or questions account for the majority of queries. For instance, OpenAI's ChatGPT service alone handles approximately 1 billion queries daily.
+
+Understanding the scale of repetitive queries is just the beginning. The real challenge lies in comprehending the massive energy footprint these redundant computations create across the global AI infrastructure.
+
+### Importance from a Technical Efficiency Perspective
+
+> [The Energy Cost of Reasoning: Analyzing Energy Usage in LLMs with Test-time Compute](https://arxiv.org/html/2505.14733v1)
+
+While the energy cost of a single query might seem small, when multiplied by billions of queries daily, it scales to an enormous magnitude. For example, 200 million ChatGPT queries per day translate to 621.4 MWh of operational energy consumption daily. This cumulative effect significantly contributes to increased carbon emissions and pressure on power grids. Each query incurs a computational cost for the AI service provider. Reducing redundant computations directly leads to substantial cost savings, making AI systems more scalable and efficient. Early AI models cost 3-4 rupees per query, but significant cost reductions have been achieved through caching. Therefore, techniques for detecting and optimizing repetitive queries play a pivotal role in enhancing the operational efficiency and reducing resource consumption of AI systems.
+
+
+## The Hidden Cost of AI Conversations
+
+> [The growing energy footprint of artificial intelligence - Alex de Vries](https://www.sciencedirect.com/science/article/pii/S2542435123003653)
+
+<div className="table-wrapper">
+
+| Source/Entity           | Scenario Description                                           | Number of Servers   | Number of GPUs     | Daily Power Use (GWh) | Annual Power Use (TWh) | Power per Request (Wh) |
+|-------------------------|----------------------------------------------------------------|---------------------|--------------------|------------------------|-------------------------|--------------------------|
+| **SemiAnalysis**        | Applying ChatGPT-level AI to all Google searches              | 512,821             | 4,102,568          | 80 GWh                 | 29.2 TWh                | 8.9 Wh                   |
+| **Alphabet Chairman**   | LLM interaction may cost 10x more than standard search         | -                   | -                  | -                      | -                       | ~3 Wh                    |
+| **ChatGPT Ops Estimate**| 195M daily requests, 564 MWh/day total                         | -                   | -                  | 0.564 GWh              | ~0.206 TWh              | up to 2.9 Wh             |
+| **Standard Google Search** | Power consumption per traditional keyword search            | -                   | -                  | -                      | -                       | 0.3 Wh                   |
+
+</div>
+
+Even if you're not in (or in, doesn't matter!) the Tech industry, you probably know AI questions and answers cost a bunch of energy. It’s almost 10x more than Google search. A single ChatGPT query, for instance, consumes approximately **0.0029 kWh** of energy, nearly **10 times more** than a standard Google search (around 0.0003 kWh). When you consider that ChatGPT handles billions of queries daily, this seemingly small difference accumulates into a massive environmental and economic footprint.
+
+With this environmental and economic burden in mind, researchers have begun investigating whether repeatedly asking the same questions actually improves AI responses - or if we're simply wasting resources on redundant computations.
+
+
+## What Science Says About Repetitive Questions
+
+> [Asking Again and Again: Exploring LLM Robustness to Repeated Questions](https://arxiv.org/html/2412.07923v3)
+
+Research indicates that simply repeating a question, even within the same prompt, often doesn't lead to a significant improvement in the LLM's answer quality. For instance, studies have shown that question repetition might increase accuracy by a small percentage (e.g., up to 6%), but these results are often not statistically significant across various models and datasets. This suggests that repeatedly asking the exact same question doesn't necessarily yield meaningfully "better" or new information, highlighting the redundancy of regenerating responses for identical queries.
+
+Given that repetitive questions don't significantly improve answer quality, the next logical step is understanding how AI services can detect and optimize these redundant queries to reduce unnecessary computational overhead.
+
+
+## How AI Services Know You’ve Asked Before
+
+Detecting repetitive questions goes far beyond simple text matching. Modern AI services employ sophisticated techniques, primarily centered around **semantic similarity detection** using **vector embeddings**.
+
+Once repetitive questions are identified through semantic similarity detection, the real magic happens in the engineering systems that deliver cached responses instead of regenerating identical answers from scratch.
+
+### Beyond Simple Text Matching
+
+AI services determine whether a user has asked a question before by focusing on understanding the *semantic meaning* of the query, rather than just simple text matching. This is crucial because users might phrase their questions differently but still have the same intent. For example, "Explain AI caching" and "Can you describe AI caching?" are textually different but semantically identical questions. This ability to detect semantic similarity is essential for AI systems to avoid redundant computations and enhance efficiency.
+
+### Principles of Vector Embeddings in Plain English
+
+Vector embeddings serve as a bridge between human language and the numerical representations that computers can understand and process, forming a core component of semantic search. They work by transforming words, phrases, or entire documents into high-dimensional numerical arrays called vectors. These vectors are carefully structured so that similar concepts (e.g., "car" and "vehicle") are positioned closer to each other in the vector space, while unrelated terms (e.g., "car" and "banana") have vastly different vectors. This allows search systems to compare content based on meaning rather than exact keyword matches.
+
+For instance, using models like Word2Vec or BERT, the word "king" might be represented by a 300-dimensional vector, and "queen" would be located in its vicinity within the vector space. If a user queries "show me baby dogs," the system can still retrieve "puppies" even if the exact keyword was not used, because vector embeddings capture the semantic relationships between words.
+
+
+
+## The Engineering Behind Faster AI Responses: From Question to Cached Answer
+
+Once a repetitive question is identified, AI services swing into action with various optimization techniques to avoid redundant computation. **Caching** is at the forefront of these strategies.
+
+### The Concept of LLM Caching
+
+LLM caching is the process of storing and reusing previously computed responses from Large Language Models (LLMs). Instead of generating a new response for every request, it allows for quick retrieval of existing results, reducing both response times and computational costs. Without caching, every user request, even if the same query has been processed before, would require a full computation. Implementing effective caching strategies mitigates this issue, enhancing the responsiveness and cost-efficiency of LLM applications.
+
+### Types of Caching Strategies: Exact Match and Semantic Caching
+
+There are primarily two strategies for LLM caching: exact match caching and semantic caching.
+
+1.  **Exact Match Caching**: This method stores responses for specific input queries. If a user submits an input that is precisely identical to a previously cached query, the cached response is returned without needing to query the LLM again. This is very fast and simple to implement but is sensitive to minor variations in input, such as added whitespace or typos, which can lead to a cache miss.
+2.  **Semantic Caching**: This method stores responses based on the *meaning* or intent of the input, rather than an exact input match. If two different inputs convey similar intent, a cached response associated with that meaning can be used. This can effectively serve responses for queries phrased differently but carrying the same meaning, and it can achieve more cache hits than exact match caching, especially for diverse user queries. However, there is a risk that similar prompts could lead to unintended cached responses if semantic similarity is misinterpreted.
+
+### Multi-Layer Caching and KV Cache Reuse
+
+**Multi-layer caching** combines these two strategies to optimize for both speed and relevance. A typical multi-layer system works as follows: The first layer is exact match caching, which immediately checks for an exact match of the input query, ensuring the fastest retrieval. If no exact match is found, the request proceeds to a semantic caching layer, where NLP techniques are used to find similar queries and retrieve an appropriate response. This hierarchical structure drives higher cache hit rates and reduces redundant model calls, balancing precision and flexibility, which is particularly useful for applications with diverse user queries.
+
+**KV Cache Reuse** is an emerging trend in LLM applications that reuses stored Key-Value (KV) caches to reduce prefill latency when processing repetitive input text. This leads to a broad design space, including placing the stored KV cache near the GPU or employing various KV cache compression techniques. Research shows that KV cache reuse can significantly reduce both latency and cloud costs, especially for diverse workloads with long contexts. For example, changing the input length from 1,000 to 10,000 tokens can lead to a substantial end-to-end latency reduction of 1.1x to 2.9x with KV cache reuse. In terms of cost, it can reduce cloud service usage costs by approximately 1.3x to 3.6x when changing input length from 1,000 to 10,000 tokens. An analysis of real AWS pricing data revealed that KV cache reuse can be more economical if the context is reused more than once per hour. Storage costs are typically a very small fraction of the total cost.
+
+### Process: From Query to Cached Answer
+
+The general workflow for LLM caching is as follows: When a user submits a query, the caching system performs a cache lookup for existing cached prefixes. If the beginning of the query matches a stored version, a "cache hit" occurs, and the system uses the stored data. In this case, the model does not need to recompute the input tokens, accelerating output token generation. Cache hit rate is a critical metric for evaluating cache performance.
+
+If no match is found, a "cache miss" occurs, and the system forwards the request to the LLM to compute a new response. Once the response is generated, the system stores it in the cache for future reuse with identical or similar queries. Cached prompts enable faster API responses, especially in applications where quick feedback is crucial, such as chat interfaces or document analysis.
+
+Several strategies exist to optimize caching. Placing static content, such as system instructions, early in the prompt can lead to more cache hits. Additionally, strategically inserting cache breakpoints after reusable blocks and excluding dynamic content from prefixes is recommended to avoid cache invalidation. Monitoring cache hit rates and tracking token usage helps evaluate cache performance and reduce costs.
+
+
+## Real Examples: How AI Companies Cut the Costs
+
+Many AI Companies actively implements optimization strategies to manage its immense computational loads and costs. 
+
+### API Usage Optimization
+
+The primary goal is to reduce the number of API calls and the total tokens processed.
+
+* **Batching Requests**: Whenever possible, combine multiple user queries or tasks into a single API call. For example, instead of making 10 individual calls for 10 user queries, process them all in one request. Companies like **Google Cloud** offer batch prediction APIs for their AI Platform, allowing users to send multiple inputs in a single request, which can significantly reduce overhead and improve throughput.
+* **Caching**: Store frequently used or repetitive responses to avoid reprocessing. This is particularly useful for common customer support questions or frequently requested information. **OpenAI specifically highlights its API Prompt Caching** as a way to reduce costs and latency. Prompt caching can reduce costs by up to 90% by reusing cached tokens; for Anthropic, a cache hit costs only 10% of the base input token price. Additionally, it can reduce latency by up to 85% by avoiding repetitive processing. You can find more details on OpenAI's prompt caching [here](https://openai.com/index/api-prompt-caching/).
+* **Adjusting `max_tokens`**: Limit the length of model responses by setting the `max_tokens` parameter. For short answers, setting `max_tokens=150` instead of the default 2048 can reduce the cost per call by over 90%. This is a common practice across various LLM providers, including **Anthropic** and **Cohere**, where controlling output length directly impacts token usage and cost.
+
+## The Future of AI Efficiency: Why Optimization Matters More Than Ever
+
+As we've explored throughout this article, the current AI landscape is characterized by massive computational redundancy. Billions of users ask similar questions daily, consuming enormous amounts of energy and computational resources to generate responses that could be efficiently cached and reused.
+
+### The Coming Reality Check
+
+The current AI boom is fueled by unprecedented investment from tech giants competing for market dominance. Companies like OpenAI, Google, and Microsoft are subsidizing AI services, often operating them at a loss to gain users and market share. However, this phase of heavy subsidization won't last forever.
+
+Once the initial AI competition settles and companies need to achieve profitability, the true cost of AI services will likely be passed on to consumers.
+
+### The Path Forward
+
+This is where the optimization techniques we've discussed become crucial for the future of AI accessibility:
+
+- **Caching strategies** that reduce redundant computations by up to 90%
+- **Semantic similarity detection** that prevents unnecessary response generation
+- **Multi-layer optimization** that balances speed and relevance
+- **KV cache reuse** that significantly reduces both latency and operational costs
+
+These aren't just technical improvements - they're the foundation for keeping AI accessible to everyone. By eliminating wasteful redundancy, we can make AI services more sustainable, cost-effective, and available to a broader global audience.
