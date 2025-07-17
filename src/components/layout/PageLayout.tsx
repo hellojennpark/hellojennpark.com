@@ -36,10 +36,10 @@ export default function PageLayout({ children }: PageLayoutProps) {
         className={clsx(
           timeOfDayStyle,
           isNight ? "dark-scroll-track" : "light-scroll-track",
-          "pt-18 h-full"
+          "h-full"
         )}
       >
-        <div className="p-5 h-full overflow-y-auto">
+        <div className="pt-25 p-5 h-full overflow-y-auto">
           <nav className="flex items-center text-md space-x-1 pb-3">
             <Link
               href="/#welcome"
@@ -67,7 +67,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
             ))}
           </nav>
 
-          <div className="space-y-8 pt-4 pb-8 max-w-5xl mx-auto text-base md:text-lg leading-relaxed">
+          <div className="space-y-8 pt-2 md:pt-4 pb-8 max-w-5xl mx-auto text-base md:text-lg leading-relaxed">
             {children}
           </div>
           {categories.length > 0 &&

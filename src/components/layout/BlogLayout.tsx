@@ -40,10 +40,10 @@ export default function BlogLayout({ title, tag, children }: BlogLayoutProps) {
         className={clsx(
           timeOfDayStyle,
           isNight ? "dark-scroll-track" : "light-scroll-track",
-          "pt-18 h-full"
+          "h-full"
         )}
       >
-        <div className="p-5 h-full overflow-y-auto">
+        <div className="pt-25 p-5 h-full overflow-y-auto">
           <nav className="flex items-center text-md space-x-1 pb-3">
             <Link
               href="/#welcome"
@@ -68,7 +68,7 @@ export default function BlogLayout({ title, tag, children }: BlogLayoutProps) {
             ))}
           </nav>
 
-          <div className="space-y-8 py-4 md:py-8 max-w-5xl mx-auto text-base md:text-lg leading-relaxed">
+          <div className="space-y-8 py-2 md:py-4 max-w-5xl mx-auto text-base md:text-lg leading-relaxed">
             {children}
           </div>
           <div className="mt-4">

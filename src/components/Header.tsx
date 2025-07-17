@@ -26,8 +26,13 @@ export const Header = () => {
   return (
     <header
       className={clsx(
-        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-5 space-x-6 backdrop-blur-xs h-[70px]`
+        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center m-3 md:m-5 p-5 space-x-6 backdrop-blur-sm h-[50px] rounded-xl shadow-sm`
       )}
+      style={{
+        backgroundColor: isNight
+          ? "rgba(0, 0, 0, 0.2)"
+          : "rgba(255, 255, 255, 0.2)",
+      }}
     >
       <div
         className="font-bold flex items-center gap-2 cursor-pointer transform transition duration-200 hover:scale-105 active:scale-105"
@@ -37,7 +42,7 @@ export const Header = () => {
           className={
             timeOfDay == "evening"
               ? `${pixelFont.className} text-xs`
-              : "text-2xl"
+              : "text-xl"
           }
           style={{
             color: isLanding || isNight ? primaryColor : backgroundColor,
