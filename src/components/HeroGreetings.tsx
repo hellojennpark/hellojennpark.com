@@ -98,7 +98,6 @@ export default function HeroGreetings() {
         className={clsx(
           "relative text-center mx-10 p-5 transition-transform duration-500",
           {
-            "bg-white/70 border md:my-10": isMorning,
             "rotate-[-5deg] hover:rotate-0 active:rotate-0": isMorning,
             "cursor-pointer": isEvening || isDay || isMorning, // Cursor pointer for all interactive states
           }
