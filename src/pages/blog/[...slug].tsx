@@ -15,6 +15,7 @@ import { extractToc } from "@/lib/toc";
 import { TOC } from "@/components/TOC";
 import Head from "next/head";
 import remarkGfm from "remark-gfm";
+import Mermaid from "@/components/Mermaid";
 
 type Props = {
   source: MDXRemoteSerializeResult;
@@ -61,21 +62,19 @@ function Page({ source, frontMatter, toc }: Props) {
       </div>
 
       <article className="prose prose-neutral dark:prose-invert">
-        <MDXRemote {...source} />
+        <MDXRemote {...source} components={{ Mermaid }} />
       </article>
       <TagList tags={frontMatter.tags} />
     </BlogLayout>
   );
 }
 
-// MDX 파일 경로 가져오는 헬퍼
 function getFile(slugArray: string[]) {
   const mdxPath =
     path.join(process.cwd(), "src/content/blog", ...slugArray) + ".mdx";
   return mdxPath;
 }
 
-// 모든 가능한 경로 정의
 export const getStaticPaths: GetStaticPaths = async () => {
   const baseDir = path.join(process.cwd(), "src/content/blog");
   const paths: string[][] = [];

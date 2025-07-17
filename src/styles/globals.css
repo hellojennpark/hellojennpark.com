@@ -332,6 +332,11 @@ html {
   }
 }
 
+
+.mermaid-container {
+  @apply bg-white rounded-lg my-6 py-4;
+}
+
 .prose blockquote {
   @apply border-l-4 border-gray-500 bg-white/10 pl-4 my-6;
 }
@@ -385,3 +390,4 @@ html {
 .prose td {
   @apply border border-gray-500 p-1;
 }
+

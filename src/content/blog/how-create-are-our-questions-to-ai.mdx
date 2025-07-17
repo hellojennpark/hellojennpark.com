@@ -79,6 +79,59 @@ Once a repetitive question is identified, AI services swing into action with var
 
 LLM caching is the process of storing and reusing previously computed responses from Large Language Models (LLMs). Instead of generating a new response for every request, it allows for quick retrieval of existing results, reducing both response times and computational costs. Without caching, every user request, even if the same query has been processed before, would require a full computation. Implementing effective caching strategies mitigates this issue, enhancing the responsiveness and cost-efficiency of LLM applications.
 
+<Mermaid chart={`sequenceDiagram
+    participant User as User
+    participant API as API Gateway
+    participant Cache as Cache Layer
+    participant LB as Load Balancer
+    participant QO as Query Optimizer
+    participant Model as AI Model
+    participant VDB as Vector DB
+    participant Monitor as Monitoring
+
+    Note over User, Monitor: Optimized AI Query Processing Flow
+
+    User->>API: Query Request
+    API->>Monitor: Request Logging
+    
+    API->>Cache: Check Cache
+    alt Cache Hit
+        Cache-->>API: Cached Response
+        API-->>User: Immediate Response
+    else Cache Miss
+        API->>QO: Forward Query
+        
+        QO->>QO: Query Analysis & Optimization
+        Note over QO: - Query complexity analysis<br/>- Token count optimization<br/>- Batch processing feasibility
+        
+        QO->>LB: Optimized Query
+        LB->>Model: Select appropriate model instance
+        
+        alt RAG System
+            par Parallel Processing
+                Model->>VDB: Vector search for relevant docs
+                VDB-->>Model: Similar document context
+            and
+                Model->>Model: Inference with query + context
+            end
+        else Standard Generation
+            Model->>Model: Inference with query only
+        end
+        
+        Model-->>LB: Generated Response
+        LB-->>QO: Response
+        
+        QO->>QO: Post-processing
+        Note over QO: - Response quality validation<br/>- Token usage check<br/>- Response formatting
+        
+        QO-->>API: Final Response
+        API->>Cache: Cache Response
+        API-->>User: Return Response
+    end
+    
+    Monitor->>Monitor: Collect Performance Metrics
+    Note over Monitor: - Response time<br/>- Token usage<br/>- Cache hit rate<br/>- Model utilization`} />
+
 ### Types of Caching Strategies: Exact Match and Semantic Caching
 
 There are primarily two strategies for LLM caching: exact match caching and semantic caching.
