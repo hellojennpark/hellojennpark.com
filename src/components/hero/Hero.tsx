@@ -17,7 +17,7 @@ export default function Hero() {
     ],
     night: [
       "Quiet night.",
-      "The world is calm—perfect time to create and reflect.",
+      "The world is calm-perfect time to create and reflect.",
     ],
   };
 
