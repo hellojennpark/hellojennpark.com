@@ -26,7 +26,7 @@ export const Header = () => {
   return (
     <header
       className={clsx(
-        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center m-3 md:m-5 p-5 space-x-6 backdrop-blur-sm h-[50px] rounded-xl shadow-sm`
+        `fixed top-0 left-0 right-0 z-50 flex justify-between items-center m-3 md:m-5 p-5 space-x-6 backdrop-blur-lg h-[50px] rounded-xl shadow-sm`
       )}
       style={{
         backgroundColor: isNight

@@ -65,7 +65,7 @@ export const Footer = () => {
         <button
           onClick={handleScroll}
           className={clsx(
-            "flex items-center gap-1 px-4 py-2 rounded-xl text-sm shadow-sm transition-colors backdrop-blur-sm font-bold",
+            "flex items-center gap-1 px-4 py-2 rounded-xl text-sm shadow-sm transition-colors backdrop-blur-lg font-bold",
             timeOfDay !== "night"
               ? "bg-white/20 text-black hover:bg-white/40"
               : "bg-black/20 text-white hover:bg-black/40"
@@ -89,7 +89,7 @@ export const Footer = () => {
       {/* Footer */}
       <footer
         className={clsx(
-          "fixed bottom-0 left-0 right-0 z-40 backdrop-blur-sm rounded-xl shadow-sm",
+          "fixed bottom-0 left-0 right-0 z-40 backdrop-blur-lg rounded-xl shadow-sm",
           "py-1.5 flex justify-center",
           "mx-3 md:mx-auto max-w-md my-3 md:my-5"
         )}
