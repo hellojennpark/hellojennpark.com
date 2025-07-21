@@ -116,8 +116,8 @@ export const Footer = () => {
                       "w-8 h-8 rounded-full flex items-center justify-center transition-colors",
                       isActive
                         ? timeOfDay === "night"
-                          ? "bg-white/60"
-                          : "bg-black/60"
+                          ? "bg-white/80"
+                          : "bg-black/80"
                         : timeOfDay === "night"
                         ? "group-hover:bg-white/40"
                         : "group-hover:bg-black/40"

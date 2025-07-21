@@ -4,7 +4,7 @@ import { timeIcon } from "@/constants/timeTheme";
 import { FaBloggerB, FaLinkedinIn, FaGithub, FaList } from "react-icons/fa";
 import clsx from "clsx";
 import Link from "next/link";
-import { MenuDrawer } from "../MenuDrawer";
+import { MenuDrawer } from "@/components/MenuDrawer";
 
 const times = ["morning", "day", "evening", "night"] as const;
 
@@ -50,7 +50,7 @@ export default function HeroSocialMediaCard() {
       <div className="grid grid-cols-4 gap-4 text-2xl">
         <MenuDrawer>
           <p
-            className="flex items-center justify-center p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-colors"
+            className="flex items-center justify-center p-2 rounded-xl shadow-sm bg-blue-500 text-white hover:bg-blue-600 transition-colors"
             aria-label="List"
           >
             <FaList className="w-5 h-5" />
@@ -59,14 +59,14 @@ export default function HeroSocialMediaCard() {
         <Link
           href="/blog"
           passHref
-          className="flex items-center justify-center p-2 rounded-full bg-orange-500 text-white hover:bg-orange-600 transition-colors"
+          className="flex items-center justify-center p-2 rounded-xl shadow-sm bg-orange-500 text-white hover:bg-orange-600 transition-colors"
           aria-label="Blog"
         >
           <FaBloggerB className="w-5 h-5" />
         </Link>
         <a
           href="https://www.linkedin.com/in/hellojennpark"
-          className="flex items-center justify-center p-2 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition-colors"
+          className="flex items-center justify-center p-2 rounded-xl shadow-sm bg-blue-700 text-white hover:bg-blue-800 transition-colors"
           aria-label="LinkedIn"
           target="_blank"
           rel="noopener noreferrer"
@@ -75,7 +75,7 @@ export default function HeroSocialMediaCard() {
         </a>
         <a
           href="https://github.com/hellojennpark"
-          className="flex items-center justify-center p-2 rounded-full bg-black text-white hover:bg-gray-900 transition-colors"
+          className="flex items-center justify-center p-2 rounded-xl shadow-sm bg-black text-white hover:bg-gray-900 transition-colors"
           aria-label="GitHub"
           target="_blank"
           rel="noopener noreferrer"
