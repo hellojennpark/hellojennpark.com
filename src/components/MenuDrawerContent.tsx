@@ -13,10 +13,9 @@ interface MenuDrawerContentProps {
 }
 
 export const MenuDrawerContent = ({ onClose }: MenuDrawerContentProps) => {
-  const { timeOfDay } = useTimeThemeStore();
-  const isNight = timeOfDay === "night";
+  const { isNight } = useTimeThemeStore();
 
-  const timeOfDayStyle = isNight
+  const timeOfDayStyle = isNight()
     ? "bg-gray-900 text-white"
     : "bg-white text-black";
 

@@ -38,9 +38,8 @@ export default function CareerDashboard() {
   const [selectedName, setSelectedName] = useState("Harry Kim");
 
   const isMobile = useIsMobile();
-  const { timeOfDay } = useTimeThemeStore();
-  const isNight = timeOfDay == "night";
-  const timeOfDayBgStyle = isNight
+  const { isNight } = useTimeThemeStore();
+  const timeOfDayBgStyle = isNight()
     ? "bg-black/40 text-white/80 hover:bg-gray-900 active:bg-gray-900"
     : "bg-white/60 text-black/80 hover:bg-white active:bg-white";
   const iconSize = isMobile ? " w-4 h-4" : " w-8 h-8";
@@ -153,7 +152,7 @@ export default function CareerDashboard() {
                 }}
                 className={clsx(
                   "group rounded-lg p-1.5 md:p-2 hover:ring-1 active:ring-1",
-                  isNight
+                  isNight()
                     ? "hover:ring-white-500 active:ring-white-500"
                     : "hover:ring-black-500 active:ring-black-500"
                 )}

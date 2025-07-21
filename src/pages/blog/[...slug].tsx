@@ -30,8 +30,7 @@ type Props = {
 };
 
 function Page({ source, frontMatter, toc }: Props) {
-  const { timeOfDay } = useTimeThemeStore();
-  const isNight = timeOfDay == "night";
+  const { isNight } = useTimeThemeStore();
   return (
     <BlogLayout title={frontMatter.title}>
       <Head>
@@ -44,7 +43,7 @@ function Page({ source, frontMatter, toc }: Props) {
       <div
         className={clsx(
           "border-b space-y-2",
-          isNight ? "border-white" : "border-black"
+          isNight() ? "border-white" : "border-black"
         )}
       >
         <span className="flex flex-row items-center justify-end text-sm md:text-base">

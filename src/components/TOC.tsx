@@ -10,14 +10,13 @@ type Props = {
 
 export function TOC({ toc }: Props) {
   const [open, setOpen] = useState(false);
-  const { timeOfDay } = useTimeThemeStore();
-  const isNight = timeOfDay == "night";
+  const { isNight } = useTimeThemeStore();
 
   return (
     <nav
       className={clsx(
         "border rounded-md p-4 space-y-2",
-        isNight
+        isNight()
           ? "border-white hover:bg-black active:bg-black"
           : "border-black hover:bg-white active:bg-white"
       )}

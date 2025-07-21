@@ -14,9 +14,8 @@ type PageLayoutProps = {
 
 export default function PageLayout({ children }: PageLayoutProps) {
   const router = useRouter();
-  const { timeOfDay } = useTimeThemeStore();
-  const isNight = timeOfDay == "night";
-  const timeOfDayStyle = isNight
+  const { isNight } = useTimeThemeStore();
+  const timeOfDayStyle = isNight()
     ? "bg-black/40 text-white"
     : "bg-white/60 text-black";
 
@@ -35,7 +34,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
       <div
         className={clsx(
           timeOfDayStyle,
-          isNight ? "dark-scroll-track" : "light-scroll-track",
+          isNight() ? "dark-scroll-track" : "light-scroll-track",
           "h-full"
         )}
       >
@@ -45,7 +44,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
               href="/#welcome"
               className={clsx(
                 "flex items-center",
-                isNight
+                isNight()
                   ? "text-gray-400 hover:text-gray-200"
                   : "text-gray-700 hover:text-gray-900"
               )}
@@ -87,7 +86,7 @@ export default function PageLayout({ children }: PageLayoutProps) {
                           <div
                             className={clsx(
                               "p-3 px-5 h-full rounded-lg shadow-md",
-                              isNight
+                              isNight()
                                 ? "bg-black/40 border-white border hover:bg-gray-800 active:bg-gray-800 text-white"
                                 : "bg-white/80 border-black border hover:bg-white active:bg-white text-black"
                             )}

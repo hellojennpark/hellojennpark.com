@@ -15,13 +15,12 @@ export const InfoCard = ({
   icon: Icon,
   iconColor,
 }: InfoCardProps) => {
-  const { timeOfDay } = useTimeThemeStore();
-  const isNight = timeOfDay == "night";
+  const { isNight } = useTimeThemeStore();
   return (
     <div
       className={clsx(
         "p-3 md:p-5 rounded-lg shadow-md flex items-center gap-4",
-        isNight
+        isNight()
           ? "bg-black/40 text-white/80 hover:bg-gray-900 active:bg-gray-900"
           : "bg-white/60 text-black/80 hover:bg-white active:bg-white"
       )}

@@ -13,10 +13,9 @@ type MenuDrawerProps = {
 export const MenuDrawer = ({ children }: MenuDrawerProps) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { timeOfDay } = useTimeThemeStore();
+  const { isNight } = useTimeThemeStore();
 
-  const isNight = timeOfDay === "night";
-  const timeOfDayStyle = isNight
+  const timeOfDayStyle = isNight()
     ? "bg-gray-900 text-white"
     : "bg-white text-black";
 

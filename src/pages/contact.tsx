@@ -7,9 +7,8 @@ import { Mail, Github, Linkedin, SquareArrowOutUpRight } from "lucide-react";
 import Link from "next/link";
 
 export default function ContactPage() {
-  const { timeOfDay } = useTimeThemeStore();
-  const isNight = timeOfDay == "night";
-  const timeOfDayStyle = isNight
+  const { isNight } = useTimeThemeStore();
+  const timeOfDayStyle = isNight()
     ? "bg-gray-900 text-white border-white"
     : "bg-white/80 text-black border-black";
 

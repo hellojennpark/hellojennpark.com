@@ -17,11 +17,10 @@ export const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const { hour, setHour, primaryColor, backgroundColor, timeOfDay } =
+  const { hour, setHour, primaryColor, backgroundColor, timeOfDay, isNight } =
     useTimeThemeStore();
 
   const isLanding = pathname == "/";
-  const isNight = timeOfDay == "night";
 
   return (
     <header
@@ -29,7 +28,7 @@ export const Header = () => {
         `fixed top-0 left-0 right-0 z-50 flex justify-between items-center m-3 md:m-5 p-5 space-x-6 backdrop-blur-lg h-[50px] rounded-xl shadow-sm`
       )}
       style={{
-        backgroundColor: isNight
+        backgroundColor: isNight()
           ? "rgba(0, 0, 0, 0.2)"
           : "rgba(255, 255, 255, 0.2)",
       }}
@@ -45,9 +44,9 @@ export const Header = () => {
               : "text-xl"
           }
           style={{
-            color: isLanding || isNight ? primaryColor : backgroundColor,
+            color: isLanding || isNight() ? primaryColor : backgroundColor,
             WebkitTextStroke: `0.5px ${
-              isLanding || isNight ? primaryColor : backgroundColor
+              isLanding || isNight() ? primaryColor : backgroundColor
             }`,
           }}
         >
@@ -66,8 +65,9 @@ export const Header = () => {
             !isLanding && "border-2"
           )}
           style={{
-            color: isLanding || isNight ? primaryColor : backgroundColor,
-            borderColor: isLanding || isNight ? primaryColor : backgroundColor,
+            color: isLanding || isNight() ? primaryColor : backgroundColor,
+            borderColor:
+              isLanding || isNight() ? primaryColor : backgroundColor,
           }}
         >
           <Menu className="w-6 h-6" />

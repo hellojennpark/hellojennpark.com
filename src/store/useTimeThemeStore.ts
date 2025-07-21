@@ -11,6 +11,10 @@ interface TimeThemeStore {
   setHour: (hour: number) => void;
   setTimeOfDay: (time: TimeOfDay) => void;
   initializeTime: () => void;
+  isMorning: () => boolean;
+  isDay: () => boolean;
+  isEvening: () => boolean;
+  isNight: () => boolean;
 }
 
 const getTimeOfDay = (hour: number): TimeOfDay => {
@@ -73,8 +77,12 @@ export const useTimeThemeStore = create<TimeThemeStore>((set, get) => {
         const date = new Date();
         const currentHour = date.getHours();
         get().setHour(currentHour);
-        set({ isClientInitialized: true }); // 클라이언트에서 초기화 완료
+        set({ isClientInitialized: true });
       }
     },
+    isMorning: () => get().timeOfDay === "morning",
+    isDay: () => get().timeOfDay === "day",
+    isEvening: () => get().timeOfDay === "evening",
+    isNight: () => get().timeOfDay === "night",
   };
 });

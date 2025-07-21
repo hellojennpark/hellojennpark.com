@@ -8,13 +8,12 @@ import Link from "next/link";
 import { SquareArrowOutUpRight } from "lucide-react";
 
 export default function WorkHistoryPage() {
-  const { timeOfDay } = useTimeThemeStore();
+  const { isNight } = useTimeThemeStore();
 
-  const isNight = timeOfDay == "night";
-  const timeOfDayBorderStyle = isNight
+  const timeOfDayBorderStyle = isNight()
     ? "border-b border-white"
     : "border-b border-black";
-  const timeOfDayBgStyle = isNight
+  const timeOfDayBgStyle = isNight()
     ? "bg-black/40 border-white border hover:bg-gray-800 active:bg-gray-800 text-white"
     : "bg-white/80 border-black border hover:bg-white active:bg-white text-black";
 
@@ -92,7 +91,7 @@ export default function WorkHistoryPage() {
                 ))}
               </div>
             </div>
-            {company.blogs.length > 0 && BlogPosts(isNight, company.blogs)}
+            {company.blogs.length > 0 && BlogPosts(isNight(), company.blogs)}
           </div>
         ))}
       </div>

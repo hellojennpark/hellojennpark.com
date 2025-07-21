@@ -5,9 +5,8 @@ import clsx from "clsx";
 import HeroSocialMediaCard from "./HeroSocialMediaCard";
 
 export default function Hero() {
-  const { timeOfDay, primaryColor } = useTimeThemeStore();
+  const { timeOfDay, primaryColor, isNight } = useTimeThemeStore();
 
-  const isNight = timeOfDay == "night";
   const greetingMap = {
     morning: ["Hello, early bird.", "Take a deep breath and start fresh."],
     day: ["Good day.", "Wishing you a productive and fulfilling day ahead."],
@@ -54,7 +53,7 @@ export default function Hero() {
             key={idx}
             className={clsx(
               "rounded-xl px-6 py-4 max-w-[90%]",
-              isNight ? "text-white" : "text-black"
+              isNight() ? "text-white" : "text-black"
             )}
             style={{ backgroundColor: primaryColor }}
           >

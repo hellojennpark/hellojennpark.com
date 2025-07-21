@@ -21,14 +21,13 @@ export default function BlogPostCard({
   simple = false,
 }: BlogPostCardProps) {
   const router = useRouter();
-  const { timeOfDay } = useTimeThemeStore();
-  const isNight = timeOfDay == "night" && reverse;
+  const { isNight } = useTimeThemeStore();
   return (
     <div
       key={post.slug.join("/")}
       className={clsx(
         "flex flex-col space-y-2 p-4 rounded-md",
-        isNight
+        isNight() && reverse
           ? "bg-black/30 text-white hover:bg-black/60 active:bg-black/60"
           : "bg-white/50 text-black hover:bg-white/80 active:bg-white/80"
       )}

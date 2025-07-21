@@ -4,10 +4,9 @@ import PageLayout from "@/components/layout/PageLayout";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import clsx from "clsx";
 export default function LicensePage() {
-  const { timeOfDay, backgroundColor, primaryColor } = useTimeThemeStore();
-  const isNight = timeOfDay == "night";
-  const linkColor = isNight ? primaryColor : backgroundColor;
-  const timeOfDayStyle = isNight
+  const { isNight, backgroundColor, primaryColor } = useTimeThemeStore();
+  const linkColor = isNight() ? primaryColor : backgroundColor;
+  const timeOfDayStyle = isNight()
     ? "bg-gray-900 text-white border-white"
     : "bg-white/80 text-black border-black";
 

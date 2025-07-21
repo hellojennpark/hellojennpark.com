@@ -7,15 +7,14 @@ import { SquareArrowOutUpRight } from "lucide-react";
 import Link from "next/link";
 
 function Page() {
-  const { timeOfDay } = useTimeThemeStore();
-  const isNight = timeOfDay == "night";
+  const { isNight } = useTimeThemeStore();
   return (
     <PageLayout>
       <div className="space-y-4">
         <div
           className={clsx(
             "overflow-hidden flex flex-col md:flex-row w-full rounded-md",
-            isNight
+            isNight()
               ? "hover:border hover:border-white active:border active:border-white"
               : "hover:border hover:border-black active:border active:border-black"
           )}
@@ -32,7 +31,7 @@ function Page() {
           </div>
           <div
             className={clsx(
-              isNight ? "bg-black/40 text-white" : "bg-white/80 text-black",
+              isNight() ? "bg-black/40 text-white" : "bg-white/80 text-black",
               "flex flex-col w-full p-4 space-y-2 md:space-y-4"
             )}
           >
@@ -54,7 +53,7 @@ function Page() {
                 href="/blog/project-withsy"
                 className={clsx(
                   "px-4 py-2 rounded-md text-sm font-semibold border",
-                  isNight
+                  isNight()
                     ? "border-white text-white hover:bg-white hover:text-black"
                     : "border-black text-black hover:bg-black hover:text-white"
                 )}
@@ -67,7 +66,7 @@ function Page() {
                 rel="noopener noreferrer"
                 className={clsx(
                   "px-4 py-2 rounded-md text-sm font-semibold flex flex-row items-center",
-                  isNight
+                  isNight()
                     ? "bg-white text-black hover:bg-white/80"
                     : "bg-black text-white hover:bg-black/80"
                 )}

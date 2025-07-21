@@ -35,10 +35,9 @@ interface TagListProps {
 }
 
 export function Tag({ tag, count }: { tag: string; count?: number }) {
-  const { timeOfDay } = useTimeThemeStore();
-  const isNight = timeOfDay === "night";
+  const { isNight } = useTimeThemeStore();
   const router = useRouter();
-  const bgColor = getDeterministicColor(tag, isNight);
+  const bgColor = getDeterministicColor(tag, isNight());
   return (
     <button
       onClick={() => {
@@ -50,7 +49,7 @@ export function Tag({ tag, count }: { tag: string; count?: number }) {
         className={clsx(
           "text-sm px-1.5 py-0.5 rounded-xs hover:border active:border",
           bgColor,
-          isNight
+          isNight()
             ? "hover:border-white active:border-white"
             : "hover:border-black active:border-black"
         )}

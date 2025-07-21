@@ -14,9 +14,8 @@ type BlogLayoutProps = {
 };
 
 export default function BlogLayout({ title, tag, children }: BlogLayoutProps) {
-  const { timeOfDay } = useTimeThemeStore();
-  const isNight = timeOfDay == "night";
-  const timeOfDayStyle = isNight
+  const { isNight } = useTimeThemeStore();
+  const timeOfDayStyle = isNight()
     ? "bg-black/40 text-white"
     : "bg-white/60 text-black";
 
@@ -39,7 +38,7 @@ export default function BlogLayout({ title, tag, children }: BlogLayoutProps) {
       <div
         className={clsx(
           timeOfDayStyle,
-          isNight ? "dark-scroll-track" : "light-scroll-track",
+          isNight() ? "dark-scroll-track" : "light-scroll-track",
           "h-full"
         )}
       >

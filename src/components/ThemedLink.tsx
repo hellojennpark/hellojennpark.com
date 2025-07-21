@@ -16,13 +16,12 @@ export const ThemedLink = ({ href, children, onClick }: ThemedLinkProps) => {
   const pathname = usePathname();
   const isActive = pathname == href;
 
-  const { timeOfDay } = useTimeThemeStore();
-  const isNight = timeOfDay == "night";
+  const { isNight } = useTimeThemeStore();
   const linkClassName = isActive
-    ? isNight
+    ? isNight()
       ? "text-white"
       : "text-black"
-    : isNight
+    : isNight()
     ? "text-gray-400 hover:text-white active:text-white"
     : "text-gray-500 hover:text-black active:text-black";
 
@@ -40,7 +39,7 @@ export const ThemedLink = ({ href, children, onClick }: ThemedLinkProps) => {
         <span
           className={clsx(
             "text-xs px-2 py-0.5 rounded-md",
-            isNight ? "bg-white text-black" : "bg-black text-white"
+            isNight() ? "bg-white text-black" : "bg-black text-white"
           )}
         >
           current
