@@ -7,8 +7,9 @@ interface TimeThemeStore {
   timeOfDay: TimeOfDay;
   primaryColor: string;
   backgroundColor: string;
-  isClientInitialized: boolean; // 새로운 상태 추가
+  isClientInitialized: boolean;
   setHour: (hour: number) => void;
+  setTimeOfDay: (time: TimeOfDay) => void;
   initializeTime: () => void;
 }
 
@@ -55,6 +56,14 @@ export const useTimeThemeStore = create<TimeThemeStore>((set, get) => {
       set({
         hour,
         timeOfDay,
+        primaryColor: colors.primary,
+        backgroundColor: colors.background,
+      });
+    },
+    setTimeOfDay: (time: TimeOfDay) => {
+      const colors = colorMap[time];
+      set({
+        timeOfDay: time,
         primaryColor: colors.primary,
         backgroundColor: colors.background,
       });

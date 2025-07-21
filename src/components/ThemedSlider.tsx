@@ -39,7 +39,7 @@ export const ThemedSlider = ({ value, onValueChange }: Props) => {
         className={clsx(
           "w-6 h-6 rounded-full flex items-center justify-center border-none shadow-none",
           "transition-colors duration-200 p-1",
-          isNight ? "bg-white/60" : "bg-black/60"
+          isNight ? "bg-white/80" : "bg-black/80"
         )}
         style={{
           color: primaryColor,
