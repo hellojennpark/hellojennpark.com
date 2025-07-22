@@ -91,7 +91,7 @@ export const Footer = () => {
         className={clsx(
           "fixed bottom-0 left-0 right-0 z-40 backdrop-blur-lg rounded-xl shadow-sm",
           "py-1.5 flex justify-center",
-          "mx-3 md:mx-auto max-w-md my-3 md:my-5"
+          "mx-3 sm:mx-auto max-w-md my-3 md:my-5"
         )}
         style={{
           backgroundColor:
