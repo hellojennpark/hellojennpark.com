@@ -1,16 +1,17 @@
 "use client";
 import { useTimeThemeStore } from "@/store/useTimeThemeStore";
 import { timeIcon } from "@/constants/timeTheme";
-import { FaBloggerB, FaLinkedinIn, FaGithub, FaList } from "react-icons/fa";
 import clsx from "clsx";
 import Link from "next/link";
 import { MenuDrawer } from "@/components/MenuDrawer";
+import { socialMediaIcons } from "@/constants/socialMediaIcons";
 
 const times = ["morning", "day", "evening", "night"] as const;
 
 export default function HeroSocialMediaCard() {
   const { timeOfDay, setTimeOfDay, primaryColor, backgroundColor } =
     useTimeThemeStore();
+
   return (
     <div
       className={clsx(
@@ -18,13 +19,13 @@ export default function HeroSocialMediaCard() {
       )}
       style={{ color: backgroundColor }}
     >
-      <div className="flex gap-3">
+      <div className="flex gap-4">
         {times.map((time) => (
           <button
             key={time}
             onClick={() => setTimeOfDay(time)}
             className={clsx(
-              "p-2 rounded-full shadow-sm",
+              "p-2 rounded-full shadow-sm hover:scale-[110%] active:scale-[110%]",
               timeOfDay == "night"
                 ? timeOfDay == time
                   ? "text-white"
@@ -42,46 +43,56 @@ export default function HeroSocialMediaCard() {
                   : "black",
             }}
           >
-            {timeIcon(time, "w-5 h-5")}
+            {timeIcon(time, "w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8")}
           </button>
         ))}
       </div>
 
       <div className="grid grid-cols-4 gap-4 text-2xl">
-        <MenuDrawer>
-          <p
-            className="flex items-center justify-center p-2 rounded-xl shadow-sm bg-blue-500 text-white hover:bg-blue-600 transition-colors"
-            aria-label="List"
-          >
-            <FaList className="w-5 h-5" />
-          </p>
-        </MenuDrawer>
-        <Link
-          href="/blog"
-          passHref
-          className="flex items-center justify-center p-2 rounded-xl shadow-sm bg-orange-500 text-white hover:bg-orange-600 transition-colors"
-          aria-label="Blog"
-        >
-          <FaBloggerB className="w-5 h-5" />
-        </Link>
-        <a
-          href="https://www.linkedin.com/in/hellojennpark"
-          className="flex items-center justify-center p-2 rounded-xl shadow-sm bg-blue-700 text-white hover:bg-blue-800 transition-colors"
-          aria-label="LinkedIn"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaLinkedinIn className="w-5 h-5" />
-        </a>
-        <a
-          href="https://github.com/hellojennpark"
-          className="flex items-center justify-center p-2 rounded-xl shadow-sm bg-black text-white hover:bg-gray-900 transition-colors"
-          aria-label="GitHub"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaGithub className="w-5 h-5" />
-        </a>
+        {socialMediaIcons.map((icon) => {
+          const IconComponent = icon.component;
+          const iconClasses =
+            "flex items-center justify-center p-2 rounded-xl shadow-sm text-white transition-colors hover:scale-[110%] active:scale-[110%] " +
+            icon.bgColor;
+          const iconSizeClasses = "w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8";
+
+          if (icon.isDrawer) {
+            return (
+              <MenuDrawer key={icon.id}>
+                <p className={iconClasses} aria-label={icon.ariaLabel}>
+                  <IconComponent className={iconSizeClasses} />
+                </p>
+              </MenuDrawer>
+            );
+          }
+
+          if (icon.external) {
+            return (
+              <a
+                key={icon.id}
+                href={icon.href}
+                className={iconClasses}
+                aria-label={icon.ariaLabel}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IconComponent className={iconSizeClasses} />
+              </a>
+            );
+          }
+
+          return (
+            <Link
+              key={icon.id}
+              href={icon.href}
+              passHref
+              className={iconClasses}
+              aria-label={icon.ariaLabel}
+            >
+              <IconComponent className={iconSizeClasses} />
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
