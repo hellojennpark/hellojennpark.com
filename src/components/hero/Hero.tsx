@@ -12,7 +12,7 @@ export default function Hero() {
     day: ["Good day.", "Wishing you a productive and fulfilling day ahead."],
     evening: [
       "Good evening.",
-      "Hope your day went well—now it’s time to unwind.",
+      "Hope your day went well-now it’s time to unwind.",
     ],
     night: [
       "Quiet night.",
