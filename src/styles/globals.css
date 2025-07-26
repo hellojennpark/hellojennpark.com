@@ -334,7 +334,7 @@ html {
 
 
 .mermaid-container {
-  @apply bg-white rounded-lg my-6 py-4;
+  @apply bg-white rounded-lg my-6 py-4 overflow-x-auto;
 }
 
 .prose blockquote {
