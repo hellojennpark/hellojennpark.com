@@ -77,12 +77,12 @@ Docker wasn't just about copying existing Dockerfiles-it required understanding 
 - **Reproducible builds**: Same image could run anywhere.
 - **Version control**: Tagged images made deployment tracking easier.
 
-## Multi-Service Orchestration: Docker Compose Experience
+## Multi-Service Orchestration: Docker Swarm Experience
 ### The Growing Complexity
 As I learned more, I saw how applications needed multiple services: databases, caches, load balancers. Managing these services individually was complex, especially as our services grew to support 300+ employees.
 
-### Docker Compose in Action
-Working with Docker Compose taught me about service orchestration, including how to define and manage multi-container applications with dependencies like databases and caches.
+### Docker Swarm in Action
+Working with Docker Swarm taught me about service orchestration, including how to define and manage multi-container applications with dependencies like databases and caches.
 
 ### Zero-Downtime Deployment Concepts
 I learned about blue-green deployment strategies through company guidelines and implementations.
@@ -92,7 +92,7 @@ I learned about blue-green deployment strategies through company guidelines and 
 **The Socket Server Challenge**: When working with a Slack bot (a socket server) that integrated with an external service we didn't control, I discovered an issue with multiple instances during blue-green transitions-duplicate event processing. To solve this, I implemented event deduplication by assigning each event a unique ID and storing it in our MongoDB database. MongoDB was chosen because the company recommended either MongoDB or MySQL, and MongoDB's flexible schema was ideal for the Slack bot's frequently changing data structure. Additionally, the data volume was low (as data was deleted after a set period), and queries were only needed for deployment validation, making MongoDB suitable. Before processing an event, the application checked the database to ensure it hadn't been handled. This prevented duplicate actions and taught me about idempotency in distributed systems. I considered Redis for faster lookups but stuck with MongoDB to avoid additional infrastructure management overhead, as it was sufficient for our needs.
 
 ### The Single Host Reality
-Docker Compose worked well for development and small deployments, especially when our tool was used by just a 7-person team. However, it had limitations:
+Docker Swarm worked well for development and small deployments, especially when our tool was used by just a 7-person team. However, it had limitations:
 - **Single point of failure**: Everything depended on one host.
 - **No automatic failover**: Services couldn't migrate automatically.
 - **Scaling limitations**: Only vertical scaling was possible.
@@ -141,7 +141,7 @@ The final phase focused on proactive monitoring:
 ## Key Lessons Learned
 ### Technical Insights
 - **Documentation First**: Official documentation is more reliable than blog posts or quick answers. Take time to understand fundamentals.
-- **Right Tool for the Job**: Don't choose technology just because it's new. I once thought Kubernetes was ideal for a single-service project, but Docker Compose would've sufficed. Consider team capabilities and actual requirements.
+- **Right Tool for the Job**: Don't choose technology just because it's new. I once thought Kubernetes was ideal for a single-service project, but Docker Swarm would've sufficed. Consider team capabilities and actual requirements.
 - **Gradual Learning**: Every technology change requires learning time. Factor this into planning and expectations.
 - **Document Everything**: I regret not documenting more during this journey. Detailed notes would've improved this post and helped troubleshoot faster.
 
