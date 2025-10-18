@@ -1,6 +1,12 @@
-# Personal Portfolio & Blog
+# Personal Website & Blog
 
-개인 포트폴리오 & 블로그
+<p align="center">
+  <img src=".github/images/main-hero-day.png" alt="Main Hero" width="320"/>
+  <br/>
+  <a href="https://hellojennpark.com" target="_blank" style="color:#1E90FF; text-decoration:underline;">
+    <b>HelloJennPark.com</b>
+  </a>
+</p>
 
 A modern, responsive personal website built with **Next.js**, **TypeScript**, and **Tailwind CSS**.  
 This project was mainly built for my own use — to introduce myself, share my projects and thoughts —  
