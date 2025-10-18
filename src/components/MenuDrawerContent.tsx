@@ -1,6 +1,5 @@
 "use client";
 
-import { CustomAvatar } from "./CustomAvatar";
 import { ThemedLink } from "./ThemedLink";
 import { Github, Linkedin } from "lucide-react";
 import Link from "next/link";
