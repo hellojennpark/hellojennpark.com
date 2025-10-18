@@ -47,12 +47,12 @@ The main page scrolls through the following sections:
 메인 페이지는 위 순서로 구성되어 있으며,  
 스크롤로 자연스럽게 이어집니다.
 
-| Section / 섹션 |                  Preview / 미리보기                  |
-| :------------- | :--------------------------------------------------: |
-| **Hero**       |      ![Hero](.github/images/main-hero-day.png)       |
-| **Introduce**  | ![Introduce](.github/images/main-hero-introduce.png) |
-| **Career**     |      ![Career](.github/images/main-career.png)       |
-| **Blog**       |        ![Blog](.github/images/main-blog.png)         |
+| Section / 섹션 |               Preview / 미리보기                |
+| :------------- | :---------------------------------------------: |
+| **Hero**       |    ![Hero](.github/images/main-hero-day.png)    |
+| **Introduce**  | ![Introduce](.github/images/main-introduce.png) |
+| **Career**     |    ![Career](.github/images/main-career.png)    |
+| **Blog**       |      ![Blog](.github/images/main-blog.png)      |
 
 ### **Features / 주요 특징**
 
