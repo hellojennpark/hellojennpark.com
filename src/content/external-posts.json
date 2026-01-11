@@ -1,0 +1,99 @@
+[
+    {
+        "title": "When AI Thinks Better Than You Do",
+        "description": "When AI outthinks us, do we stop growing? Exploring the paradox of convenience and how to preserve human agency in an automated world.",
+        "date": "2026-01-11",
+        "tags": [
+            "ai",
+            "human-cognition",
+            "productivity",
+            "philosophy-of-technology",
+            "personal-growth"
+        ],
+        "slug": [
+            "when-ai-thinks-better-than-you-do"
+        ],
+        "link": "https://medium.com/@hellojennpark/when-ai-thinks-better-than-you-do"
+    },
+    {
+        "title": "Why ChatGPT Feels Like a Friend While Claude Feels Like a Professional Assistant",
+        "description": "A personal dive into how UI/UX design shapes our perception of AI personality.",
+        "date": "2026-01-05",
+        "tags": [
+            "ai",
+            "chatgpt",
+            "claude",
+            "ux-design",
+            "ai-personality",
+            "product-design"
+        ],
+        "slug": [
+            "why-chatgpt-feels-like-a-friend-while-claude-feels-like-a-professional-assistant"
+        ],
+        "link": "https://medium.com/@hellojennpark/why-chatgpt-feels-like-a-friend-while-claude-feels-like-a-professional-assistant"
+    },
+    {
+        "title": "AI Was Stealing My Ability to Think",
+        "description": "I Changed Tools and Couldn’t Code Anymore",
+        "date": "2026-01-05",
+        "tags": [
+            "ai-dependency",
+            "coding",
+            "skill-degradation",
+            "deep-work",
+            "personal-experience"
+        ],
+        "slug": [
+            "ai-was-stealing-my-ability-to-think"
+        ],
+        "link": "https://medium.com/@hellojennpark/ai-was-stealing-my-ability-to-think"
+    },
+    {
+        "title": "The Future of AI Chat: From Search Ads to Conversational Commerce",
+        "description": "AI chat platforms surprisingly lack personalization beyond basic name greetings despite advanced capabilities.",
+        "date": "2026-01-01",
+        "tags": [
+            "ai-business",
+            "conversational-commerce",
+            "personalization",
+            "future-of-ai",
+            "product-strategy"
+        ],
+        "slug": [
+            "the-future-of-ai-chat-from-search-ads-to-conversational-commerce"
+        ],
+        "link": "https://medium.com/@hellojennpark/the-future-of-ai-chat-from-search-ads-to-conversational-commerce"
+    },
+    {
+        "title": "Perhaps the Future of AI Business Models Will Be Like TikTok",
+        "description": "Convenience vs. Critical Thinking: Navigating the New Era of Information Pollution",
+        "date": "2026-01-01",
+        "tags": [
+            "ai-business-model",
+            "tiktok",
+            "attention-economy",
+            "information-pollution",
+            "critical-thinking"
+        ],
+        "slug": [
+            "perhaps-the-future-of-ai-business-models-will-be-like-tiktok"
+        ],
+        "link": "https://medium.com/@hellojennpark/perhaps-the-future-of-ai-business-models-will-be-like-tiktok"
+    },
+    {
+        "title": "We All Need Help (But We Pretend It’s an Elderly Problem)",
+        "description": "One day, I was walking down the street when I saw an elderly man asking passersby for help. He needed to restore a deleted text message on…",
+        "date": "2025-12-14",
+        "tags": [
+            "digital-literacy",
+            "empathy",
+            "aging-society",
+            "tech-accessibility",
+            "personal-story"
+        ],
+        "slug": [
+            "we-all-need-help-but-we-pretend-its-an-elderly-problem"
+        ],
+        "link": "https://medium.com/@hellojennpark/we-all-need-help-but-we-pretend-its-an-elderly-problem"
+    }
+]

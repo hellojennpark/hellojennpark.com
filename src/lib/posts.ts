@@ -9,6 +9,7 @@ export type Post = {
   tags?: string[];
   slug: string[];
   date: string;
+  link?: string;
 };
 
 export function getAllTags(
@@ -29,7 +30,8 @@ export function getAllTags(
 
   const tags = Object.entries(tagCount)
     .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count);
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 20);
   return tags;
 }
 
@@ -38,7 +40,9 @@ export function getAllPosts(
 ): Post[] {
   const posts: Post[] = [];
 
+  // 1. Internal MDX Posts
   const walk = (dir: string, parentSlugs: string[] = []) => {
+    if (!fs.existsSync(dir)) return;
     const entries = fs.readdirSync(dir, { withFileTypes: true });
     for (const entry of entries) {
       if (entry.isDirectory()) {
@@ -63,6 +67,18 @@ export function getAllPosts(
   };
 
   walk(baseDir);
+
+  // 2. External Posts
+  const externalPostsPath = path.join(process.cwd(), "src/content/external-posts.json");
+  if (fs.existsSync(externalPostsPath)) {
+    const externalPostsData = fs.readFileSync(externalPostsPath, "utf-8");
+    try {
+      const externalPosts: Post[] = JSON.parse(externalPostsData);
+      posts.push(...externalPosts);
+    } catch (e) {
+      console.error("Failed to parse external posts:", e);
+    }
+  }
 
   posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 
