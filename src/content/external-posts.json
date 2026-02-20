@@ -1,112 +1,99 @@
 [
-    {
-        "title": "AI-Native Generations",
-        "description": "The root of my fear isn’t just about quality; it’s about the loss of connection.",
-        "date": "2026-02-18",
-        "tags": [
-            "ai",
-            "human-cognition",
-        ],
-        "slug": [
-            "ai-native-generations"
-        ],
-        "link": "https://medium.com/@hellojennpark/ai-native-generations-is-the-era-of-human-content-over-5728b3c0c742"
-    },
-    {
-        "title": "When AI Thinks Better Than You Do",
-        "description": "When AI outthinks us, do we stop growing? Exploring the paradox of convenience and how to preserve human agency in an automated world.",
-        "date": "2026-01-11",
-        "tags": [
-            "ai",
-            "human-cognition",
-            "productivity",
-            "philosophy-of-technology",
-            "personal-growth"
-        ],
-        "slug": [
-            "when-ai-thinks-better-than-you-do"
-        ],
-        "link": "https://medium.com/@hellojennpark/when-ai-thinks-better-than-you-do-2cc02d69400f"
-    },
-    {
-        "title": "Why ChatGPT Feels Like a Friend While Claude Feels Like a Professional Assistant",
-        "description": "A personal dive into how UI/UX design shapes our perception of AI personality.",
-        "date": "2026-01-05",
-        "tags": [
-            "ai",
-            "chatgpt",
-            "claude",
-            "ux-design",
-            "ai-personality",
-            "product-design"
-        ],
-        "slug": [
-            "why-chatgpt-feels-like-a-friend-while-claude-feels-like-a-professional-assistant"
-        ],
-        "link": "https://medium.com/@hellojennpark/why-chatgpt-feels-like-a-friend-while-claude-feels-like-a-professional-assistant-33e0f761decb"
-    },
-    {
-        "title": "AI Was Stealing My Ability to Think",
-        "description": "I Changed Tools and Couldn’t Code Anymore",
-        "date": "2026-01-05",
-        "tags": [
-            "ai-dependency",
-            "coding",
-            "skill-degradation",
-            "deep-work",
-            "personal-experience"
-        ],
-        "slug": [
-            "ai-was-stealing-my-ability-to-think"
-        ],
-        "link": "https://medium.com/@hellojennpark/ai-was-stealing-my-ability-to-think-eae0c1549f30"
-    },
-    {
-        "title": "The Future of AI Chat: From Search Ads to Conversational Commerce",
-        "description": "AI chat platforms surprisingly lack personalization beyond basic name greetings despite advanced capabilities.",
-        "date": "2026-01-01",
-        "tags": [
-            "ai-business",
-            "conversational-commerce",
-            "personalization",
-            "future-of-ai",
-            "product-strategy"
-        ],
-        "slug": [
-            "the-future-of-ai-chat-from-search-ads-to-conversational-commerce"
-        ],
-        "link": "https://medium.com/@hellojennpark/the-future-of-ai-chat-from-search-ads-to-conversational-commerce-67d8b8220f5f"
-    },
-    {
-        "title": "Perhaps the Future of AI Business Models Will Be Like TikTok",
-        "description": "Convenience vs. Critical Thinking: Navigating the New Era of Information Pollution",
-        "date": "2026-01-01",
-        "tags": [
-            "ai-business-model",
-            "tiktok",
-            "attention-economy",
-            "information-pollution",
-            "critical-thinking"
-        ],
-        "slug": [
-            "perhaps-the-future-of-ai-business-models-will-be-like-tiktok"
-        ],
-        "link": "https://medium.com/@hellojennpark/perhaps-the-future-of-ai-business-models-will-be-like-tiktok-081aacb8cba5"
-    },
-    {
-        "title": "We All Need Help (But We Pretend It’s an Elderly Problem)",
-        "description": "One day, I was walking down the street when I saw an elderly man asking passersby for help. He needed to restore a deleted text message on…",
-        "date": "2025-12-14",
-        "tags": [
-            "digital-literacy",
-            "empathy",
-            "aging-society",
-            "tech-accessibility",
-            "personal-story"
-        ],
-        "slug": [
-            "we-all-need-help-but-we-pretend-its-an-elderly-problem"
-        ],
-        "link": "https://medium.com/design-bootcamp/we-all-need-help-but-wed-rather-blame-the-elderly-9168e14b1188"
-    }
+  {
+    "date": "2026-02-18",
+    "description": "The root of my fear isn’t just about quality; it’s about the loss of connection.",
+    "link": "https://medium.com/@hellojennpark/ai-native-generations-is-the-era-of-human-content-over-5728b3c0c742",
+    "slug": ["ai-native-generations"],
+    "tags": ["ai", "human-cognition"],
+    "title": "AI-Native Generations"
+  },
+  {
+    "date": "2026-01-11",
+    "description": "When AI outthinks us, do we stop growing? Exploring the paradox of convenience and how to preserve human agency in an automated world.",
+    "link": "https://medium.com/@hellojennpark/when-ai-thinks-better-than-you-do-2cc02d69400f",
+    "slug": ["when-ai-thinks-better-than-you-do"],
+    "tags": [
+      "ai",
+      "human-cognition",
+      "productivity",
+      "philosophy-of-technology",
+      "personal-growth"
+    ],
+    "title": "When AI Thinks Better Than You Do"
+  },
+  {
+    "date": "2026-01-05",
+    "description": "A personal dive into how UI/UX design shapes our perception of AI personality.",
+    "link": "https://medium.com/@hellojennpark/why-chatgpt-feels-like-a-friend-while-claude-feels-like-a-professional-assistant-33e0f761decb",
+    "slug": [
+      "why-chatgpt-feels-like-a-friend-while-claude-feels-like-a-professional-assistant"
+    ],
+    "tags": [
+      "ai",
+      "chatgpt",
+      "claude",
+      "ux-design",
+      "ai-personality",
+      "product-design"
+    ],
+    "title": "Why ChatGPT Feels Like a Friend While Claude Feels Like a Professional Assistant"
+  },
+  {
+    "date": "2026-01-05",
+    "description": "I Changed Tools and Couldn’t Code Anymore",
+    "link": "https://medium.com/@hellojennpark/ai-was-stealing-my-ability-to-think-eae0c1549f30",
+    "slug": ["ai-was-stealing-my-ability-to-think"],
+    "tags": [
+      "ai-dependency",
+      "coding",
+      "skill-degradation",
+      "deep-work",
+      "personal-experience"
+    ],
+    "title": "AI Was Stealing My Ability to Think"
+  },
+  {
+    "date": "2026-01-01",
+    "description": "AI chat platforms surprisingly lack personalization beyond basic name greetings despite advanced capabilities.",
+    "link": "https://medium.com/@hellojennpark/the-future-of-ai-chat-from-search-ads-to-conversational-commerce-67d8b8220f5f",
+    "slug": [
+      "the-future-of-ai-chat-from-search-ads-to-conversational-commerce"
+    ],
+    "tags": [
+      "ai-business",
+      "conversational-commerce",
+      "personalization",
+      "future-of-ai",
+      "product-strategy"
+    ],
+    "title": "The Future of AI Chat: From Search Ads to Conversational Commerce"
+  },
+  {
+    "date": "2026-01-01",
+    "description": "Convenience vs. Critical Thinking: Navigating the New Era of Information Pollution",
+    "link": "https://medium.com/@hellojennpark/perhaps-the-future-of-ai-business-models-will-be-like-tiktok-081aacb8cba5",
+    "slug": ["perhaps-the-future-of-ai-business-models-will-be-like-tiktok"],
+    "tags": [
+      "ai-business-model",
+      "tiktok",
+      "attention-economy",
+      "information-pollution",
+      "critical-thinking"
+    ],
+    "title": "Perhaps the Future of AI Business Models Will Be Like TikTok"
+  },
+  {
+    "date": "2025-12-14",
+    "description": "One day, I was walking down the street when I saw an elderly man asking passersby for help. He needed to restore a deleted text message on…",
+    "link": "https://medium.com/design-bootcamp/we-all-need-help-but-wed-rather-blame-the-elderly-9168e14b1188",
+    "slug": ["we-all-need-help-but-we-pretend-its-an-elderly-problem"],
+    "tags": [
+      "digital-literacy",
+      "empathy",
+      "aging-society",
+      "tech-accessibility",
+      "personal-story"
+    ],
+    "title": "We All Need Help (But We Pretend It’s an Elderly Problem)"
+  }
 ]
