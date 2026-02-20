@@ -1,5 +1,18 @@
 [
     {
+        "title": "AI-Native Generations",
+        "description": "The root of my fear isn’t just about quality; it’s about the loss of connection.",
+        "date": "2026-02-18",
+        "tags": [
+            "ai",
+            "human-cognition",
+        ],
+        "slug": [
+            "ai-native-generations"
+        ],
+        "link": "https://medium.com/@hellojennpark/ai-native-generations-is-the-era-of-human-content-over-5728b3c0c742"
+    },
+    {
         "title": "When AI Thinks Better Than You Do",
         "description": "When AI outthinks us, do we stop growing? Exploring the paradox of convenience and how to preserve human agency in an automated world.",
         "date": "2026-01-11",
